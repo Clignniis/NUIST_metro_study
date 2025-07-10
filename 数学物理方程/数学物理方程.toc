@@ -1,0 +1,229 @@
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}绪论}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}基本概念}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}典型方程的导出*}{2}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}波动方程}{2}{subsection.1.2.1}%
+\contentsline {subsubsection}{问题提出}{2}{subsubsection*.3}%
+\contentsline {subsubsection}{问题分析}{2}{subsubsection*.4}%
+\contentsline {subsubsection}{模型假设}{2}{subsubsection*.5}%
+\contentsline {subsubsection}{模型建立（三步骤）}{2}{subsubsection*.6}%
+\contentsline {subsubsection}{推导}{3}{subsubsection*.7}%
+\contentsline {subsection}{\numberline {1.2.2}一维热传导方程}{3}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}拉普拉斯方程/泊松方程}{4}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}定解条件与定解问题*}{4}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}初始条件（说明初始状态的条件）}{4}{subsection.1.3.1}%
+\contentsline {subsubsection}{弦振动问题}{4}{subsubsection*.8}%
+\contentsline {subsubsection}{热传导问题}{4}{subsubsection*.9}%
+\contentsline {subsubsection}{泊松/拉普拉斯}{4}{subsubsection*.10}%
+\contentsline {subsubsection}{注意}{4}{subsubsection*.11}%
+\contentsline {subsection}{\numberline {1.3.2}边界条件（说明边界上约束情况的条件）}{5}{subsection.1.3.2}%
+\contentsline {subsubsection}{弦振动三大类}{5}{subsubsection*.12}%
+\contentsline {subsubsection}{热传导三大类}{5}{subsubsection*.13}%
+\contentsline {subsubsection}{三类边界条件（设\(u\)为未知函数，\(\partial \Omega \)为边界）}{5}{subsubsection*.14}%
+\contentsline {subsubsection}{注意}{5}{subsubsection*.15}%
+\contentsline {subsection}{\numberline {1.3.3}定解条件}{5}{subsection.1.3.3}%
+\contentsline {subsubsection}{初值问题或Cauchy问题：泛定方程+初始条件}{6}{subsubsection*.16}%
+\contentsline {subsubsection}{边值问题 ：泛定方程+边界条件（三类）}{6}{subsubsection*.17}%
+\contentsline {subsubsection}{初边值问题：泛定方程+初始条件+边界条件（混合问题）}{6}{subsubsection*.18}%
+\contentsline {subsection}{\numberline {1.3.4}例题}{6}{subsection.1.3.4}%
+\contentsline {section}{\numberline {1.4}定解问题的适定性}{7}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}定解问题的解*}{7}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}定解问题的适定性}{7}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}线性叠加原理}{8}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}引入*}{8}{subsection.1.5.1}%
+\contentsline {subsubsection}{叠加原理}{8}{subsubsection*.19}%
+\contentsline {subsubsection}{思考问题}{8}{subsubsection*.20}%
+\contentsline {subsubsection}{线性PDE叠加原理}{8}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {1.5.2}线性定解问题*}{8}{subsection.1.5.2}%
+\contentsline {subsubsection}{线性算符}{8}{subsubsection*.22}%
+\contentsline {subsubsection}{典例}{8}{subsubsection*.23}%
+\contentsline {subsubsection}{线性微分算子L}{8}{subsubsection*.24}%
+\contentsline {subsubsection}{线性边界条件}{9}{subsubsection*.25}%
+\contentsline {subsection}{\numberline {1.5.3}叠加原理*}{9}{subsection.1.5.3}%
+\contentsline {subsubsection}{有限叠加原理}{9}{subsubsection*.26}%
+\contentsline {subsubsection}{具体应用}{9}{subsubsection*.27}%
+\contentsline {subsubsection}{无限叠加原理}{9}{subsubsection*.28}%
+\contentsline {subsubsection}{具体应用}{9}{subsubsection*.29}%
+\contentsline {subsection}{\numberline {1.5.4}应用与反例}{10}{subsection.1.5.4}%
+\contentsline {subsubsection}{求泊松方程\(u_{xx}+u_{yy}=x^2-3xy+2y^2\)的通解}{10}{subsubsection*.30}%
+\contentsline {subsubsection}{对非线性方程\(u_t+uu_x=0\)}{10}{subsubsection*.31}%
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}二阶线性偏微分方程的分类与化简}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}两个自变量的方程的分类与化简}{11}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}分类情况}{11}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}方程化简}{11}{subsection.2.1.2}%
+\contentsline {subsubsection}{推导}{12}{subsubsection*.32}%
+\contentsline {subsubsection}{代换}{12}{subsubsection*.33}%
+\contentsline {subsubsection}{性质}{12}{subsubsection*.34}%
+\contentsline {subsubsection}{求解过程}{13}{subsubsection*.35}%
+\contentsline {subsection}{\numberline {2.1.3}方程化简的三类情况}{13}{subsection.2.1.3}%
+\contentsline {subsubsection}{双曲型\(\Delta >0\)}{13}{subsubsection*.36}%
+\contentsline {paragraph}{例题}{13}{paragraph*.37}%
+\contentsline {subsubsection}{抛物型\(\Delta =0\)}{14}{subsubsection*.38}%
+\contentsline {paragraph}{例题}{14}{paragraph*.39}%
+\contentsline {subsubsection}{椭圆型\(\Delta <0\)}{14}{subsubsection*.40}%
+\contentsline {paragraph}{例题}{14}{paragraph*.41}%
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}波动方程的初值问题与行波法}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}一维波动方程的初值问题}{15}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}无界弦无强迫振动的初值问题}{15}{subsection.3.1.1}%
+\contentsline {subsubsection}{定解问题的特解}{15}{subsubsection*.42}%
+\contentsline {subsubsection}{定解问题的特解——达朗贝尔公式}{15}{subsubsection*.43}%
+\contentsline {paragraph}{推导*}{15}{paragraph*.44}%
+\contentsline {paragraph}{特解}{16}{paragraph*.45}%
+\contentsline {subsubsection}{行波法}{16}{subsubsection*.46}%
+\contentsline {paragraph}{使用条件}{16}{paragraph*.47}%
+\contentsline {paragraph}{特征方程与特征根}{16}{paragraph*.48}%
+\contentsline {paragraph}{求解方法}{16}{paragraph*.49}%
+\contentsline {paragraph}{利用初始条件解\(F\)和\(G\)}{16}{paragraph*.50}%
+\contentsline {paragraph}{例题}{16}{paragraph*.51}%
+\contentsline {subsection}{\numberline {3.1.2}波的传播-解的物理意义}{17}{subsection.3.1.2}%
+\contentsline {subsubsection}{波的分类}{17}{subsubsection*.52}%
+\contentsline {paragraph}{右行波}{17}{paragraph*.53}%
+\contentsline {paragraph}{左行波}{17}{paragraph*.54}%
+\contentsline {paragraph}{行波解}{17}{paragraph*.55}%
+\contentsline {subsubsection}{特征线与求解有关的区域}{18}{subsubsection*.56}%
+\contentsline {paragraph}{特征线}{18}{paragraph*.57}%
+\contentsline {paragraph}{依赖区间（图\ref {pic:area}\(x_1,x_2\)之间）}{18}{paragraph*.58}%
+\contentsline {paragraph}{决定区域（图\ref {pic:area}灰色区域）}{18}{paragraph*.59}%
+\contentsline {paragraph}{影响区域（图\ref {pic:area}虚线区域）}{18}{paragraph*.60}%
+\contentsline {subsubsection}{特征线在弱解计算方面的应用*}{18}{subsubsection*.61}%
+\contentsline {paragraph}{弱解}{18}{paragraph*.62}%
+\contentsline {paragraph}{方波求解}{18}{paragraph*.63}%
+\contentsline {paragraph}{初始速度}{18}{paragraph*.64}%
+\contentsline {subsection}{\numberline {3.1.3}带有强迫的无界弦振动初值问题}{19}{subsection.3.1.3}%
+\contentsline {subsubsection}{冲量原理-齐次化原理-杜阿梅尔原理（Duhamel）*}{19}{subsubsection*.65}%
+\contentsline {paragraph}{数学证明}{19}{paragraph*.66}%
+\contentsline {paragraph}{物理说明}{19}{paragraph*.67}%
+\contentsline {paragraph}{求解问题}{20}{paragraph*.68}%
+\contentsline {subsubsection}{总解}{20}{subsubsection*.69}%
+\contentsline {paragraph}{例题}{20}{paragraph*.70}%
+\contentsline {subsection}{\numberline {3.1.4}半无界弦的振动和延拓法}{21}{subsection.3.1.4}%
+\contentsline {subsubsection}{问题提出}{21}{subsubsection*.71}%
+\contentsline {subsubsection}{问题思路}{21}{subsubsection*.72}%
+\contentsline {subsubsection}{实施过程}{21}{subsubsection*.73}%
+\contentsline {paragraph}{奇延拓}{21}{paragraph*.74}%
+\contentsline {paragraph}{在\(x\geq 0\)部分}{22}{paragraph*.75}%
+\contentsline {paragraph}{在端点处}{22}{paragraph*.76}%
+\contentsline {paragraph}{例题}{22}{paragraph*.77}%
+\contentsline {section}{\numberline {3.2}三维波动方程的初值问题-球面平均值方法*}{23}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}球对称解}{23}{subsection.3.2.1}%
+\contentsline {subsubsection}{问题描述}{23}{subsubsection*.78}%
+\contentsline {subsubsection}{球坐标系}{23}{subsubsection*.79}%
+\contentsline {subsubsection}{坐标转换}{23}{subsubsection*.80}%
+\contentsline {subsubsection}{通解}{23}{subsubsection*.81}%
+\contentsline {paragraph}{收敛波}{23}{paragraph*.82}%
+\contentsline {paragraph}{发散波}{23}{paragraph*.83}%
+\contentsline {subsection}{\numberline {3.2.2}球面平均值方法}{24}{subsection.3.2.2}%
+\contentsline {subsubsection}{表述}{24}{subsubsection*.84}%
+\contentsline {subsubsection}{满足方程}{24}{subsubsection*.85}%
+\contentsline {paragraph}{左侧}{24}{paragraph*.86}%
+\contentsline {paragraph}{右侧}{24}{paragraph*.87}%
+\contentsline {subsubsection}{通解}{24}{subsubsection*.88}%
+\contentsline {paragraph}{泊松公式}{25}{paragraph*.89}%
+\contentsline {subsection}{\numberline {3.2.3}惠更斯原理}{25}{subsection.3.2.3}%
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}分离变量法}{26}{chapter.4}%
+\contentsline {section}{\numberline {4.1}预备知识}{26}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}函数内积}{26}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}正交函数}{26}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}正交函数系}{26}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}范数}{26}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}正交函数集的标准化}{27}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}函数的傅里叶级数展开}{27}{subsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.1.7}二阶线性齐次常微分方程的求解问题}{27}{subsection.4.1.7}%
+\contentsline {subsubsection}{问题}{27}{subsubsection*.90}%
+\contentsline {subsubsection}{通解}{27}{subsubsection*.91}%
+\contentsline {section}{\numberline {4.2}波动方程初边值问题分离变量法求解}{27}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Fourier方法}{27}{subsection.4.2.1}%
+\contentsline {paragraph}{条件}{27}{paragraph*.92}%
+\contentsline {paragraph}{求解}{28}{paragraph*.93}%
+\contentsline {subsubsection}{分离变量法求解波动方程定解问题}{28}{subsubsection*.94}%
+\contentsline {paragraph}{问题}{28}{paragraph*.95}%
+\contentsline {paragraph}{分离变量}{28}{paragraph*.96}%
+\contentsline {paragraph}{特征值问题}{28}{paragraph*.97}%
+\contentsline {paragraph}{其他方程}{29}{paragraph*.98}%
+\contentsline {paragraph}{特解叠加}{29}{paragraph*.99}%
+\contentsline {paragraph}{系数确定}{29}{paragraph*.100}%
+\contentsline {subsubsection}{解的物理意义}{29}{subsubsection*.101}%
+\contentsline {paragraph}{驻波}{29}{paragraph*.102}%
+\contentsline {paragraph}{基频}{29}{paragraph*.103}%
+\contentsline {subsection}{\numberline {4.2.2}自由边界条件下波动方程问题的求解}{30}{subsection.4.2.2}%
+\contentsline {paragraph}{问题}{30}{paragraph*.104}%
+\contentsline {paragraph}{分离变量}{30}{paragraph*.105}%
+\contentsline {paragraph}{特征值问题}{30}{paragraph*.106}%
+\contentsline {paragraph}{特解}{30}{paragraph*.107}%
+\contentsline {paragraph}{通解}{30}{paragraph*.108}%
+\contentsline {paragraph}{系数确定}{30}{paragraph*.109}%
+\contentsline {section}{\numberline {4.3}非齐次问题的求解}{30}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}非齐次方程+齐次边界条件}{30}{subsection.4.3.1}%
+\contentsline {paragraph}{问题}{30}{paragraph*.110}%
+\contentsline {paragraph}{引例*}{30}{paragraph*.111}%
+\contentsline {paragraph}{第一步}{31}{paragraph*.112}%
+\contentsline {paragraph}{第二步}{31}{paragraph*.113}%
+\contentsline {paragraph}{第三步}{31}{paragraph*.114}%
+\contentsline {paragraph}{第四步}{32}{paragraph*.115}%
+\contentsline {paragraph}{第五步}{32}{paragraph*.116}%
+\contentsline {paragraph}{第六步}{32}{paragraph*.117}%
+\contentsline {paragraph}{第七步}{32}{paragraph*.118}%
+\contentsline {subsubsection}{典型模型-共振现象}{33}{subsubsection*.119}%
+\contentsline {paragraph}{方程}{33}{paragraph*.120}%
+\contentsline {paragraph}{解}{33}{paragraph*.121}%
+\contentsline {paragraph}{物理}{33}{paragraph*.122}%
+\contentsline {subsection}{\numberline {4.3.2}非齐次方程+非齐次边界条件}{33}{subsection.4.3.2}%
+\contentsline {subsubsection}{非齐次项与时间有关}{33}{subsubsection*.123}%
+\contentsline {paragraph}{问题}{33}{paragraph*.124}%
+\contentsline {paragraph}{求解}{33}{paragraph*.125}%
+\contentsline {subsubsection}{非齐次项与时间无关}{34}{subsubsection*.126}%
+\contentsline {paragraph}{问题}{34}{paragraph*.127}%
+\contentsline {paragraph}{求解}{34}{paragraph*.128}%
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}傅里叶积分变换}{35}{chapter.5}%
+\contentsline {section}{\numberline {5.1}傅里叶积分变换定义*}{35}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}知识回顾}{35}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}傅里叶积分变换的定义}{36}{subsection.5.1.2}%
+\contentsline {subsubsection}{基本条件*}{36}{subsubsection*.129}%
+\contentsline {subsubsection}{傅里叶变换}{36}{subsubsection*.130}%
+\contentsline {subsubsection}{傅里叶逆变换}{36}{subsubsection*.131}%
+\contentsline {subsubsection}{关系*}{36}{subsubsection*.132}%
+\contentsline {subsubsection}{注意*}{36}{subsubsection*.133}%
+\contentsline {subsubsection}{示例}{36}{subsubsection*.134}%
+\contentsline {section}{\numberline {5.2}傅里叶积分变换的性质}{37}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}线性性质}{37}{subsection.5.2.1}%
+\contentsline {subsubsection}{内容}{37}{subsubsection*.135}%
+\contentsline {subsection}{\numberline {5.2.2}位移性质}{37}{subsection.5.2.2}%
+\contentsline {subsubsection}{内容}{37}{subsubsection*.136}%
+\contentsline {subsubsection}{证明}{37}{subsubsection*.137}%
+\contentsline {subsection}{\numberline {5.2.3}相似性质（伸缩性质）}{37}{subsection.5.2.3}%
+\contentsline {subsubsection}{内容}{37}{subsubsection*.138}%
+\contentsline {subsubsection}{证明}{37}{subsubsection*.139}%
+\contentsline {subsection}{\numberline {5.2.4}微分性质}{38}{subsection.5.2.4}%
+\contentsline {subsubsection}{内容}{38}{subsubsection*.140}%
+\contentsline {subsubsection}{证明}{38}{subsubsection*.141}%
+\contentsline {subsection}{\numberline {5.2.5}积分性质}{38}{subsection.5.2.5}%
+\contentsline {subsubsection}{证明}{38}{subsubsection*.142}%
+\contentsline {subsection}{\numberline {5.2.6}乘多项式性质}{38}{subsection.5.2.6}%
+\contentsline {subsubsection}{证明}{38}{subsubsection*.143}%
+\contentsline {subsection}{\numberline {5.2.7}卷积定理}{38}{subsection.5.2.7}%
+\contentsline {subsubsection}{卷积运算}{38}{subsubsection*.144}%
+\contentsline {subsubsection}{性质}{39}{subsubsection*.145}%
+\contentsline {subsubsection}{示例}{39}{subsubsection*.146}%
+\contentsline {section}{\numberline {5.3}傅里叶积分变换在求解偏微分方程初值问题中的应用}{39}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}偏导数的傅里叶变换}{39}{subsection.5.3.1}%
+\contentsline {subsubsection}{条件}{39}{subsubsection*.147}%
+\contentsline {subsubsection}{变换}{40}{subsubsection*.148}%
+\contentsline {subsection}{\numberline {5.3.2}求解热传导方程的初值问题}{40}{subsection.5.3.2}%
+\contentsline {chapter}{\numberline {第六章\hspace {.3em}}格林函数方法}{41}{chapter.6}%
+\contentsline {section}{\numberline {6.1}从高斯散度定理到格林公式}{41}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}散度定理}{41}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}第二格林公式}{41}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}第三格林公式}{41}{subsection.6.1.3}%
+\contentsline {subsubsection}{三维拉普拉斯方程的基本解}{41}{subsubsection*.149}%
+\contentsline {subsubsection}{第三格林公式}{42}{subsubsection*.150}%
+\contentsline {subsection}{\numberline {6.1.4}格林公式的应用—调和函数的基本性质}{42}{subsection.6.1.4}%
+\contentsline {subsubsection}{基本积分表达式}{42}{subsubsection*.151}%
+\contentsline {subsubsection}{Neumann边值问题有解必要条件}{42}{subsubsection*.152}%
+\contentsline {subsubsection}{调和函数的平均值公式}{42}{subsubsection*.153}%
+\contentsline {section}{\numberline {6.2}格林函数及其性质}{43}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}格林函数的引入}{43}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}格林函数的性质}{43}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}格林函数的物理解释}{43}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}特殊区域上拉普拉斯方程Dirichlet边值问题的求解}{44}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}镜象法}{44}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}三维特殊区域-平面}{44}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}三维特殊区域-球体}{45}{subsection.6.3.3}%

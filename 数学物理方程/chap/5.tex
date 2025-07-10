@@ -1,0 +1,256 @@
+\chapter{傅里叶积分变换}
+ 
+\section{傅里叶积分变换定义*}
+
+\subsection{知识回顾}
+积分变换：把函数\(f(x)\)经过积分运算转为另一类函数\(F(\alpha)\)，即
+\[
+F(\alpha)=\int_{a}^{b}f(x)K(\alpha,x)\,\mathrm{d}x
+\]
+
+其中，\(\alpha\)是一个参变量，\(K(\alpha,x)\)是确定的二元函数，称为积分变换的核。
+
+傅里叶级数展开：（周期函数）傅里叶级数展开对非周期函数的傅里叶积分表达。
+
+以\(2l\)为周期的函数\(f(x)\)在区间\([-l,l]\)上可表达：\[f(x)=\frac{a_0}{2}+\sum_{n=1}^{\infty}{\left(a_n\cos\frac{n\pi x}{l}+b_n\sin\frac{n\pi x}{l}\right)}\]
+
+其中\(\begin{cases}a_n=\frac{1}{l}\int_{-l}^{l}f(t)\cos\frac{n\pi t}{l}\,\mathrm{d}t,n=0,1,\ldots\\b_n=\frac{1}{l}\int_{-l}^{l}f(t)\sin\frac{n\pi t}{l}\,\mathrm{d}t,n=1,2,\ldots\end{cases}\)考虑\(a_n,b_n\)的表达式，得到：
+\[
+f(x)=\frac{1}{2l}\int_{-l}^{l} f(t)\,\mathrm{d}t+\sum_{n=1}^{\infty}\frac{1}{l}\int_{-l}^{l} f(t)\cos\left[\frac{n\pi}{l}(x-t)\right]\,\mathrm{d}t
+\]
+
+若令\(\alpha_n=\frac{n\pi}{l},\Delta\alpha_n=\frac{\pi}{l}\)
+\[
+f(x)=\frac{1}{2l}\int_{-l}^{l} f(t)\,\mathrm{d}t+\frac{1}{\pi}\sum_{n=1}^{\infty}\left\{\int_{-l}^{l} f(t)\cos\left[\alpha_n(x-t)\right]\,\mathrm{d}t\right\}\Delta\alpha_n
+\]
+
+假定\(f(x)\)在\((-\infty,+\infty)\)上绝对可积，\(\int_{-\infty}^{+\infty}|f(t)|\,\mathrm{d}t<+\infty\)，则f(x)的傅里叶积分公式为：
+\begin{gather*}\frac{1}{2l}\int_{-l}^{l} f(t)\,\mathrm{d}t=0\\
+f(x)=\frac{1}{\pi}\int_{0}^{+\infty}\left\{\int_{-\infty}^{+\infty}{f(t)\cos{\left[\alpha\left(x-t\right)\right]}\,\mathrm{d}t}\right\}\,\mathrm{d}\alpha
+\end{gather*}
+
+对积分表达进一步处理，利用欧拉公式：\(\mathrm{e}^{\mathrm{i}\beta}=\cos\beta+\mathrm{i}\sin\beta\)
+\begin{align*}
+f(x)=&\frac{1}{2\pi}\int_{0}^{+\infty}\int_{-\infty}^{+\infty} f(t)\mathrm{e}^{\mathrm{i}\alpha(x-t)}\,\mathrm{d}t\,\mathrm{d}\alpha+\frac{1}{2\pi}\int_{0}^{+\infty}\int_{-\infty}^{+\infty} f(t)\mathrm{e}^{-\mathrm{i}\alpha(x-t)}\,\mathrm{d}t\,\mathrm{d}\alpha\\
+f(x)=&\frac{1}{2\pi}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} f(t)\mathrm{e}^{\mathrm{i}\alpha\left(x-t\right)}\,\mathrm{d}t\,\mathrm{d}\alpha\\
+f(x)=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}{\mathrm{e}^{\mathrm{i}\alpha x}\left\{\frac{1}{\sqrt{2}\pi}\int_{-\infty}^{+\infty}{f(t)\mathrm{e}^{-{\mathrm{i}\alpha t}}\,\mathrm{d}t}\right\}\,\mathrm{d}\alpha}
+\end{align*}
+
+记为\(F(\alpha)\)，称为\(f(x)\)的傅里叶变换\(\mathscr{F}[f(x)]\)
+
+\subsection{傅里叶积分变换的定义}
+
+\subsubsection{基本条件*}
+
+设\(f(x)\)在\((-\infty,+\infty)\)上的任一有限区间上满足 Dirichlet 条件，在\((-\infty,+\infty)\)上绝对可积
+\subsubsection{傅里叶变换}
+
+广义积分\(F(\alpha)=\frac{1}{\sqrt{2}\pi}\int_{-\infty}^{+\infty}f(x)\mathrm{e}^{-{\mathrm{i}\alpha x}}\,\mathrm{d}x\)为\(f(x)\)的傅里叶变换，记为\(F(\alpha)=\mathscr{F}[f(x)]\)，称像函数
+
+\subsubsection{傅里叶逆变换}
+\(f(x)=\frac{1}{\sqrt{2}\pi}\int_{-\infty}^{+\infty}{F(\alpha)\mathrm{e}^{\mathrm{i}\alpha x}\,\mathrm{d}\alpha}\)为\(F(\alpha)\)的傅里叶逆变换，记为\(f(x)=\mathscr{F}^{-1}[F(\alpha)]\)
+
+\subsubsection{关系*}
+
+积分变换最处是用于解决微分方程问题，后来也在信号处理中也有应用。可以把它理解为时间域和频率域之间的转化。\(\mathrm{e}^{-\mathrm{i}\alpha x}=\cos(\alpha x)-\mathrm{i}\sin(\alpha x)\)
+
+\subsubsection{注意*}
+
+傅里叶积分变换来自于非周期傅里叶函数的积分表达，两者成对出现
+
+\subsubsection{示例}
+
+求函数\(f(x)=\mathrm{e}^{-a|x|}\)的傅里叶变换，其中\(a\)为常数
+\begin{align*}
+F(\alpha)=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\mathrm{e}^{-a|x|}\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x\\
+=&\frac{1}{\sqrt{2\pi}}\left\{\int_{-\infty}^{0}\mathrm{e}^{x(a-\mathrm{i}\alpha)}\,\mathrm{d}x+\int_{0}^{+\infty}\mathrm{e}^{x\left(-a-\mathrm{i}\alpha\right)}\,\mathrm{d}x\right\}\\
+=&\sqrt{\frac{2}{\pi}}\frac{a}{a^2+\alpha^2}
+\end{align*}
+
+求函数\(f(x)=\begin{cases}1,|x|\leq a\\0,|x|>a\end{cases}\)的傅里叶变换，其中\(a\)为常数
+
+当\(\alpha\neq0\)时
+\begin{align*}
+F=&\frac{1}{\sqrt{2\pi}}\int_{-a}^a\mathrm{e}^{\mathrm{i}\alpha x}\,\mathrm{d}x\\
+=&\sqrt{\frac{2}{\pi}}\frac{\sin a\alpha}{\alpha}
+\end{align*}
+
+当\(\alpha=0\)时，验证极限值等于函数值，连续。
+\[
+\lim_{\alpha\to0}=\frac{2}{\sqrt{\pi}}\lim_{\alpha\to0}\frac{\sin a\alpha}{\alpha}=\sqrt{\frac{2}{\pi}}a=F(0)=\frac{1}{\sqrt{2\pi}}\int_{-a}^a\,\mathrm{d}x
+\]
+
+\section{傅里叶积分变换的性质}
+
+解题时常用以下性质，证明部分不做要求，但是性质内容需要掌握。
+
+\subsection{线性性质}
+
+\subsubsection{内容}
+
+傅里叶变换和逆变换都是线性变换，即（积分满足线性性质）
+\begin{gather*}
+\mathscr{F}[c_1f_1(x)+c_2f_2(x)]=c_1\mathscr{F}[f_1(x)]+c_2\mathscr{F}[f_2(x)]=c_1F_1(\alpha)+c_2F_2(\alpha)\\
+\mathscr{F}^{-1}[c_1F_1(\alpha)+c_2F_2(\alpha)]=c_1\mathscr{F}^{-1}[F_1(\alpha)]+c_2\mathscr{F}^{-1}[F_2(\alpha)]=c_1f_1(x)+c_2f_2(x)
+\end{gather*}
+
+\subsection{位移性质}
+
+\subsubsection{内容}
+
+设\(x_0\)为任意实常数，则
+\[
+\mathscr{F}[f(x\pm x_0)]=\mathrm{e}^{\pm\mathrm{i}\alpha x_0}\mathscr{F}[f(x)]
+\]
+
+\subsubsection{证明}
+\[
+\mathscr{F}[f(x-c)]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}{f(x-c)\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x}
+\]
+
+令\(\xi=x-c\)
+\[
+\mathscr{F}[f(x-c)]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(\xi)\mathrm{e}^{-\mathrm{i}\alpha\xi}\mathrm{e}^{-\mathrm{i}\alpha c}\,\mathrm{d}\xi
+\]
+
+\subsection{相似性质（伸缩性质）}
+
+\subsubsection{内容}
+
+设\(c\)为任意非零实常数，则
+\[
+\mathscr{F}[f(cx)]=\frac{1}{|c|}F\frac{\alpha}{c}
+\]
+
+\subsubsection{证明}
+
+令\(\xi=cx\)当\(c>0\)时：
+\[
+\mathscr{F}[f(cx)]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}{f(cx)\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x}=\frac{1}{c}\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(\xi)\mathrm{e}^{-\mathrm{i}\frac{\alpha}{c}\xi}\,\mathrm{d}\xi=\frac{1}{c}F(\frac{\alpha}{c})
+\]
+
+当\(c<0\)时：
+\[
+\mathscr{F}[f(cx)]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}{f(cx)\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x}=\frac{1}{c}\frac{1}{\sqrt{2\pi}}\int_{+\infty}^{-\infty}f(\xi)\mathrm{e}^{-\mathrm{i}\frac{\alpha}{c}\xi}\,\mathrm{d}\xi=-\frac{1}{c}F(\frac{\alpha}{c})
+\]
+
+合并后为：
+\[
+\mathscr{F}[f(cx)]=\frac{1}{|c|}F(\frac{\alpha}{c})
+\]
+
+\subsection{微分性质}
+
+\subsubsection{内容}
+
+若当\(|x|\to\infty\)时\(f(x)\to0\)，函数在无穷远处为零，\(f^{(k)}(x)\to0,k=1,2,\ldots,n-1\)则
+\[
+\mathscr{F}[f^{(n)}(x)]=(i\alpha)^n\mathscr{F}[f(x)]
+\]
+
+该性质可以将变化前的求导，转化为幂的形式
+
+\subsubsection{证明}
+
+分部积分法
+
+\subsection{积分性质}
+\[
+\mathscr{F}\left[\int_{x_0}^{x} f(\xi)d\xi\right]=\frac{1}{i\alpha}\mathscr{F}[f(x)]
+\]
+
+\subsubsection{证明}
+
+联系微分性质
+
+\subsection{乘多项式性质}
+\[
+\mathscr{F}[x^nf(x)]=\mathrm{i}^n\frac{\mathrm{d}^nF(\alpha)}{\mathrm{d}\alpha^n}
+\]
+
+\subsubsection{证明}
+\begin{align*}
+\mathscr{F}[xf(x)]=&\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}{xf(x)\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x}\\
+=&-\frac{1}{i}\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}{\frac{\mathrm{d}}{\mathrm{d}\alpha}(f(x)\mathrm{e}^{-\mathrm{i}\alpha x})\,\mathrm{d}x}\\
+=&\mathrm{i}\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}{\frac{\mathrm{d}}{\mathrm{d}\alpha}(f(x)\mathrm{e}^{-\mathrm{i}\alpha x})\,\mathrm{d}x}\\
+=&\mathrm{i}\frac{\mathrm{d}}{\mathrm{d}\alpha}\left(\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}(f(x)\mathrm{e}^{-\mathrm{i}\alpha x})\,\mathrm{d}x\right)\\
+=&\mathrm{i}\frac{\mathrm{d}F(\alpha)}{\mathrm{d}\alpha}
+\end{align*}
+
+\subsection{卷积定理}
+
+\subsubsection{卷积运算}
+
+定义\(f(x)\)和\(g(x)\)的卷积运算为
+\[
+f(x)*g(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty} f(x-t)g(t)\,\mathrm{d}t=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty} f(t)g(x-t)\,\mathrm{d}t
+\]
+
+\subsubsection{性质}
+\[
+\mathscr{F}[(f*g)(x)]=F(\alpha)G(\alpha),\mathscr{F}^{-1}[F(\alpha)G(\alpha)]=(f*g)(x) 
+\]
+
+\subsubsection{示例}
+
+计算下列二个函数的卷积：\(f(x=x,g(x)=\mathrm{e}^{-x^2})\)（已知结论\(\int_{-\infty}^{+\infty}\mathrm{e}^{-\xi^2}\,\mathrm{d}\xi=\sqrt\pi\)）
+\[
+(f*g)(x)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}{(x-\xi)\mathrm{e}^{-\xi^2}\,\mathrm{d}\xi}=\frac{x}{\sqrt2}
+\]
+
+*计算函数\(f(x)=\mathrm{e}^{-\frac{a}{2}x^2}\)的傅里叶变换（已知结论\(\int_{-\infty}^{+\infty}\mathrm{e}^{-\xi^2}\,\mathrm{d}\xi=\sqrt\pi\)）
+\begin{align*}
+\mathscr{F}[f(x)]=&\int_{-\infty}^{+\infty}\mathrm{e}^{-\frac{a}{2}x^2}\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x\\
+=&\int_{-\infty}^{+\infty}\mathrm{e}^{-\frac{a}{2}x^2-\mathrm{i}\alpha x}\,\mathrm{d}x\\
+=&\int_{-\infty}^{+\infty}\mathrm{e}^{-\frac{a}{2}(x^2-\mathrm{i}\frac{2\alpha}{a} x)}\,\mathrm{d}x\\
+=&\int_{-\infty}^{+\infty}\mathrm{e}^{-\frac{a}{2}\left[\left(x+\frac{\mathrm{i}\alpha}{a}\right)^2-\left(\frac{\mathrm{i}\alpha}{a}\right)^2\right]}\,\mathrm{d}x\\
+=&\int_{-\infty}^{+\infty}\mathrm{e}^{-\frac{a}{2}\left(x+\frac{\mathrm{i}\alpha}{a}\right)^2}\mathrm{e}^{+\frac{a}{2}\left(\frac{\mathrm{i}\alpha}{a}\right)^2}\,\mathrm{d}x\\
+=&\mathrm{e}^{\frac{a}{2}\left(\frac{\mathrm{i}\alpha}{a}\right)^2}\int_{-\infty}^{+\infty}\mathrm{e}^{-\frac{a}{2}\left(x+\frac{\mathrm{i}\alpha}{a}\right)^2}\,\mathrm{d}\left(x+\tfrac{\mathrm{i}k}{a}\right)\\
+=&\mathrm{e}^{-\frac{\alpha^2}{2a}}\sqrt{\tfrac{2}{a}}\int_{-\infty}^{+\infty}\mathrm{e}^{-\left[\sqrt{\frac{a}{2}}\left(x+\frac{\mathrm{i}\alpha}{a}\right)\right]^2}\,\mathrm{d}\tfrac{\sqrt{a}}{\sqrt{2}}\left(x+\tfrac{\mathrm{i}k}{a}\right)\\
+=&\mathrm{e}^{-\frac{\alpha^2}{2a}}\sqrt{\tfrac{2\pi}{a}}
+\end{align*}
+
+一般考试中会给出需要用到的傅里叶变换对，不需要进行如此复杂的积分运算。
+
+\section{傅里叶积分变换在求解偏微分方程初值问题中的应用}
+
+\subsection{偏导数的傅里叶变换}
+
+\subsubsection{条件}
+
+对于多变量函数\(u,x,t\)的偏导数\(u_x(x,t),u_{xx}(x,t),u_t(x,t),u_{tt}(x,t)\)针对\(x\)做变换，固定\(t\)
+
+\subsubsection{变换}
+\begin{gather*}
+\mathscr{F}\left[u_x\right]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} u_x(x,t)\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x=i\alpha\mathscr{F}[u]\\
+\mathscr{F}\left[u_{xx}\right]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} u_{xx}(x,t)\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x=-\alpha^2\mathscr{F}[u]\\
+\mathscr{F}\left[u_t\right]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} u_t(x,t)\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x=\frac{\partial}{\partial t}\mathscr{F}[u]\\
+\mathscr{F}\left[u_{tt}\right]=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} u_{tt}(x,t)\mathrm{e}^{-\mathrm{i}\alpha x}\,\mathrm{d}x=\frac{\partial^2}{\partial t^2}\mathscr{F}[u]
+\end{gather*}
+
+\subsection{求解热传导方程的初值问题}
+\[\begin{cases}
+u_t=a^2u_{xx}+f(x,t)\\
+u(x,0)=\phi(x)
+\end{cases}\]
+
+对\(u(x,t),f(x,t)\)和\(\psi(x)\)关于\(x\)进行傅里叶变换\(\mathscr{F}[u(x,t)]=U(\alpha,t),\mathscr{F}[f(x,t)]=F(\alpha,t),\mathscr{F}[\phi(x)]=\Phi(\alpha)\)原问题转为：
+\[\begin{cases}
+U_t(\alpha,t)=a^2(\mathrm{i}\alpha)^2U(\alpha,t)+F(\alpha,t)\\
+U(\alpha,0)=\Phi(\alpha)
+\end{cases}\]
+
+由\(y'(x)+ay(x)=f(x),y(x)=y(0)\mathrm{e}^{-ax}+\int_0^xf(\xi)\mathrm{e}^{-a(x-\xi)}\,\mathrm{d}\xi\)代入原方程相关内容：
+\[
+U(\alpha,t)=\Phi(\alpha)\mathrm{e}^{-\alpha^2a^2t}+\int_{0}^{t} F(\alpha,\tau)\mathrm{e}^{-\alpha^2a^2(t-\tau)}\,\mathrm{d}\tau
+\]
+
+再从像函数回到原函数：
+\begin{align*}
+u(x,t)=&\mathscr{F}^{-1}[U(\alpha,t)]\\
+=&\mathscr{F}^{-1}\left[\Phi(\alpha)\mathrm{e}^{-\alpha^2a^2t}+\int_{0}^{t} F(\alpha,\tau)\mathrm{e}^{-\alpha^2a^2(t-\tau)}\,\mathrm{d}\tau\right]\\
+=&\mathscr{F}^{-1}\left[\Phi(\alpha)\mathrm{e}^{-\alpha^2a^2t}\right]+\mathscr{F}^{-1}\left[\int_{0}^{t} F(\alpha,\tau)\mathrm{e}^{-\alpha^2a^2(t-\tau)}\,\mathrm{d}\tau\right]\\
+=&\phi(x)*\mathscr{F}^{-1}\left[\mathrm{e}^{-\alpha^2a^2t}\right]+\int_{0}^{t}f(x,\tau)*\mathscr{F}^{-1}\left[\mathrm{e}^{-\alpha^2a^2(t-\tau)}\,\mathrm{d}\tau\right]
+\end{align*}
+
+最终用逆变换的变换对得到结果即可。

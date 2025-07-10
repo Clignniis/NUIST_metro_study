@@ -1,0 +1,367 @@
+
+\chapter{绪论}
+ 
+为方便复习使用，本书中带星号*的内容了解即可
+
+\section{基本概念}
+
+微分方程：有自变量、未知函数以及未知函数的导数或微分的方程。分为常微分方程（ODE，未知函数为一元函数）和偏微分方程（PDE，有未知函数关于自变量的偏导数的等式，即\(F\left(x,y,\ldots,u,u_x,u_y,\ldots,u_{xx},\ldots\right)=0\)）
+
+PDE方程组由多个未知函数与多个PDE组成，它的阶是PDE中最高阶偏导数的阶数。最高阶偏导数即为未知函数右下角自变量的个数。
+
+PDE有以下分类：
+\begin{enumerate}
+	\item 线性PDE	
+	\begin{enumerate}
+		\item 齐次：方程中无自由项，即没有不含未知函数及偏导数的项。
+		\item 非齐次：有自由项，如\(u_{xyy}+u_{yy}+2u=5x\)
+	\end{enumerate}
+	\item 非线性PDE	
+	\begin{enumerate}
+		\item 拟线性PDE：关于未知函数的所有最高阶偏导数是线性的，如\(u_xu_{xx}+xuu_y=\sin{3x}\)
+		\item 半线性PDE：最高阶偏导的系数不含未知函数而依赖于自变量，如\(u_t+kuu_x+u_{xxx}=0\)
+		\item 完全非线性，如\(\left(u_x\right)^2+u=3\)
+	\end{enumerate}
+\end{enumerate}
+
+方程的求解有：分离变量法、行波法、积分变换法、格林函数法。解的类型分为：古典解，弱解，特解和通解	
+
+典型PDE
+\begin{enumerate}
+	\item 哈密顿算子（梯度算符）\(\nabla=\left(\frac{\partial}{\partial x_1},\frac{\partial}{\partial x_2},\ldots,\frac{\partial}{\partial x_n}\right)\)需要记住
+	\item n维拉普拉斯算子\(\Delta=\nabla\cdot\nabla=\frac{\partial^2}{\partial x_1^2}+\frac{\partial^2}{\partial x_2^2}+\ldots+\frac{\partial^2}{\partial x_n^2}\)
+	\item 散度算子：设\(A=P(x,y,z)i+Q(x,y,z)j+R(x,y,z)k,\mathrm{div}A=P_x+Q_y+R_z\)
+	\item 散度定理：\(\iint\limits_s A\cdot n\,\mathrm{d}s=\iiint_{V}\mathrm{div}A\,\mathrm{d}v\)
+	\item 旋度算子：\(\mathrm{rot}A=\left(R_y-Q_z,P_z-R_x,Q_x-P_y\right)=
+	\begin{vmatrix}
+		i&j&k\\
+		\frac{\partial}{\partial x}&\frac{\partial}{\partial y}&\frac{\partial}{\partial z}\\
+		P&Q&R\\
+	\end{vmatrix}\)
+	\item 关系：\(\mathrm{grad}u=\nabla u\quad\mathrm{div}A=\nabla\cdot A\quad\mathrm{rot}A=\nabla\times A\)
+
+\end{enumerate}
+
+典型方程
+\begin{enumerate}
+	\item n维波动\(u_{tt}-a^2\Delta u=0\)
+	\item 三维热传导\(u_t-a^2\left(u_{xx}+u_{yy}+u_{zz}\right)=0\)
+	\item n维拉普拉斯方程\(-\Delta u=0\)
+	\item 三维泊松方程\(-\left(u_{xx}+u_{yy}+u_{zz}\right)=f(x,y,z)\)
+\end{enumerate}
+
+\section{典型方程的导出*}
+
+\subsection{波动方程}
+
+\subsubsection{问题提出}
+
+有一根长为l的均匀柔软富有弹性的细弦，在外力作用下作微小横振动，确定弦的运动方程
+
+\subsubsection{问题分析}
+
+明确：
+\begin{enumerate}
+	\item 研究物理量：弦沿垂直方向位移\(u(x,y)\)
+	\item 物理定律：牛顿第二定律、胡克定律
+	\item 建立范定方程
+\end{enumerate}
+
+\subsubsection{模型假设}
+
+\begin{enumerate}
+	\item 柔软且有弹性：弦的张力沿弦切线方向，张力大小按照胡克定律，对外力无抵抗性
+	\item 细弦：重量与其张力相比很小
+	\item 微小振动：位移后斜率\(\approx1 \quad\sin\alpha\approx u_x\)
+	\item 横振动：弦运动于二维平面，弦上各点沿垂直\(x\)方向运动
+\end{enumerate}
+
+\subsubsection{模型建立（三步骤）}
+
+\begin{enumerate}
+	\item 确定物理量与坐标系（微元法）
+	\item 证明张力为常数（水平胡克定律）
+	\item 导出弦振动方程（竖直方向结合牛二定律）
+\end{enumerate}
+
+\subsubsection{推导}
+
+坐标系：考察弦上微小元素，任取一小段\(MM'\)，长为\(\Delta x\)，\(\rho\)为弦线密度
+
+证明\(T\)为常数：水平方向上，\(T\left(x+\Delta x\right)\cos{\alpha'}=T(x)\cos{\alpha}\)当振幅很小时\(\alpha\approx0\)，故\(T\left(x+\Delta x\right)\approx T(x)\)与\(x\)无关。由于弦长未变，\(\Delta s=\int_{x}^{x+\Delta x}{\sqrt{1+u_x^2}\,\mathrm{d}x}\approx\Delta x\)故\(T\)与\(t\)无关。
+
+导出方程：垂直方向上\(T\sin\alpha'-T\sin\alpha+F(x,t)_{\text{外力密度}}\Delta x=\rho\Delta x_{\text{质量}}{u_{tt}}_\text{加速度}\)有\(\sin\alpha'\approx\tan{\alpha'}=u_x(x+\Delta x)\quad\sin\alpha\approx\tan\alpha=u_it{x}(x)\)则：\(T\left[u_x\left(x+\Delta x\right)-u_x(x)\right]+F(x,t)\Delta x=\rho\Delta xu_{tt}\Rightarrow Tu_{xx}+F=\rho u_{tt}\quad u_{tt}=\frac{T}{\rho}u_{xx}+\frac{F}{\rho}\Rightarrow u_{tt}=a^2u_{xx}(x,t)+f(x,t)\)。其中\(a^2=\frac{T}{\rho},f(x,t)=\frac{F(x,t)}{\rho}\)
+
+弦的受迫振动方程
+\begin{enumerate}
+	\item 自由振动方程：弦上不受外力\(u_{tt}=a^2u_{xx}\)
+	\item 高维拓展：二维薄膜\(u_{tt}=a^2\left(u_{xx}+u_{yy}\right)+f(x,y,t)\)、三维声波光波
+\end{enumerate}
+
+\subsection{一维热传导方程}
+
+推导过程
+\begin{enumerate}
+	\item 热能密度：单位体积所受热能量\(e(x,t)\)
+	\item 热通量：本质上是有方向的热能量。单位时间向右流过单位面积的热能量。\(\phi(x,t)\)在\(\Delta x\)部分，流入为\(\phi(x,t)\)，流出为\(\phi\left(x+\Delta x,t\right)\)
+	\item 热源：在单位时间内单位体积生成的热能量\(Q(x,t)\)
+	\item 热能守恒定律：\(\frac{\partial\left[A\Delta xe(x,t)\right]}{\partial t}=\phi(x,t)A-\phi\left(x+\Delta x,t\right)A+Q(x,t)A\Delta x\)（使用微分表达，左边为这一段微元体内热能的变化率，右边为流入-流出+热源）\(\frac{\partial e}{\partial t}=\lim_{\Delta x\rightarrow0}{\frac{\phi(x,t)-\phi\left(x+\Delta x,t\right)}{\Delta x}=}-\frac{\partial\phi}{\partial x}+Q\)
+	\item 比热：\(c(x)\) 单位变化1℃变化能量
+	\item 体积密度：\(\rho(x)\)
+	\item 温度：\(u(x,t)\)关系：温度和能量转换定律\(e(x,t)A\Delta x=c(x)u(x,t)\cdot\rho A\Delta x=\rho cu(x,t)\)
+	\item 热传导系数：热通量\(\phi=-K_0\frac{\partial u}{\partial x}\)
+	\item 傅里叶热传导定律\(\frac{\partial u}{\partial x}\)为梯度，温度在杆上做传导是因为受热不均，\(\frac{\partial u}{\partial x}<0\)则代表温度向\(x\)方向递减，故热量向\(x\)方向传递，故通量有负号。\(\phi\)表示单位时间单位面积上的热流量\(\phi=\frac{\mathrm{d}Q}{\mathrm{d}s\mathrm{d}t}\)由此，可代入原式：\(c\rho\frac{\partial u}{\partial t}=\frac{\partial}{\partial x}\left(K_0\frac{\partial u}{\partial x}\right)+Q\Rightarrow\frac{\partial u}{\partial t}=a^2\frac{\partial^2}u{\partial x^2}+\frac{Q}{c\rho}\quad a=\sqrt{\frac{K_0}{c\rho}}\)
+\end{enumerate}
+		
+\subsection{拉普拉斯方程/泊松方程}
+方程描述一种稳定的状态，其不随时间变化，随位置变化
+\begin{gather*}
+0=a^2\left(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}\right)+f\\
+\nabla^2u=f  \nabla^2u=\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}
+\end{gather*}
+
+\section{定解条件与定解问题*}
+
+描述物理现象需要偏微分方程（泛定方程）+ 定解条件，其中的定解条件为准确说明对象的初始状态以及边界上的约束条件。
+	
+不同支撑时弦的振动：边界条件不同；在不同位置拨动弦：初始条件不同。即使泛定方程相同，不同的边界条件或初始条件也可能导致完全不同的解。
+
+\subsection{初始条件（说明初始状态的条件）}
+柯西（Cauchy）初始条件：用以给出具体物理现象的初始状态。用来演变到未来的初状态。可分为以下三类问题。
+
+
+\subsubsection{弦振动问题}
+
+初始条件是指弦在开始振动时刻的位移\(f(x)\)和速度\(g(x)\)
+\[
+\begin{cases}u|_{t=0}=f(x)\\\frac{\partial u}{\partial t}|_{t=0}=g(x)\end{cases}
+\]
+
+\subsubsection{热传导问题}
+
+初始条件是指开始传热的时刻物体温度的分布情况，以\(f(x)\)表示\(t=0\)时物体内一点\(x\)的温度\[
+u(x,t)|_{t=0}=f(x)
+\]
+
+\subsubsection{泊松/拉普拉斯}
+
+描述稳恒状态，与时间无关，所以不提初始条件
+
+\subsubsection{注意}
+\begin{enumerate}
+	\item 不同类型的方程，相应初值条件的个数不同
+	\item 关于\(t\)的\(n\)阶偏微分方程，要给出\(n\)个初始条件
+	\item 初始条件给出的应是整个系统的初始状态，而非系统中个别点的初始状态
+\end{enumerate}
+
+\subsection{边界条件（说明边界上约束情况的条件）}
+
+\subsubsection{弦振动三大类}
+\begin{enumerate}
+	\item 固定端\(u\left(L,t\right)=0,t\geq0\)
+	\item 可控端点\(u(x,t)|_{x=0}=f(t)\)可选择\(f(t)\)，非齐次
+	\item 自由端\(T\left.\frac{\partial u}{\partial x}\right|_{x=L}=0\)或者\(u_x\left(L,t\right)=0,t\geq0\)其中\(T\)为张力
+	\item 弹性支撑端\((u_x+\sigma u)|_{x=L}=0\)其中\(\sigma=k/T\)为弹性支撑力
+\end{enumerate}
+
+\subsubsection{热传导三大类}
+\begin{enumerate}
+	\item 定温端：物体与外界接触的表面温度已知，\(u(x,y,z,t)=f(x,y,z),(x,y,z)\in\partial\Omega\)
+	\item 绝热端：在表面\(S\)上热量的流速始终为0，\(\frac{\partial u}{\partial n}=0,(x,y,z)\in\partial\Omega,t\geq0\)
+	\item 热交换端：\((u_n+\sigma u)|_{\partial\Omega}=\sigma u_1\)
+\end{enumerate}
+
+\subsubsection{三类边界条件（设\(u\)为未知函数，\(\partial\Omega\)为边界）}
+\begin{enumerate}
+	\item 第一类边界条件（狄利克雷（Dirichlet）边界条件）：直接给出\(u\)在边界\(\partial\Omega\)上的值
+	\item 第二类边界条件（诺依曼（Neuman）边界条件）：给出\(u\)沿\(\partial\Omega\)的外法线方向的方向
+	\item 第三类边界条件（罗宾（Robin）边界条件）：给出\(u\)以及\(\frac{\partial u}{\partial n}\)的线性组合在边界的值\(\left.\left(\frac{\partial u}{\partial n}+\sigma u\right)\right|_{\partial\Omega}=f\)
+\end{enumerate}
+\subsubsection{注意}
+\begin{enumerate}
+	\item 上面给出的边界条件中，\(f_i(i=1,2,3)\)都是定义在边界\(\partial\Omega\)上的已知函数
+	\item 当\(f_i=0\)时，相应的边界条件称为齐次的，否则称为非齐次的
+	\item 三种条件可归为一式：\(\left.\left(\alpha\frac{\partial u}{\partial n}+\beta u\right)\right|_{\partial\Omega}=f\begin{cases}
+		\alpha=0,\beta\neq0\quad\text{第一类}\\
+		\alpha\neq0,\beta=0\quad\text{第二类}\\
+		\alpha\neq0,\beta\neq0\quad\text{第三类}
+	\end{cases}\)
+\end{enumerate}
+
+\subsection{定解条件}
+
+初始条件+边界条件=定解条件，泛定方程+定解条件=定解问题。衔接条件：由于系统由不同介质组成，在两种不同介质的交界处需给定两个衔接条件；其他条件：由于物理上的合理性的需要，有时还需对未知函数附加以单值、有限、周期性等限制，这类附加条件称为自然边界条件。
+
+\subsubsection{初值问题或Cauchy问题：泛定方程+初始条件}
+
+在无穷的区域里面研究的问题
+
+波动方程的柯西问题：\(\begin{cases}u_t-a^2u_{xx}=0,-\infty<x<+\infty,t>0\\
+	u|_{t=0}=\phi(x),-\infty<x<+\infty\end{cases}\)
+
+热传导方程的柯西问题：\(\begin{cases}u_{tt}-a^2u_{xx}=0,-\infty<x<\infty,t>0\\
+	u|_{t=0}=\phi(x),{u}_t|_{t=0}=\psi(x)-\infty<x<+\infty\end{cases}\)
+
+\subsubsection{边值问题 ：泛定方程+边界条件（三类）}
+
+泊松方程的边值问题
+
+第一类：\(\begin{cases}\Delta u=f(x,y,z),(x,y,z)\in\Omega\\u|_{\partial\Omega}=\varphi(x,y,z),(x,y,z)\in\partial\Omega\end{cases}\)
+
+第二类：\(\begin{cases}\Delta u=f(x,y,z),(x,y,z)\in\Omega\\\frac{\partial u}{\partial n}|_{\partial\Omega}=\varphi(x,y,z),(x,y,z)\in\partial\Omega\end{cases}\)
+
+第三类：\(\begin{cases}\Delta u=f(x,y,z),(x,y,z)\in\Omega\\(\frac{\partial u}{\partial n}+\sigma u)|_{\partial\Omega}=\varphi(x,y,z),(x,y,z)\in\partial\Omega\end{cases}\)
+
+\subsubsection{初边值问题：泛定方程+初始条件+边界条件（混合问题）}
+
+一维齐次弦振动方程的混合问题：\(\begin{cases}u_{tt}-a^2u_{xx}=0,0<x<l,t>0\\u|_{t=0}=\phi(x),u_t|_{t=0}=\psi(x),0\le x\le l\\u_x\left(0,t\right)=u_x\left(l,t\right)=0,t\geq0\end{cases}\)
+
+其他定解问题：混合边值问题、外边值问题
+
+\subsection{例题}
+\begin{enumerate}
+	\item 长为\(l\)，\(x=0\)端固定的均匀细杆，处于静止，在\(t=0\)时，一个沿着杆长方向的力\(F\)加在杆的另一端，求\(t>0\)杆上各点位移的定解条件\\
+	边界条件：\(u(x,t)|_{x=0}=0\quad\frac{\partial u}{\partial x}|_{x=l}=\frac{F}{ES}\)\\
+	初始条件：\(u|_{t=0}=0\quad\frac{\partial u}{\partial t}|t_{t=0}=0\)
+	\item 一长为\(L\)初始温度为\(\varphi(x)\)的均匀细杆，其侧表面与周围介质无热交换，内部有密度为\(g(x,t)\)的热源，右端绝热，左端与温度为\(u\)的介质有热交换。试写出杆内温度分布的定解问题。\\
+	范定方程：\(\frac{\partial u}{\partial t}=a^2\frac{\partial^2u}{\partial x^2}+\frac{g(x,t)_\text{热源}}{c\rho},0<x<L,t>0\)\\
+	初始条件：\(u(x,0)=\varphi(x),0\leq x\leq L\)\\
+	边界条件：\(u_x(L,t)=0,K\left.\frac{\partial u}{\partial x}\right|_{x=0}=h(u(0,t)-u)\quad t>0\)
+	\item 一长为\(L\)的弹性杆，一端固定，另一端被拉离平衡位置\(b\)长度而静止，放手任其振动，试求杆振动的定解问题。\\
+	范定方程：\(u_{tt}=a^2u_{xx}\quad 0<x<L,t>0\)\\
+	初始条件：\(u(x,0)=\frac{x}{L}b,u_t(x,0)=0,0\leq x\leq L\)\\
+	边界条件：\(u(0,t)=0,u_x(L,t)=0,t\geq0\)
+	\item 一边长为\(l\)的正方形薄板如图\ref{pic:sqr}，其\(y=0\)边保持恒温\(T\),其他三边保持0℃，求稳恒状态下板内温度的定解问题。\\
+	范定方程：\(u_{xx}+u_{yy}=0,0<x,y<l\)\\
+	\(x\)边：\(u|_{x=0}=0,u|_{x=l}=0,0\leq y\leq0\)\\
+	\(y\)边：\(u|_{y=0}=T,u|_{y=t}=0,0\leq x\leq l\)
+\end{enumerate}
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=latex]
+		\draw[->](-0.2,0)--(2.2,0)node[right]{\(x\)};
+		\draw[->](0,-0.2)--(0,2.2)node[above]{\(y\)};
+		\node at(-0.2,-0.2){\(O\)};
+		\draw(0,2)node[left]{\(l\)}--(2,2)--(2,0)node[below]{\(l\)};
+	\end{tikzpicture}
+	\caption{正方形薄板}\label{pic:sqr}
+\end{figure}
+
+\section{定解问题的适定性}
+
+研究提法的合理性，要求满足：存在性（是否有解），唯一性（是否有唯一解），稳定性（解是否连续依赖定解条件（定解条件有微小变动时，引起解的变动是否足够小）。当条件过多时，可能无解；条件过少，可能解不唯一；条件不恰当，可能解不稳定。
+
+\subsection{定解问题的解*}
+\begin{enumerate}
+	\item 定解问题的解：在指定的范围内满足方程,同时满足所给的定解条件的函数
+	\item 古典解：具有方程中出现的各个偏导数且一般说它们应该是连续的以保证函数可微的解
+	\item 弱解（物理解）：函数在个别的点（线、面）上不可导或导数不连续,其不满足古典解的要求,但其在实际问题中是有意义的 。写出弱形式的方程进行求解得到弱解（有限元数值求解）
+\end{enumerate}
+
+\subsection{定解问题的适定性}
+
+实际问题中，如果一定解问题的解存在、唯一、稳定，则称其适定的（well-posed），否则，称其为不适定的（ill-posed）。	适定性的讨论对于检查定解问题是否能在允许范围内真实地反映所对应的实际问题常常是有效的。先考虑适定性，有助于发现建立的数学模型是否存在失误。
+
+不适定问题的例子：拉普拉斯方程的初值仅仅只有微小扰动，最终值却发生极大的变化，因此该问题不适定，拉普拉斯方程只提边界条件。
+
+\section{线性叠加原理}
+
+\subsection{引入*}
+
+\subsubsection{叠加原理}
+
+物理学解释：几种不同原因综合产生的效果等于这些原因单独产生效果的累加。例如力的叠加原理、电场的叠加原理、电势叠加原理（标量、向量场均有叠加原理）。
+
+\subsubsection{思考问题}
+
+叠加原理存在性、其表现形式、应用。
+
+\subsubsection{线性PDE叠加原理}
+\begin{enumerate}
+	\item 适用条件：泛定方程、定解条件都是线性的：线性定解问题 （对于线性，叠加原理是普适的）
+	\item 数学表达：将复杂的定解问题看作是若个相对简单部分的线性叠加而成，这几个部分所得出的解的线性叠加给出的形式解，即为原定解问题的解 （“化归”思想）
+	\item 意义：线性偏微分方程及其重要的特征，是求解线性偏微分方程的出发点
+	\item 本质：将复杂定解问题分解为若干个简单的定解问题
+\end{enumerate}
+
+\subsection{线性定解问题*}
+
+\subsubsection{线性算符}
+
+一般地，线性方程\(\mathrm{L}u(x,y,z,t)=0\)的算符L称为线性算符，\(c_1,c_2,u_1,u_2\)是任意的。有特点\(\mathrm{L}(c_1u_1+c_2u_2)=c_1L(u_1)+c_2L(u_2)\Leftrightarrow\)线性
+
+线性算子的组合也是线性算子，例如热传导算子\(\mathrm{L}=\frac{\partial}{\partial t}-a^2\frac{\partial^2}{\partial x^2}\)也是线性算子
+
+\subsubsection{典例}
+
+线性算符：微分算符\(\frac{\partial}{\partial x}\)、积分算符等。\(\frac{\partial}{\partial t}\left(c_1u_1+c_2u_2\right)=c_1\frac{\partial u_1}{\partial t}+c_2\frac{\partial u_2}{\partial t}\)
+
+非线性算符：\(\sqrt A,\ln{(A)},\sin{(A)}\)等
+
+\subsubsection{线性微分算子L}
+
+考虑自变量\(x=(x_1,x_2,\ldots,x_n)\)的二阶线性偏微分方程：
+\[
+\mathrm{L}[u]=\sum_{i,j=1}^na_{ij}(x)\frac{\partial^2u}{\partial x_i\partial x_j}+\sum_{i=1}^nb_i(x)\frac{\partial u}{\partial x_i}+c(x)u=f(x)
+\]
+
+可简写为\(\mathrm{L}[u]=f\)，则L为二阶线性偏微分算子
+
+\subsubsection{线性边界条件}
+
+\(\mathrm{L}_0[u]=\left(\alpha u+\beta\frac{\partial u}{\partial n}\right)|_{\partial\Omega}=\phi\)，其中\(\mathrm{L}_0\)为线性算子。
+
+\subsection{叠加原理*}
+
+\subsubsection{有限叠加原理}
+
+若\(u_i\)满足线性方程\(\mathrm{L}\left[u_i\right]=f_i\)（或定解条件\(\mathrm{B}[u_i]=g_i\)），则\(u=\sum\limits_{i=1}^nc_iu_i\)（线性组合）满足方程\(\mathrm{L}[u]=\sum\limits_{i=1}^nc_if_i\)
+
+\subsubsection{具体应用}
+
+例如：非齐次波动方程的Cauchy问题：
+\[
+\begin{cases}u_{tt}-a^2u_{xx}=f(x,t),-\infty<x<\infty,t>0\\u|_{t=0}=\phi(x),u_t|_{t=0}=\psi(x)-\infty<x<\infty\end{cases}
+\]
+
+其解可以化为下方两解之和：
+\begin{enumerate}
+	\item \(\begin{cases}u_{vv}-a^2v_{xx}=0,-\infty<x<\infty,t>0\\v|_{t=0}=\phi(x),v_t|_{t=0}=\psi(x)-\infty<x<\infty\end{cases}\)
+	\item \(\begin{cases}w_{vv}-a^2w_{xx}=f(x,t),-\infty<x<\infty,t>0\\w|_{t=0}=0,w_t|_{t=0}=0,-\infty<x<\infty\end{cases}\)
+\end{enumerate}
+
+\subsubsection{无限叠加原理}
+
+若\(u_i\)满足线性方程\(\mathrm{L}\left[u_i\right]=f_i\)（或定解条件\(\mathrm{B}[u_i]=g_i\)）且函数级数\(\sum\limits_{i=1}^{+\infty}c_iu_i\)在\(W\)内收敛，并且L,B可以逐项作用，则和函数\(u=\sum\limits_{i=1}^{+\infty}c_iu_i\)满足方程\(\mathrm{L}[u]=\sum\limits_{i=1}^{+\infty}c_if_i\)
+
+若\(u_i(i=1,2,\ldots)\)满足，有：
+\begin{gather*}\begin{cases}
+\mathrm{L}[u_i]=f_i\text{线性方程或线性定解条件}\\
+\sum\limits_{i=1}^{+\infty}c_iu_i\text{（收敛）}=u\text{且可以逐项微分两次}\\
+\sum\limits_{i=1}^{+\infty}c_if_i\text{（收敛）}=f
+\end{cases}\\
+\Rightarrow\mathrm{L}\left[\sum_{i=1}^{+\infty}c_iu_i\right]\sum_{i=1}^{+\infty}c_if_i,\text{即}\mathrm{L}[u]=f
+\end{gather*}
+
+\subsubsection{具体应用}
+
+例如：热传导方程的叠加原理
+
+设\(u_k(x,t),k=1,2,3\ldots\)是方程\(\frac{\partial u}{\partial t}=a^2\frac{\partial^2u}{\partial x^2},(x,t)\in G\)的解，如级数\(u(x,t)=\sum\limits_{k=1}^{+\infty}c_ku_k(x,t)\)在\(G\)内收敛并且对\(t\)可以逐项求导一次，对\(x\)可逐项求导两次，则和函数在\(G\)内仍然是方程的解。	如果\(u_k(x,t)\)是方程的解，那么它的无限线性组合仍然是方程的解。
+
+\subsection{应用与反例}
+\subsubsection{求泊松方程\(u_{xx}+u_{yy}=x^2-3xy+2y^2\)的通解}
+
+思路：分别考虑
+\begin{enumerate}
+	\item \(V_{xx}+V_{yy}=x^2-3xy+2y^2\)的一个特解\(V(x,y)\)\label{enu:1}
+	\item \(W_{xx}+W_{yy}=0\)的通解\(W(x,y)\)
+\end{enumerate}
+
+对\ref{enu:1}，设\(V(x,y)=ax^4+bx^3y+cy^4\)代入方程，得到\(V_{xx}+V_{yy}=12ax^2+6bxy+12cy^2=x^2-3xy+2y^2\)
+
+\subsubsection{对非线性方程\(u_t+uu_x=0\)}
+\begin{itemize}
+	\item 容易验证\(u(x,t)=\frac{x}{t+1}\)是方程的一个解，然而\(\frac{cx}{t+1}\)并非方程的解，除非\(c=0,1\)则\(cL(u)\neq L(cu)\)，不满足线性算符
+	\item 令\(u=u_1+u_2\)，则计算\((u_1+u_2)_t+(u_1+u_2)(u_1+u_2)_x\)是否等于\(u_{1t}+u_1u_{1x}+u_{2t}+u_2u_{2x}\)
+\end{itemize}

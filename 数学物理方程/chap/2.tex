@@ -1,0 +1,148 @@
+\chapter{二阶线性偏微分方程的分类与化简}
+
+\begin{table}[htbp]
+	\centering
+	\caption{本章研究对象}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		双曲型 & \(u_{\xi\xi}-u_{\eta\eta}=\ldots\) & 波动方程为代表 & \(\frac{\partial^2u}{\partial t^2}-a^2\frac{\partial^2u}{\partial x^2}=f(x,t)\) \\
+		\hline
+		抛物型 & \(u_{\eta\eta}=Au_\xi+\ldots\) & 热传导方程为代表 & \(\frac{\partial u}{\partial t}-a^2\frac{\partial^2u}{\partial x^2}=f(x,t)\) \\
+		\hline
+		椭圆型 & \(u_{\xi\xi}+u_{\eta\eta}=\ldots\) & 位势方程为代表 & \(\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}=f(x,y)\) \\
+		\hline
+	\end{tabular}
+\end{table}
+
+2个自变量的一般形：
+\[
+\underbrace{a_{11}u_{xx}+2a_{12}u_{xy}+a_{22}u_{yy}}_{\text{二阶主部项}}+\underbrace{b_1u_x+b_2u_y+cu}_{\text{低阶项}}=f
+\]
+
+其中\(a_{11},a_{12},a_{22},b_1,b_2,c,f\)都是区域\(\Omega\)上的实函数。例如\(u_{xx}+5u_{xy}-4u_{yy}=1\)，其中\(a_{11}=1,a_{22}=-4,a_{12}=5/2\)
+
+\(n\)个自变量时一般形式：\(\sum\limits_{i,j=1}^{n}\frac{a_{ij}\left(\partial^2u\right)}{\partial x_i\partial x_j}+\sum\limits_{i=1}^{n}{b_i\frac{\partial u}{\partial x_i}}+cu+f=0,a_{ij}=a_{ji}\)其中\(a_{ij},b_i,c,f\)是自变量\(x_1,x_2,\ldots,x_n\)的函数
+
+方程化简：重点引入非奇异变化，将方程化为三类方程的标准型。
+
+\section{两个自变量的方程的分类与化简}
+
+\subsection{分类情况}
+
+记\(\Delta=a_{12}^2-a_{11}a_{22}\)，则有：
+\[\begin{cases}
+\Delta>0\text{双曲型}u_{xx}-a^2u_{yy}=f\\
+\Delta=0\text{抛物型}u_{x}-a^2u_{yy}=f\\
+\Delta<0\text{椭圆型}u_{xx}+a^2u_{yy}=f
+\end{cases}\]
+
+常系数方程分类是全局的，而变系数方程的分类是依赖\(x,y\)的，如特里波利方程（混合类型）：\(yu_{xx}+u_{yy}=0\rightarrow\Delta=-y\)其类型取决于\(y\)的符号（\(x\)轴上方椭圆型，\(x\)轴抛物型，\(x\)轴下双曲型）
+
+\subsection{方程化简}
+寻求一个非奇异变换，使得原方程\(a_{11}u_{xx}+2a_{12}u_{xy}+a_{22}u_{yy}+b_1u_x+b_2u_y+cu=f\)化简为相应的标准形式（希望二阶主部项系数两个为零）。其中\(a_{11},a_{12},a_{22},b_1,b_2,c,f\)都是区域\(\Omega\)上的实函数
+
+\subsubsection{推导}
+\begin{enumerate}
+	\item 作非奇异变量代换\(\begin{cases}\xi=\xi(x,y)\\\eta=\eta(x,y)\end{cases}\)	（将原坐标→新坐标用于简化，我们的目的是找到合适的这个代换）
+	\item 转换为\(A_{11}u_{\xi\xi}+2A_{12}u_{\xi\eta}+A_{22}u_{\eta\eta}+B_1u_\xi+B_2u_\eta+Cu=F\)
+	\item 适当取变换，使得\(A_{ij}\)部分为0（两个为零），达到化简之目的
+\end{enumerate}
+
+\subsubsection{代换}
+
+非奇异变化：雅克比（Jacobi）行列式在点\((x_0,y_0)\)不等于零，则在点\((x_0,y_0)\)附近变换是可逆的。 两个曲面要求相交，保证变化前后同号。
+\[
+J=\frac{\partial(\xi,\eta)}{\partial(x,y)}=\begin{vmatrix}\xi_x&\xi_y\\\eta_x&\eta_y\\\end{vmatrix}\neq0
+\]
+					
+具体变换：\(u(x,y)\rightarrow u(\xi(x,y),\eta(x,y))\rightarrow u(\xi,\eta)\)保证新旧坐标互相变换。将方程转型为：\(A_{11}u_{\xi\xi}+2A_{12}u_{\xi\eta}+A_{22}u_{\eta\eta}+B_1u_\xi+B_2u_\eta+Cu=F\)，其中的新系数为：
+\begin{gather*}
+A_{11}=a_{11}\xi_x^2+2a_{12}\xi_x\xi_y+a_{22}\xi_y^2\\
+A_{12}=a_{11}\xi_x\eta_x+a_{12}\left(\xi_x\eta_y+\xi_y\eta_x\right)+a_{22}\xi_y\eta_y\\
+A_{22}=a_{11}\eta_x^2+2a_{12}\eta_x\eta_y+a_{22}\eta_y^2\\
+B_1=a_{11}\xi_{xx}+2a_{12}\xi_{xy}+a_{22}\xi_{yy}+b_1\xi_x+b_2\xi_y\\
+B_2=a_{11}\eta_{xx}+2a_{12}\eta_{xy}+a_{22}\eta_{yy}+b_1\eta_x+b_2\eta_y\\
+C_1=c\quad F=f  
+\end{gather*}
+
+系数由链式法则得到：\(u_x=u_\xi\xi_x+u_\eta\eta_x\quad u_y=u_\xi\xi_y+u_\eta\eta_y\)二阶导数同理
+
+\subsubsection{性质}
+\begin{enumerate}
+	\item \(\left[\begin{matrix}A_{11}&A_{12}\\A_{12}&A_{22}\\\end{matrix}\right]=\left[\begin{matrix}\xi_x&\xi_y\\\eta_x&\eta_y\\\end{matrix}\right]\left[\begin{matrix}a_{11}&a_{12}\\a_{12}&a_{22}\\\end{matrix}\right]\left[\begin{matrix}\xi_x&\xi_y\\\eta_x&\eta_y\\\end{matrix}\right]^\top\)两边取行列式：\(A_{12}^2-A_{11}A_{22}=\left(a_{12}^2-a_{11}a_{22}\right)J^2=J^2\Delta\)非奇异变化能够保证转换后类型不变。
+	\item 发现\(A_{11}\)与\(A_{22}\)有相同的形式，可以尝试让这两个为零，即\(A_{11}=a_{11}\xi_x^2+2a_{12}\xi_x\xi_y+a_{22}\xi_y^2=0,A_{22}=a_{11}\eta_x^2+2a_{12}\eta_x\eta_y+a_{22}\eta_y^2=0\)\\
+	解方程\(a_{11}\phi_x^2+2a_{12}\phi_x\phi_y+a_{22}\phi_y^2=0\)得到两个无关解\(\phi_1(x,y),\phi_2(x,y)\)，那么就取 \(\begin{cases}\xi=\phi_1(x,y)\\\eta=\phi_2(x,y)\end{cases}\)可以得到\(A_{11}=A_{22}=0\)如果能求解到\(\phi_1(x,y),\phi_2(x,y)\)，就可以获得这个变换了
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+\subsubsection{求解过程}
+
+\(a_{11}\phi_x^2+2a_{12}\phi_x\phi_y+a_{22}\phi_y^2=0\)这是一个完全非线性方程，其解应当为\(\phi(x,y)\)的形式，表现为一个曲面。如果有两个解，就是两个曲面，如果无关，一定相交。
+
+方程中假设\(\phi_x^2+\phi_y^2\neq0\)，设\(y\neq0\)（要求非平凡解（常数解）），那方程等价于\(a_{11}\left(\frac{\phi_x}{\phi_y}\right)^2+2a_{12}\frac{\phi_x}{\phi_y}+a_{22}=0\)
+
+\begin{figure}
+	\centering
+	\caption{两族曲线}\label{pic:2}
+	\begin{tikzpicture}
+		\draw[<->] (4,0)node[right]{\(x\)}--(0,0)node[below,left]{\(O\)}--(0,4)node[above]{\(y\)};
+		\draw (1.5,0.5) arc (-25:75:2 and 1.5);
+		\draw (1.5,3.5) arc (25:-75:2 and 1.5);
+		\draw[dashed] (2.5,0.5) arc (-25:75:2 and 1.5);
+		\draw[dashed] (2.5,3.5) arc (25:-75:2 and 1.5);
+		\draw[dotted] (3.5,0.5) arc (-25:75:2 and 1.5);
+		\draw[dotted] (3.5,3.5) arc (25:-75:2 and 1.5);
+	\end{tikzpicture}
+\end{figure}
+
+想象在空间\(Oxyz\)内有两个无关解平面，用\(z=c(\phi(x,y)=c)\)，让\(c\)不断变动，则投影如图\ref{pic:2}所示，是两族曲线。在曲线两边做微分\(0=\mathrm{d}\phi=\phi_x\,\mathrm{d}x+\phi_y\,\mathrm{d}y\)，用\(-\frac{\mathrm{d}y}{\mathrm{d}x}\)替代\(\frac{\phi_x}{\phi_y}\)，则非线性偏微分方程转换为了常微分方程。
+
+可得特征方程：\(a_{11}\left(\frac{\mathrm{d}y}{\mathrm{d}x}\right)^2-2a_{12}\frac{\mathrm{d}y}{\mathrm{d}x}+a_{22}=0\)和特征线方程：\(\begin{cases}\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a_{12}+\sqrt\Delta}{a_{11}}\\\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a_{12}-\sqrt\Delta}{a_{11}}\end{cases}\)。根据\(\Delta\)的符号给出常微分方程相应的解（特征线），利用特征线方程可以进一步解的特征面（例如，\(\frac{\mathrm{d}y}{\mathrm{d}x}=x\rightarrow y=\frac{1}{2}x^2+c\rightarrow y-\frac{1}{2}x^2=z\)）
+
+化简方程过程总结：原方程→特征方程→特征曲线→变量非奇异变换→未知函数及其导数的导数变换→结合原方程→简化后的标准型。
+
+\subsection{方程化简的三类情况}
+
+\subsubsection{双曲型\(\Delta>0\)}
+
+方程有两族不同的实解曲线\(\phi_1(x,y)=c_1,\phi_2(x,y)=c_2\)又有\(\begin{cases}\xi=\phi_1(x,y)\\\eta=\phi_2(x,y)\end{cases}\)
+
+双曲型方程第一标准形式：\(2A_{12}u_{\xi\eta}+A_1u_\xi+B_1u_\eta+C_1u=F\)
+
+\paragraph{例题}
+\begin{enumerate}
+	\item \(u_{xx}-4u_{yy}+u_x\)特征方程及求解特征坐标\\
+	\(\begin{cases}\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a_{12}+\sqrt\Delta}{a_{11}}=2\\\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a_{12}-\sqrt\Delta}{a_{11}}=-2\end{cases}\rightarrow\begin{cases}y=-2x+c_1\\y=2x+c_2\end{cases}\rightarrow\begin{cases}\xi=y+2x=c_1\\\eta=y-2x=c_2\end{cases}\)（得到新的特征坐标）
+	\item 简化方程\(y^2u_{xx}-x^2u_{yy}=0(x>0y>0)\)\\
+	同理\(u_{\xi\eta}=\frac{\eta u_xi-\xi u_\eta}{2(\xi^2-\eta^2)}\)
+	\item 证明方程\(3u_{xx}+7u_{xy}+2u_{yy}=0\)对所有的\(x,y\)是双曲型的，并求出新的特征坐标\\
+	双曲形：\(\Delta=\left(\frac{7}{2}\right)^2-3\times 2=\frac{25}{4}>0\)。特征坐标\(\xi=y-2x,\eta=y-\frac{1}{3}x\)。
+	\item 对方程\(u_{xx}+4u_{xy}=0\)求出新的特征坐标，并简化方程，再求解简化后的方程
+\end{enumerate}
+
+\subsubsection{抛物型\(\Delta=0\)}
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a_{12}+\sqrt\Delta}{a_{11}}\xrightarrow{\left(\Delta=0\right)}\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a_{12}}{a_{11}}\rightarrow\phi_1(x,y)=C\left(A_{11}=0orA_{22}=0\right) 
+\]
+
+此事只能解到一个方程，令\(\xi=\phi_1(x,y)\)，取\(\eta=y \vee \eta=x\)（根据实际情况选取）。抛物型方程的标准形式为：
+\[
+u_{\eta\eta}=A_4u_\xi+B_4u_\eta+C_4u+F_4
+\]
+
+\paragraph{例题}化方程\(u_{xx}+2u_{xy}+u_{yy}=0\)
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x}=1\rightarrow y=x+c\rightarrow\begin{cases}\xi=y-x\\\eta=y\end{cases}\rightarrow u_{\eta\eta}=0
+\]
+
+\subsubsection{椭圆型\(\Delta<0\)}
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{a_{12}\pm\sqrt\Delta}{a_{11}}=\frac{a_{12}\pm i\sqrt{-\Delta}}{a_{11}}\rightarrow\frac{\mathrm{d}y}{\mathrm{d}x}=p(x,y)\pm iq(x,y)\rightarrow\begin{cases}\phi_1(x,y)=\alpha+\mathrm{i}\beta\\\phi_2(x,y)=\alpha-\mathrm{i}\beta\end{cases}
+\]
+
+取变换\(\begin{cases}\xi=\alpha(x,y)\text{实部}\\\eta=\beta(x,y)\text{虚部}\end{cases}\)
+
+例如：\(\begin{cases}\frac{\mathrm{d}y}{\mathrm{d}x}=-\sqrt{-4x^2}=-2\mathrm{i}x\\\frac{\mathrm{d}y}{\mathrm{d}x}=\sqrt{-4x^2}=2\mathrm{i}x\end{cases}\rightarrow\begin{cases}\xi=y+\mathrm{i}x^2\\\eta=y-\mathrm{i}x^2\end{cases}\xrightarrow{\text{需求实变量}}\begin{cases}\xi=y\\\eta=x^2\end{cases}\)挑选一个特征方程
+
+椭圆方程的标准形式：\(A_{11}u_{\xi\xi}+A_{22}u_{\eta\eta}=A_5u_\xi+B_5u_\eta+C_5u+F_5,A_{11}=A_{22}\)
+
+\paragraph{例题}判断方程类型并化简\(y^2u_{xx}+x^2u_{yy}=0\)

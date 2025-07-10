@@ -1,0 +1,211 @@
+
+\chapter{格林函数方法}
+
+\section{从高斯散度定理到格林公式}
+
+\subsection{散度定理}
+
+设\(\Omega\)是\(\mathbb{R}^3\)中以足够光滑的曲面\(\partial\Omega\)为边界的有界区域，关于\(x,y,z\)的函数\(P,Q,R\)在\(\bar{\Omega}=\Omega\cup\partial\Omega\)上连续且在\(\Omega\)内具有一阶连续偏导数，并令\(A=(P,Q,R)\)，则有如下高斯公式成立：
+\begin{gather*}
+\iiint_{\Omega}\left(\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}\right)\,\mathrm{d}V=\iiint_{\Omega}\nabla A\,\mathrm{d}V=\oiint_{\partial\Omega}{A\cdot n d S}\\
+=\oiint_{\partial\Omega}[P\cdot\cos{(n,x)}+Q\cdot\cos{(n,y)}+R\cdot\cos{(n,z)}]\,\mathrm{d}S
+\end{gather*}
+
+其中，\(n\)为\(\partial\Omega\)上的单位外法线方向，\(\cos{(n,x)}\)为方向余弦。
+
+\subsection{第二格林公式}
+
+由散度定理：
+\[
+\iiint_{\Omega}\nabla\cdot A\,\mathrm{d}V=\iint_{\partial\Omega} A\cdot n\,\mathrm{d}S
+\]
+
+令\(P=u\frac{\partial v}{\partial x},Q=u\frac{\partial v}{\partial y},R=u\frac{\partial v}{\partial z}\)可得：
+\[
+\iiint_{\Omega} u\Delta v\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z=\oiint_{\partial\Omega}{u\frac{\partial v}{\partial n}\,\mathrm{d}S}-\iiint_{\Omega}\nabla u\cdot\nabla v\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z
+\]
+
+将u,v位置互换，可得：
+\[
+\iiint_{\Omega} v\Delta u\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z=\oiint_{\partial\Omega}{v\frac{\partial u}{\partial n}\,\mathrm{d}S}-\iiint_{\Omega}\nabla v\cdot\nabla u\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z
+\]
+
+再将这两个式子做减法。
+\[
+\iiint_\Omega(u\Delta v-v\Delta u)\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z=\oiint_{\partial\Omega}\left(u\frac{\partial v}{\partial n}-v\frac{\partial u}{\partial n}\right)\,\mathrm{d}S
+\]
+
+\subsection{第三格林公式}
+
+\subsubsection{三维拉普拉斯方程的基本解}
+
+设\(\Omega\)为\(\mathbb{R}^3\)中的给定区域，\(M_0(x_0,y_0,z_0)\)为\(\Omega\)中某固定点，\(M(x,y,z)\)为\(\Omega\)中的动点
+
+记\(r_{MM_0}=|MM_0|=\sqrt{(x-x0)^2+(y-y_0)^2+(z-z_0)^2}\)为\(M_0\)和\(M\)两点间的距离。则有\(M\neq M_0\)时，\(v=-\frac{1}{4\pi r_{MM_0}}\)满足三维拉普拉斯方程\(\Delta v=0\)，称其为三维拉普拉斯方程的基本解
+
+\subsubsection{第三格林公式}
+
+若\(u(M)\in C^2(\Omega)\cap C^1(\bar{\Omega})\)，则对任意\(M_0(x_0,y_0,z_0)\in\Omega\)成立第三格林公式
+\[
+u(M_0)=\frac{1}{4\pi}\iint_{\partial\Omega}\left[\frac{1}{r_{MM_0}}\frac{\partial u(M)}{\partial n}-u(M)\frac{\partial}{\partial n}\left(\frac{1}{r_{MM_0}}\right)\right]\,\mathrm{d}S-\frac{1}{4\pi}\iiint_{\Omega}\frac{\Delta u(M)}{r_{MM_0}}\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z
+\]
+
+\subsection{格林公式的应用—调和函数的基本性质}
+
+\subsubsection{基本积分表达式}
+
+调和函数是一个满足拉普拉斯方程\(\Delta f=0\)的二阶连续可导的函数，称\(\Delta f=0\)为调和方程。当\(M_0\in\Omega\)时：
+\[
+u(M_0)=\frac{1}{4\pi}\iint_{\partial\Omega}\left[\frac{1}{r_{MM_0}}\frac{\partial}{\partial n}(u(M))-u(M)\frac{\partial}{\partial n}\left(\frac{1}{r_{MM_0}}\right)\right]\,\mathrm{d}S
+\]
+
+注意
+\begin{enumerate}
+	\item 调和函数在区域内的任何点的值，都可以由其在区域的边界\(\partial\Omega\)上的值及外法向导数值表达
+	\item 当\(M_0\in\partial\Omega\)或外部时\(u(M_0)=\begin{cases}u(M_0),M_0\in\partial\Omega\\0,M_0\notin\bar{\Omega}\end{cases}\)
+\end{enumerate}
+
+\subsubsection{Neumann边值问题有解必要条件}
+
+若\(u(x,y,z)\)是诺伊曼边值问题\(\begin{cases}-\Delta u=F(x,y,z)\\\frac{\partial u}{\partial n}=f(x,y,z)\end{cases}\)的解，则有：
+\[
+\iiint_{\Omega}{F(x,y,z)\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z}=-\iint_{\partial\Omega}\frac{\partial u}{\partial n}\,\mathrm{d}S=-\iint_{\partial\Omega} f\,\mathrm{d}S
+\]
+
+拉普拉斯方程有解的必要条件：若\(u(x,y,z)\)在\(\Omega\)内调和\(\begin{cases}\Delta u=0\\\frac{\partial u}{\partial n}=f(x,y,z)\end{cases}\)则
+\[
+\iint_{\partial\Omega}\frac{\partial u}{\partial n}\,\mathrm{d}S=\iint_{\partial\Omega} f\,\mathrm{d}S=0
+\]
+
+\subsubsection{调和函数的平均值公式}
+
+任取\(M_0\)，若\(u(M(x,y,z))\)在\(\Omega\)内调和，\(B_{M_0}^a\)是以\(M_0\)为球心，\(a\)为半径的球域，则
+\[
+u(M_0)=\frac{1}{4\pi a^2}\iint_{\partial B_{M_0}^a}{u(M)\,\mathrm{d}S}
+\]
+
+说明调和函数在球心的值等于其在球面上的平均值，可由基本积分表达式证明。
+
+\section{格林函数及其性质}
+
+\subsection{格林函数的引入}
+\[\begin{cases}
+\Delta u=0&(x,y,z)\in\Omega\\
+u(x,y,z)=f(x,y,z)&(x,y,z)\in\partial\Omega
+\end{cases}\]
+
+可知\(u(M_0)=\frac{1}{4\pi}\iint_{\partial\Omega}\left[\frac{1}{r_{MM_0}}\frac{\partial}{\partial n}(u(M))-u(M)\frac{\partial}{\partial n}\left(\frac{1}{r_{MM_0}}\right)\right]\,\mathrm{d}S\)但\(\frac{\partial u\left(M\right)}{\partial n}\)未知，所以无法作为问题的解。为了得到问题的解，需要引入格林函数，设法削去\(\frac{\partial u}{\partial n}|_{\partial\Omega}\)
+
+如果不消去，尝试补充\(\frac{\partial u\left(M\right)}{\partial n}\)，但原方程是唯一适定的，加上条件可能无解。
+\[
+u(M_0)=\iint_{\partial\Omega}\left[\frac{1}{4\pi r_{MM_0}}\frac{\partial u\left(M\right)}{\partial n}-u\left(M\right)\frac{\partial}{\partial n}\left(\frac{1}{{4\pi r}_{MM_0}}\right)\right]\,\mathrm{d}S
+\]
+
+在第二格林公式中，取\(u,v\)为调和函数，则有：
+\[
+0=\oiint_{\partial\Omega}\left(u\frac{\partial v}{\partial n}-v\frac{\partial u}{\partial n}\right)\,\mathrm{d}S
+\]
+
+其被基本积分公式减去：\(\iint_{\partial\Omega}{-u\left(M\right)\frac{\partial}{\partial n}\left(\frac{1}{{4\pi r}_{MM_0}}\right)-u\frac{\partial v}{\partial n}\,\mathrm{d}S}\)
+\[
+u(M_0)=-\iint_{\partial\Omega}\left[ u\frac{\partial}{\partial n}\left(v+\frac{1}{4\pi r_{MM_0}}\right)-\frac{\partial u}{\partial n}\left(v+\frac{1}{{4\pi r}_{MM_0}}\right)\right]\,\mathrm{d}S 
+\]
+
+若边界取\(v=-\frac{1}{4\pi r_{MM_0}}\)，则带\(\frac{\partial u\left(M\right)}{\partial n}\)的项就消失了，可以得到：
+\[
+u(M_0)=-\iint_{\partial\Omega}\left[f(M)\frac{\partial}{\partial n}\left(v+\frac{1}{4\pi r_{MM_0}}\right)\right]\,\mathrm{d}S
+\]
+
+令\(v+\frac{1}{4\pi r_{MM_0}}\)为格林函数，有\(G(M,M_0)=v+\frac{1}{4\pi  r_{MM_0}},G(M,M_0)|_{\partial\Omega}=0\)
+
+\subsection{格林函数的性质}
+\begin{enumerate}
+	\item 格林函数\(G(M,M_0)\)除\(M=M_0\)外，处处满足方程\(\Delta G(M,M_0)=0\)调和\\
+	当\(M\to M_0\)时，\(G(M,M_0)\)趋于无穷大，其阶数和\(\frac{1}{r_{MM_0}}\)相等
+	\item 在边界\(\Omega\)上，格林函数\(G(M,M_0)=0\)
+	\item 在区域\(\Omega\)内，成立\(0<G(M,M_0)<\frac{1}{4\pi  r_{MM_0}}\)最值不出现在\(\Omega\)区域内，只可能在边界上
+	\item 格林函数\(G\)满足\(\iint_{\partial\Omega}\frac{\partial G(M,M_0)}{\partial n}\,\mathrm{d}S=-1\)
+	\item 格林函数\(G\)具有对称性，即\(\forall M_1,M_2\in\Omega\)有\(G(M_1,M_2)=G(M_2,M_1)\)
+\end{enumerate}
+
+\subsection{格林函数的物理解释}
+\[
+G(M,M_0)=v+\frac{1}{4\pi}\frac{1}{r_{MM_0}}
+\]
+
+格林函数可以看作：在一个外表面接地的导体内部任一给定点\(M_0\)处放置一个单位的正电荷后，在其它位置处所产生的总电位\(G\)，即正电荷产生的正电位和内壁表面所产生的负电荷在该点产生负电位之和\(v\)为导体内侧产生的负电位
+
+\section{特殊区域上拉普拉斯方程Dirichlet边值问题的求解}
+
+\subsection{镜象法}
+
+物理学意义：在\(M_0\)处放置一单位正电荷后，在\(M\)处产生的正电位为\(\frac{1}{4\pi}\frac{1}{r_{MM_0}}\)格林函数\(G(M,M_0)\)需要满足边界为零
+
+镜像法：在\(\Omega\)外找出点\(M_0\in\Omega\)关于边界\(\partial\Omega\)的镜像点\(M_1\)，在此点放置适当的负电荷，由它产生的负电位与\(M_0\)处正电位在边界\(\partial\Omega\)上相互抵消，满足条件。 其与\(\Omega\)的几何特点息息相关。
+\[
+v=-\frac{q}{4\pi}\frac{1}{r_{M_1M}}
+\]
+
+\subsection{三维特殊区域-平面}
+
+求三维拉普拉斯方程在半空间\(z\geq a\)（\(a\)为常数）上的 Dirichlet 问题的解:
+\[\begin{cases}
+\Delta u=u_{xx}+u_{yy}+u_{zz}=0\\
+u(x,y,z)=f(x,y)
+\end{cases}\]
+
+根据求解表达式\(u(M_0)=-\iint_{\partial\Omega} u(M)\frac{\partial G(M,M_0)}{\partial n}\,\mathrm{d}S\)先求格林函数，再求解
+\begin{enumerate}
+	\item 在半空间\(z>a\)上任取一点\(M_0=M_0(x_0,y_0,z_0)\)放置一单位正电荷，其在全空间产生电场，在点\(M=M(x,y,z)\)处产生正电位\(\frac{1}{4\pi  r_{MM_0}}\)
+	\item 确定点\(M_0\)关于边界\(z=a\)的对称点\(M_1=M_1(x_0,y_0,2a-z_0)\)在点\(M_1\)处放置\(q\)单位的负电荷，则它在\(M=M(x,y,z)\)处产生的电位为\(\frac{q}{4\pi  r_{MM_0}}\)，则格林函数\(G(M,M_0)=\frac{1}{4\pi  r_{MM_0}}+\frac{q}{4\pi  r_{MM_1}}\)
+	\item 确定\(q\)：由于格林函数在边界上的值为零，即\(\left.\left(\frac{1}{4\pi}\frac{1}{r_{MM_0}}+\frac{1}{4\pi}\frac{q}{r_{MM_1}}\right)\right|_{\partial\Omega}=0\)\\
+	所以\(q=-1\)，则最终的格林函数表达式为\(\frac{1}{4\pi}\left(\frac{1}{r_{MM_0}}-\frac{1}{r_{MM_1}}\right)\)
+	\begin{gather*}r_{MM_0}=\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)^2}\\r_{MM_1}=\sqrt{(x-x_0)^2+(y-y_0)^2+(z+z_0-2a)^2}\end{gather*}
+\end{enumerate}
+
+有了格林函数后，求拉普拉斯方程 Dirichlet 问题的解还需计算：平面\(z=a\)上外法向导数\(\left.\frac{\partial G}{\partial n}\right|_{z=a}\)本题中，外法线方向是\(z\)轴负方向
+\[
+\left.\frac{\partial G}{\partial n}\right|_{z=a}=-\left.\frac{\partial G}{\partial z}\right|_{z=a}=-\frac{1}{2\pi}\frac{z_0-a}{[(x-x_0)^2+(y-y_0)^2+(a-z_0)^2]^{3/2}}
+\]
+
+最终解：
+\[
+u(M_0)=u(x_0,y_0,z_0)=\frac{z_0-a}{2\pi}\int_{(-\infty,-\infty)}^{(+\infty,+\infty)}\frac{f(\xi,\eta)\,\mathrm{d}\xi\,\mathrm{d}\eta}{[(\xi-x_0)^2+(\eta-y_0)^2+(a-z_0)^2]^{-3/2}}
+\]
+
+\subsection{三维特殊区域-球体}
+
+求三维拉普拉斯方程在球体上的 Dirichlet 问题的解:
+\[\begin{cases}
+\Delta u=u_{xx}+u_{yy}+u_{zz}=0&x^2+y^2+z^2<R^2\\
+u(x,y,z)=f(x,y,z)&x^2+y^2+z^2=R^2
+\end{cases}\]
+
+根据求解表达式\(u(M_0)=-\iint_{\partial\Omega} u(M)\frac{\partial G(M,M_0)}{\partial n}\,\mathrm{d}S\)先求格林函数，再求解
+\begin{enumerate}
+	\item 在球域内任取一点\(M_0(x_0,y_0,z_0)\)放置一单位正电荷，其在全空间产生电场，在\(M\)处\(\frac{1}{4\pi  r_{MM_0}}\)
+	\item 确定点\(M_0\)关于球面的对称点\(M_1\)使得\(\rho_0,\rho_1=R^2\)其中\(\rho_0=r_{OM_0},\rho_1=r_{OM_1}\)在点\(M-1\)处放置\(q\)单位的负电荷 ，则它在\(M\)处产生的电位为\(\frac{q}{4\pi  r_{MM_0}}\)则格林函数\(G(M,M_0)=\frac{1}{4\pi  r_{MM_0}}+\frac{q}{4\pi  r_{MM_1}}\)
+	\item 确定\(q\)：由于\(\Delta OM_0M\)与\(\Delta OMM_1\)相似，从而可推出\(\frac{R}{\rho_0}=\frac{r_{M,M_1}}{r_{MM_0}}\)所以\(q=\frac{R}{\rho_0}\),则这两个电荷所产生的电位在球面上相互抵消\(\frac{1}{4\pi}\frac{1}{r_{MM_0}}-\frac{1}{4\pi}\frac{R}{\rho_0r_{MM_1}}=0\)\\
+	则最终的格林函数表达式为\(G(M,M_0)=\frac{1}{4\pi}\left(\frac{1}{r_{MM_0}}-\frac{R}{\rho_0r_{MM_1}}\right)\)
+	\begin{gather*}r_{MM_0}=\sqrt{\rho_0^2+\rho^2-2\rho\rho_0\cos\gamma}\\r_{MM_1}=\sqrt{\rho_1^2+\rho^2-2\rho\rho_1\cos\gamma}\\\rho=r_{OM}\end{gather*}
+	\(\gamma\)为\(\overrightarrow{OM}\)与\(\overrightarrow{OM_0}\)的夹角，有
+	\[G(M,M_0)=\frac{1}{4\pi}\left(\frac{1}{\sqrt{\rho_0^2+\rho^2-2\rho\rho_0\cos\gamma}}-\frac{R}{\sqrt{\rho_0^2\rho^2-2R^2\rho_0\rho\cos\gamma+R^4}}\right)\]
+\end{enumerate}
+
+在球面\(S_R\)上，外法向\(n\)与半径\(\rho\)方向一致，因此：
+\[
+\frac{\partial G}{\partial n}|_{S_R}=\left. \frac{\partial G}{\partial\rho}\right|_{\rho=R}=-\frac{1}{4\pi R}\frac{R^2-\rho_0^2}{(R^2+\rho_0^2-2R\rho_0\cos\gamma)^{3/2}}
+\]
+最终解：
+\[
+u(M_0)=\frac{1}{4\pi R}\iint_{S_R}\frac{(R^2-\rho_0^2)f(M)}{(R^2+\rho_0^2-2R\rho_0\cos\gamma)^{3/2}}\,\mathrm{d}S
+\]
+
+球标：
+\[
+u(\rho_0,\theta_0,\phi_0)=\frac{R}{4\pi}\int_{0}^{2\pi}\int_{0}^{\pi}\frac{\left(R^2-\rho_0^2\right)f\left(R,\theta,\phi\right)}{(R^2+\rho_0^2-2R\rho_0\cos\gamma)^\frac{3}{2}}\sin{\theta}\,\mathrm{d}\theta\,\mathrm{d}\phi
+\]
+
+其中\(f(R,\theta,\phi)=f(R\sin{\theta\cos{\phi}},R\sin{\theta\sin{\phi}},R\cos{\theta})\)，\((\rho_0,\theta_0,\phi_0)\)为点\(M_0\)的球面坐标，\(R,\theta,\phi\)为球面上点\(M\)的球面坐标，\(cos\gamma\)为\(OM_0\)与\(OM\)夹角的余弦
+
+该式称为球域上的 Dirichlet 问题解的泊松公式。其是该定解问题唯一古典解。

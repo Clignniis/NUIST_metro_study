@@ -1,0 +1,398 @@
+\chapter{波动方程的初值问题与行波法}
+ 
+\section{一维波动方程的初值问题}
+
+\subsection{无界弦无强迫振动的初值问题}
+
+在弦的微小振动中，研究其中一小段，那么在不太长的时间里，两端的影响都来不及传到，可以认为两端都不存在，弦是无限长的，弦的振动是自由振动（无外力强迫），比如大气的波动。定解问题为：
+\[
+\begin{cases}
+	u_{tt}=a^2u_{xx}\\
+	u(x,0)=\phi(x)_\text{初位移},u_t(x,0)=\psi(x)_\text{初速度}
+\end{cases}
+a=\sqrt{\frac{T}{\rho}}
+\]
+
+\subsubsection{定解问题的特解}
+
+由泛定方程\(u_{tt}=a^2u_{xx}\)可得其特征方程为\(\left(\frac{\mathrm{d}x}{\mathrm{d}t}\right)^2-a^2=0\)，特征线满足\(\frac{\mathrm{d}x}{\mathrm{d}t}=\pm a\)	特征线为\(\begin{cases}x+at=c_1\\x-at=c_2\\\end{cases}\Rightarrow\begin{cases}\xi=x+at\\\eta=x-at\\\end{cases}\)可以得到标准型：\(u_{\xi\eta}=0\)。两边依次关于\(\xi,\eta\)积分，可得通解：\(u(\xi,\eta)=\int f(\xi)\,\mathrm{d}\xi+G(\eta)=F(\xi)+G(\eta)\)。	代回原变量，得泛定方程通解：\(u(x,t)=F(x+at)+G(x-at)\)
+
+\subsubsection{定解问题的特解——达朗贝尔公式}
+
+\paragraph{推导*}
+
+利用初始条件来确定通解中的任意函数\(F\)和\(G\)：
+\[
+\begin{cases}u(x,0)=F(x)+G(x)=\phi(x)\\u_t(x,0)=a\left[F'(x)-G'(x)\right]=\psi(x)\end{cases}
+\]
+
+将导数移去：\(\frac{1}{a}\psi(x)=F'(x)-G'(x)\)在\(x\)轴上，任取一个点\(x_0\)，再取一个\(x\)，在区间\([x_0,x]\)上积分，则：
+\begin{align*}
+\int_{x_0}^{x}{\frac{1}{a}\psi(\xi)\,\mathrm{d}\xi}=&\int_{x_0}^{x}{F'(\xi)\,\mathrm{d}\xi}-\int_{x_0}^{x}{G'(\xi)\,\mathrm{d}\xi}\\
+=&F(x)-G(x)-c\\
+\Rightarrow F(x)-G(x)&=\frac{1}{a}\int_{x_0}^{x}\psi(\xi)\,\mathrm{d}\xi+c	
+\end{align*}
+
+\(\xi\)为任取的一个变量（避免与积分上限\(x\)重复）。再融合第一个关系\(F(x)=\frac{1}{2}\phi(x)+\frac{1}{2a}\int_{x_0}^{x}\psi(\xi)\,\mathrm{d}\xi+\frac{c}{2},G(x)=\frac{1}{2}\phi(x)-\frac{1}{2a}\int_{x_0}^{x}\psi(\xi)\,\mathrm{d}\xi-\frac{c}{2}\)
+
+\paragraph{特解}\(u(x,t)=\underbrace{\frac{1}{2}[\phi(x+at)+\phi(x-at)]}_\text{位移贡献项}+\underbrace{\frac{1}{2}a\int_{x-at}^{x+at}\psi(\xi)\,\mathrm{d}\xi}_\text{速度贡献项}\)称其为达朗贝尔公式，并称其为无界弦的自由振动问题的达朗贝尔解。
+
+\subsubsection{行波法}
+
+\paragraph{使用条件}双曲型方程
+
+\paragraph{特征方程与特征根}\(\lambda^2-a^2=0\rightarrow\lambda=\pm a\)
+
+\paragraph{求解方法}变量替换：\(\begin{cases}\xi=x+at\\\eta=x-at\end{cases}\)解方程：\(u_{\xi\eta}=0\rightarrow u=F(x+at)+G(x-at)\)
+
+\paragraph{利用初始条件解\(F\)和\(G\)}\(u(x,t)=\frac{1}{2}[\phi(x+at)+\phi(x-at)]+\frac{1}{2a}\int_{x-at}^{x+at}\psi(\xi)\,\mathrm{d}\xi\)
+
+\paragraph{例题}
+\begin{enumerate}
+    \item 求解初值问题：\(\begin{cases}u_{tt}=a^2u_{xx}\\u(x,0)=\cos{x},u_t(x,0)=6\end{cases}\)\\
+    此时\(\phi(x)=\cos{x},\psi(x)=6\)故有公式：\(u(x,t)=\frac{1}{2}\left[\cos{(x+at)}+\cos{(x-at)}\right]+\frac{1}{2a}\int_{x-at}^{x+at}6\,\mathrm{d}\xi\)\\
+	\(u(x,t)=\cos{x}\cos{at}+6t\)，如果\(u_t(x,0)=x^2\)，则后项为\(\frac{1}{2a}\int_{x-at}^{x+at}\xi^2\mathrm{d}\xi\)
+    \item 求解初值问题：\(\begin{cases}u_{tt}+4u_{xy}-5u_{yy}=0\\u(x,0)=5x^2,u_t(x,0)=0\end{cases}\)\\
+    可以得到特征方程为\(\left(\frac{\mathrm{d}y}{\mathrm{d}x}\right)^2-4\frac{\mathrm{d}y}{\mathrm{d}x}-5=0\)即特征线满足方程\(\frac{\mathrm{d}x}{\mathrm{d}t}=-1,\frac{\mathrm{d}x}{\mathrm{d}t}=5\)\\
+	有\(\begin{cases}5x-y=c_1\\x+y=c_2\end{cases}\Rightarrow\begin{cases}\xi=5x-y\\\eta=x+y\end{cases}\)原方程化为\(u_{\xi\eta}=0\)通解为\(u(x,y)=F(5x-y)+G(x+y)\)\\
+    利用初始条件可得\(F(5x)+G(x)=5x,-F'(5x)+G'(x)=0\)即\(-\frac{1}{5}F(5x)+G(x)=c\)\\
+	故有\(F(x)=\frac{1}{6}x^2-\frac{5}{6}c,G(x)=\frac{5}{6}x^2+\frac{5}{6}c\)可得特解为\(u(x,y)=\frac{1}{6}(5x-y)^2+\frac{5}{6}(x+y)^2=5x^2+y^2\)
+    \item 求解有阻尼的波动方程初值问题\[\begin{cases}u_{tt}=a^2u_{xx}-2ku_t-k^2u\\u(x,0)=\varphi(x)u_t(x,0)=\psi(x)\end{cases}\]
+    泛定方程含有阻尼项，不能直接使用达朗贝尔公式。但可以将阻尼作用表示为其解中一个随时间成指数衰减的因子。即令\(u(x,t)=\mathrm{e}{-\alpha t}v(x,t)\alpha>0\)为待定系数，于是有\(u_t=\mathrm{e}{-\alpha t}(v_t-\alpha v),u_{tt}=\mathrm{e}{-\alpha t}(v_{tt}-2\alpha v_t+\alpha^2v),u_{xx}=\mathrm{e}{-\alpha t}v_{xx}\)。代入泛定方程得\(v_{tt}=a^2v_{xx}-2(k-\alpha)v_t-(k^2-2k\alpha+\alpha^2)v\)取\(\alpha=k\)，则原定解问题可以化为\(\begin{cases}v_{tt}=a^2v_{xx}\\v(x,0)=\varphi(x)v_t(x,0)=\frac{\mathrm{d}}{\mathrm{d}t}[\mathrm{e}{kt}u(x,t)]_{t=0}=k\varphi(x)+\psi(x)\end{cases}\)\\
+    由公式可得\(v(x,t)=\frac{1}{2}[\varphi(x+at)+\varphi(x-at)]+\frac{1}{2a}\int_{x-at}^{x+at}[k\varphi(\xi)+\psi(\xi)]\,\mathrm{d}\xi\)\\
+    从而原问题得解为：\(u(x,t)=\frac{1}{2\mathrm{e}{kt}}[\varphi(x+at)+\varphi(x-at)]+\frac{1}{2a\mathrm{e}{kt}}\int_{x-at}^{x+at}[k\varphi(\xi)+\psi(\xi)]\,\mathrm{d}\xi\)
+\end{enumerate}
+
+\subsection{波的传播-解的物理意义}
+
+\subsubsection{波的分类}
+
+\paragraph{右行波}对于方程\(u(x,t)=G(x-at)\)当\(t=0\)时，呈现\(G(x)\)，当\(t>0\)时，\(x\)对应的质点向右移动的距离为\(x+at\)。立体的柱状曲面就是\(G(x-at)\)的表达式。
+
+考察\(G(x-at)\)在位置\(x+at\)处的形状变化：任取\(x_0\)，有\(G(x_0)\)，任意时刻\(t>0\)，该位置移动距离为\(at\)，到达\(x_1=x_0+at\)处，考察该点对应值\(G(x_0+at-at)=G(x_0)\)表明时刻\(t=t_0\)的波形相对于初始时刻波形向右平移距离\(at_0\)。随着时间推移，波形继续以速度\(a\)向右移动，形状保持不变。\(a\)为波移动的速度。形如\(u(x,t)=G(x-at)\)的解所描述的弦振动规律称为右行波
+
+\paragraph{左行波}类似的，形如\(u(x,t)=F(x+at)\)的解，保持波形\(F(x)\)以速度\(a\)向左移动，称为左行波
+
+\begin{figure}[htbp]
+    \centering
+    \caption{行波解}\label{pic:wave}
+    \begin{tikzpicture}[>=latex]
+        %下方部分
+        \draw[->](-0.5,0)--(6.5,0)node[below]{\(x\)};
+        \draw(2.667,0)node[below]{\(x\)}--+(0,1.5);
+        \draw[dashed](4.667,0)node[below]{\(x+at\)}--+(0,1.5);
+        \draw (0,0) cos (1,1) sin (2,2) cos (3,1) sin (4,0);
+        \draw[dashed] (2,0) cos (3,1) sin (4,2) cos (5,1) sin (6,0);
+        \draw[->](2,-0.2)node[left]{\(O\)}--(2,2.5);
+        \draw[->,dashed](4,-0.2)--(4,2.5);
+        \node at (0,1.6){\(u_2=G(x)\)};
+        \node at (0,1){\(t=0\)};
+        \node at (6,1.6){\(u_2=G(x-at_0)\)};
+        \node at (6,1){\(t=t_0\)};
+        \draw[<->](2,2.2)--node[above]{\(at_0\)}(4,2.2);
+        %上方部分
+        \draw[->](-0.5,3)--(6.5,3)node[below]{\(x\)};
+        \draw[->](0.5,4)--(7.5,4)node[below]{\(x\)};
+        \draw[->](2,3)--(2,5.5)node[left]{\(u\)};
+        \draw[->](3,4)--(3,6.5)node[left]{\(u\)};
+        \draw (0,3) cos (1,4) sin (2,5) cos (3,4) sin (4,3);
+        \draw[dashed] (3,4) cos (4,5) sin (5,6) cos (6,5) sin (7,4);
+        \draw[dotted](0,0)--(0,3) (2,2.5)--(2,3) (4,2.5)--(4,3)--(5,4)--(5,6) (6,0)--(6,3)--(7,4);
+        \draw[->](2,3)--(3.3,4.3)node[above]{\(t\)};
+        \foreach \x/\y in{0/3,0.667/3.5,1/4,1.333/4.5,2/5}{
+        \draw[dashdotted](\x,\y)--+(3,1);
+        \draw[dashdotted](4-\x,\y)--+(3,1);
+        }
+    \end{tikzpicture}
+\end{figure}
+
+\paragraph{行波解}达朗贝尔解\(\frac{1}{2}\phi\left(x\pm a t\right)+\frac{1}{2a}\Psi(x\pm at)\)的物理意义。这种构造解的方法称为行波法。
+
+注意：行波法基于波动的特点，引入了坐标变换简化方程。其易于理解，求解波动方程方便；但通解不易求，有局限性。
+
+\subsubsection{特征线与求解有关的区域}
+
+\paragraph{特征线}在\(t-x\)平面上，下列直线称为特征线\(t=-\frac{x}{a}+\frac{x_0}{a}\)和\(t=\frac{x}{a}-\frac{x_0}{a}\)。在特征线上\(u\)保持不变。
+
+\paragraph{依赖区间（图\ref{pic:area}\(x_1,x_2\)之间）}初值问题的解\(u\)在点\((x_0,t_0)\)的值由函数\(\phi\)在点\(x_0-at\)和\(x_0+at\)的值以及函数\(\psi\)在区间\([x_0-at,x_0+at]\)上的值唯一确定。称区间\([x_0-at,x_0+at]\)为点\((x_0,t_0)\)的依赖区间
+
+\paragraph{决定区域（图\ref{pic:area}灰色区域）}在\(x\)轴上任取一区间\([x_1,x_2]\)，过两点分别做直线\(x=x_1+at,x=x_2-at\)构成一个三角形区域\(G\)。\(G\)内任一点\((x,t)\)的依赖区间都落在\([x_1,x_2]\)内，所以\(u(x,t)\)在\(G\)内任一点\((x,t)\)的值都完全由初值函数\(\varphi,\psi\)在区间\([x_1,x_2]\)上的值来确定，与此区间外的数据无关。在\([x_1,x_2]\)上给定初值\(\varphi,\psi\)，就可以确定解在\(G\)内的值。
+
+\paragraph{影响区域（图\ref{pic:area}虚线区域）}影响区域里的\(u(x,t)\)都受到\(u(x_1,0)\)的影响
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=latex]
+        \draw[->](-3,0)--(3,0)node[below]{\(x\)};
+        \draw[->](-2,0)--(-2,3)node[left]{\(t\)};
+        \fill[color=gray](-1,0)node[below]{\(x_1\)}--(0,2)--(1,0)node[below]{\(x_2\)}--cycle;
+        \foreach \h in{0.2,0.4,...,2.4}{
+        \draw[dashed](-1-\h/2,\h)--(1+\h/2,\h);
+        }
+        \draw(-1,0)--(-2.2,2.4) (1,0)--(2.2,2.4);
+    \end{tikzpicture}
+    \caption{三种区域}\label{pic:area}
+\end{figure}
+
+\subsubsection{特征线在弱解计算方面的应用*}
+
+\paragraph{弱解}区别于解析解。如下式，其初始条件不光滑。
+
+\paragraph{方波求解}求解初值问题：\(\begin{cases}u_{tt}=a^2u_{xx}\\u(x,0)=\phi(x)u_t(x,0)=0\end{cases}\phi(x)=\begin{cases}1&|x|<1\\0&|x|>1\end{cases}\)
+
+根据公式有\(u(x,t)=\frac{1}{2}[\phi(x+at)+\phi(x-at)]\)令\(a=1\)计算可得：
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \(t\) & \(x_r\) & \(x_R\) & \(x_l\) & \(x_L\)\\
+        \hline
+        \(\frac{1}{2}\) & \(\frac{3}{2}\) & \(\frac{1}{2}\) & \(\frac{1}{2}\) & \(\frac{-3}{2}\)\\
+        \hline
+        1 & 2 & 0 & 0 & 2 \\
+        \hline
+        2 & 3 & 1 & 1 & 3 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\paragraph{初始速度}求解初值问题：\(\begin{cases}u_{tt}=a^2u_{xx}\\u(x,0)=0u_t(x,0)=\psi(x)\\\end{cases}\)，\(\psi(x)=\begin{cases}1&|x|<1\\0&|x|>1\end{cases}\)，\(a=1\)。分区域求解即可。
+
+\subsection{带有强迫的无界弦振动初值问题}
+
+当弦受到外力\(f(x,t)\)作用而产生振动，有如下初值问题：
+\[\begin{cases}u_{tt}=a^2u_{xx}+f(x,t)\\u(x,0)=\phi(x),u_t(x,0)=\psi(x)\end{cases}\]
+
+使用叠加原理\(u=\nu+\omega\)分解：
+\[
+\begin{cases}\nu_{tt}=a^2\nu_{xx}\\\nu(x,0)=\phi(x),\nu_t(x,0)=\psi(x)\\\end{cases}\quad\begin{cases}\omega_{tt}=a^2\omega_{xx}+f(x,t)\\\omega(x,0)=0,\omega_t(x,0)=0\end{cases}
+\]
+
+\subsubsection{冲量原理-齐次化原理-杜阿梅尔原理（Duhamel）*}
+
+求解问题：\(\begin{cases}\omega_{tt}=a^2\omega_{xx}+f(x,t)\\\omega(x,0)=0,\omega_t(x,0)=0\end{cases}\Rightarrow\omega(x,t)=\int_{0}^{t}h(x,t;\tau)\,\mathrm{d}\tau\)（\(\tau\)是个参数）
+
+其中\(h(x,t;\tau)\)满足\(\begin{cases}h_{tt}=a^2h_{xx},-\infty<x<+\infty,t>\tau\\h_{t=\tau}=0,h_{t,t=\tau}(x,\tau)=0\end{cases}\)，分别进行数学说明与物理说明。
+
+\paragraph{数学证明}牛顿-莱布尼兹公式：\(\frac{\mathrm{d}}{\mathrm{d}x}\left(\int_{a(x)}^{b(x)}g\left(s,x\right)\,\mathrm{d}s\right)=\int_{a(x)}^{b(x)}{\frac{\mathrm{d}g(s,x)}{\mathrm{d}x}\,\mathrm{d}s}+g(b(x),x)b'(x)-g(a(x),x)a'(x)\)
+
+满足定解条件1：
+\[
+\omega(x,t=0)=\int_{0}^{t=0}h(x,t;\tau)\,\mathrm{d}\tau=0
+\]
+
+满足定解条件2：（\(t=\tau\)时\(h(x,t;t)=0\) ）
+\begin{align*}
+\Rightarrow&\omega_t(x,t)=\int_{0}^{t}h(x,t;\tau)\,\mathrm{d}\tau=\int_{0}^{t}{h_t(x,t;\tau)\,\mathrm{d}\tau}+h(x,t;t)\times1-h(x,t;0)\times0\\
+\Rightarrow&\int_{0}^{t}{h_t(x,t;\tau)\,\mathrm{d}\tau}
+\end{align*}
+
+
+验证方程满足条件：
+\begin{align*}
+\Rightarrow&\omega_{tt}(x,t)=(\omega_t)_t=\left(\int_{0}^{t}{h_t(x,t;\tau)\,\mathrm{d}\tau}\right)_t=\int_{0}^{t}{h_{tt}(x,t;\tau)\,\mathrm{d}\tau}+h_t(x,t;t=\tau)\\
+\Rightarrow&\omega_{tt}(x,t)=\int_{0}^{t}{h_{tt}(x,t;\tau)\,\mathrm{d}\tau}+f(x,\tau)=a^2\int_{0}^{t}{h_{xx}(x,t;\tau)\,\mathrm{d}\tau}+f(x,\tau)\\
+\Rightarrow&a^2\frac{\partial}{\partial x^2}\left(\int_{0}^{t}h(x,t;\tau)\,\mathrm{d}\tau\right)+f(x,t)=a^2\omega_{xx}+f(x,t)
+\end{align*}
+
+\paragraph{物理说明}\(u_{tt}=a^2u_{xx}+f(x,t)\)单位质量的外力称其为加速度。\(f(x,t)\)作用在区间\([0,t]\)上，将连续作用的区间离散化，考察\([\tau-\Delta\tau,\tau]\)一小间隔。\(t=\tau\)时刻的位移和速度对\(t>\tau\)产生的弦的改变：
+
+当\(t=\tau\)时，\(\frac{1}{2}f(x,\tau)\Delta\tau^2\approx0,f(x,\tau)\Delta\tau=\)速度
+
+当\(t>\tau\)时，\(h(x,t;\tau)\Delta\tau\)引起的弦的改变。弦的改变和振动符合波动方程\[\begin{cases}h_{tt}=a^2h_{xx}\\h|_{t=\tau}=0,h_t|_{t=\tau}=f\end{cases}\]\\
+在\([0,t]\)上连续累加：\(\begin{cases}\omega(x,t)=\lim\limits_{\Delta\tau\rightarrow0}{\sum\limits_{\tau=0}^{t}h(x,t;\tau)\Delta\tau}\\\Rightarrow\omega(x,t)=\int_{0}^{t}h(x,t;\tau)\,\mathrm{d}\tau\end{cases}\)
+
+\paragraph{求解问题}求解微分方程：\(\omega(x,t)=\int_{0}^{t}h(x,t;\tau)\,\mathrm{d}\tau\)有定解条件：\[\begin{cases}h_{tt}=a^2h_{xx}\\h_{t=\tau}=0h_{t,t=\tau}=f(x,\tau)\end{cases}\]
+
+变量变换：时间平移，令\(t'=t-\tau,h(x,t'+\tau;\tau)=\tilde{h}(x,t',\tau) h_{tt}={\tilde{h}}_{tt}=\left({\tilde{h}}_{t'}\right)_t=\left({\tilde{h}}_{t'}\right)_{t'}\)有：
+\[\begin{cases}{\tilde{h}}_{t' t'}=a^2{\tilde{h}}_{xx}\\{\tilde{h}}_{t'=0}=0{\tilde{h}}_{t',t'=0}=f(x,\tau)\end{cases}\]
+
+应用达朗贝尔公式
+\begin{align*}
+\tilde{h}(x,t;\tau)=\frac{1}{2a}\int_{x-at'}^{x+at'}f\left(\xi,\tau\right)\,\mathrm{d}\xi\buildrel=\over=h=\tilde{h}\frac{1}{2a}\int_{x-a(t-\tau)}^{x+a(t-\tau)}f\left(\xi,\tau\right)\,\mathrm{d}\xi\\
+\omega(x,t)=\int_{0}^{t}h(x,t;\tau)\,\mathrm{d}\tau=\frac{1}{2a}\int_{0}^{t}{\int_{x-a(t-\tau)}^{x+a(t-\tau)}f\left(\xi,\tau\right)\,\mathrm{d}\xi \,\mathrm{d}\tau}
+\end{align*}
+
+\subsubsection{总解}
+
+问题：\(\begin{cases}u_{tt}=a^2u_{xx}+f(x,t)\\u(x,0)=\phi(x)u_t(x,0)=\psi(x)\end{cases}\)的解为：\(u(x,t)=v(x,t)+\omega(x,t)\)，即
+\[
+u=\frac{1}{2}[\phi(x+at)+\phi(x-at)]+\frac{1}{2}a\int_{x-at}^{x+at}{\psi(\xi)\,\mathrm{d}\xi}+\frac{1}{2}a\int_{0}^{t}{\int_{x-a(t-\tau)}^{x+a(t-\tau)}f\left(\xi,\tau\right)\,\mathrm{d}\xi \,\mathrm{d}\tau}
+\]
+
+称为一维非齐次波动方程的基尔霍夫（Kirchhoff）公式
+
+注意：假设\(\phi(x),\psi(x)\)和\(f(x,t)\)关于变量\(x\)都是奇函数，则解\(u(x,t)\)也为关于\(x\)的奇函数。对于偶函数，周期\(T\)的函数也成立。
+
+\paragraph{例题}
+\begin{enumerate}
+    \item 求初值问题\(\begin{cases}u_{tt}=4u_{xx}+2x\\u(x,0)=0u_t(x,0)=0\end{cases}\)\\
+    则直接使用公式：\(u(x,t)=\frac{1}{4}\int_{0}^{t}{\int_{x-a(t-\tau)}^{x+a(t-\tau)}2\xi \,\mathrm{d}\xi \,\mathrm{d}\tau}=xt^2\)
+    \item 求初值问题\(\begin{cases}u_{tt}=4u_{xx}+\mathrm{e}x-\mathrm{e}{-x}\\u(x,0)=xu_t(x,0)=\sin{x}\end{cases}\)
+    \begin{align*}
+    u(x,t)=&\frac{1}{2}\left(x+2t+x-2t\right)+\frac{1}{4}\int_{x-2t}^{x+2t}{\sin{\xi}\,\mathrm{d}\xi}+\frac{1}{4}\int_{0}^{t}{\int_{x-2(t-\tau)}^{x+2(t-\tau)}\left(\mathrm{e}\xi-\mathrm{e}{-\xi}\right)\,\mathrm{d}\xi \,\mathrm{d}\tau}\\
+	u(x,t)=&x+\frac{1}{2}\sin{x}\sin{2t}-\frac{1}{2}\sinh{x}+\frac{1}{2}\sinh{x}\cosh{2t}
+    \end{align*}
+\end{enumerate}
+	
+\subsection{半无界弦的振动和延拓法}
+
+\subsubsection{问题提出}
+\[\begin{cases}
+u_{tt}=a^2u_{xx}+f(x,t),0<x<+\infty,t>0\\
+u(x,0)=\phi(x),u_t(x,0)=\psi(x)\\
+u(0,t)=0
+\end{cases}\]
+
+\subsubsection{问题思路}
+
+半无界问题\(\xrightarrow{\text{延拓法}}\)全无界问题
+
+\subsubsection{实施过程}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[>=latex]
+    \draw (0,1) .. controls
+    (1,2) and (2,0) .. (3,0.5);
+    \draw[dashed] (0,-1) .. controls
+    (-1,-2) and (-2,0) .. (-3,-0.5);
+    \draw[->](-3.5,0)--(3.5,0)node[above]{\(x\)};
+    \draw[->](0,-2)--(0,2)node[right]{\(\phi\)};
+    \draw[dotted](1,1.2)--(-1,-1.2);
+    \node at(0.2,-0.2){\(O\)};
+    \end{tikzpicture}
+    \caption{奇延拓}\label{pic:cont}
+\end{figure}
+
+\paragraph{奇延拓}\[\Phi=\begin{cases}\phi(x)&x\geq0\\-\phi(-x)&x<0\end{cases}\quad\Psi=\begin{cases}\psi(x)&x\geq0\\-\psi(-x)&x<0\end{cases}\quad F=\begin{cases}f(x,t)&x\geq0\\-f(-x,t)&x<0\end{cases}\]
+
+构成新的弦振动问题\(\begin{cases}U_{tt}=a^2U_{xx}+F(x,t)-\infty<x<+\infty,t>0\\U(x,0)=\Phi(x)U_t(x,0)=\Psi(x)\end{cases}\)
+
+\paragraph{在\(x\geq0\)部分}新函数与原函数完全一致，满足相同的方程与初始条件。
+\[
+U(x,t)=\frac{1}{2}[\phi(x+at)+\phi(x-at)]+\frac{1}{2a}\int_{x-at}^{x+at}{\Psi(\xi)\,\mathrm{d}\xi}+\frac{1}{2a}\int_{0}^{t}{\int_{x-a(t-\tau)}^{x+a(t-\tau)}F\left(\xi,\tau\right)\,\mathrm{d}\xi \,\mathrm{d}\tau} 
+\]
+
+（需要使用已知函数\(\phi,\psi,f\)来表示所求的解，需要根据黄色坐标对应确定函数）
+
+\paragraph{在端点处}\(u(0,t)=U(0,t)=0\)
+
+\paragraph{例题}
+\begin{enumerate}
+    \item 求解如下问题：\(\begin{cases}u_{tt}=a^2u_{xx}0<x<+\infty,t>0\\u(x,0)=\phi(x)u_t(x,0)=0\\u(0,t)=0\end{cases}\)\\
+    当\(x>at\)时，有\(u(x,t)=\frac{1}{2}[\phi(x+at)+\phi(x-at)]\)\\
+    当\(0<x<at\)时，有\(u(x,t)=\frac{1}{2}[\phi(x-at)-\phi(at-x)]\)
+    \item 求解定解问题\(\begin{cases}u_{tt}=a^2u_{xx}+\frac{1}{2}(x-t)0<x<+\infty,t>0\\u(x,0)=\sin{x}u_t(x,0)=1-\cos{x}\\u(0,t)=0\end{cases}\)\\
+    把\(\phi(x)=\sin{x},\psi(x)=1-\cos{x},f(x,t)=\frac{1}{2}(x-t)\)关于\(x\)奇延拓到\((-\infty,0)\)则有：\begin{gather*}\Phi(x)=\sin{x},-\infty<x<+\infty\quad\Psi(x)=\begin{cases}1-\cos{x},x\geq0\\-(1-\cos{x}),x<0\end{cases}\\F(x,t)=\begin{cases}\frac{1}{2}\left(x-t\right),x\geq0,t>0\\-\frac{1}{2}\left(-x-t\right),x<0,t>0\end{cases}\end{gather*}\\
+	得到新定解问题的解：\[U=\frac{1}{2}[\phi(x+at)+\phi(x-at)]+\frac{1}{2a}\int_{x-at}^{x+at}{\Psi(\xi)\,\mathrm{d}\xi}+\frac{1}{2a}\int_{0}^{t}{\int_{x-a(t-\tau)}^{x+a(t-\tau)}F\left(\xi,\tau\right)\,\mathrm{d}\xi \,\mathrm{d}\tau}\]\\
+	得到\[u(x,t)=\begin{cases}0<x\leq at,\sin{x}\cos{at}+t-\frac{1}{a}\sin{at}\cos{x}+\frac{xt^2}{4}-\frac{t^3}{12}\\0<x>at,\frac{a-1}{a}\sin{x}\cos{at}+\frac{x}{a}-\frac{(x^3-3ax^2t-3a^3xt^2+3a^2xt^2)}{12a^3}\end{cases}\]
+    \item \(\begin{cases}u_{tt}=u_{xx}0<x<+\infty,t>0\\u(x,0)=\phi(x)u_t(x,0)=0\\u(0,t)=0\end{cases}\)其中\(\phi(x)=\begin{cases}1,1<x<2\\0,\text{其他}\end{cases}\)
+\end{enumerate}
+
+\section{三维波动方程的初值问题-球面平均值方法*}
+
+\subsection{球对称解}
+
+\subsubsection{问题描述}
+\[
+\begin{cases}u_{tt}=a^2(u_{xx}+u_{yy}+u_{zz})&(x,y,z)\in\mathbb{R}^3,t>0\\u|_{t=0}=\phi(x,y,z),u_t|_{t=0}=\psi(x,y,z)&(x,y,z)\in\mathbb{R}^3\end{cases}
+\]
+
+\subsubsection{球坐标系}
+\[
+\begin{cases}x=rsin\theta\cos{\varphi}\\y=rsin\theta\sin{\varphi}\\z=rcos\theta\end{cases}
+\]
+
+\subsubsection{坐标转换}
+\[
+u_{tt}=a^2\left[\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial u}{\partial r}\right)+\frac{1}{r^2\sin{\theta}}\frac{\partial}{\partial\theta}\left(\sin{\theta}\frac{\partial u}{\partial\theta}\right)+\frac{1}{r^2\sin^2{\theta}}\frac{\partial^2u}{\partial\varphi^2}\right] 
+\]
+
+假设\(u=u(r,\theta,\varphi,t)\)与\(\theta,\varphi\)无关，仅与\(r\)有关
+\[
+\Rightarrow u_{tt}=a^2\left(u_{rr}+\frac{2}{r}u_r\right)r>0,t>0	  \Rightarrow\left(ru\right)_{tt}=a^2\left(ru\right)_{rr}\text{球对称}
+\]
+
+\subsubsection{通解}
+\[
+u=\frac{F(r+at)-F(r-at)}{r},r>0,t>0
+\]
+
+\paragraph{收敛波}\(F(r+at)\)表示沿着\(r\)负方向传播的行波。
+
+\paragraph{发散波}\(F(r-at)\)表示沿着\(r\)正方向传播的行波。
+\begin{gather*}
+    \begin{cases}
+(ru)_{tt}=a^2(ru)_{rr}\\
+ru(r,0)|_{t=0}=r\phi(r),ru_t(r,0)=r\psi(r)\\
+ru(0,t)=0\text{确定为零}
+\end{cases}\\
+u(r,t)=\begin{cases}\frac{1}{2r}\left[(r+at)\phi(r+at)+(r-at)\phi(r-at)\right]+\frac{1}{2ar}\int_{r-at}^{r+at}\xi\psi(\xi)\,\mathrm{d}\xi,r-at\geq0\\\frac{1}{2r}\left[(r+at)\phi(r+at)-(r-at)\phi(r-at)\right]+\frac{1}{2ar}\int_{at-r}^{r+at}\xi\psi(\xi)\,\mathrm{d}\xi,r-at<0\end{cases}
+\end{gather*}
+
+
+\subsection{球面平均值方法}
+
+\subsubsection{表述}
+
+围绕一特定点取球面，围绕球取平均值后，与\(\theta,\varphi\)无关\(\begin{cases}\xi=x+r\sin{\theta}\cos{\varphi}\\\eta=y+r\sin{\theta}\sin{\varphi}\\\zeta=z+r\cos{\theta}\\r=at\end{cases}\)其中\(r\geq0,0\le\theta\le\pi,0\le\varphi\le2\pi\)该处的\((x,y,z)\)是\(M\)的坐标
+
+\(\bar{u}(r,t)=\frac{1}{4\pi r^2_\text{球面面积}}\oiint_{S_r^M}u(\xi,\eta,\zeta,t)\,\mathrm{d}S_\text{球面上任意点的值之和}=\frac{1}{4\pi}\oiint_{S_\text{半径单位1}}u\,\mathrm{d}\omega\)
+
+\(\mathrm{d}S=r^2\,\mathrm{d}\omega=r^2\sin{\theta}\,\mathrm{d}\theta\,\mathrm{d}\varphi\)球面平均值与半径相关，与球心无关。
+
+均值与特定点的关系：\(u(x,y,z,t)=\bar{u}(0,t)=\lim\limits_{r\rightarrow0}{\bar{u}(r,t)}\)
+
+\subsubsection{满足方程}
+\[
+[r\bar{u}(r,t)]_{tt}=a^2[r\bar{u}(r,t)]_{rr}
+\]
+
+即为球对称解的关系式。证明：
+
+三维波动问题：\(u_{tt}=a^2(u_{xx}+u_{yy}+u_{zz})\)其中\(B_r^M\)表示中心为\(M\)，半径为\(r\)的球域	。
+
+在初始问题上做体积分：\(\iiint_{B_r^M}{u_{tt}\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z}=a^2\iiint_{B_r^M}[(u_x)_x+(u_y)_y+(u_z)_z]\,\mathrm{d}x\,\mathrm{d}y\,\mathrm{d}z\)
+
+\paragraph{左侧}把时间与空间交换\(\frac{\partial^2}{\partial t^2}\iiint_{B_r^M}u\,\mathrm{d}v=\frac{\partial^2}{\partial t^2}\int_0^r\oiint_{S_\rho^M}u\,\mathrm{d}S\,\mathrm{d}\rho=\frac{\partial^2}{\partial t^2}\int_0^r\oiint_{S_1}u\rho^2\,\mathrm{d}\omega\,\mathrm{d}\rho=4\pi\frac{\partial^2}{\partial t^2}\int_0^r\rho^2\bar{u}(\rho,t)\,\mathrm{d}\rho\)
+
+\paragraph{右侧}高斯散度定理\(\iiint_{V}{\nabla\cdot\vec{A}}=\oiint_{\sigma}{\vec{A}\cdot\vec{n}\,\mathrm{d}S},\iiint_{B_r^m}\Delta u d V=4\pi a^2r^2\frac{\partial\bar{u}}{\partial r}\)
+
+两式相同：\(\frac{\partial^2}{\partial t^2}\int_{0}^{r}{\rho^2\bar{u}\left(\rho,t\right)\,\mathrm{d}\rho}=4\pi a^2r^2\frac{\partial\bar{u}}{\partial r}\)两端关于\(r\)求导：\(\frac{\partial^2}{\partial t^2}(r^2\bar{u})=a^2\frac{\partial}{\partial r}\left(r^2\frac{\partial\bar{u}}{\partial r}\right)\)
+
+导出关系：\(\frac{\partial^2(r\bar{u})}{\partial t^2}=a^2\frac{\partial^2(r\bar{u})}{\partial r^2}\)则得证。
+
+\subsubsection{通解}
+
+方程有\(r\bar{u}(r,t)=F(r+at)+G(r-at)\)行波解，两边分别关于\(r\)和\(t\)求导
+\[\begin{cases}\frac{\partial(r\bar{u})}{\partial r}=r\frac{\partial\bar{u}}{\partial r}+\bar{u}(r,t)=F'(r+at)+G'(r-at)\\\frac{1}{a}\frac{\partial(r\bar{u})}{\partial t}=F'(r+at)-G'(r-at)\end{cases}\]
+
+做加法：
+\[
+\frac{\partial(r\bar{u})}{\partial r}+\frac{1}{a}\frac{\partial(r\bar{u})}{\partial t}=r\left(\frac{\partial\bar{u}}{\partial r}+\frac{1}{a}\frac{\partial\bar{u}}{\partial t}\right)+\bar{u}(r,t)=2F'(r+at)
+\]
+
+\begin{enumerate}
+    \item \(r\rightarrow0,u(x,y,z,t)=\bar{u}(0,t)=2F'(at)\)
+    \item \(t\rightarrow0,2F'(r)=\frac{1}{4\pi}\frac{\partial}{\partial r}\oiint_{S_r^M}{\frac{\phi}{r}\,\mathrm{d}S}+\frac{1}{4a\pi}\oiint_{S_r^M}{\frac{\psi}{r}\,\mathrm{d}S}\)
+\end{enumerate}
+
+\paragraph{泊松公式}\(u(x,y,z,t)=\frac{1}{4\pi a^2}\frac{\partial}{\partial t}\oiint_{S_{at}^M}{\frac{\phi(\xi,\eta,\zeta)}{t}\,\mathrm{d}S}+\frac{1}{4\pi a^2}\oiint_{S_{at}^M}{\frac{\psi(\xi,\eta,\zeta)}{t}\,\mathrm{d}S}\)其中\(S_{at}^M\)表示以\(M(x,y,z)\)为中心，以\(at\)为半径的球面。
+
+考虑球面方程：\((\xi-x)^2+(\eta-y)^2+(\zeta-z)^2=(at)^2\)
+\[
+u(x,y,z,t)=\frac{\partial}{\partial t}\left[\frac{t}{4\pi}\int_{0}^{2\pi}\int_{0}^{\pi}\phi(\xi,\eta,\zeta)\sin\theta\,\mathrm{d}\theta\,\mathrm{d}\varphi\right]+\frac{t}{4\pi}\int_{0}^{2\pi}\int_{0}^{\pi}\psi(\xi,\eta,\zeta)\sin\theta\,\mathrm{d}\theta\,\mathrm{d}\varphi
+\]
+
+\subsection{惠更斯原理}
+
+方程通解：\(u(x,y,z,t)=\frac{1}{4\pi a^2}\frac{\partial}{\partial t}\oiint_{S_{at}^M}{\frac{\phi(\xi,\eta,\zeta)}{t}\,\mathrm{d}S}+\frac{1}{4\pi a^2}\oiint_{S_{at}^M}{\frac{\psi(\xi,\eta,\zeta)}{t}\,\mathrm{d}S}\)
+
+三维空间中有扰动区域\(\Omega\)，由\(\phi,\psi\)定义，空间中有一个位置\(M(x,y,z)\)考察\(\phi,\psi\)，当\(t>0\)，如何影响位置\(M\)上\(u\)的取值。
+
+扰动区域与\(M\)点有最近距离\(S_{at_1}^M\)和最远距离\(S_{at_2}^M\)。
+\begin{enumerate}
+    \item 当\(at<d\)，即\(t<\frac{d}{a}\)时，\(S_{at}^M\)与\(\Omega\)不相交，\(S_{at}^M\)上的初始函数\(\phi,\psi\)为零，故\(u\left(M,t\right)=0\)，扰动前锋尚未达到\(M\)处。
+    \item 当\(d\le at\le D\)，即\(\frac{d}{a}\let\le\frac{D}{a}\)时，\(S_{at}^M\)与\(\Omega\)相交，\(S_{at}^M\)上的初始函数不为零，一般\(u\neq0\)，表明扰动正在经过\(M\)点。
+    \item 当\(at>D\)，即\(t>\frac{D}{a}\)时，\(S_{at}^M\)与\(\Omega\)再次不相交，故\(u(M,t)=0\)，扰动阵尾已经传过\(M\)点，\(M\)点又恢复到静止状态。说明了球面波的无后效现象。
+\end{enumerate}

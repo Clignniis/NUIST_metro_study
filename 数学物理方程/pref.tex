@@ -1,0 +1,32 @@
+\begin{titlepage}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node at ([shift={(0,1)}]current page.center){
+            \begin{tikzpicture}[scale=0.7]
+            \path[fill=sky] (0:0)--++(90:2)--++(30:6)--++(150:6)--++(210:6)--++(330:6)--++(90:1)--++(150:4)--++(30:4)--++(330:4)--++(210:4)--++(270:3)--++(150:1)--++(210:3)--++(270:1)--++(30:5)--++(330:3)--++(270:1)--++(210:4)--++(150:4)--++(210:1)--++(330:5)--++(30:5)--cycle;
+            \path[fill=cyan!50] (0:0)--++(270:1)--++(210:3)--++(150:1)--++(90:5)--++(150:1)--++(270:6)--++(30:6)--++(90:1)--++(30:4)--++(270:6)--++(210:5)--++(270:1)--++(30:6)--++(90:8)--++(210:6)--cycle;
+            \path[fill=sky] (90:6)--++(90:1)--++(210:4)--++(330:1)--++(30:3)--++(90:1);
+            \path[fill=nuist] (0:0)--++(270:1)--++(330:3)--++(30:1)--++(90:5)--++(30:1)--++(270:6)--++(150:6)--++(90:1)--++(150:4)--++(270:6)--++(330:5)--++(270:1)--++(150:6)--++(90:8)--++(330:6)--cycle;
+            \path[fill=nuist] (90:6)--++(90:1)--++(330:4)--++(210:1)--++(150:3)--++(90:1);
+            \end{tikzpicture}
+        };
+        \node[gold] at ([shift={(0,8)}]current page.center){\fontsize{72}{0}\heiti \bookname};
+        \node at ([shift={(0,-5)}]current page.center){\Huge\heiti\href{\uira}{\textcolor{nuist}{Tong Zhang}}\quad\href{\uirb}{\textcolor{nuist}{Cls}}};
+        \node[tech, anchor= south] at ([shift={(0,6)}]current page.south){\fontsize{48}{0}\heiti 笔记整理与汇总};
+    \end{tikzpicture}
+\end{titlepage}
+
+\chapter*{版权声明}
+
+本《\bookname{} 笔记整理与汇总精编版》一册电子版遵循有限的知识共享许可协议。本书授权包含署名-非商业性使用-相同方式共享（CC BY-NC-SA）。即您被允许在授权范围内对该电子书进行转载、节选、二次创作，但不得用于任何商业目的，且使用时须署原作名，且必须采用与本创作相同的协议（CC BY-NC-SA）进行授权。限于编者水平，本书难免有疏漏错误，敬请读者批评指正。
+
+\begin{tikzpicture}[remember picture, overlay]
+    \node [opacity=0.4] at (current page.center){
+        \begin{tikzpicture}[scale=2]
+            \foreach \a/\c in {0/90, 120/80, 240/70} {%
+                \path[fill=nuist!\c] (0+\a :2.309)--++(150+\a :5)--++(270+\a :7)--++(150+\a :1)--++(90+\a :8)--++(330+\a :7)--cycle;
+            }
+        \end{tikzpicture}
+    };
+\end{tikzpicture}
+
+\tableofcontents
