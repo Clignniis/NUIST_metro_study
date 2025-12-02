@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.2)  20 NOV 2025 15:23
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.2)  2 DEC 2025 19:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -923,7 +923,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [14
 
 ]
-Overfull \hbox (41.04405pt too wide) in paragraph at lines 622--623
+Overfull \hbox (41.04405pt too wide) in paragraph at lines 624--625
 []\TU/SimSun(0)/m/n/10.53937 在 一 定 温 度 下，|  反 应 速 率 往 往 可 以 表 示 为 反 应 体 系 中 各 组 分 浓 度 的 某 种 函 数 关 系 $\OML/cmm/m/it/10.53937 r \OT1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 K\OT1/cmr/m/n/10.53937 [[]][][[]][][[]][][[]][]$ 
  []
 
@@ -934,7 +934,7 @@ Overfull \hbox (41.04405pt too wide) in paragraph at lines 622--623
 [16]
 
 [17]
-Overfull \hbox (12.89825pt too wide) in paragraph at lines 751--752
+Overfull \hbox (12.89825pt too wide) in paragraph at lines 753--754
 []$\OML/cmm/m/it/10.53937 E \OT1/cmr/m/n/10.53937 = []$ \TU/SimSun(0)/m/n/10.53937 若 一 个 分 子 吸 收 一 个 光 量 子，| \TU/lmr/m/n/10.53937 1mol \TU/SimSun(0)/m/n/10.53937 分 子 吸 收 的 总 能 量：| $\OML/cmm/m/it/10.53937 "[] \OT1/cmr/m/n/10.53937 = [][]$
  []
 
@@ -945,26 +945,26 @@ Overfull \hbox (12.89825pt too wide) in paragraph at lines 751--752
 [19]
 
 [20]
-Overfull \hbox (29.78644pt too wide) in paragraph at lines 912--913
+Overfull \hbox (29.78644pt too wide) in paragraph at lines 914--915
 []\TU/SimSun(0)/m/n/10.53937 对 于 一 个 光 化 学 初 级 反 应，|  其 反 应 速 率 可 由 初 级 量 子 产 额 导 出。|  例 如，|  对 于 $[]$
  []
 
 
 
 [21]
-Overfull \hbox (46.27876pt too wide) in paragraph at lines 951--952
+Overfull \hbox (46.27876pt too wide) in paragraph at lines 953--954
 []$[]$$[]$
  []
 
 
 
 [22]
-Overfull \hbox (243.80563pt too wide) in paragraph at lines 956--957
+Overfull \hbox (243.80563pt too wide) in paragraph at lines 958--959
 []$ \TU/SimSun(0)/m/n/10.53937 这 是 醛 类 光 解 是 过 氧 自 由 基 的 主 要 来 源。|  其 他 反 应 有 $[]$ 
  []
 
 
-Overfull \hbox (8.32579pt too wide) in paragraph at lines 977--978
+Overfull \hbox (8.32579pt too wide) in paragraph at lines 979--980
 []\TU/SimSun(0)/m/n/10.53937 有 反 应：| $[]\OML/cmm/m/it/10.53937 ; r[] \OT1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 ^^^I[]\OT1/cmr/m/n/10.53937 ; []\OML/cmm/m/it/10.53937 ; r[] \OT1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 k[][]$ \TU/SimSun(0)/m/n/10.53937 则 $[] \OT1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 ^^^I[] \OMS/cmsy/m/n/10.53937 ^^@ \OML/cmm/m/it/10.53937 k[][] \OMS/cmsy/m/n/10.53937 ) [] \OT1/cmr/m/n/10.53937 =
  []
 
@@ -987,7 +987,7 @@ Overfull \hbox (8.32579pt too wide) in paragraph at lines 977--978
 [28]
 
 [29]
-Overfull \hbox (11.30498pt too wide) in paragraph at lines 1276--1277
+Overfull \hbox (11.30498pt too wide) in paragraph at lines 1278--1279
 []\OML/cmm/m/it/10.53937 ; k[] \OT1/cmr/m/n/10.53937 = 8\OML/cmm/m/it/10.53937 :\OT1/cmr/m/n/10.53937 3 \OMS/cmsy/m/n/10.53937 ^^B \OT1/cmr/m/n/10.53937 10[][]\OML/cmm/m/it/10.53937 ; k[] \OT1/cmr/m/n/10.53937 = 5\OML/cmm/m/it/10.53937 :\OT1/cmr/m/n/10.53937 6 \OMS/cmsy/m/n/10.53937 ^^B \OT1/cmr/m/n/10.53937 10[][]\OML/cmm/m/it/10.53937 ; \OT1/cmr/m/n/10.53937 [[]] =
  []
 
@@ -1020,7 +1020,7 @@ Overfull \hbox (11.30498pt too wide) in paragraph at lines 1276--1277
 [40]
 
 [41]
-Overfull \hbox (23.08977pt too wide) in paragraph at lines 1645--1646
+Overfull \hbox (23.08977pt too wide) in paragraph at lines 1647--1648
 []\TU/SimSun(0)/m/n/10.53937 元 素 和 离 子 的 区 别：|  离 子 仅 代 表 元 素 的 水 溶 形 态；|  元 素 包 含 水 溶 的 和 非 水 溶 形 态。|  例 如：| $[]$ 
  []
 
@@ -1071,19 +1071,19 @@ Overfull \hbox (23.08977pt too wide) in paragraph at lines 1645--1646
 ]
 
 [58]
-Overfull \hbox (52.74854pt too wide) in paragraph at lines 2204--2205
+Overfull \hbox (52.74854pt too wide) in paragraph at lines 2206--2207
 []$[]$ 
  []
 
 
-Overfull \hbox (13.44601pt too wide) in paragraph at lines 2212--2215
+Overfull \hbox (13.44601pt too wide) in paragraph at lines 2214--2217
 []$ \TU/SimSun(0)/m/n/10.53937 消 耗 \TU/lmr/m/n/10.53937 10% \TU/SimSun(0)/m/n/10.53937 的 $[]$，|  是 平 流 层 \TU/lmr/m/n/10.53937 NO \TU/SimSun(0)/m/n/10.53937 的 主 要 来 源 $[]$
  []
 
 
 
 [59]
-Overfull \hbox (70.99834pt too wide) in paragraph at lines 2226--2227
+Overfull \hbox (70.99834pt too wide) in paragraph at lines 2228--2229
 []\TU/SimSun(0)/m/n/10.53937 循 环：| $[]$，| $[]$，| $[]$，| $[]$。|
  []
 
