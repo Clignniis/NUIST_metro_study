@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.2)  2 DEC 2025 19:03
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.2)  3 DEC 2025 12:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1128,10 +1128,10 @@ Package rerunfilecheck Info: File `大气化学.out' has not changed.
 (rerunfilecheck)             Checksum: 328E48C1D462C9E04907FC14BFA1AD28;6649.
  ) 
 Here is how much of TeX's memory you used:
- 28493 strings out of 474233
- 637871 string characters out of 5739550
- 1026685 words of memory out of 5000000
- 50711 multiletter control sequences out of 15000+600000
+ 28491 strings out of 474233
+ 637851 string characters out of 5739550
+ 1026488 words of memory out of 5000000
+ 50709 multiletter control sequences out of 15000+600000
  566332 words of font info for 103 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  102i,13n,111p,1222b,920s stack positions out of 10000i,1000n,20000p,200000b,200000s

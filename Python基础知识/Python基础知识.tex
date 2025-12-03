@@ -1,0 +1,1166 @@
+\documentclass[oneside]{ctexbook}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ulem}
+\usepackage{pifont}
+\usepackage{tikz}
+\usepackage{geometry}
+\geometry{a4paper,hmargin=2.5cm,vmargin=2cm}
+
+\newcommand{\bookname}{Python基础知识}
+\newcommand{\uira}{https://github.com/ZhangtongCN}
+\newcommand{\uirb}{https://github.com/Clignniis}
+\usepackage[toc]{multitoc}%双栏目录
+%颜色设置
+\usepackage{xcolor}
+\definecolor{nuist}{RGB}{0, 103, 156}%南信大蓝
+\definecolor{sky}{RGB}{101, 170, 221}%天空蓝
+\definecolor{tech}{RGB}{38, 96, 173}%科技蓝
+\definecolor{gold}{RGB}{201, 160, 99}%高贵金
+%引用
+\usepackage[colorlinks]{hyperref}
+%设置页眉页脚
+
+%章节设置
+\ctexset{
+    chapter={pagestyle=fancy},%使得章节页页眉页脚格式一致
+}
+\geometry{a4paper,top=2.5cm,bottom=2.5cm}
+\setcounter{tocdepth}{1}
+\linespread{1.3}\selectfont
+
+%页眉页脚
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[L]{\href{\uira}{\textcolor{tech}{\bookname}}}
+\fancyhead[R]{\href{\uira}{\textcolor{tech}{笔记整理与汇总}}}
+\fancyfoot[C]{\href{\uirb}{\textcolor{tech}{\thepage}}}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{27pt}
+
+
+\lstset{
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    frame=single,
+    breaklines=true,
+    tabsize=4,
+    showstringspaces=false,
+    escapeinside={@*}{*@}
+}
+
+\begin{document}
+
+\frontmatter
+
+\begin{titlepage}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node at ([shift={(0,1)}]current page.center){
+            \begin{tikzpicture}[scale=0.7]
+            \path[fill=sky] (0:0)--++(90:2)--++(30:6)--++(150:6)--++(210:6)--++(330:6)--++(90:1)--++(150:4)--++(30:4)--++(330:4)--++(210:4)--++(270:3)--++(150:1)--++(210:3)--++(270:1)--++(30:5)--++(330:3)--++(270:1)--++(210:4)--++(150:4)--++(210:1)--++(330:5)--++(30:5)--cycle;
+            \path[fill=cyan!50] (0:0)--++(270:1)--++(210:3)--++(150:1)--++(90:5)--++(150:1)--++(270:6)--++(30:6)--++(90:1)--++(30:4)--++(270:6)--++(210:5)--++(270:1)--++(30:6)--++(90:8)--++(210:6)--cycle;
+            \path[fill=cyan!50] (90:6)--++(90:1)--++(210:4)--++(330:1)--++(30:3)--++(90:1);
+            \path[fill=nuist] (0:0)--++(270:1)--++(330:3)--++(30:1)--++(90:5)--++(30:1)--++(270:6)--++(150:6)--++(90:1)--++(150:4)--++(270:6)--++(330:5)--++(270:1)--++(150:6)--++(90:8)--++(330:6)--cycle;
+            \path[fill=nuist] (90:6)--++(90:1)--++(330:4)--++(210:1)--++(150:3)--++(90:1);
+            \end{tikzpicture}
+        };
+        \node at ([shift={(0,8)}]current page.center){\href{\uirb}{\fontsize{72}{0}\selectfont\fontspec{Times New Roman}[scale=1.0]\heiti\textcolor{gold}{\bookname}}};
+        \node at ([shift={(0,-5)}]current page.center){\Huge\heiti\href{\uira}{\textcolor{nuist}{Tong Zhang}}\quad\href{\uirb}{\textcolor{nuist}{Cls}}};
+        \node[anchor= south] at ([shift={(0,6)}]current page.south){\href{\uirb}{\fontsize{48}{0}\heiti \textcolor{tech}{笔记整理与汇总}}};
+    \end{tikzpicture}
+\end{titlepage}
+
+\chapter*{版权声明}
+
+本《\bookname{} 笔记整理与汇总精编版》一册电子版遵循有限的知识共享许可协议。本书授权包含署名-非商业性使用-相同方式共享（CC BY-NC-SA）。即您被允许在授权范围内对该电子书进行转载、节选、二次创作，但不得用于任何商业目的，且使用时须署原作名，且必须采用与本创作相同的协议（CC BY-NC-SA）进行授权。限于编者水平，本书难免有疏漏错误，敬请读者批评指正。
+
+\begin{tikzpicture}[remember picture, overlay]
+    \node [opacity=1] at ([shift={(-4,4)}]current page.south east){
+        \begin{tikzpicture}[scale=0.5]
+            \foreach \a in {1,0.8,...,0.2} {%
+                \draw (-\a,1) circle [radius=\a];
+                \draw (-2+\a,-1) circle [radius=\a];
+                \draw (2-\a,-1) circle [radius=\a];
+            }
+        \end{tikzpicture}
+    };
+\end{tikzpicture}
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{数据基本类型}
+\section{数字类型}
+\begin{itemize}
+    \item \textcolor{blue}{\texttt{Type()}} 查询对象类型
+    \item \textbf{int} 整形，任意大小的整数
+    \item \textbf{Float} 浮点数，小数。
+    \begin{quote}
+        可写为 \texttt{4.3e-3} 的形式。
+    \end{quote}
+    \item \textbf{Bool} 布尔值，有 \texttt{True} 和 \texttt{False}
+    \item \textbf{Complex} 复数，可以用 \texttt{complex(a,b)} 表示。
+    \begin{quote}
+        使用 \texttt{n.real} 获取实部，\texttt{n.imag} 获取虚部
+    \end{quote}
+    \item \textbf{None} 空值，是一个特殊的值。
+\end{itemize}
+
+\section{运算符}
+\subsection{算术运算符}
+\begin{itemize}
+    \item \textcolor{red}{取模\%} 返回除法的余数
+    \begin{quote}
+        例如 \texttt{a=10; b=21; b\%a=1}
+    \end{quote}
+    \item \textcolor{red}{取整除//} 向下取接近除数的整数
+    \begin{quote}
+        例如 \texttt{9//2=4; -9//2=-5}
+    \end{quote}
+\end{itemize}
+
+\subsection{赋值运算符}
+\begin{itemize}
+    \item \texttt{+=} \texttt{c+=a} 即 \texttt{c=c+a}
+    \item \texttt{-=} \texttt{c-=a} 即 \texttt{c=c-a}
+    \item \texttt{\%=} \texttt{c\%=a} 即 \texttt{c=c\%a}
+\end{itemize}
+
+\subsection{表达式-类型转换}
+\begin{itemize}
+    \item \texttt{Int()} 整形，舍弃小数部分
+    \item \texttt{Float()} 浮点
+    \item \texttt{Complex()} 复数
+    \item \texttt{Hex()} 十六进制，或者输入 \texttt{0O}
+    \item \texttt{Oct()} 八进制，或者输入 \texttt{0X}
+    \item \texttt{Bin()} 二进制，或者输入 \texttt{0b}
+    \item \textcolor{red}{\texttt{Chr()}} 转换成整数对应的ASCII字符
+    \item \textcolor{red}{\texttt{Ord()}} 转换成ASCII对应的整数
+\end{itemize}
+
+\section{常见内置函数}
+\begin{itemize}
+    \item \textcolor{red}{\texttt{eval()}} 自动类型转换
+    \item \texttt{Abs()} 绝对值
+    \item \texttt{Max(a,b,c)} 最大值
+    \item \texttt{Min(a,b,c,d)} 最小值
+    \item \texttt{Pow(x,y)} \texttt{x**y} 运算
+    \item \textcolor{red}{\texttt{Round(x, n)}} 返回浮点数x的四舍五入值，如给出 $n$ 的值，代表舍入到小数点后的位数。
+    \item \textcolor{red}{\texttt{Divmod(x,y)}} 商余，同时输出商和余数，输出形式为 \texttt{(3,1)}
+    \begin{quote}
+        例如 \texttt{divmod(10,3)} $\rightarrow$ \texttt{(3,1)}
+    \end{quote}
+    \item \texttt{len(s)} 返回对象长度或项目个数
+    \item \texttt{str()} 任意类型x对应的字符串形式
+\end{itemize}
+
+\chapter{字符串与列表}
+\section{字符串}
+\begin{itemize}
+    \item \textcolor{red}{字符串的索引} \texttt{s="abcdefg"} 使用 \texttt{s[1]} 输出 \texttt{b}
+    \item \textcolor{red}{多行字符串} 起止是3个单引号 \texttt{'''abcdef'''}
+    \item \textcolor{red}{字符串运算符 切片运算符}
+    \begin{itemize}
+        \item \texttt{s[0:5]} 得到包含 \texttt{s[0]} 到 \texttt{s[4]} 的全部内容
+        \item \texttt{[:N]} 从头开始
+        \item \texttt{[:3]} 到第二个为止
+        \item \texttt{[:]} 整个字符串
+        \item \texttt{[M:N:K]} 根据\textbf{步长}对字符串切片
+        \item \texttt{[1:8:2]} 一隔一取字符
+        \item \texttt{[::-1]} \textbf{反向}（-1表示倒着取）
+        \item \texttt{[0:-1]} 从0到最后一个前一个
+    \end{itemize}
+\end{itemize}
+
+\section{字符串基本操作}
+\subsection{基本函数}
+\begin{itemize}
+    \item \texttt{len(s)} 返回对象长度或项目个数（字符，列表，元组）
+    \item \texttt{str(x)} 任意类型x对应的字符串形式，转换为字符串
+    \item \texttt{oct(x)} 以八进制小写形式输出
+    \item \texttt{hex(x)} 输出为十六进制
+    \item \texttt{chr(u)} u为\textbf{整数}，返回对应字符的Unicode编码
+    \item \texttt{ord(x)} 输入\textbf{字符x}，返回其对应的Unicode编码
+\end{itemize}
+
+\subsection{大小写转换}
+\begin{itemize}
+    \item \textcolor{red}{\texttt{upper()}} 转换为\textbf{大写}
+    \item \textcolor{red}{\texttt{lower()}} 转换为\textbf{小写}
+    \item \texttt{swapcase()} \textbf{翻转}大小写
+    \item \texttt{capitalize()} 把字符串的\textbf{第一个字符}大写
+    \item \texttt{isupper()} 若\textbf{都是大写}，则返回 \texttt{True}
+    \item \texttt{islower()} 若都是小写，则返回 \texttt{True}
+    \item \texttt{title()} 所有单词\textbf{以大写开始}，其余字母均为小写
+    \item \texttt{istitle()} 若x标题化，返回 \texttt{True}，否则返 \texttt{False}
+\end{itemize}
+
+\subsection{字符类型判断}
+\begin{itemize}
+    \item \texttt{isalpha()} \textbf{只包含字母}，且非空，返回 \texttt{True}
+    \item \texttt{isalnum()} \textbf{只含字母和数字}，且非空，返回 \texttt{True}
+    \item \texttt{isdigit()} \textbf{只包含数字}字符，且非空，返回 \texttt{True}
+    \item \texttt{isspace()} \textbf{只包含空格、制表符和换行}，且非空
+\end{itemize}
+
+\subsection{字符串基本方法}
+\begin{itemize}
+    \item \textcolor{red}{\texttt{str.split(X)}} 返回\textbf{按照X对str进行切割}列表
+    \begin{quote}
+        \texttt{"A,B,C".split(",")} $\rightarrow$ \texttt{['A','B','C']}
+    \end{quote}
+    \item \textcolor{red}{\texttt{str.splitlines()}} 按照\textbf{换行符}来切分字符串
+    \item \textcolor{red}{\texttt{str.count(X)}} 输出字串X在str中\textbf{出现的次数}
+    \item \textcolor{red}{\texttt{str.replace(老,新)}} \textbf{所有old字串被替换为new}，替换每一个。此处被视为字串对待
+    \begin{quote}
+        \texttt{"aa bb cc dd".replace(" ",",")}\\
+        \texttt{"aa,bb,cc,dd"}
+    \end{quote}
+    \item \textcolor{red}{\texttt{str.strip(chars)}} 从字符串\textbf{左右两边同时去掉}chars列出的字符。当检测到不在chars中的字符时即停，忽略中间的chars。此处为chars含有的每一个字符。
+    \begin{quote}
+        \texttt{"aabbccddaabbccdd".strip("adc")}\\
+        \texttt{'bbccddaabb'}
+    \end{quote}
+    \item \texttt{str.lstrip()} 从左侧去掉列出的字符
+    \item \texttt{str.rstrip()} 从右侧去掉列出的字符
+    \item \textcolor{red}{\texttt{str.join(iter)}} 将iter变量除最后一个元素外\textbf{每个元素后增加一个str}
+    \begin{quote}
+        \texttt{",".join("12345")} \texttt{'1,2,3,4,5'}
+    \end{quote}
+\end{itemize}
+
+\subsection{字符串查找}
+\begin{itemize}
+    \item \textcolor{red}{\texttt{string.find(str,beg=0,end=len(string))}}\\
+    检查str是否包含在\textbf{string}中，如果\textbf{beg}和\textbf{end}指定范围，则检查是否包含在指定范围内，如果是则返回开始的索引值，否则返回-1
+    \item \texttt{string.rfind(str)} 从右往左找
+\end{itemize}
+
+\section{列表及其基本操作}
+\textbf{使用方括号} \texttt{列表名=[1,2,3......]} 其中甚至可以放任何支持迭代的容器或对象，例如：
+\begin{quote}
+    \texttt{week1=['a','b'] week2=[x for x in week1]}
+\end{quote}
+
+\subsection{添加元素}
+\begin{itemize}
+    \item \textcolor{red}{\texttt{append(元素)}} \textbf{追加} 将一个新的元素添加到列表的尾部，\textbf{直接修改，没有返回值}
+    \item \textcolor{red}{\texttt{insert(位置,元素)}} \textbf{插入} 用法：\texttt{insert(0,"a")}在0位置添加一个元素，其余后移一位
+    \item \textcolor{red}{\texttt{extend()}} \textbf{扩展} 列表，相当于连接符+\\
+    例如 \texttt{week1=[a]; week2=[b];}\\
+    \texttt{week1.extend(week2)} 则修改 \texttt{week1}
+\end{itemize}
+
+\subsection{删除元素}
+\begin{itemize}
+    \item \textcolor{red}{\texttt{Remove()}} \textbf{移除} 其根据一个\textbf{元素的内容}进行删除。若元素不在列表里，则会异常报错。
+    \begin{quote}
+        为避免错误可提前进行判断，如\\
+        \texttt{if(item in week): week.remove(item)}\\
+        \texttt{week.remove('星期六')} 删除星期六\\
+        \textbf{从左往右删除，仅删除第一个}
+    \end{quote}
+    \item \textcolor{red}{\texttt{Pop()}} \textbf{弹出} 根据\textbf{下标}删除单个或多个函数。
+    \begin{quote}
+        pop方法有返回值，会返回被删除的数据，\textbf{同时更改原始数据}（这是两个操作）\\
+        例如 \texttt{item=week.pop(2)} 其删除元素后，能够返回被删除的元素\\
+        括号里可不带值，删除最后一个元素
+    \end{quote}
+\end{itemize}
+
+\subsection{列表查询}
+\begin{itemize}
+    \item \texttt{count.(x)} 统计x出现次数
+    \item \texttt{index.(x,a,b)} 返回从开始位a开始到结束位b结束的x的具体位置。有异常错误，需确保存在性
+\end{itemize}
+
+\subsection{列表复制}
+\begin{itemize}
+    \item \textbf{错误示例} \texttt{week1=[] week2=week1}
+    \begin{quote}
+        若运行上述语句，若修改week1，则week2\textbf{同步变化}。数据在内存中仅有一份
+    \end{quote}
+    \item \textbf{切片法} \texttt{week2=week1[:]} 实现部分数据复制
+    \item \textcolor{red}{\texttt{a.copy()}} 方便的复制方法。\texttt{week2=week1.copy()}
+    \begin{quote}
+        返回\textbf{浅拷贝}：\texttt{[a,[ ],c]} 这类列表无法通过 \texttt{[:]}、\texttt{copy} 进行复制，减少内存占用
+    \end{quote}
+    \item \textbf{深拷贝}：需要调用包：\texttt{deepcopy}
+\end{itemize}
+
+\subsection{列表排序}
+\begin{itemize}
+    \item \textcolor{red}{\texttt{sort()}} \textbf{方法} 例如 \texttt{list1.sort()} 可直接使用。内存地址不变，其\textbf{修改原始列表，不返回排序结果}。
+    \begin{quote}
+        所以不要写成 \texttt{print(list.sort())}。排序默认\textbf{升序}，使用 \texttt{sort(reverse=True)} 降序排序，或使用 \texttt{[::-1]}
+    \end{quote}
+    \item \textcolor{red}{\texttt{sorted()}} \textbf{函数} 其不改变原有列表，\textbf{返回新的排序后的列表}\\
+    例如 \texttt{list2=sorted(list1)}
+    \item \texttt{reverse()} \textbf{逆序} 不排序，和 \texttt{[::-1]} 效果一致
+    \begin{quote}
+        数据量大的时候不要用，直接调用 \texttt{reverse}
+    \end{quote}
+    \item \textbf{索引方法} 形如 \texttt{lst[1][0][2]} 同样需要注意越界问题
+\end{itemize}
+
+\chapter{程序的控制结构}
+\section{分支结构}
+\subsection{双分支结构}
+\begin{itemize}
+    \item \textbf{紧凑格式} \texttt{<表达式1>if<条件>else<表达式2>}\\
+    \texttt{print('猜\{\}了'.format('对'if a==9 else '错'))}
+\end{itemize}
+
+\subsection{条件组合}
+\begin{itemize}
+    \item \textbf{优化原则} 
+    \begin{enumerate}
+        \item \textbf{与或非运算}时系统会有优化，如果and前已经算出False了，那么结果就是False，后面的表达式计算机不会进行计算。
+        \item 如果or前已经算出True，那么结果就是True，后面的表达式不计算
+    \end{enumerate}
+    \item \textbf{注意}
+    \begin{enumerate}
+        \item 0，None为假，\textbf{空对象为假}
+        \begin{quote}
+            空对象包括 \texttt{""}, \texttt{()}, \texttt{[]}, \texttt{\{\}}
+        \end{quote}
+        \item \textbf{浮点数相减判断}两者差值小于一个足够小的数 \texttt{if abs(a-b)<=1e-8:}
+        \item 使用 \texttt{pass} 可以跳过当前分支
+    \end{enumerate}
+\end{itemize}
+
+\section{异常处理}
+\textbf{高级使用方式}
+\begin{lstlisting}[language=Python]
+try:
+    <1> 正常执行的内容
+except <异常类型>:
+    <2>
+else:
+    <3> 没有异常时执行
+finally:
+    <4> 这一部分一定会被执行
+\end{lstlisting}
+常用于文件读写，并发任务时的资源访问等场景。\\
+例如，完成读写文件后，要求关闭该文件。\\
+若无错误，则执行1→3→4，若报错，则执行1→2→4
+
+\section{循环结构}
+\begin{itemize}
+    \item \textbf{遍历循环} \texttt{For <循环变量> in <遍历结构>:}\\
+    \texttt{<语句块>}
+    \begin{quote}
+        从结构里面按顺序取一个值赋给循环变量，语句的循环次数是固定的。
+    \end{quote}
+    \item \textbf{计数循环 循环特定次}\\
+    \texttt{for i in range(N):}\\
+    \texttt{<语句块>}
+    \begin{quote}
+        \textbf{共循环N次，i第一次为0，最后为N-1}
+    \end{quote}
+    \item \texttt{range(M,N,K)} 从M到N-1，步长为K
+    \item \texttt{range(M)} 从0到M-1，一共M个数
+    \item \texttt{range(M,N)} 从M到N-1
+    \item \textbf{无限循环} \texttt{while <条件>: <语句块>}\\
+    反复执行语句块，直到条件不满足
+    \item \textbf{循环控制保留字}
+    \begin{itemize}
+        \item \texttt{break} 跳出并结束这个循环
+        \item \texttt{continue} 结束当前循环，继续执行后续次数循环
+    \end{itemize}
+    \item \textbf{双重循环}
+    \begin{lstlisting}[language=Python]
+s="PYTHON"
+while s!='':
+    for c in s:
+        print(c,end='')
+    s=s[:-1]   #每次丢掉最后一个符号
+    \end{lstlisting}
+    得到 \texttt{PYTHONPYTHOPYTHPYTPYP}
+\end{itemize}
+
+\chapter{元组 集合 字典}
+\section{元组 tuple ( )}
+\textbf{特点} 视作为只能读取数据，\textbf{不能修改数据的列表}
+\begin{quote}
+    元组在处理大批量数据时，内存占用相比列表要小，且查找速度更快。\\
+    元组的括号可以省略 例如 \texttt{tup="1",2,True}\\
+    \texttt{x1,x2,x3=tup} 自动分配tup中的内容给x1,x2,x3，但需要注意数量左右一一对应
+\end{quote}
+\begin{itemize}
+    \item \textbf{空元组} \texttt{tup=()}
+    \begin{quote}
+        值得注意的是，若元组中仅有一个元素，需要在这个元素后\textbf{增加一个逗号}\\
+        例如 \texttt{tup1=(50)} 和 \texttt{tup2=(50,)} 其类型不同
+    \end{quote}
+    \item \textbf{访问元组} 按照下标或切片操作
+    \item \textbf{修改元组} \textbf{元组只读}。无法通过下标赋值，没有replace等方法。\\
+    但其可以连接，例如 \texttt{tup1+ tup2} 得到一个新的元组；\texttt{tup1*3} 得到新的元组
+    \item \textbf{删除元组} 无法实现删除某个元素，可以用 \texttt{del} 删除整个元组
+    \item \textbf{相关函数} \texttt{len()} \texttt{max()} \texttt{min()}
+    \item \texttt{tuple()} 将某个东西强行转换为元组
+    \item \textbf{封装和解封} 自动加圆括号，自动去圆括号。\\
+    \texttt{tup="1",2,True}
+\end{itemize}
+
+\section{集合 set( )}
+\subsection{基本内容}
+\begin{itemize}
+    \item \textbf{创建集合} \textbf{仅使用 \texttt{set()}}\\
+    \texttt{num=set(["a","b","c"])}\\
+    \texttt{num=set("123456")}\\
+    \texttt{>>> \{'1','4','6','2','3','5'\}}
+    \item \textbf{特征} 
+    \begin{enumerate}
+        \item 自动去除所有的重复元素，每个集合\textbf{元素唯一}。因此可以\textbf{用其去除重复值}\\
+        \texttt{lst=list(set(lst))} 注意，顺序可能改变
+        \item 集合内的元素是\textbf{无序}的，集合中元素的顺序可能与输入的顺序不同。因此\underline{不应该}使用下标索引集合。
+        \item 集合中可以包含类型不同的元素
+        \item \textbf{非空集合的判断}使用len，长度为零
+    \end{enumerate}
+    \item \textbf{运算符} 设 \texttt{a=set("abcd") b=set("bcd")}
+    \begin{itemize}
+        \item \texttt{a-b} 差：a去掉ab的交集
+        \item \textcolor{red}{\texttt{a|b}} 交集
+        \item \textcolor{red}{\texttt{a\&b}} 并集
+        \item \texttt{a \textasciicircum b} \textbf{对称差集} 并集-交集(\textbf{不同时包含}的元素)
+        \item \texttt{in / not in} 元素包含判断
+        \item \texttt{==} 判断两个集合是否全等
+        \item \texttt{!=} 判断两个集合不等
+        \item \texttt{> <} 检查包含关系（父级判断函数），此处为真子集
+        \item \texttt{>=} 子集
+    \end{itemize}
+\end{itemize}
+
+\subsection{基本函数}
+\begin{itemize}
+    \item \texttt{len min max sum} 等
+    \item \textcolor{red}{\texttt{n.add(x)}} \textbf{添加函数},向集合n中添加x。若元素已存在，则不进行操作。
+    \item \textcolor{red}{\texttt{n.update(x)}} 添加元素，参数可以是列表、元组、字典、集合等组合数学类型\\
+    其不能直接添加单个值
+    \item \textcolor{red}{\texttt{n.discard(x)}} \textbf{移除元素}，其不会报错。\textbf{其没有返回值}
+    \item \textcolor{red}{\texttt{n.pop()}} 随机地删除一个集合元素。
+    \begin{quote}
+        （实质上是删除第一个元素）
+    \end{quote}
+    \item \texttt{n.clear()} 清除集合中全部元素
+\end{itemize}
+
+\section{字典 \{ \}}
+字典由一系列\textbf{键-值}组成，每个键与一个值相关联，使用键来访问与之相关联的值。关联值可以是数字、字符串、列表甚至字典。\\
+不要使用 \texttt{dict} 作为变量名。
+
+\subsection{字典创建}
+\textbf{方法 字典名}=\{\textbf{键1:值1}, \textbf{键2:值2},............\}
+\begin{quote}
+    \texttt{fruit\_num=\{"apple":1,"orange":2,"banan":3\}}
+\end{quote}
+\textbf{注意} 
+\begin{enumerate}
+    \item 同一字典中，键和值的类型\textbf{均可以不同}。
+    \begin{quote}
+        \texttt{any\_type=\{"a":[1,2,3],2:8,True:\{"hello"\}\}}
+    \end{quote}
+    \item 键和值均可以重复，但键重复，则仅最后一个有效。关键字必须唯一，且可哈希，可散列（例如列表）
+    \item \textbf{键必须不可变}。如 \texttt{["abc"]:2}、\texttt{\{1:2\}:5}、\texttt{(2,\{\}):6} 均错误，其包含有列表、字典等可变类型
+\end{enumerate}
+
+\subsection{元素读取}
+\begin{itemize}
+    \item \textbf{方法1 值=字典名[key]}
+    \begin{quote}
+        使用 \texttt{fruit\_num["apple"]} 获取值1
+    \end{quote}
+    若键不存在，\textbf{则报错}。
+    \item \textbf{方法2} \textcolor{red}{\texttt{值=字典名.get(key,default)}}
+    \begin{quote}
+        \textbf{default}为\textbf{key}不存在时返回的默认值\\
+        例如 \texttt{fruit\_num.get("pear",-1) >>> -1}
+    \end{quote}
+\end{itemize}
+
+\subsection{元素新增修改}
+\begin{itemize}
+    \item \textbf{方法1} \textcolor{red}{\texttt{字典名[key]=新值}}
+    \begin{quote}
+        若\textbf{key}不存在，则直接添加新纪录。\\
+        \textbf{等同于新增记录}。例如 \texttt{fruit\_num["pear"]=4}
+    \end{quote}
+    \item \textbf{方法2} \texttt{x1.update(x2)} 合并字典，如果关键字重复，则更新为x2中的新数据
+\end{itemize}
+
+\subsection{元素删除}
+\begin{itemize}
+    \item \textcolor{red}{\texttt{字典名.pop(key)}} 根据关键字删除，同时删除键值。其\textbf{返回}被删除的键的对应值。
+    \item \texttt{x.popitem()} 无需给\textbf{key}，删除固定的最后一个。不确定被删元素，慎用。
+\end{itemize}
+
+\subsection{列表遍历}
+\begin{itemize}
+    \item \textcolor{red}{\texttt{n.items()}} 所有的元素，\textbf{同时给出键值}。可以被转换为列表类型
+    \begin{quote}
+        \texttt{dict\_items([('chinese', 80), ('python', 100), ('math', 59)])}
+    \end{quote}
+    \item \textcolor{red}{\texttt{n.keys()}} 所有的\textbf{关键字}，仅给出\textbf{keys}\\
+    \texttt{dict\_keys(['chinese', 'python', 'math'])}
+    \item \textcolor{red}{\texttt{n.values()}} 所有的\textbf{数值}，仅给出\textbf{values}
+    \begin{quote}
+        \texttt{dict\_values([80, 100, 59])}
+    \end{quote}
+    \item \textcolor{red}{\texttt{for key,item in n.items():}} 用于遍历字典\textbf{n}里面的\textbf{key}和\textbf{item}
+\end{itemize}
+
+\subsection{字典拷贝}
+\begin{itemize}
+    \item \texttt{copy()} 浅拷贝，例如 \texttt{b=a.copy()}\\
+    如果字典里面的值带有列表，会存在问题
+    \item \texttt{a=b} 直接赋值，即浅拷贝，引用对象（\textbf{同步修改}）
+\end{itemize}
+
+\subsection{字典的特性}
+\begin{enumerate}
+    \item 列表动态数组，可变重设长度。元组静态数组不可变
+    \item 元组缓存于Python运行环境，每次使用无需访问内核分配内存
+    \item 字典的查找和插入\textbf{速度极快}，不会随着\textbf{key}的增加而变慢，但内存占用很大；列表查找插入时间随着元素的增加而增加，但占用空间小，内存少
+    \item 字典的\textbf{key}是不可变对象。
+\end{enumerate}
+
+\subsection{列表装配拆分}
+假设有两个列表：
+\begin{lstlisting}
+>>> name=['zhang','zhao','wang']
+>>> grades=[70,80,45]
+\end{lstlisting}
+装配起来使用\textbf{zip函数}：
+\begin{lstlisting}
+>>> list(zip(name,grades))
+[('zhang', 70), ('zhao', 80), ('wang', 45)]
+\end{lstlisting}
+假设拿到一个组合的列表：
+\begin{lstlisting}
+new=[('zhang', 70), ('zhao', 80), ('wang', 45)]
+\end{lstlisting}
+仍然使用\textbf{zip}拆除，\textcolor{red}{变量名前加*}：
+\begin{lstlisting}
+>>> list(zip(*new))
+[('zhang', 'zhao', 'wang'), (70, 80, 45)]
+>>> a,b=zip(*new) 同时使用两个变量接收返回值
+>>> a→  ('zhang', 'zhao', 'wang')
+>>> b→  (70, 80, 45)
+\end{lstlisting}
+注：zip只能使用一次，用完即释放原有内存。\\
+\textbf{枚举} 自动给元素序号，并以元组形式返回，当我们用下标时，可以以此查询：
+\begin{lstlisting}
+>>> for i,v in enumerate(a):    print(i,v)
+>>> 0 zhang    1 zhao     2 wang
+\end{lstlisting}
+
+\chapter{函数}
+\section{函数 Function}
+\textbf{定义} 函数是一段功能模块，将常用的功能编写成函数利于代码复用。\\
+\textbf{程序设计思想：}
+\begin{enumerate}
+    \item 自顶向下逐步求精，顶层设计善于抽象（先不考虑细节，考虑总体功能分区实现），再进一步拆分，分而治之。
+    \item 模块化，结构化→函数；面向对象→类（变量+函数）
+\end{enumerate}
+
+\subsection{定义函数}
+\begin{lstlisting}[language=Python]
+def 函数名([传入参数变量列表]):  # []表示可选项
+    函数体
+    [return [返回值表达式]]
+\end{lstlisting}
+同时表示函数结束，若return无返回值，则返回空。\\
+\textbf{实参} 调用时给的\textbf{实际参数}\\
+\textbf{形参} 指的是定义时写的\textbf{形式参数}\\
+\textbf{函数调用 函数名(参数)}
+\begin{quote}
+    函数的定义必须出现在函数调用之前
+\end{quote}
+
+\subsection{函数参数}
+\begin{enumerate}
+    \item \textbf{位置参数}\\
+    \textbf{规则} 调用时与声明时一致，位置不能变更。形参和实参个数必须完全一致（不可省略），形参实参类型必须完全一致，否则均会报错\\
+    \textbf{示例} \texttt{def sum(begin,end,model):}\\
+    \texttt{sum(1,10,0)}
+    \item \textbf{关键字参数}\\
+    \textbf{规则} 使用关键字参数传参，以 \texttt{name=value} 形式传递\\
+    \textbf{示例} \texttt{def sum(begin,end,model):}\\
+    \texttt{sum(begin=1,end=10,model=0)}\\
+    \textbf{注意} 可以将关键字与位置参数混用，关键字参数必须在位置参数\textbf{之后}
+    \begin{quote}
+        \texttt{sum(20,end=40,model=0)} 可行\\
+        \texttt{sum(end=40,start=0,20)} 会报错
+    \end{quote}
+    \item \textbf{默认参数}\\
+    \textbf{规则} 编写函数时可以给每个形参提供默认值。\\
+    \textbf{示例} \texttt{def sum(begin,end,model=0):}\\
+    \texttt{sum(1,10)} 可省略最后一个\\
+    \textbf{注意} 形参书写中必须先列出没有默认值的参数
+    \begin{quote}
+        \texttt{def sum(begin=35,end,model=0):}\\
+        \texttt{sum(50)} 直接报错
+    \end{quote}
+    \item \textbf{不定长参数}\\
+    \textbf{规则} 一个函数能够处理比声明时更多的参数，这些参数叫做不定长参数。
+    \begin{lstlisting}[language=Python]
+def 函数名([参数列表, ]*不定长参数,**不定长参数2):
+    \end{lstlisting}
+    \textbf{示例}
+    \begin{lstlisting}[language=Python]
+def print_info(arg1,*arg2):
+    "打印任何传入的参数"
+    print(arg1)
+    for var in arg2:
+        print(var)
+    return
+    \end{lstlisting}
+    调用：\texttt{print\_info(10,20,30)}
+\end{enumerate}
+
+\subsection{函数返回}
+\begin{itemize}
+    \item \textbf{函数的返回值} Python在形式上允许返回多个值
+    \item \textbf{返回一个值} \texttt{return A}
+    \item \textbf{返回空值} \texttt{return} 等价于 \texttt{return None}
+    \item \textbf{返回多个值} \texttt{return A,B}
+    \item \textbf{返回大量数据} 可利用列表、字典、元组等返回数据\\
+    例如： \texttt{result.append(s)}\\
+    \texttt{return result}
+\end{itemize}
+
+\subsection{其他}
+\begin{itemize}
+    \item \textbf{嵌套调用} 在一个函数里面调用其他函数
+    \begin{quote}
+        通常程序定义一个包含程序主要功能的main的函数，使程序更规范易读。
+    \end{quote}
+    \textbf{示例}
+    \begin{lstlisting}[language=Python]
+def sum(begin,end,model):
+    sum=0
+    for i in range(begin,end):
+        if i%2==model:
+            sum=sum+i
+    return sum
+
+def main():    
+    s=sum(1,10,0)
+    print(s)
+
+main()  # 函数调用语句
+    \end{lstlisting}
+    \item \textbf{调用栈} 原理：开辟内存栈空间，main在底层，sum1在顶部，后入先出。
+    \item \textbf{递归调用} 自己调用自己
+    \begin{quote}
+        要求：先讨论分支、讨论清晰\textbf{结束递归的边界条件}，再找到需要递归的条件
+    \end{quote}
+    \textbf{示例} 阶乘实现：
+    \begin{lstlisting}[language=Python]
+def fact(n):
+    if n==1 or n==0:  #边界条件
+        return 1
+    return n*fact(n-1)
+    \end{lstlisting}
+\end{itemize}
+
+\section{变量作用域}
+\subsection{作用域类型}
+\begin{itemize}
+    \item \textbf{局部作用域(Local)} 包含在def关键字定义的语句块中，不同函数内部的变量名与函数外的变量名为不同。函数为一个独立的内存空间。\\
+    称为\textbf{局部变量}。
+    \item \textbf{嵌套作用域(Enclosing)} 函数中嵌套函数，上级影响下级
+    \item \textbf{全局作用域(Global)} 作用仅限于单个模块文件内
+    \item \textbf{内置作用域(Built-in)} 系统内固定模块里定义的变量，如math里的pai
+    \item \textbf{原则} 局部变量不能扩散到全局
+    \begin{quote}
+        全局变量能够渗透到全部
+    \end{quote}
+    \item \textbf{示例}
+    \begin{lstlisting}[language=Python]
+var=100  #全局作用域,覆盖全部范围
+def fun1():
+    var=200 #外部嵌套函数作用域
+    print("var in fun1:",var)
+    def fun2():  #嵌套定义
+        var=300  #局部作用域
+        # 只要在函数内赋值，就是局部
+        print("var in fun2:",var)
+        print("max in fun2",max)  
+        # max在内建函数作用域中，只读不能改变
+    fun2()
+fun1()
+print("var in global",var)
+    \end{lstlisting}
+    输出：
+    \begin{lstlisting}
+>>> var in fun1: 200
+>>> var in fun2: 300
+>>> max in fun2 <built-in function max>
+>>> var in global 100
+    \end{lstlisting}
+\end{itemize}
+
+\subsection{作用域优先级}
+\textbf{局部作用域 > 嵌套作用域 > 全局作用域 > 内置作用域}\\
+\textbf{LEBG}\\
+\textbf{错误案例}
+\begin{lstlisting}[language=Python]
+var=100
+def fun():
+    print(var)
+    var=200  # 在此赋值导致变量类型无法确认
+fun()
+\end{lstlisting}
+\textbf{global语句} 如果想要在函数内对全局变量赋值，需要使用\textbf{global}语句，例如：
+\begin{lstlisting}[language=Python]
+var=100
+def fun():
+    global var
+    print(var)
+    var=200
+fun()
+\end{lstlisting}
+在软件工程角度，不推荐直接修改全局变量。可以使用如下方法：
+\begin{lstlisting}[language=Python]
+var=100
+def fun(var):
+    print(var)
+    var=200  # 这里的修改不会改动外界的var
+fun()
+\end{lstlisting}
+
+\chapter{文件和数据库}
+\section{文件概述}
+\begin{itemize}
+    \item \textbf{文件路径} 关键属性：路径、文件名
+    \item \textbf{根文件夹} Windows中为 \texttt{D:\textbackslash\textbackslash}；Linux中为 \texttt{/} 新加卷在 \texttt{/mnt} 文件夹下
+    \item \textbf{绝对路径} 总是从根文件夹开始
+    \item \textbf{相对路径} 指文件相对于当前工作目录所在的位置
+    \item \textbf{示例} 工作目录为 \texttt{"C:\textbackslash Windows\textbackslash System32"}
+    \begin{quote}
+        若 \texttt{demo.txt} 位于这个System32文件夹下，则可表示为 \texttt{".\textbackslash demo.txt"}
+    \end{quote}
+    \item \textbf{使用} \texttt{.\textbackslash} 表示当前目录；\texttt{..\textbackslash} 表示所在目录的父级目录
+    \item \textbf{字符编码} 汉字一般使用GBK，\textbf{UTF-8}（世界通用）
+\end{itemize}
+
+\section{文件操作}
+\subsection{文件的打开}
+\begin{lstlisting}[language=Python]
+file = open(file_name,mode="r",buffering=-1,encoding=None)
+\end{lstlisting}
+\begin{itemize}
+    \item \textbf{mode} \textcolor{red}{r只读（默认）} \textbf{w覆盖} \textcolor{red}{a写入追加} \textbf{b}以二进制格式操作\\
+    \texttt{r+} 从开头写入新的数据，会覆盖原有内容\\
+    \texttt{rb} 以二进制只读格式打开文件\\
+    \texttt{rb+} 通常针对非文本文件\\
+    \texttt{w} 打开时即清空文件中原有内容\\
+    \texttt{w+} 对该文件拥有读写权限
+    \item \textbf{buffering} 表示是否使用缓冲区
+    \item \textbf{注意} 该函数仅获得文件句柄，即文件处理权限没有进行读数据的操作，未复制到内存
+    \item \textbf{示例} 例如 \texttt{file=open("./a.txt") print(file)}\\
+    输出相关文件信息：\\
+    \texttt{<\_io.TextIOWrapper name='a.txt' mode='r' encoding='cp936'>}
+\end{itemize}
+
+\subsection{文件对象的属性}
+\begin{itemize}
+    \item \texttt{file.name} 返回文件名称
+    \item \texttt{file.mode} 返回文件打开的模式
+    \item \texttt{file.encoding} 返回文件使用的编码格式
+    \item \texttt{file.closed} 判断文件是否已关闭
+\end{itemize}
+
+\subsection{文件的关闭}
+\begin{itemize}
+    \item \texttt{file.close()} 使用open()打开的文件对象，\textbf{必须手动进行关闭}
+    \item \textbf{注意} 在向文本格式打开的文件中写入数据时，只有使用close()函数关闭文件时，才会将缓冲区中的数据真正写入文件中。写数据时，会先临时存储到缓冲区。
+    \begin{quote}
+        可以使用 \textcolor{red}{\texttt{file.flush()}} 方法可强制存盘
+    \end{quote}
+    \item \texttt{with open() as f:} 使用此法可在with as语句执行完毕后自动关闭已打开的文件
+\end{itemize}
+
+\subsection{读文件}
+\begin{itemize}
+    \item \texttt{read()} \textbf{逐个字节}或字符读取文件内容。
+    \begin{quote}
+        将文件的全部内容读出\\
+        可使用size参数设置每次读取的最大字节\\
+        \texttt{f.read(6)} 读取前6个字符
+    \end{quote}
+    \item \texttt{readline()} \textbf{逐行读取}文件中内容。以 \texttt{\textbackslash n} 作为读取一行的标志，会包含最后的换行符 \texttt{\textbackslash n}，再加上print输出内容时默认会换行
+    \begin{quote}
+        \texttt{f.readline([size])} 其中size指读取每一行时，一次最多读取的字符数
+    \end{quote}
+    \item \texttt{readlines()} 一次性\textbf{读取多行内容}，返回一个字符串列表，每个元素为每行内容(包含结尾换行符)
+    \begin{quote}
+        不可读取全部文件，最后会报错。\\
+        可用于读完一行打印一行：
+    \end{quote}
+    \item 读取特定行数的函数：
+    \begin{lstlisting}[language=Python]
+def realine(filename,lines,encode="utf-8"):
+    with open(filename,encoding=encode) as file:
+        count=0
+        for line in file:
+            newline=line.strip()
+            if len(newline)==0 or newline[0]=="#":
+                continue
+            print(newline)
+            count+=1
+            if count>=lines:
+                break
+realine("a.txt",5)
+    \end{lstlisting}
+    \item \textbf{收集操作系统的系统配置信息} psutil模块
+\end{itemize}
+
+\subsection{写文件}
+\begin{itemize}
+    \item \texttt{write()} 格式：\textbf{file.write(string)}
+    \begin{quote}
+        必须保证文件打开模式支持写入。写入数据时不会换行，需要手动输入换行符。\\
+        例如：\texttt{f=open('a.txt','a')}\\
+        \texttt{f.write('\textbackslash n新数据')} \texttt{f.close()}
+    \end{quote}
+    \item \texttt{writelines()} 将\textbf{字符串列表}写入到文件中
+    \begin{quote}
+        可以自动换行\\
+        可轻松地将A文件的数据复制到B文件中：
+        \begin{lstlisting}[language=Python]
+f=open('A.txt','r')
+n=open('B.txt','w+')
+n.writelines(f.readlines())
+f.close()       
+n.close()
+f.writelines(["123","456"])
+        \end{lstlisting}
+    \end{quote}
+\end{itemize}
+
+\subsection{文件指针 pointer}
+\begin{itemize}
+    \item \textbf{概念} 用于标明文件读写的起始位置。可实现读取文件中指定位置的数据。
+    \item \texttt{tell()} 判断当前文件指针所在的位置。
+    \begin{quote}
+        若全为字节，则按照字节；若中英文混合，则按照字符来。\\
+        格式：\textbf{file.tell()} 初始为0\\
+        例如：读取三个字节 \texttt{f.read(3)} 此时若继续 \texttt{f.read()} 则输出未被读过的所有数据
+    \end{quote}
+    \item \texttt{seek()} 移动文件指针到指定位置\\
+    格式：\textbf{file.seek(offset[,whence])}\\
+    \textbf{whence} 可选，指定文件指针要放置的位置
+    \begin{quote}
+        \textbf{0文件头（默认）}，1当前位置，2文件尾
+    \end{quote}
+    \textbf{offset} 表示相对于whence位置的偏移量（字节数），正为向后，负为向前\\
+    \texttt{seek(3,0)} 移动到距开头处3个字节的位置\\
+    \texttt{seek(5,1)} 移动到距当前位置5字节后
+    \begin{quote}
+        当offset非0时，要求文件\textbf{必须以二进制格式打开}，否则报错。即使用 \texttt{'rb'}、\texttt{'ab'}、\texttt{'wb'}
+    \end{quote}
+    \item \textbf{示例程序}：输出最后5行数据
+    \begin{lstlisting}[language=Python]
+with open("D:/Temp/test.txt",mode="rb") as f:
+    f.seek(-150,2)  # 设置一个大的数字
+    for row in f.readlines()[-5:]:  # 切片最后五行
+        print(row.strip().decode("utf-8"))   
+        # 去掉空格换行等后把编码改变
+    \end{lstlisting}
+\end{itemize}
+
+\subsection{文件系统相关命令}
+\begin{itemize}
+    \item \textbf{路径拼接} \texttt{os.path.join(path,name)} \texttt{os.sep.join(path,name)}
+    \begin{quote}
+        其可以自动拼接并返回文件路径字符串，并包含正确的路径分隔符\\
+        \texttt{import os}\\
+        \texttt{os.path.join("demo","path.txt")}
+    \end{quote}
+    \item \textbf{os中的一些小方法}
+    \begin{itemize}
+        \item \texttt{os.getcwd()} 获取当前工作路径的字符串
+        \item \texttt{os.chdir("path")} 可改变目录
+        \item \texttt{os.name} 获取os名称
+        \item \texttt{os.system()} 执行shell命令
+        \item \texttt{os.getenv()} 获取环境变量，例如 \texttt{os.getenv("path")}
+        \item \texttt{os.remove()} 移动文件
+        \item \texttt{os.path.getsize(path)} 返回文件大小、若文件不存在报错
+        \item \texttt{os.path.exists(path)} 判断文件是否存在
+        \item \texttt{os.path.isfile(path)} 判断是否为文件
+        \item \texttt{os.path.split()} 路径拆分为路径名和文件名（以元组形式）
+        \item \texttt{os.walk(path)} 遍历文件路径，返回三元组 \texttt{(root,dirs,files)}
+    \end{itemize}
+    \item \textbf{sys模块与提取命令行参数}\\
+    可提供操作系统的属性信息\\
+    \texttt{sys.version} 获取python解释程序的版本信息\\
+    \texttt{sys.platform} 提供操作系统信息
+\end{itemize}
+
+\chapter{面向对象程序设计}
+\textbf{结构化程序设计} \textbf{自顶向下逐步求精}，将各种功能分解出来\\
+把复杂问题逐步分解为易于理解实现的一系列功能模块\textbf{【分治】}，主要由函数实现。\\
+Google：map reduce架构/ Python中有 \texttt{map()} \texttt{reduce()} 函数实现数据并行计算\\
+\textbf{面向对象程序设计}\\
+\textbf{封装：}把方法、属性、事件集中到一个\textbf{统一的类中}，对使用者屏蔽其中细节（有了外壳）\\
+\textbf{继承：}在被继承的类(父类、基类、超类)基础上，进行扩展生成新的类-\textbf{子类}。\\
+\textbf{多态性：}同样的函数对于不同的对象具有不同的实现。\\
+例如+号，对 \texttt{3+4}、\texttt{"3"+"4"} 有不同的实现\\
+\textbf{优势：} 提高代码复用性、使编码灵活可维护、提高可扩展性、提高开发效率
+
+\section{类 Class}
+包含有\textbf{属性}(→变量)\textbf{、方法}(→函数)\\
+\textbf{概念} 描述具有相同属性和方法的\textbf{对象的集合}，因此是抽象的。定义了该集合中每个对象所共有的属性和方法。\\
+例如类：学生，每个学生都有姓名、性别、学号等\\
+\textbf{实例化 instance} 创建一个类的\textbf{具体}实例-\textbf{类对象}。变化的这个动作叫做实例化。变化的结果叫对象，故对象有时也称为实例。一个类可以有众多的实例。\\
+\textbf{方法} 类中定义的函数\\
+\textbf{属性} 类变量，成员变量。\\
+\textbf{定义语法} \texttt{class Name():} 一般括号内为空，若存在object，表示从object中继承而来\\
+\textbf{初始化语法} \texttt{def \_\_init\_\_(self,x,y,z,......):} 也称为x,y,z,为希望传参进入的参量\\
+第一个参数为self，无需传参，表示对象自己\\
+\textbf{析构方法} \texttt{def \_\_del\_\_(self):} 用于销毁对象本身，释放对象所用的内存
+\begin{quote}
+    python有优秀的内存回收机制，一般不需要程序员重新定义或手动调用析构方法。当程序运行结束，python会自动触发 \texttt{\_\_del\_\_()} 方法
+\end{quote}
+\textbf{示例}
+\begin{lstlisting}[language=Python]
+class Myclass:
+    var=1
+
+# 一个关于圆形的类
+class Circle(object):
+    def __init__(self,radius):  # 初始化，一个构造方法__init__，用来构造对象；self就是对象自己
+        self.radius=radius      # 对象属性，仅在类里面使用
+    def area(self):             # 类方法，每个方法的第一个形参都是self
+        return 3.14*(self.radius)**2    # 求圆面积
+
+one_circle=Circle(2)            # 声明类对象，实例化
+print(one_circle.area())
+\end{lstlisting}
+
+\section{对象 Object}
+概述 在开发复杂庞大的程序时，需要有丰富的需求，同时要求开发简便易于维护，即智能化地实现。\\
+\textbf{对象是一个整体，一切皆对象。具备了属性(n.)和功能(v.)的就是对象。}\\
+变量类型、字符串、函数、面向对象也是对象。
+\begin{quote}
+    开发的开始为设计需求，先考虑属性与功能，随后再思考编程实现。此时设计程序不以变量来设计（零碎的）。在计算机中，object实现为class（类）。\\
+    对象和类是一个对应的概念，\underline{类}是\textbf{抽象的}，\underline{对象}是非常\textbf{具体的}。\\
+    \texttt{"a".count("a")} 中的点·即代表调用对象的属性或是功能。如果有( )则为方法，没有括号则为属性。 例如 \texttt{arr.shape} 返回具体的属性值。
+\end{quote}
+\textbf{创建对象} 即类的实例化\\
+\textbf{例：学生对象创建}
+\begin{lstlisting}[language=Python]
+class Student():     # 初始化代码不必要
+    def set_id(self,x):  # 设置属性ID值，self表示对像自己，x是传进来的参数
+        self.id=x    # 表示对象自身的ID，本质上类似变量，就是属性
+    def show_id(self):
+        print(self.id)
+
+stu1=Student()   # 声明了具体的学生对象，对象实例化。即创建类对象
+stu1.set_id(12345)       # 调用类里面的方法
+stu1.show_id()
+
+stu2=Student()
+print(isinstance(stu2,Student))  # 判断stu2是否为Student的实例
+\end{lstlisting}
+
+\section{属性和方法}
+\subsection{类属性和实例属性}
+\begin{itemize}
+    \item \textbf{类属性} 在类的名称下直接写变量，在各个方法之外。可以通过类的名称打点直接访问。\\
+    例如 \texttt{Student.school}
+    \item \textbf{对象属性} 形如 \texttt{self.aaa}，可以在其他方法中直接使用（方法内共享）
+    \begin{lstlisting}[language=Python]
+class Student:
+    school="某大学"     # 类属性
+    def set_id(self,x):  # x就是普通局部变量
+        self.id=x     # 对象属性，可以在其他方法中直接使用（方法内共享）
+        y=0             # 一个方法内的局部变量
+    def show_id():
+        print(self.id)
+
+Student.school()         # 调用类属性
+stu3=Student()  
+stu3.school()           # 可以通过实例访问类的属性
+    \end{lstlisting}
+\end{itemize}
+
+\subsection{类的方法}
+\textbf{对象方法 类对象使用的方法，}方法名的第一个形参是self\\
+调用时由类对象来调用，\textbf{不可通过类名称直接调用(如 \texttt{Student.show\_id()} 报错)}\\
+但可以 \texttt{Student.show\_id(stu5)} （传一个类对象）
+\begin{lstlisting}[language=Python]
+def show_id():               # 对象方法
+    print(self.id)      # 可直接调用 Stu5.show_id() 使用类对象访问
+\end{lstlisting}
+
+\section{封装与访问控制}
+\textbf{封装} 把数据和操作方法的细节隐藏，让调用的人方便调用。
+\begin{quote}
+    把一组有密切联系的数据和操作打包成一个不可分割的整体；对外只提供专门的接口（方法）供使用者访问部分数据和操作
+\end{quote}
+\textbf{访问控制}
+\begin{itemize}
+    \item \textbf{private 私有} 仅可通过方法对对象属性进行赋值，不对外公开【\textbf{命名时在名称左侧加双下划线}】
+    \item \textbf{public 公有} 可直接赋值，完全公开【默认】
+    \item \textbf{proteted 保护} 对外公开一部分【在左侧加一个下划线】，不允许使用import导入，即跨文件使用。
+    \begin{lstlisting}[language=Python]
+def set_id(self,x):  # x就是普通局部变量
+    self.__id=x  # 创建私有对象
+    self._id=x   # 创建保护对象
+    y=0          # 一个方法内的局部变量
+    \end{lstlisting}
+\end{itemize}
+还可以创建公有或私有方法，可使用公有方法调用私有方法。
+
+\section{继承和多态}
+\textbf{继承} 提高代码复用率。以原有的类（基类、父类）为基础，派生出新的类（派生类、子类）
+\begin{quote}
+    1. 子类继承了父类的数据和方法，可以定义新的方法，也允许重新定义一个旧的方法，为其增加新的特性。子类不能直接访问父类中的私有方法和私有属性。\\
+    2. 派生类同样可以作为父类，再派生出新的子类，形成类的层次结构（UML图）。\\
+    3. 如果不写继承，如 \texttt{class pa:}，所有类似的均从\underline{抽象类object}继承，等价于 \texttt{class pa(object):}\\
+    4. 构造方法内声明的变量\textbf{不会被自动继承}。继承方法：\textbf{super().\_\_init\_\_( )} 必须手动\textbf{显式地}调用父类构造方法。等价于 \texttt{Student.\_\_init\_\_(self,......)}
+\end{quote}
+\textbf{单继承} 一个派生类只有一个直接积累\\
+\textbf{多继承} 一个派生类同时有多个基类（最好不要用多继承）\\
+\textbf{语法结构} \texttt{class 子类名(父类名1，父类名2，......)：}\\
+\texttt{def \_\_init\_\_(self,父类参量，新参量):}\\
+\texttt{supper().\_\_init\_\_(父类参量)}\\
+\texttt{\# 类定义部分}\\
+\textbf{覆盖} Override. 属于继承的一种。不改变名字，改变动作。
+\begin{lstlisting}[language=Python]
+class ParentClass:
+    def show_info(self,info):
+        print("A")
+
+class ChildClass(ParentClass):
+    def show_info(self,info):  
+        print("B")
+    def parent_show_info(self,info):    # 调用父类方法
+        ParentClass.show_info(self,info)
+
+obj=ChildClass()
+obj.show_info()
+obj.parent_show_info()
+\end{lstlisting}
+\textbf{多态}：根据外界的环境灵活变化自身功能
+
+\chapter{模块和包}
+\section{模块 modules}
+\textbf{模块} 将代码存储为python文件，都称之为模块。每一个python脚本文件也为模块（a.py）\\
+包含多个函数与类\\
+\textbf{导入模块} \textbf{import}语句
+\begin{quote}
+    \textbf{模块导入仅发生一次，放在文件开头}\\
+    \textbf{方法一} \textbf{import 模块名1 [as 别名1], 模块名2, [as 别名2], ......}\\
+    导入全部成员，消耗内存大，调用成员时需要用模块名作为前缀，否则报错\\
+    例如 \texttt{import math as m}\\
+    \textbf{方法二} \textbf{from 模块名 import 成员名 [as 别名1], ......}\\
+    只会导入模块中的指定成员，调用时无需附加前缀\\
+    \texttt{from math import pi,e,sqrt}\\
+    \texttt{from math import *} 可以导入math中全部成员，无需附加前缀了
+\end{quote}
+\textbf{查看模块} \texttt{dir()} 查看指定模块包含的全部成员
+
+\section{包 package}
+\textbf{包} 将多个功能模块存储在同一文件夹下，作为整体打包处理。文件夹下通常存在\textbf{\_\_init\_\_.py}的初始化文件（文件一般为空），作用为告诉python将此文件夹按包处理。\\
+包名即为文件夹名\\
+包含多个模块\\
+\textbf{导入包} \textbf{from 文件夹名.模块名 import 成员名}\\
+存在限制
+
+\section{常用内置模块}
+\begin{itemize}
+    \item \texttt{math} 提供数学运算相关函数
+    \item \texttt{random} 随机数函数
+    \item \texttt{datetime} 提供日期和事件相关函数
+    \item \texttt{logging} 提供日志相关函数
+    \item \texttt{re} 提供正则表达式相关函数
+    \item \texttt{os} 提供文件操作相关
+    \item \texttt{sys} 操作系统相关信息函数
+    \item \textcolor{red}{\texttt{time}} 提供时间戳，格式化时间
+\end{itemize}
+
+\section{math模块}
+\begin{itemize}
+    \item \textbf{常量} \texttt{pi} \texttt{e}
+    \item \textbf{函数} \texttt{fabs} 返回绝对值
+    \item \texttt{factorial(a)} 阶乘
+    \item \texttt{gcd(a,b)} 最大公约数
+    \item \textbf{幂函数} \texttt{log(a,b)} 以b为底的对数\\
+    \texttt{log2(a)} 以2为底\\
+    \texttt{log1p(a)} 以e为底\\
+    \texttt{log10(a)} 以10为底\\
+    \texttt{sqrt(a)} 平方根\\
+    \texttt{pow(a,b)} a的b次幂
+    \item \textbf{三角} \textcolor{red}{\texttt{degrees(a)}} 返回弧度a对应的角度\\
+    \textcolor{red}{\texttt{radians(a)}} 返回角度a对应弧度
+\end{itemize}
+
+\section{random模块}
+注意：生成的是伪随机数\\
+\textbf{获取一个随机数}
+\begin{itemize}
+    \item \texttt{random()} 返回0-1之间的随机浮点数
+    \item \texttt{randrange(start,stop,step)} 返回start到stop，步长为step的随机整数
+    \item \textcolor{red}{\texttt{randint(a,b)}} 返回a和b之间的随机整数，一次一个\\
+    随机数可以等于起始值，但不会等于终止值。
+\end{itemize}
+\textbf{获取一个随机序列}\\
+更多的像统计中的\textbf{抽样}
+\begin{itemize}
+    \item \texttt{choice(seq)} 返回序列中随即一个数
+    \item \texttt{choices(seq,k)} 随机选择k个序列中的数，得到一个新序列，可以重复（有放回）
+    \item \texttt{sample(seq,k)} 随机选择k个序列中的数，得到一个新序列，不会重复（无放回）
+    \item \texttt{shuffle(seq)} 随机打乱序列中的数
+\end{itemize}
+
+\section{datetime模块}
+采用类似于字典的形式区分，\\
+\textbf{类}
+\begin{itemize}
+    \item \texttt{date} 表示日期
+    \item \texttt{time} 时间
+    \item \texttt{datetime} 日期时间
+    \item \texttt{timedelta} 时间跨度
+    \item \texttt{tzinfo} 表示时区
+\end{itemize}
+\textbf{常量}
+\begin{itemize}
+    \item \texttt{MINYEAR} 最小允许年份，为1
+    \item \texttt{MAXYEAR} 最大，9999
+\end{itemize}
+\textbf{方法}
+\begin{itemize}
+    \item \texttt{data(year,month,day)} 创建一个date对象
+    \item \texttt{today()} 返回今天的date
+    \item \texttt{now()} 返回详细的datetime对象
+    \item \texttt{weekday()} 返回今天是周几
+    \item \texttt{strgtime()} 格式化datetime对象
+\end{itemize}
+\textbf{格式化字符串}
+\begin{itemize}
+    \item \texttt{\%Y} 四位年
+    \item \texttt{\%y} 两位年
+    \item \texttt{\%m} 月
+\end{itemize}
+
+\section{time 模块}
+\textcolor{red}{\texttt{time()}} 提取当前时间戳
+
+\end{document}

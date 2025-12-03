@@ -36,9 +36,9 @@
 \pagestyle{fancy}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 \fancyhf{}
-\fancyhead[L]{\href{https://github.com/ZhangtongCN}{\textcolor{tech}{\bookname}}}
-\fancyhead[R]{\href{https://github.com/ZhangtongCN}{\textcolor{tech}{笔记整理与汇总}}}
-\fancyfoot[C]{\href{https://github.com/Clignniis}{\textcolor{tech}{\thepage}}}
+\fancyhead[L]{\href{\uira}{\textcolor{tech}{\bookname}}}
+\fancyhead[R]{\href{\uira}{\textcolor{tech}{笔记整理与汇总}}}
+\fancyfoot[C]{\href{\uirb}{\textcolor{tech}{\thepage}}}
 \renewcommand{\headrulewidth}{0pt}
 \setlength{\headheight}{27pt}
 
@@ -54,14 +54,14 @@
             \begin{tikzpicture}[scale=0.7]
             \path[fill=sky] (0:0)--++(90:2)--++(30:6)--++(150:6)--++(210:6)--++(330:6)--++(90:1)--++(150:4)--++(30:4)--++(330:4)--++(210:4)--++(270:3)--++(150:1)--++(210:3)--++(270:1)--++(30:5)--++(330:3)--++(270:1)--++(210:4)--++(150:4)--++(210:1)--++(330:5)--++(30:5)--cycle;
             \path[fill=cyan!50] (0:0)--++(270:1)--++(210:3)--++(150:1)--++(90:5)--++(150:1)--++(270:6)--++(30:6)--++(90:1)--++(30:4)--++(270:6)--++(210:5)--++(270:1)--++(30:6)--++(90:8)--++(210:6)--cycle;
-            \path[fill=sky] (90:6)--++(90:1)--++(210:4)--++(330:1)--++(30:3)--++(90:1);
+            \path[fill=cyan!50] (90:6)--++(90:1)--++(210:4)--++(330:1)--++(30:3)--++(90:1);
             \path[fill=nuist] (0:0)--++(270:1)--++(330:3)--++(30:1)--++(90:5)--++(30:1)--++(270:6)--++(150:6)--++(90:1)--++(150:4)--++(270:6)--++(330:5)--++(270:1)--++(150:6)--++(90:8)--++(330:6)--cycle;
             \path[fill=nuist] (90:6)--++(90:1)--++(330:4)--++(210:1)--++(150:3)--++(90:1);
             \end{tikzpicture}
         };
-        \node[gold] at ([shift={(0,8)}]current page.center){\fontsize{72}{0}\heiti \bookname};
+        \node at ([shift={(0,8)}]current page.center){\href{\uirb}{\fontsize{72}{0}\heiti\textcolor{gold}{\bookname}}};
         \node at ([shift={(0,-5)}]current page.center){\Huge\heiti\href{\uira}{\textcolor{nuist}{Tong Zhang}}\quad\href{\uirb}{\textcolor{nuist}{Cls}}};
-        \node[tech, anchor= south] at ([shift={(0,6)}]current page.south){\fontsize{48}{0}\heiti 笔记整理与汇总};
+        \node[anchor= south] at ([shift={(0,6)}]current page.south){\href{\uirb}{\fontsize{48}{0}\heiti \textcolor{tech}{笔记整理与汇总}}};
     \end{tikzpicture}
 \end{titlepage}
 
