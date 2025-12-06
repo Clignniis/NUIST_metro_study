@@ -1,0 +1,499 @@
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}绪论}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}课程内容}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}大气辐射与气候和气象}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}大气辐射与遥感的关系}{2}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}主动遥感}{2}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}被动遥感}{2}{subsection.1.3.2}%
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}电磁辐射基础}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}电磁辐射}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}电磁波基本概念}{4}{subsection.2.1.1}%
+\contentsline {paragraph}{产生}{4}{paragraph*.3}%
+\contentsline {paragraph}{传播}{4}{paragraph*.4}%
+\contentsline {paragraph}{特点}{4}{paragraph*.5}%
+\contentsline {subsection}{\numberline {2.1.2}电磁波频率}{4}{subsection.2.1.2}%
+\contentsline {paragraph}{频率分解}{4}{paragraph*.6}%
+\contentsline {paragraph}{单色辐射}{4}{paragraph*.7}%
+\contentsline {paragraph}{宽带辐射}{4}{paragraph*.8}%
+\contentsline {paragraph}{相干辐射}{4}{paragraph*.9}%
+\contentsline {paragraph}{非相干辐射}{4}{paragraph*.10}%
+\contentsline {subsection}{\numberline {2.1.3}电磁辐射偏振状态}{5}{subsection.2.1.3}%
+\contentsline {paragraph}{概念}{5}{paragraph*.11}%
+\contentsline {paragraph}{线偏振}{5}{paragraph*.12}%
+\contentsline {paragraph}{圆偏振}{5}{paragraph*.13}%
+\contentsline {paragraph}{椭圆偏振}{5}{paragraph*.14}%
+\contentsline {paragraph}{注意}{5}{paragraph*.15}%
+\contentsline {paragraph}{非偏振光}{5}{paragraph*.16}%
+\contentsline {subsection}{\numberline {2.1.4}麦克斯韦方程组}{5}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}物质方程}{6}{subsection.2.1.5}%
+\contentsline {paragraph}{假设}{6}{paragraph*.17}%
+\contentsline {paragraph}{方程}{6}{paragraph*.18}%
+\contentsline {subsection}{\numberline {2.1.6}时谐平面波}{6}{subsection.2.1.6}%
+\contentsline {subsubsection}{时谐平面波解}{6}{subsubsection*.19}%
+\contentsline {paragraph}{解释}{7}{paragraph*.20}%
+\contentsline {subsubsection}{时谐平面波特征}{7}{subsubsection*.21}%
+\contentsline {paragraph}{相位速度}{7}{paragraph*.22}%
+\contentsline {paragraph}{波印亭矢量}{7}{paragraph*.23}%
+\contentsline {paragraph}{吸收}{7}{paragraph*.24}%
+\contentsline {subsection}{\numberline {2.1.7}辐射的量子特性}{7}{subsection.2.1.7}%
+\contentsline {paragraph}{光子能量}{7}{paragraph*.25}%
+\contentsline {paragraph}{一般法则}{8}{paragraph*.26}%
+\contentsline {section}{\numberline {2.2}电磁波谱}{8}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}波长与波数}{8}{subsection.2.2.1}%
+\contentsline {paragraph}{频率}{8}{paragraph*.27}%
+\contentsline {paragraph}{波长}{8}{paragraph*.28}%
+\contentsline {paragraph}{波数}{8}{paragraph*.29}%
+\contentsline {subsection}{\numberline {2.2.2}谱带}{8}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}太阳和地球辐射}{8}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}章节例题}{8}{section.2.3}%
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}基本辐射物理量}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}辐射通量密度}{11}{section.3.1}%
+\contentsline {paragraph}{辐射通量密度}{11}{paragraph*.30}%
+\contentsline {paragraph}{宽带通量密度}{11}{paragraph*.31}%
+\contentsline {paragraph}{单色通量密度}{11}{paragraph*.32}%
+\contentsline {section}{\numberline {3.2}辐射强度}{13}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}立体角}{13}{subsection.3.2.1}%
+\contentsline {paragraph}{引入}{13}{paragraph*.33}%
+\contentsline {paragraph}{球坐标系}{13}{paragraph*.34}%
+\contentsline {paragraph}{立体角}{13}{paragraph*.35}%
+\contentsline {subsection}{\numberline {3.2.2}辐射强度}{13}{subsection.3.2.2}%
+\contentsline {paragraph}{引入}{13}{paragraph*.36}%
+\contentsline {paragraph}{定义}{13}{paragraph*.37}%
+\contentsline {paragraph}{高级定义}{13}{paragraph*.38}%
+\contentsline {paragraph}{单位}{14}{paragraph*.39}%
+\contentsline {paragraph}{强度守恒}{14}{paragraph*.40}%
+\contentsline {section}{\numberline {3.3}两者之间的联系}{15}{section.3.3}%
+\contentsline {paragraph}{向上的通量密度}{15}{paragraph*.41}%
+\contentsline {paragraph}{向下的通量密度}{15}{paragraph*.42}%
+\contentsline {paragraph}{净辐射通量密度}{15}{paragraph*.43}%
+\contentsline {paragraph}{特殊情况}{15}{paragraph*.44}%
+\contentsline {section}{\numberline {3.4}章节例题}{15}{section.3.4}%
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}黑体辐射定律}{18}{chapter.4}%
+\contentsline {section}{\numberline {4.1}黑体辐射}{18}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}黑体性质}{18}{subsection.4.1.1}%
+\contentsline {paragraph}{黑体}{18}{paragraph*.45}%
+\contentsline {paragraph}{黑体辐射}{18}{paragraph*.46}%
+\contentsline {paragraph}{白体}{18}{paragraph*.47}%
+\contentsline {paragraph}{灰体}{18}{paragraph*.48}%
+\contentsline {paragraph}{实体}{18}{paragraph*.49}%
+\contentsline {subsection}{\numberline {4.1.2}四大定律}{18}{subsection.4.1.2}%
+\contentsline {subsubsection}{普朗克定律}{18}{subsubsection*.50}%
+\contentsline {subsubsection}{斯蒂芬–玻尔兹曼定律}{18}{subsubsection*.51}%
+\contentsline {subsubsection}{维恩位移定律}{18}{subsubsection*.52}%
+\contentsline {subsubsection}{基尔霍夫定律}{19}{subsubsection*.53}%
+\contentsline {section}{\numberline {4.2}普朗克函数}{19}{section.4.2}%
+\contentsline {paragraph}{公式}{19}{paragraph*.54}%
+\contentsline {paragraph}{物理解释}{19}{paragraph*.55}%
+\contentsline {paragraph}{量纲}{19}{paragraph*.56}%
+\contentsline {paragraph}{基本特征}{20}{paragraph*.57}%
+\contentsline {section}{\numberline {4.3}维恩位移定律}{20}{section.4.3}%
+\contentsline {paragraph}{定律}{20}{paragraph*.58}%
+\contentsline {paragraph}{推导}{20}{paragraph*.59}%
+\contentsline {section}{\numberline {4.4}史蒂芬–玻尔兹曼定律}{20}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}史蒂芬–玻尔兹曼定律}{20}{subsection.4.4.1}%
+\contentsline {paragraph}{定律}{20}{paragraph*.60}%
+\contentsline {subsection}{\numberline {4.4.2}大气顶的全球辐射平衡}{21}{subsection.4.4.2}%
+\contentsline {paragraph}{入射短波辐射}{21}{paragraph*.61}%
+\contentsline {paragraph}{出射长波辐射}{21}{paragraph*.62}%
+\contentsline {paragraph}{有效发射温度}{21}{paragraph*.63}%
+\contentsline {section}{\numberline {4.5}基尔霍夫定律}{21}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}瑞利–金斯近似}{21}{subsection.4.5.1}%
+\contentsline {paragraph}{引入}{21}{paragraph*.64}%
+\contentsline {paragraph}{公式}{22}{paragraph*.65}%
+\contentsline {paragraph}{分析}{22}{paragraph*.66}%
+\contentsline {subsection}{\numberline {4.5.2}发射率}{22}{subsection.4.5.2}%
+\contentsline {paragraph}{发射率}{22}{paragraph*.67}%
+\contentsline {paragraph}{单色发射率}{22}{paragraph*.68}%
+\contentsline {paragraph}{灰体发射率}{22}{paragraph*.69}%
+\contentsline {paragraph}{典型发射率}{22}{paragraph*.70}%
+\contentsline {subsection}{\numberline {4.5.3}基尔霍夫定律}{23}{subsection.4.5.3}%
+\contentsline {paragraph}{定律}{23}{paragraph*.71}%
+\contentsline {paragraph}{注意}{23}{paragraph*.72}%
+\contentsline {section}{\numberline {4.6}简化大气辐射模式}{23}{section.4.6}%
+\contentsline {paragraph}{假设条件}{23}{paragraph*.73}%
+\contentsline {paragraph}{辐射内容}{23}{paragraph*.74}%
+\contentsline {paragraph}{辐射平衡}{24}{paragraph*.75}%
+\contentsline {paragraph}{温度求解}{24}{paragraph*.76}%
+\contentsline {paragraph}{分类讨论}{24}{paragraph*.77}%
+\contentsline {paragraph}{温室效应}{24}{paragraph*.78}%
+\contentsline {section}{\numberline {4.7}夜间辐射冷却}{24}{section.4.7}%
+\contentsline {paragraph}{问题引入}{24}{paragraph*.79}%
+\contentsline {paragraph}{问题推导}{25}{paragraph*.80}%
+\contentsline {paragraph}{辐射冷却}{25}{paragraph*.81}%
+\contentsline {paragraph}{层的冷却}{25}{paragraph*.82}%
+\contentsline {section}{\numberline {4.8}亮度温度}{25}{section.4.8}%
+\contentsline {paragraph}{亮度温度}{25}{paragraph*.83}%
+\contentsline {paragraph}{温度关系}{25}{paragraph*.84}%
+\contentsline {paragraph}{注意}{25}{paragraph*.85}%
+\contentsline {section}{\numberline {4.9}章节例题}{26}{section.4.9}%
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}地表的辐射特性}{28}{chapter.5}%
+\contentsline {section}{\numberline {5.1}均匀介质的反射和折射}{28}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}均匀介质}{28}{subsection.5.1.1}%
+\contentsline {paragraph}{均匀介质}{28}{paragraph*.86}%
+\contentsline {paragraph}{示例}{28}{paragraph*.87}%
+\contentsline {subsection}{\numberline {5.1.2}折射率}{28}{subsection.5.1.2}%
+\contentsline {paragraph}{折射率}{28}{paragraph*.88}%
+\contentsline {paragraph}{水的折射率}{28}{paragraph*.89}%
+\contentsline {paragraph}{相位速度}{28}{paragraph*.90}%
+\contentsline {paragraph}{辐射强度}{28}{paragraph*.91}%
+\contentsline {subsection}{\numberline {5.1.3}均匀介质的反射和折射}{28}{subsection.5.1.3}%
+\contentsline {paragraph}{反射}{28}{paragraph*.92}%
+\contentsline {paragraph}{斯涅尔定律}{28}{paragraph*.93}%
+\contentsline {paragraph}{全反射}{29}{paragraph*.94}%
+\contentsline {paragraph}{菲涅耳定律}{29}{paragraph*.95}%
+\contentsline {paragraph}{布儒斯特角}{29}{paragraph*.96}%
+\contentsline {paragraph}{注意：}{29}{paragraph*.97}%
+\contentsline {paragraph}{讨论}{29}{paragraph*.98}%
+\contentsline {subsection}{\numberline {5.1.4}彩虹}{29}{subsection.5.1.4}%
+\contentsline {paragraph}{基本模型}{30}{paragraph*.99}%
+\contentsline {paragraph}{光线追踪}{30}{paragraph*.100}%
+\contentsline {section}{\numberline {5.2}自然地表的辐射特性}{30}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}理想化为平面边界的自然表面}{30}{subsection.5.2.1}%
+\contentsline {paragraph}{辐射情况}{30}{paragraph*.101}%
+\contentsline {paragraph}{性质}{30}{paragraph*.102}%
+\contentsline {subsection}{\numberline {5.2.2}反射光谱实例}{30}{subsection.5.2.2}%
+\contentsline {paragraph}{实例性质}{30}{paragraph*.103}%
+\contentsline {paragraph}{气候效应}{31}{paragraph*.104}%
+\contentsline {subsection}{\numberline {5.2.3}灰体近似}{31}{subsection.5.2.3}%
+\contentsline {paragraph}{灰体近似}{31}{paragraph*.105}%
+\contentsline {paragraph}{吸收率常数}{31}{paragraph*.106}%
+\contentsline {paragraph}{特征}{31}{paragraph*.107}%
+\contentsline {subsection}{\numberline {5.2.4}反射辐射的角分布}{31}{subsection.5.2.4}%
+\contentsline {paragraph}{引入}{31}{paragraph*.108}%
+\contentsline {paragraph}{角分布}{31}{paragraph*.109}%
+\contentsline {paragraph}{朗伯体}{31}{paragraph*.110}%
+\contentsline {paragraph}{准镜面}{32}{paragraph*.111}%
+\contentsline {subsection}{\numberline {5.2.5}镜面和朗伯反射实例}{32}{subsection.5.2.5}%
+\contentsline {subsubsection}{镜面和朗伯反射}{32}{subsubsection*.112}%
+\contentsline {paragraph}{问题}{32}{paragraph*.113}%
+\contentsline {subsubsection}{双向反射分布函数 BRDF}{32}{subsubsection*.114}%
+\contentsline {paragraph}{引入}{32}{paragraph*.115}%
+\contentsline {paragraph}{BRDF}{32}{paragraph*.116}%
+\contentsline {paragraph}{入射}{32}{paragraph*.117}%
+\contentsline {paragraph}{反射}{32}{paragraph*.118}%
+\contentsline {paragraph}{综合}{33}{paragraph*.119}%
+\contentsline {paragraph}{反射辐射强度}{33}{paragraph*.120}%
+\contentsline {paragraph}{反照率}{33}{paragraph*.121}%
+\contentsline {paragraph}{反射辐射通量}{33}{paragraph*.122}%
+\contentsline {paragraph}{两者关系}{33}{paragraph*.123}%
+\contentsline {paragraph}{朗伯体反射}{33}{paragraph*.124}%
+\contentsline {paragraph}{镜面反射特性}{33}{paragraph*.125}%
+\contentsline {section}{\numberline {5.3}章节例题}{33}{section.5.3}%
+\contentsline {chapter}{\numberline {第六章\hspace {.3em}}大气的辐射特性}{35}{chapter.6}%
+\contentsline {section}{\numberline {6.1}消光、散射和吸收}{35}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}描述消光的物理量}{35}{subsection.6.1.1}%
+\contentsline {paragraph}{引入实验}{35}{figure.6.2}%
+\contentsline {paragraph}{机制分析}{35}{paragraph*.127}%
+\contentsline {paragraph}{稀疏介质}{35}{paragraph*.128}%
+\contentsline {paragraph}{特性物理量}{35}{paragraph*.129}%
+\contentsline {paragraph}{反照率}{36}{paragraph*.130}%
+\contentsline {paragraph}{消光截面}{36}{paragraph*.131}%
+\contentsline {subsection}{\numberline {6.1.2}消光物理量示例}{36}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}比尔–布格–朗伯定律}{36}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}比尔–布格–朗伯定律}{36}{subsection.6.2.1}%
+\contentsline {paragraph}{适用范围}{36}{paragraph*.132}%
+\contentsline {paragraph}{传输方程}{36}{paragraph*.133}%
+\contentsline {subsection}{\numberline {6.2.2}与比尔定律相关的定义和结论}{37}{subsection.6.2.2}%
+\contentsline {paragraph}{光学厚度}{37}{paragraph*.134}%
+\contentsline {paragraph}{透过率}{37}{paragraph*.135}%
+\contentsline {paragraph}{性质}{37}{paragraph*.136}%
+\contentsline {subsection}{\numberline {6.2.3}平面平行大气近似}{37}{subsection.6.2.3}%
+\contentsline {paragraph}{平行假设}{37}{paragraph*.137}%
+\contentsline {paragraph}{光学厚度}{37}{paragraph*.138}%
+\contentsline {paragraph}{高度 $z$ 的光学厚度}{38}{paragraph*.139}%
+\contentsline {paragraph}{透过率}{38}{paragraph*.140}%
+\contentsline {section}{\numberline {6.3}地基观测太阳辐射强度}{38}{section.6.3}%
+\contentsline {paragraph}{概述}{38}{paragraph*.141}%
+\contentsline {paragraph}{具体方法}{38}{paragraph*.142}%
+\contentsline {paragraph}{图表解释}{39}{paragraph*.143}%
+\contentsline {section}{\numberline {6.4}大气透射光谱}{39}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}关键空气成分的吸收带}{39}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}大气透射光谱}{39}{subsection.6.4.2}%
+\contentsline {paragraph}{描述}{39}{paragraph*.144}%
+\contentsline {section}{\numberline {6.5}云层的光学厚度和透过率}{40}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}云层的辐射过程}{40}{subsection.6.5.1}%
+\contentsline {subsubsection}{云层的基本物理性质}{40}{subsubsection*.145}%
+\contentsline {paragraph}{云层性质}{40}{paragraph*.146}%
+\contentsline {subsubsection}{太阳辐射在云层中的可能经历的过程}{40}{subsubsection*.147}%
+\contentsline {paragraph}{直射透过率}{40}{paragraph*.148}%
+\contentsline {paragraph}{漫射透过率}{40}{paragraph*.149}%
+\contentsline {paragraph}{反射率}{40}{paragraph*.150}%
+\contentsline {paragraph}{吸收率}{40}{paragraph*.151}%
+\contentsline {paragraph}{关系式}{41}{paragraph*.152}%
+\contentsline {subsection}{\numberline {6.5.2}单分散云层的光学厚度和透过率}{41}{subsection.6.5.2}%
+\contentsline {paragraph}{单分散}{41}{paragraph*.153}%
+\contentsline {paragraph}{云水密度}{41}{paragraph*.154}%
+\contentsline {paragraph}{液态水路径}{41}{paragraph*.155}%
+\contentsline {paragraph}{消光系数}{41}{paragraph*.156}%
+\contentsline {paragraph}{光学厚度}{41}{paragraph*.157}%
+\contentsline {paragraph}{案例}{41}{paragraph*.158}%
+\contentsline {chapter}{\numberline {第七章\hspace {.3em}}基于发射的辐射传输方程}{42}{chapter.7}%
+\contentsline {section}{\numberline {7.1}施瓦兹希尔德方程}{42}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}施瓦兹希尔德方程}{42}{subsection.7.1.1}%
+\contentsline {subsubsection}{施瓦兹方程基本形式}{42}{subsubsection*.159}%
+\contentsline {paragraph}{方程概述}{42}{paragraph*.160}%
+\contentsline {paragraph}{推导}{42}{paragraph*.161}%
+\contentsline {paragraph}{方程}{42}{paragraph*.162}%
+\contentsline {subsubsection}{施瓦兹方程的求解}{42}{subsubsection*.163}%
+\contentsline {paragraph}{基本定义}{42}{paragraph*.164}%
+\contentsline {paragraph}{方程求解}{42}{paragraph*.165}%
+\contentsline {paragraph}{方程形式}{43}{paragraph*.166}%
+\contentsline {paragraph}{物理含义}{43}{paragraph*.167}%
+\contentsline {subsection}{\numberline {7.1.2}不同形式的红外大气辐射传输方程}{43}{subsection.7.1.2}%
+\contentsline {paragraph}{基于光学厚度 $\tau $ 的大气红外辐射传输方程}{43}{paragraph*.168}%
+\contentsline {paragraph}{基于透过率 $t$ 的大气红外辐射传输方程}{43}{paragraph*.169}%
+\contentsline {paragraph}{基于路径距离 $s$ 的大气红外辐射传输方程}{43}{paragraph*.170}%
+\contentsline {subsection}{\numberline {7.1.3}狄拉克 $\delta $ 函数}{43}{subsection.7.1.3}%
+\contentsline {paragraph}{狄拉克函数}{43}{paragraph*.171}%
+\contentsline {paragraph}{特性}{43}{paragraph*.172}%
+\contentsline {subsection}{\numberline {7.1.4}发射权重函数}{44}{subsection.7.1.4}%
+\contentsline {paragraph}{模型假设}{44}{paragraph*.173}%
+\contentsline {paragraph}{方程}{44}{paragraph*.174}%
+\contentsline {section}{\numberline {7.2}平面平行大气辐射传输}{44}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}基本内容}{44}{subsection.7.2.1}%
+\contentsline {paragraph}{向下发射}{44}{paragraph*.175}%
+\contentsline {paragraph}{向下观测}{44}{paragraph*.176}%
+\contentsline {paragraph}{物理意义}{44}{paragraph*.177}%
+\contentsline {subsection}{\numberline {7.2.2}大气发射率}{45}{subsection.7.2.2}%
+\contentsline {paragraph}{辐射强度}{45}{paragraph*.178}%
+\contentsline {paragraph}{真实大气}{45}{paragraph*.179}%
+\contentsline {subsection}{\numberline {7.2.3}地表对向上辐射强度的贡献}{45}{subsection.7.2.3}%
+\contentsline {paragraph}{镜面下垫面}{45}{paragraph*.180}%
+\contentsline {paragraph}{完全透明}{45}{paragraph*.181}%
+\contentsline {paragraph}{完全不透明}{45}{paragraph*.182}%
+\contentsline {paragraph}{地表无反射}{45}{paragraph*.183}%
+\contentsline {section}{\numberline {7.3}大气发射光谱}{46}{section.7.3}%
+\contentsline {section}{\numberline {7.4}章节例题}{46}{section.7.4}%
+\contentsline {chapter}{\numberline {第八章\hspace {.3em}}分子吸收和发射}{48}{chapter.8}%
+\contentsline {section}{\numberline {8.1}基础知识}{48}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}分子吸收和发射的基础知识}{48}{subsection.8.1.1}%
+\contentsline {paragraph}{系统内能}{48}{paragraph*.184}%
+\contentsline {paragraph}{局地热平衡}{48}{paragraph*.185}%
+\contentsline {paragraph}{量子化}{48}{paragraph*.186}%
+\contentsline {subsection}{\numberline {8.1.2}吸收和发射谱线}{48}{subsection.8.1.2}%
+\contentsline {paragraph}{光谱谱线}{48}{paragraph*.187}%
+\contentsline {paragraph}{能级分布}{48}{paragraph*.188}%
+\contentsline {paragraph}{三种跃迁}{49}{paragraph*.189}%
+\contentsline {subsection}{\numberline {8.1.3}分子惯性矩}{49}{subsection.8.1.3}%
+\contentsline {paragraph}{转动方程}{49}{paragraph*.190}%
+\contentsline {paragraph}{物理图像}{49}{paragraph*.191}%
+\contentsline {paragraph}{注意}{49}{paragraph*.192}%
+\contentsline {subsection}{\numberline {8.1.4}大气分子结构}{49}{subsection.8.1.4}%
+\contentsline {section}{\numberline {8.2}转动跃迁}{49}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}转动跃迁光谱}{49}{subsection.8.2.1}%
+\contentsline {paragraph}{引入}{49}{paragraph*.193}%
+\contentsline {paragraph}{量子化}{50}{paragraph*.194}%
+\contentsline {paragraph}{跃迁能量}{50}{paragraph*.195}%
+\contentsline {paragraph}{量子选择}{50}{paragraph*.196}%
+\contentsline {paragraph}{光谱频率}{50}{paragraph*.197}%
+\contentsline {subsection}{\numberline {8.2.2}偶极矩}{50}{subsection.8.2.2}%
+\contentsline {paragraph}{引入}{50}{paragraph*.198}%
+\contentsline {paragraph}{电偶极矩}{50}{paragraph*.199}%
+\contentsline {subsection}{\numberline {8.2.3}大气分子转动光谱特征}{50}{subsection.8.2.3}%
+\contentsline {paragraph}{单原子成分}{50}{paragraph*.200}%
+\contentsline {paragraph}{分子氮气}{50}{paragraph*.201}%
+\contentsline {paragraph}{氧气}{50}{paragraph*.202}%
+\contentsline {paragraph}{二氧化碳}{51}{paragraph*.203}%
+\contentsline {paragraph}{其他分子}{51}{paragraph*.204}%
+\contentsline {section}{\numberline {8.3}振动跃迁}{51}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}双原子分子振动跃迁}{51}{subsection.8.3.1}%
+\contentsline {paragraph}{作用力}{51}{paragraph*.205}%
+\contentsline {paragraph}{频率}{51}{paragraph*.206}%
+\contentsline {paragraph}{能级分布}{51}{paragraph*.207}%
+\contentsline {paragraph}{选择定律}{51}{paragraph*.208}%
+\contentsline {paragraph}{基态跃迁}{51}{paragraph*.209}%
+\contentsline {subsection}{\numberline {8.3.2}多原子分子振动模态}{51}{subsection.8.3.2}%
+\contentsline {paragraph}{双原子}{51}{paragraph*.210}%
+\contentsline {paragraph}{线性三原子}{51}{paragraph*.211}%
+\contentsline {paragraph}{非线三原子}{51}{paragraph*.212}%
+\contentsline {paragraph}{水汽}{51}{paragraph*.213}%
+\contentsline {paragraph}{二氧化碳}{51}{paragraph*.214}%
+\contentsline {paragraph}{臭氧}{51}{paragraph*.215}%
+\contentsline {paragraph}{甲烷}{51}{paragraph*.216}%
+\contentsline {section}{\numberline {8.4}谱线展宽}{52}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}谱线的一般性描述}{52}{subsection.8.4.1}%
+\contentsline {paragraph}{自然展宽}{52}{paragraph*.217}%
+\contentsline {paragraph}{多普勒展宽}{52}{paragraph*.218}%
+\contentsline {paragraph}{压力展宽}{52}{paragraph*.219}%
+\contentsline {paragraph}{吸收截面}{52}{paragraph*.220}%
+\contentsline {paragraph}{线型函数}{52}{paragraph*.221}%
+\contentsline {subsection}{\numberline {8.4.2}线型函数的数学形式}{52}{subsection.8.4.2}%
+\contentsline {paragraph}{多普勒线型}{52}{paragraph*.222}%
+\contentsline {paragraph}{洛伦兹线型}{52}{paragraph*.223}%
+\contentsline {section}{\numberline {8.5}连续吸收}{52}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}连续吸收的情况}{52}{subsection.8.5.1}%
+\contentsline {paragraph}{光电离}{52}{paragraph*.224}%
+\contentsline {paragraph}{光解离}{53}{paragraph*.225}%
+\contentsline {paragraph}{水汽吸收}{53}{paragraph*.226}%
+\contentsline {subsection}{\numberline {8.5.2}真实大气测量情况}{53}{subsection.8.5.2}%
+\contentsline {chapter}{\numberline {第九章\hspace {.3em}}基于散射的辐射传输方程}{54}{chapter.9}%
+\contentsline {section}{\numberline {9.1}辐射传输方程}{54}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}基于散射的辐射传输方程}{54}{subsection.9.1.1}%
+\contentsline {subsubsection}{完整微分形式的辐射传输方程}{54}{subsubsection*.227}%
+\contentsline {paragraph}{模型构建}{54}{paragraph*.228}%
+\contentsline {paragraph}{微分表达式}{54}{paragraph*.229}%
+\contentsline {paragraph}{完整方程}{54}{paragraph*.230}%
+\contentsline {subsubsection}{完整通用形式的辐射传输方程}{54}{subsubsection*.231}%
+\contentsline {paragraph}{光学厚度}{54}{paragraph*.232}%
+\contentsline {paragraph}{通用形式}{54}{paragraph*.233}%
+\contentsline {paragraph}{有趣性质}{55}{paragraph*.234}%
+\contentsline {subsubsection}{相应简写形式的辐射传输方程}{55}{subsubsection*.235}%
+\contentsline {paragraph}{简化形式}{55}{paragraph*.236}%
+\contentsline {paragraph}{性质}{55}{paragraph*.237}%
+\contentsline {subsection}{\numberline {9.1.2}平面平行大气辐射传输方程}{55}{subsection.9.1.2}%
+\contentsline {paragraph}{平行假设}{55}{paragraph*.238}%
+\contentsline {paragraph}{传输方程}{55}{paragraph*.239}%
+\contentsline {paragraph}{输入条件}{55}{paragraph*.240}%
+\contentsline {section}{\numberline {9.2}散射相函数}{56}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}散射相函数}{56}{subsection.9.2.1}%
+\contentsline {subsubsection}{基本概念与方程}{56}{subsubsection*.241}%
+\contentsline {paragraph}{概率密度}{56}{paragraph*.242}%
+\contentsline {paragraph}{球形情况}{56}{paragraph*.243}%
+\contentsline {paragraph}{归一化条件}{56}{paragraph*.244}%
+\contentsline {subsubsection}{各向同性散射}{56}{subsubsection*.245}%
+\contentsline {paragraph}{各向同性}{56}{paragraph*.246}%
+\contentsline {subsection}{\numberline {9.2.2}非对称因子}{56}{subsection.9.2.2}%
+\contentsline {subsubsection}{基本情况}{56}{subsubsection*.247}%
+\contentsline {paragraph}{非对称因子}{56}{paragraph*.248}%
+\contentsline {paragraph}{情况讨论}{56}{paragraph*.249}%
+\contentsline {subsubsection}{Henyey–Greenstein 相函数}{56}{subsubsection*.250}%
+\contentsline {paragraph}{数学形式}{56}{paragraph*.251}%
+\contentsline {paragraph}{物理图像}{57}{paragraph*.252}%
+\contentsline {section}{\numberline {9.3}单次散射的求解}{57}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}基于单次散射的辐射传输方程}{57}{subsection.9.3.1}%
+\contentsline {subsubsection}{单次散射辐射传输方程的基本形式}{57}{subsubsection*.253}%
+\contentsline {paragraph}{单次散射}{57}{paragraph*.254}%
+\contentsline {paragraph}{基本方程}{57}{paragraph*.255}%
+\contentsline {paragraph}{模型假设}{57}{paragraph*.256}%
+\contentsline {paragraph}{方程简化}{57}{paragraph*.257}%
+\contentsline {subsubsection}{向上与向下的散射辐射}{57}{subsubsection*.258}%
+\contentsline {paragraph}{向下观测}{57}{paragraph*.259}%
+\contentsline {paragraph}{向上观测}{58}{paragraph*.260}%
+\contentsline {subsubsection}{大气顶部和底部的散射辐亮度}{58}{subsubsection*.261}%
+\contentsline {paragraph}{进步简化}{58}{paragraph*.262}%
+\contentsline {paragraph}{推导}{58}{paragraph*.263}%
+\contentsline {paragraph}{物理模型}{58}{paragraph*.264}%
+\contentsline {section}{\numberline {9.4}章节例题}{58}{section.9.4}%
+\contentsline {chapter}{\numberline {第十章\hspace {.3em}}粒子单次散射和吸收}{60}{chapter.10}%
+\contentsline {section}{\numberline {10.1}大气粒子}{60}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}大气粒子基本情况}{60}{subsection.10.1.1}%
+\contentsline {subsubsection}{大气粒子的尺度与数浓度}{60}{subsubsection*.265}%
+\contentsline {paragraph}{基本情况}{60}{paragraph*.266}%
+\contentsline {subsubsection}{粒子尺度参数}{60}{subsubsection*.267}%
+\contentsline {paragraph}{尺度参数}{60}{paragraph*.268}%
+\contentsline {subsection}{\numberline {10.1.2}电偶极子辐射}{61}{subsection.10.1.2}%
+\contentsline {subsubsection}{瑞利散射的推导}{61}{subsubsection*.269}%
+\contentsline {paragraph}{瑞利条件}{61}{paragraph*.270}%
+\contentsline {paragraph}{电偶极子}{61}{paragraph*.271}%
+\contentsline {subsubsection}{散射辐射强度的角度分布推导}{62}{subsubsection*.272}%
+\contentsline {paragraph}{模型假设}{62}{paragraph*.273}%
+\contentsline {paragraph}{模型计算}{62}{paragraph*.274}%
+\contentsline {subsubsection}{散射辐射强度的角度分布特征}{62}{subsubsection*.275}%
+\contentsline {paragraph}{分布特征}{62}{paragraph*.276}%
+\contentsline {section}{\numberline {10.2}瑞利散射}{62}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}瑞利散射相函数}{62}{subsection.10.2.1}%
+\contentsline {paragraph}{相函数}{62}{paragraph*.277}%
+\contentsline {subsection}{\numberline {10.2.2}瑞利散射和吸收特性}{62}{subsection.10.2.2}%
+\contentsline {paragraph}{消光效率}{62}{paragraph*.278}%
+\contentsline {paragraph}{散射效率}{62}{paragraph*.279}%
+\contentsline {paragraph}{吸收效率}{62}{paragraph*.280}%
+\contentsline {paragraph}{散射截面}{63}{paragraph*.281}%
+\contentsline {paragraph}{单次散射反照率}{63}{paragraph*.282}%
+\contentsline {paragraph}{质量吸收系数}{63}{paragraph*.283}%
+\contentsline {subsection}{\numberline {10.2.3}瑞利散射总结}{63}{subsection.10.2.3}%
+\contentsline {paragraph}{总结情况}{63}{paragraph*.284}%
+\contentsline {section}{\numberline {10.3}米氏散射}{63}{section.10.3}%
+\contentsline {paragraph}{米氏散射}{63}{paragraph*.285}%
+\contentsline {paragraph}{求解思路}{63}{paragraph*.286}%
+\contentsline {paragraph}{求解结果}{64}{paragraph*.287}%
+\contentsline {section}{\numberline {10.4}散射案例与一般情况}{64}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}非吸收球体的消光效率}{64}{subsection.10.4.1}%
+\contentsline {paragraph}{非吸收球体}{64}{paragraph*.288}%
+\contentsline {paragraph}{消光情况}{64}{paragraph*.289}%
+\contentsline {subsection}{\numberline {10.4.2}光学现象的解释}{64}{subsection.10.4.2}%
+\contentsline {subsubsection}{消光系数趋近于2的现象}{64}{subsubsection*.290}%
+\contentsline {paragraph}{几何极限}{64}{paragraph*.291}%
+\contentsline {subsubsection}{红移和蓝移现象}{64}{subsubsection*.292}%
+\contentsline {paragraph}{红移现象}{64}{paragraph*.293}%
+\contentsline {paragraph}{蓝移现象}{64}{paragraph*.294}%
+\contentsline {subsection}{\numberline {10.4.3}吸收球体的消光和散射}{64}{subsection.10.4.3}%
+\contentsline {paragraph}{吸收球体}{64}{paragraph*.295}%
+\contentsline {paragraph}{主要特点}{65}{paragraph*.296}%
+\contentsline {paragraph}{注意}{65}{paragraph*.297}%
+\contentsline {subsection}{\numberline {10.4.4}云的散射和吸收特性}{65}{subsection.10.4.4}%
+\contentsline {paragraph}{主要特点}{65}{paragraph*.298}%
+\contentsline {subsection}{\numberline {10.4.5}真实的散射相函数}{65}{subsection.10.4.5}%
+\contentsline {paragraph}{瑞利散射}{65}{paragraph*.299}%
+\contentsline {paragraph}{米散射}{65}{paragraph*.300}%
+\contentsline {paragraph}{几何光学}{65}{paragraph*.301}%
+\contentsline {subsection}{\numberline {10.4.6}光学现象}{65}{subsection.10.4.6}%
+\contentsline {paragraph}{曙暮辉光}{65}{paragraph*.302}%
+\contentsline {paragraph}{日华}{66}{paragraph*.303}%
+\contentsline {paragraph}{宝光}{66}{paragraph*.304}%
+\contentsline {section}{\numberline {10.5}粒子谱分布}{66}{section.10.5}%
+\contentsline {paragraph}{尺度谱分布}{66}{paragraph*.305}%
+\contentsline {paragraph}{体消光系数}{66}{paragraph*.306}%
+\contentsline {paragraph}{体散射系数}{66}{paragraph*.307}%
+\contentsline {paragraph}{散射相函数}{66}{paragraph*.308}%
+\contentsline {paragraph}{非对称因子}{66}{paragraph*.309}%
+\contentsline {chapter}{\numberline {第十一章\hspace {.3em}}基于多次散射的辐射传输方程}{67}{chapter.11}%
+\contentsline {section}{\numberline {11.1}基于多次散射的辐射传输}{67}{section.11.1}%
+\contentsline {subsection}{\numberline {11.1.1}基于多次散射的辐射传输方程}{67}{subsection.11.1.1}%
+\contentsline {paragraph}{方程形式}{67}{paragraph*.310}%
+\contentsline {paragraph}{方程内涵}{67}{paragraph*.311}%
+\contentsline {paragraph}{数值方法}{67}{paragraph*.312}%
+\contentsline {subsection}{\numberline {11.1.2}方位平均辐射传输方程}{67}{subsection.11.1.2}%
+\contentsline {paragraph}{辐射强度}{67}{paragraph*.313}%
+\contentsline {paragraph}{散射相函数}{67}{paragraph*.314}%
+\contentsline {paragraph}{传输方程}{67}{paragraph*.315}%
+\contentsline {section}{\numberline {11.2}二流近似解的推导}{68}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}二流近似与二流方程}{68}{subsection.11.2.1}%
+\contentsline {subsubsection}{二流近似}{68}{subsubsection*.316}%
+\contentsline {paragraph}{近似情况}{68}{paragraph*.317}%
+\contentsline {paragraph}{合理性}{68}{paragraph*.318}%
+\contentsline {subsubsection}{二流方程}{68}{subsubsection*.319}%
+\contentsline {paragraph}{方程改写}{68}{paragraph*.320}%
+\contentsline {paragraph}{传输方程}{68}{paragraph*.321}%
+\contentsline {paragraph}{二流解释}{69}{paragraph*.322}%
+\contentsline {subsection}{\numberline {11.2.2}后向散射比重和 $g$}{69}{subsection.11.2.2}%
+\contentsline {paragraph}{观察现象}{69}{paragraph*.323}%
+\contentsline {paragraph}{假设情况}{69}{paragraph*.324}%
+\contentsline {paragraph}{传输方程}{69}{paragraph*.325}%
+\contentsline {subsection}{\numberline {11.2.3}二流解}{69}{subsection.11.2.3}%
+\contentsline {paragraph}{二流解}{69}{paragraph*.326}%
+\contentsline {paragraph}{边界条件}{69}{paragraph*.327}%
+\contentsline {paragraph}{最终解}{69}{paragraph*.328}%
+\contentsline {paragraph}{合理性}{70}{paragraph*.329}%
+\contentsline {section}{\numberline {11.3}二流近似解的实例}{70}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}半无限大云}{70}{subsection.11.3.1}%
+\contentsline {paragraph}{半无限大云}{70}{paragraph*.330}%
+\contentsline {paragraph}{辐射传输解}{70}{paragraph*.331}%
+\contentsline {paragraph}{反照率}{70}{paragraph*.332}%
+\contentsline {paragraph}{性质}{70}{paragraph*.333}%
+\contentsline {subsection}{\numberline {11.3.2}无吸收云}{70}{subsection.11.3.2}%
+\contentsline {paragraph}{无吸收云 守恒散射}{70}{paragraph*.334}%
+\contentsline {paragraph}{求解方程}{71}{paragraph*.335}%
+\contentsline {paragraph}{辐射传输解}{71}{paragraph*.336}%
+\contentsline {paragraph}{透过率}{71}{paragraph*.337}%
+\contentsline {paragraph}{性质}{71}{paragraph*.338}%
+\contentsline {subsection}{\numberline {11.3.3}一般情况}{71}{subsection.11.3.3}%
+\contentsline {paragraph}{反照率}{71}{paragraph*.339}%
+\contentsline {paragraph}{总透过率}{71}{paragraph*.340}%
+\contentsline {paragraph}{吸收率}{72}{paragraph*.341}%
+\contentsline {paragraph}{性质}{72}{paragraph*.342}%
+\contentsline {subsection}{\numberline {11.3.4}直射和漫射透过率}{72}{subsection.11.3.4}%
+\contentsline {paragraph}{直射透射率}{72}{paragraph*.343}%
+\contentsline {paragraph}{漫射透射率}{72}{paragraph*.344}%
+\contentsline {paragraph}{总透过率}{72}{paragraph*.345}%
+\contentsline {paragraph}{性质}{72}{paragraph*.346}%
+\contentsline {paragraph}{案例}{72}{paragraph*.347}%
+\contentsline {section}{\numberline {11.4}累加方法}{72}{section.11.4}%
+\contentsline {paragraph}{基本思想}{72}{paragraph*.348}%
+\contentsline {subsection}{\numberline {11.4.1}非黑体地表之上的云}{72}{subsection.11.4.1}%
+\contentsline {paragraph}{辐射通量}{72}{paragraph*.349}%
+\contentsline {paragraph}{联合反照率}{72}{paragraph*.350}%
+\contentsline {paragraph}{联合透过率}{72}{paragraph*.351}%
+\contentsline {paragraph}{注意}{73}{paragraph*.352}%
+\contentsline {paragraph}{性质}{73}{paragraph*.353}%
+\contentsline {subsection}{\numberline {11.4.2}多个云层}{73}{subsection.11.4.2}%
+\contentsline {paragraph}{总反射率}{73}{paragraph*.354}%
+\contentsline {paragraph}{总透过率}{73}{paragraph*.355}%

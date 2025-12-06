@@ -1,0 +1,3836 @@
+\documentclass[UTF8,oneside]{ctexbook}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{physics}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{pgfplots} % 强大的绘图宏包，强烈推荐用于函数绘图[citation:9]
+\pgfplotsset{compat=1.18} % 建议设置兼容性版本以获得更好稳定性[citation:7]
+
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\Var}{\mathrm{Var}}
+
+\newtheorem{example}{例题}[chapter]
+\newtheorem{definition}{定义}[chapter]
+\newtheorem{theorem}{定理}[chapter]
+
+\usepackage{geometry}
+\geometry{a4paper,hmargin=2.5cm,vmargin=2cm}
+\setcounter{tocdepth}{1}
+\linespread{1.3}\selectfont
+
+
+
+
+
+
+
+
+\newcommand{\bookname}{大气辐射学}
+\newcommand{\uira}{https://github.com/ZhangtongCN}
+\newcommand{\uirb}{https://github.com/Clignniis}
+\usepackage[toc]{multitoc}%双栏目录
+%颜色设置
+\usepackage{xcolor}
+\definecolor{nuist}{RGB}{0, 103, 156}%南信大蓝
+\definecolor{sky}{RGB}{101, 170, 221}%天空蓝
+\definecolor{tech}{RGB}{38, 96, 173}%科技蓝
+\definecolor{gold}{RGB}{201, 160, 99}%高贵金
+%引用
+\usepackage[colorlinks]{hyperref}
+%设置页眉页脚
+
+%章节设置
+\ctexset{
+    chapter={pagestyle=fancy},%使得章节页页眉页脚格式一致
+}
+\geometry{a4paper,top=2.5cm,bottom=2.5cm}
+\setcounter{tocdepth}{1}
+\linespread{1.3}\selectfont
+
+%页眉页脚
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[L]{\href{\uira}{\textcolor{tech}{\bookname}}}
+\fancyhead[R]{\href{\uira}{\textcolor{tech}{笔记整理与汇总}}}
+\fancyfoot[C]{\href{\uirb}{\textcolor{tech}{\thepage}}}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{27pt}
+
+
+
+\begin{document}
+
+\frontmatter
+
+\begin{titlepage}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node at ([shift={(0,1)}]current page.center){
+            \begin{tikzpicture}[scale=0.7]
+            \path[fill=sky] (0:0)--++(90:2)--++(30:6)--++(150:6)--++(210:6)--++(330:6)--++(90:1)--++(150:4)--++(30:4)--++(330:4)--++(210:4)--++(270:3)--++(150:1)--++(210:3)--++(270:1)--++(30:5)--++(330:3)--++(270:1)--++(210:4)--++(150:4)--++(210:1)--++(330:5)--++(30:5)--cycle;
+            \path[fill=cyan!50] (0:0)--++(270:1)--++(210:3)--++(150:1)--++(90:5)--++(150:1)--++(270:6)--++(30:6)--++(90:1)--++(30:4)--++(270:6)--++(210:5)--++(270:1)--++(30:6)--++(90:8)--++(210:6)--cycle;
+            \path[fill=cyan!50] (90:6)--++(90:1)--++(210:4)--++(330:1)--++(30:3)--++(90:1);
+            \path[fill=nuist] (0:0)--++(270:1)--++(330:3)--++(30:1)--++(90:5)--++(30:1)--++(270:6)--++(150:6)--++(90:1)--++(150:4)--++(270:6)--++(330:5)--++(270:1)--++(150:6)--++(90:8)--++(330:6)--cycle;
+            \path[fill=nuist] (90:6)--++(90:1)--++(330:4)--++(210:1)--++(150:3)--++(90:1);
+            \end{tikzpicture}
+        };
+        \node at ([shift={(0,8)}]current page.center){\href{\uirb}{\fontsize{72}{0}\heiti\textcolor{gold}{\bookname}}};
+        \node at ([shift={(0,-5)}]current page.center){\Huge\heiti\href{\uira}{\textcolor{nuist}{Tong Zhang}}\quad\href{\uirb}{\textcolor{nuist}{Cls}}};
+        \node[anchor= south] at ([shift={(0,6)}]current page.south){\href{\uirb}{\fontsize{48}{0}\heiti \textcolor{tech}{笔记整理与汇总}}};
+    \end{tikzpicture}
+\end{titlepage}
+
+\chapter*{版权声明}
+
+本《\bookname{} 笔记整理与汇总精编版》一册电子版遵循有限的知识共享许可协议。本书授权包含署名-非商业性使用-相同方式共享（CC BY-NC-SA）。即您被允许在授权范围内对该电子书进行转载、节选、二次创作，但不得用于任何商业目的，且使用时须署原作名，且必须采用与本创作相同的协议（CC BY-NC-SA）进行授权。限于编者水平，本书难免有疏漏错误，敬请读者批评指正。
+
+由于更新安排调整，本文档未经过完整核对，可能存在较多错误。
+\begin{tikzpicture}[remember picture, overlay]
+    \node [opacity=1] at ([shift={(-4,4)}]current page.south east){
+        \begin{tikzpicture}[scale=0.5]
+            \foreach \a in {1,0.8,...,0.2} {%
+                \draw (-\a,1) circle [radius=\a];
+                \draw (-2+\a,-1) circle [radius=\a];
+                \draw (2-\a,-1) circle [radius=\a];
+            }
+        \end{tikzpicture}
+    };
+\end{tikzpicture}
+
+\tableofcontents
+
+\mainmatter
+
+
+
+
+
+
+\chapter{绪论}
+
+\section{课程内容}
+\begin{itemize}
+  \item 电磁辐射的表征和度量：波长、偏振、辐射强度和辐射通量。
+  \item 黑体辐射定律和基尔霍夫定律：太阳短波辐射和地球大气热辐射。
+  \item 电磁辐射与分子、气溶胶和云及地表之间的相互作用机制。
+  \begin{itemize}
+    \item 单个粒子的吸收、发射和散射。
+    \item 大气层、地表的透射、反射和吸收。
+  \end{itemize}
+  \item 基于分子吸收和发射的热红外辐射传输方程及其求解。
+  \begin{itemize}
+    \item 在介质中考虑三种机制，发射、散射与吸收；对于大气长波源，只需考虑发射和吸收，无需散射。
+    \item 针对分子吸收，存在吸收谱线，其跳跃性非常强，需要极高分辨率的吸收谱计算，逐线积分十分困难。
+  \end{itemize}
+  \item 基于大气粒子散射的太阳短波辐射传输方程及其求解。
+  \begin{itemize}
+    \item 对于短波源，只需考虑吸收和散射，大气粒子短波辐射发射可忽略不计。且散射求解难度很大。
+  \end{itemize}
+  \item 大气辐射在气候、气象和遥感中的应用。
+\end{itemize}
+
+\section{大气辐射与气候和气象}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \foreach \x in {10,20,...,90}{
+      \draw (\x/15,0)node[below]{\x S} --+ (0,0.2);
+      \draw (-\x/15,0)node[below]{\x N} --+ (0,0.2);
+    }
+    \draw (0,0)node[below]{0}--+(0,0.2);
+    \foreach \y in {-150,-100,...,400}{
+      \draw (-6,\y/100+1.5)node[left]{\y} --+ (0.2,0);
+    }
+    \draw (-6,0) rectangle (6,5.5);
+    \draw[dashed] (-6,1.5) --+ (12,0);
+    \draw[dotted] (-6,0.5) cos (-3,1.5) sin (0,2.5) cos (3,1.5) sin (6,0.5);
+    \draw[dashed] (-6,2) cos (-3,3.5) sin (0,5) cos (3,3.5) sin (6,2);
+    \draw (-6,3) cos (-3,3.5) sin (0,4) cos (3,3.5) sin (6,3);
+    \draw (3,5) --+ (0.5,0)node[right]{射出长波辐射};
+    \draw[dashed] (3,4.5) --+ (0.5,0)node[right]{吸收长波辐射};
+    \draw[dotted] (3,4) --+ (0.5,0)node[right]{净辐射};
+    \node at (0,2){盈余};
+    \node at (5.2,1){赤字};
+    \node at (-5.2,1){赤字};
+  \end{tikzpicture}
+  \caption{太阳辐射与地球辐射分布示意图}\label{pic:1}
+\end{figure}
+
+图\ref{pic:1}虚线反映得到的太阳辐射、实线反映地球发出的辐射，明显看见，赤道附近辐射净吸收，两极辐射净减少。因此不同纬度带接收的太阳辐射不同，所达到的平衡温度也不同。相邻纬度带平衡温度之差异将引起：
+
+\begin{enumerate}
+  \item 出现水平方向的能量输送，形似发动机，产生大气环流等，低纬度多，高纬度少。
+  \item 下垫面情况的变化，尤其是极地的低平衡温度造成下垫面冰雪覆盖，其高反照率又使该地区接收的太阳辐射进一步减小。
+\end{enumerate}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[>=latex]
+    \draw (0,0) rectangle (12,9);
+    \draw (0,2.67) --+ (12,0);
+    \fill[gray] (0,0) rectangle (12,2.67);
+    \foreach \t in {0,30,...,150}{
+      \draw[rotate around={\t:(1.5,8)}] (1.5,8.7)--(1.5,7.3);
+    }
+    \filldraw[fill=white,draw=black] (1.5,8) circle[radius=0.5];
+    \draw[->,ultra thick] (1,7) --++ (-60:6.5);%下
+    \draw[->,thick] (1.5,7) --++ (-60:5) --++ (60:5);
+    \draw[->,very thick] (2,7) --++ (-60:3.5) --++ (60:3.5);
+    \draw[->,thick] (2.5,7) --++ (-60:2) --++ (60:2);
+    \draw[->,thick] (2,7) ++ (-60:3.5) --++ (0:4);
+    \draw[->,thick] (2.5,7) ++ (-60:2) --++ (0:5);
+    \draw[->,ultra thick] (4.5,1) --+ (3,0);
+    \draw[<-,thick] (11,7) -- (9.268,4);
+    \draw[<-,ultra thick] (9.5,7) -- (7.75,3.969);
+    \draw[->,thick] (6.25,1.371) -- (7.75,3.969);
+    \draw[->,very thick] (7.75,1.371) -- (9.268,4) -- (8.5,5.268);
+    \draw[->,very thick] (7,1.371) --++ (60:2.268) --++ (120:0.732);
+    \node at (1.5,3.5){\bfseries 太阳入射100\%};
+    \node at (6,0.5){\bfseries 陆地和海洋吸收51\%};
+    \node at (4.2,7.7){大气反射6\%};
+    \node at (5.5,7.3){\bfseries 云反射20\%};
+    \node at (6.8,7.7){地表反射4\%};
+    \node at (6,5.5){大气吸收16\%};
+    \node at (6,4.2){云吸收3\%};
+    \node at (9.5,7.7){\bfseries 云和大气向外};
+    \node at (9.5,7.3){\bfseries 太空辐射20\%};
+    \node at (11,5.3){地球直接};
+    \node at (11,4.9){向外太空};
+    \node at (11,4.5){辐射6\%};
+    \node[circle,draw=black] at (6.8,3.2) {1};
+    \node[circle,draw=black] at (8.4,3.7) {2};
+    \node[circle,draw=black] at (9.2,5) {3};
+    \node[circle,draw=black] at (0.5,-0.75) {1};
+    \node at (2,-0.5){热传导和上};
+    \node at (2,-1){升空气7\%};
+    \node[circle,draw=black] at (4,-0.75) {2};
+    \node at (6,-0.5){通过水汽潜热输送};
+    \node at (6,-1){到云和大层中23\%};
+    \node[circle,draw=black] at (8.5,-0.75) {3};
+    \node at (10.5,-0.75){大气吸收辐射15\%};
+  \end{tikzpicture}
+  \caption{地气系统辐射能量收支平衡图}\label{pic:2}
+\end{figure}
+
+图\ref{pic:2}
+\begin{enumerate}
+  \item 云反射很重要，如果云增多，则地球温度下降。云对太阳短波辐射，几乎不吸收。
+  \item 大部分短波能量被地表吸收，同时也被长波释放。注意：存在热传导、潜热、感热、热辐射等各种方式先进入大气，再由云和大气向外辐射。只有6\%直接向外辐射。
+\end{enumerate}
+
+\section{大气辐射与遥感的关系}
+
+\subsection{主动遥感}
+自己携带辐射源，打到物质上，经过散射、发射、吸收、反射被探测器接受，并分析，可获得物质信息。主要为雷达（激光雷达（355nm）、天气雷达（微波区域））。
+
+\subsection{被动遥感}
+被动吸收辐射，可利用地球、太阳、月球等辐射。包括：
+\begin{itemize}
+  \item 可见光（照明光为太阳，可明显看到高能量高反射特征的白亮云层、黑色海洋）。
+  \item 红外光（下中图为热红外波段，反映地球大气热发射，与物质温度有关，温度越高，颜色越暗，可见除北部卷云一致（接受能量少），南部碎的积云几乎消失（接受能量多））。
+  \item 红外水汽带（该波段水汽强吸收，温度对应于在大部分水汽之上的大气层的温度，白亮表示辐射少温度低，深色表示辐射多温度高，白色部分水汽含量多（探测器接收到的辐射主要由上方水汽发射，上方水汽温度低，发射辐射反而少））。
+\end{itemize}
+
+\chapter{电磁辐射基础}
+
+\section{电磁辐射}
+
+\subsection{电磁波基本概念}
+
+\paragraph{产生}
+随时间变化的电场产生磁场，随时间变化的磁场产生电场。预言了电磁波的存在，电磁场相互激发，产生向外传输的空间扰动，即电磁波。
+
+\paragraph{传播}
+在真空中电磁波总是以绝对常数的光速 $c$ 无损失无限直线传播。
+
+如果不沿直线传播，则两束同光源发出的光的光程发生改变，若正好满足一个相位差，则波峰波谷相互抵消，能量消失，明显假设不成立。要满足同一时刻的光同相位：可以解释折射定律。
+
+\paragraph{特点}
+\begin{enumerate}
+  \item 电磁波满足线性叠加原理：相长、相消干涉。$\vec{E}_{\text{total}} = \vec{E}_1 + \vec{E}_2$，因此可以频率分解。
+  \item 电磁波传播方向垂直于电磁矢量的振动方向，即横波。
+  \item 电磁波不需要借助任何介质就能在空间中传播。
+  \item 在介质中电磁波相位速度可以变快或变慢，光线可以产生折射现象。
+\end{enumerate}
+
+\subsection{电磁波频率}
+
+\paragraph{频率分解}
+任意电磁扰动都可以表示成不同角频率 $\omega$ 的纯正弦波的合成
+\[
+f(t) = \int_{0}^{\infty} \alpha(\omega) \sin\left[ \omega t + \phi(\omega) \right] \dd{\omega}.
+\]
+
+理解电磁辐射与云、水汽、臭氧、二氧化碳等的相互作用时可以一次考虑一个频率，随后再将所有相关频率的结果进行求和。
+
+\paragraph{单色辐射}
+完全由单一频率组成的电磁辐射（“一种颜色”，后文讨论方程若无特殊强调，均为单色辐射）。
+
+\paragraph{宽带辐射}
+由大范围频率组合构成的辐射。
+
+\paragraph{相干辐射}
+单色辐射，由单个振荡器或一组完全同步的振荡器产生，即要求相位相同。
+
+\paragraph{非相干辐射}
+准单色辐射，由一组独立的振荡器产生，它们具有相同频率（准单色），但是彼此不锁相。
+
+\subsection{电磁辐射偏振状态}
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[>=latex,scale=0.6]
+    \draw[<->] (-4,1) -- (-4,5);
+    \draw[<->] (-1.5,3) -- (1.5,3);
+    \draw[<->] (3,4) -- (5,2);
+    \draw[dashed] (4,0.5) -- (4,5.5);
+    \draw[->] (-4,-1) arc (-270:90:1.5 and 2);
+    \draw[dashed] (-4,-0.5) -- (-4,-5.5);
+    \draw[rotate around={-30:(0,-3)},->] (0,-1) arc (90:-270:1.5 and 2);
+    \draw[rotate around={-30:(0,-3)},dashed] (0,-0.5) -- (0,-5.5);
+    \draw[dashed] (0,-0.5) -- (0,-5.5);
+    \draw[->] (4,-1) arc (90:-270:2);
+    \node at (-4,0){(a)};
+    \node at (-4,-6){(d)};
+    \node at (0,0){(b)};
+    \node at (0,-6){(e)};
+    \node at (4,0){(c)};
+    \node at (4,-6){(f)};
+  \end{tikzpicture}
+\end{figure}
+\paragraph{概念}
+相干辐射中，当沿着传输方向进行观察时，振动电场具有一种唯一且重复的模式。
+
+\paragraph{线偏振}
+电场可能在一个固定的平面内来回振动，像摆锤(a)--(c)。
+
+\paragraph{圆偏振}
+电场可能围绕传播方向以顺时针或逆时针螺旋方式振荡(f)。例如
+\[
+E_x = A_1 \cos \omega t, \quad E_y = A_2 \sin \omega t.
+\]
+若 $A_1 \neq A_2$，得到椭圆偏振。
+
+\paragraph{椭圆偏振}
+可以视为同时包含线偏振和圆偏振这两种情况(d)--(e)。
+
+\paragraph{注意}
+在非相干辐射中，朝着一种偏振类型的系统性趋势可能或不可能被识别，还必须指定偏振度。偏振实际中常用 Stokes 矢量。
+
+\paragraph{非偏振光}
+太阳光属于非偏振光（热辐射光为非偏振光）。其到达大气，若经历瑞利散射，则将转变为线偏振光。
+
+\subsection{麦克斯韦方程组}
+
+\begin{align*}
+  \nabla \cdot \vec{D} &= \rho_F \quad \text{（高斯定律）} \\
+  \nabla \cdot \vec{B} &= 0 \quad \text{（高斯磁定律）} \\
+  \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \quad \text{（法拉第电磁感应定律）} \\
+  \nabla \times \vec{H} &= \vec{J}_F + \frac{\partial \vec{D}}{\partial t} \quad \text{（麦克斯韦–安培定律）} \\
+  \frac{\partial \rho_F}{\partial t} + \nabla \cdot \vec{J}_F &= 0 \quad \text{（连续性方程）}
+\end{align*}
+其中：
+\begin{itemize}
+  \item $\vec{D}$：电位移矢量
+  \item $\rho_F$：自由电荷密度
+  \item $\vec{B}$：磁感应强度
+  \item $\vec{E}$：电场强度
+  \item $\vec{H}$：磁场强度
+  \item $\vec{J}_F$：自由电流密度
+\end{itemize}
+
+\subsection{物质方程}
+
+\paragraph{假设}
+假设所考虑的宏观均匀介质电磁特性参数与电磁场无关（即线性介质），与位置无关（即均匀介质），与方向无关（即各向同性介质）。
+
+\paragraph{方程}
+\begin{align*}
+  \vec{D} &= \varepsilon_0 \vec{E} + \vec{P} = \varepsilon_0 (1 + \chi) \vec{E} \\
+  \vec{B} &= \mu_0 (\vec{H} + \vec{M}) = \mu \vec{H} \\
+  \vec{J}_F &= \sigma \vec{E}
+\end{align*}
+其中：
+\begin{itemize}
+  \item $\varepsilon_0$：自由空间的介电常数
+  \item $\vec{P}$：电极化强度
+  \item $\chi$：电极化率
+  \item $\mu_0$：自由空间的磁导率
+  \item $\vec{M}$：磁极化强度
+  \item $\mu$：磁导率
+  \item $\sigma$：电导率
+\end{itemize}
+
+\subsection{时谐平面波}
+
+\subsubsection{时谐平面波解}
+
+设复数形式的时谐平面波如下：
+\begin{align*}
+  \vec{E}_c &= \vec{E}_0 \exp\left( \ii \vec{k} \cdot \vec{x} - \ii \omega t \right) \\
+  &= \vec{E}_0 \exp\left( - \vec{k}'' \cdot \vec{x} \right) \exp\left[ \ii \left( \vec{k}' \cdot \vec{x} - \omega t \right) \right] \\
+  \vec{H}_c &= \vec{H}_0 \exp\left( \ii \vec{k} \cdot \vec{x} - \ii \omega t \right) \\
+  &= \vec{H}_0 \exp\left( - \vec{k}'' \cdot \vec{x} \right) \exp\left[ \ii \left( \vec{k}' \cdot \vec{x} - \omega t \right) \right]
+\end{align*}
+其中 $\vec{k} = \vec{k}' + \ii \vec{k}''$ 为复波矢量，$\omega = 2\pi\nu$ 为角频率（单位弧度每秒），$\vec{x}$ 为位置矢量，$t$ 为时间。
+
+时谐平面波是在空间中传播的最简单的波，复数形式便于数学计算。将其代入麦克斯韦方程组可得：
+\begin{align*}
+  \vec{k} \cdot \vec{E}_0 &= 0 \quad \text{（传播方向与电场垂直）} \\
+  \vec{k} \cdot \vec{H}_0 &= 0 \quad \text{（传播方向与磁场垂直）} \\
+  \vec{k} \times \vec{E}_0 &= \omega \mu \vec{H}_0 \quad \text{（电场与磁场垂直）} \\
+  \vec{k} \times \vec{H}_0 &= - \omega \varepsilon \vec{E}_0 \\
+  \left| \vec{k}' \right| + \ii \left| \vec{k}'' \right| &= \omega \sqrt{\varepsilon \mu}
+\end{align*}
+其中复介电常数 $\varepsilon = \varepsilon_0 (1 + \chi) + \frac{\ii \sigma}{\omega}$。
+
+\paragraph{解释}
+由此可知，在平面中振动的电场和磁场矢量彼此相互垂直，同时两者又都垂直于波的传输方向。
+
+\subsubsection{时谐平面波特征}
+
+\paragraph{相位速度}
+真空相位速度：$\mathrm{c} \equiv 1 / \sqrt{\varepsilon_0 \mu_0}$。
+
+用光速改写：对于非真空情况
+\[
+\left| \vec{k}' \right| + \ii \left| \vec{k}'' \right| = \frac{\omega N}{\mathrm{c}},
+\]
+其中复折射率为
+\[
+N \equiv \sqrt{\frac{\varepsilon \mu}{\varepsilon_0 \mu_0}} = \frac{\mathrm{c}}{\mathrm{c}'}, \quad \mathrm{c}' = \frac{1}{\sqrt{\varepsilon \mu}}.
+\]
+如果 $N$ 为实数，那么 $c'$ 为介质相位速度。这里体现了复折射率 $N = n_r + \ii n_i$ 的重要性。
+
+\paragraph{波印亭矢量}
+波印亭矢量描述电磁波传输能量的瞬时方向和数值
+\[
+\vec{S} = \vec{E} \times \vec{H}.
+\]
+垂直传输方向面元的辐射通量密度
+\[
+F = \left\langle \vec{S} \right\rangle = \frac{1}{2} \mathrm{c} \varepsilon_0 \mathrm{e}^2.
+\]
+
+\paragraph{吸收}
+电磁辐射衰减规律
+\[
+F = F_0 \exp\left( - 2 \vec{k}'' \cdot \vec{x} \right) = F_0 \mathrm{e}^{-\beta_a x},
+\]
+吸收系数 $\beta_a$ 定义为
+\[
+\beta_a = \frac{4 \pi \nu n_i}{\mathrm{c}} = \frac{4 \pi n_i}{\lambda}.
+\]
+吸收系数与折射率虚部成正比，虚部越大，则吸收越强；与波长成反比：如水吸收呈蓝色。
+
+\subsection{辐射的量子特性}
+
+\paragraph{光子能量}
+光子能量由其频率或波长通过如下关系决定
+\[
+E = \mathrm{h}\nu,
+\]
+其中 $\nu$ 为频率，$\mathrm{h} = 6.626 \times 10^{-34}\,\mathrm{J \cdot s}$。
+
+\paragraph{一般法则}
+\begin{enumerate}
+  \item 当计算大气粒子（空气分子、气溶胶、云粒子和雨滴）散射和地表反射特性时，辐射波本质很重要。
+  \item 当考虑单个原子和分子的辐射吸收和发射时，包括光化学反应，辐射量子本质发挥作用。爱因斯坦双能级理论：可建立分子吸收辐射方程。
+  \item 对于大气辐射传输计算，这两种类型的相互作用效应都已深深根植于通用的消光和散射系数（截面）。
+\end{enumerate}
+
+\section{电磁波谱}
+
+\subsection{波长与波数}
+
+\paragraph{频率}
+辐射频率 $\nu$ 总是保持不变，直至它被吸收，转化成其他形式的能量。在此假设观察者相对辐射源保持固定距离不动，否则因为多普勒效应频率会发生偏移。
+\[
+\nu = \frac{\omega}{2\pi},
+\]
+单位为周/秒或赫兹（Hz），$10^{12}\,\mathrm{Hz} = 10^{9}\,\mathrm{kHz} = 10^{6}\,\mathrm{MHz} = 10^{3}\,\mathrm{GHz} = 1\,\mathrm{THz}$。
+
+\paragraph{波长}
+在实际中，通常采用波长 $\lambda$ 会比采用频率 $\nu$ 更为方便。这是因为大气科学关注的频率数值太大。
+\[
+\mathrm{c} = \lambda \nu,
+\]
+该关系仅适用于真空中的波长，单位为纳米、微米或厘米。
+
+\paragraph{波数}
+有些学者更喜欢用波数 $\tilde{\nu}$ 来进行描述
+\[
+\tilde{\nu} = \frac{1}{\lambda} = \frac{\nu}{\mathrm{c}},
+\]
+通常单位为厘米分之一，常见于分子吸收光谱。
+
+\subsection{谱带}
+
+\begin{table}[ht]
+  \centering
+  \caption{光谱区间及其特性}
+  \begin{tabular}{cccm{5cm}}
+    \toprule
+    区间 & 光谱 ($\mu\mathrm{m}$) & 太阳比重 & \multicolumn{1}{c}{特性} \\
+    \midrule
+    X射线 & $\lambda < 0.01$ & 0 & 光电离所有成分，被上层大气吸收 \\
+    极端紫外线 & $0.01 < \lambda < 0.1$ & $3 \times 10^{-6}$ & 光电离氧气和氮气，$90\,\mathrm{km}$ 之上被吸收（打出自由电子） \\
+    远紫外线 & $0.10 < \lambda < 0.2$ & $0.01\%$ & 光解离氧气，$50\,\mathrm{km}$ 之上被吸收（化学键破坏，游离氧） \\
+    UV-C & $0.20 < \lambda < 0.28$ & $0.5\%$ & 光解离氧气和臭氧，$30\sim60\,\mathrm{km}$ 之间被吸收 \\
+    UV-B & $0.28 < \lambda < 0.32$ & $1.3\%$ & 大部分被平流层臭氧吸收，引起太阳晒伤 \\
+    UV-A & $0.32 < \lambda < 0.4$ & $6.2\%$ & 对人体基本无害，能到达地表 \\
+    可见光 & $0.40 < \lambda < 0.76$ & $39\%$ & 大部分波长对大气透明 \\
+    近红外 & $0.76 < \lambda < 4$ & $52\%$ & 能量最多，部分吸收，主要由水汽贡献 \\
+    热红外 & $4 < \lambda < 50$ & $0.9\%$ & 即地球长波辐射，被水汽、二氧化碳、臭氧等吸收和发射 \\
+    远红外 & $0.05 < \lambda < 1\,\mathrm{mm}$ &  & 被水汽吸收 \\
+    微波 & $\lambda > 1\,\mathrm{mm}$ &  & 云半透明，利于天气雷达探测其他物体（雨等） \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{太阳和地球辐射}
+（内容待补充）
+
+\section{章节例题}
+
+\begin{example}
+对于红光（$\lambda = 0.64\,\mu\mathrm{m}$），纯净水的 $n_i$ 近似为 $1.3 \times 10^{-8}$；对于蓝光（$\lambda = 0.48\,\mu\mathrm{m}$），纯净水的 $n_i$ 近似为 $1.0 \times 10^{-9}$。典型家庭游泳池的最大深度约为 $2.5\,\mathrm{m}$。当从游泳池上方直接照射（和观测）时，计算每个波长通过往返路径后剩余的辐射比重。根据你的发现（和从空气中看到的大多数游泳池的外观），对水是“无色的”这一普遍假设进行评论。
+
+已知电磁辐射衰减规律
+\[
+F = F_0 \exp\left( - 2 \vec{k}'' \cdot \vec{x} \right) = F_0 \mathrm{e}^{-\beta_a x},
+\]
+其中吸收系数 $\beta_a$ 定义为
+\[
+\beta_a = \frac{4 \pi \nu n_i}{\mathrm{c}} = \frac{4 \pi n_i}{\lambda}.
+\]
+
+\begin{enumerate}
+  \item 对于红光，吸收系数为
+        \[
+        \beta_a = \frac{4 \pi \times 1.3 \times 10^{-8}}{0.64 \times 10^{-6}} = 0.25525,
+        \]
+        故有
+        \[
+        \frac{F}{F_0} = \mathrm{e}^{-0.25525 \times 2.5 \times 2} \approx \boxed{0.279}.
+        \]
+  \item 对于蓝光，吸收系数为
+        \[
+        \beta_a = \frac{4 \pi \times 1.0 \times 10^{-9}}{0.48 \times 10^{-6}} = 0.02617,
+        \]
+        故有
+        \[
+        \frac{F}{F_0} = \mathrm{e}^{-0.02617 \times 2.5 \times 2} \approx \boxed{0.877}.
+        \]
+  \item 由此可见，从空中观察时，光在水中传播距离长，红光衰减显著，蓝光衰减较少，则最终到达眼部的光线蓝色占主导地位，导致水体呈现蓝色。对水是无色的这一假设仅在浅层水体成立，水并非无色。（然而，若水体过厚，则光衰减严重，导致水体呈黑色。水的颜色随水所处环境条件的不同而相应不同。）
+\end{enumerate}
+\end{example}
+
+\begin{example}
+一个小光源向空间各个方向均匀发射 $1\,\mathrm{W}$ 的辐射。光的波长为 $0.5\,\mu\mathrm{m}$。
+\begin{enumerate}
+  \item 光源每秒发射多少个光子？
+  \item 如果在地球上用直径为 $20\,\mathrm{cm}$ 圆形孔径的望远镜观测位于月球的光源，望远镜每秒能够收集到多少个光子？忽略大气衰减。假设月球和地球之间的距离为 $D_m = 3.84 \times 10^5\,\mathrm{km}$。
+\end{enumerate}
+
+\begin{enumerate}
+  \item 辐射功率为 $1\,\mathrm{W}$，在 $1\,\mathrm{s}$ 内发射 $1\,\mathrm{J}$ 能量，故总能量 $E = 1\,\mathrm{J}$。考虑到光子能量
+        \[
+        E_{\text{single}} = \mathrm{h}\nu = \mathrm{h} \frac{\mathrm{c}}{\lambda} = 3.9756 \times 10^{-19}\,\mathrm{J},
+        \]
+        则光子个数为
+        \[
+        N = \frac{1}{3.9756 \times 10^{-19}} = \boxed{2.515 \times 10^{18}\ \text{个}}.
+        \]
+  \item 光源均匀向各个方向发射光子，传播面为球面。则发射辐射传播至地球处的球面表面积为：
+        \[
+        S = 4\pi D_m^2 = 1.85298 \times 10^{18}\,\mathrm{m}^2.
+        \]
+        望远镜口径大小为：
+        \[
+        S_t = \pi r^2 = 0.0314\,\mathrm{m}^2.
+        \]
+        则占比为：$n = \frac{S_t}{S} = 1.6946 \times 10^{-20}$，故接收到光子个数为：
+        \[
+        N = 2.515 \times 10^{18} \times 1.6946 \times 10^{-20} = \boxed{0.0426\ \text{个}}.
+        \]
+\end{enumerate}
+\end{example}
+
+\chapter{基本辐射物理量}
+
+\section{辐射通量密度}
+
+\paragraph{辐射通量密度}
+也称为辐照度（flux density），是电磁辐射在单位时间里通过单位面积表面所传输的总能量。
+\[
+\dd{F} = \frac{\dd{E}}{\dd{A} \dd{t} \dd{\lambda}}, \quad F \sim (\vec{r}, \vec{n}, t, \lambda)
+\]
+则有 $3 + 2 + 1 + 1 = 7$ 个自由度，是个很复杂的函数。该表面可以是真实的（如地面、云顶、探测器）或假象的平面（如任意大气水平面）。
+
+\paragraph{宽带通量密度}
+指定 $\lambda_1$ 和 $\lambda_2$ 内所有波长贡献的辐射通量密度，例如太阳常数。单位：$\mathrm{W \cdot m^{-2}}$。
+
+\paragraph{单色通量密度}
+$F_\lambda$（又称为光谱通量密度）可以定义为
+\[
+F_\lambda = \lim_{\Delta\lambda \to 0} \frac{F(\lambda, \lambda + \Delta\lambda)}{\Delta\lambda},
+\]
+其中 $F(\lambda, \lambda + \Delta\lambda)$ 是介于 $\lambda$ 和 $\lambda + \Delta\lambda$ 波长区间贡献的辐射通量密度。典型单位：$\mathrm{W \cdot m^{-2} \cdot \mu m^{-1}}$。
+
+因此 $[\lambda_1, \lambda_2]$ 的宽带辐射通量密度等于
+\[
+F(\lambda_1, \lambda_2) = \int_{\lambda_1}^{\lambda_2} F_\lambda \dd{\lambda}.
+\]
+
+\begin{example}
+在 $0.3\,\mu\mathrm{m}$ 和 $1.0\,\mu\mathrm{m}$ 波长范围内，入射物体表面的总辐射通量为 $200\,\mathrm{W \cdot m^{-2}}$。
+\begin{enumerate}
+  \item 在该波长区间的平均光谱（单色=光谱）通量是多少？答案单位应为 $\mathrm{W \cdot m^{-2} \cdot \mu m^{-1}}$。
+  \item 若光谱通量不随波长变化，那么仅由 $0.4\,\mu\mathrm{m}$ 至 $0.5\,\mu\mathrm{m}$ 波长区间贡献的总通量是多少？
+  \item 完全由 $0.5\,\mu\mathrm{m}$ 波长辐射贡献的总通量（单位 $\mathrm{W \cdot m^{-2}}$）是多少？
+\end{enumerate}
+
+\begin{enumerate}
+  \item 根据定义可知平均光谱辐射通量为
+        \[
+        F_\lambda = \frac{F}{\Delta\lambda} = \frac{200\,\mathrm{W \cdot m^{-2}}}{1.0\,\mu\mathrm{m} - 0.3\,\mu\mathrm{m}} = 285.7\,\mathrm{W \cdot m^{-2} \cdot \mu m^{-1}}.
+        \]
+  \item 该波长区间的总辐射通量为
+        \[
+        F_b = F_\lambda \Delta\lambda = 285.7\,\mathrm{W \cdot m^{-2} \cdot \mu m^{-1}} \cdot (0.5\,\mu\mathrm{m} - 0.4\,\mu\mathrm{m}) = 28.6\,\mathrm{W \cdot m^{-2}}.
+        \]
+  \item 只有在波长区间贡献的辐射通量密度可能不为零，因此答案为零。
+\end{enumerate}
+\end{example}
+
+\section{辐射强度}
+
+\subsection{立体角}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[>=latex,scale=0.8]%斜二测画法喵
+    \draw[->](0,0) -- (-135:4)node[below left]{\(x\)};
+    \draw[->](0,0) -- (8,0)node[right]{\(y\)};
+    \draw[->](0,0) -- (0,8)node[above]{\(z\)};
+    \draw[dashed] (6,0) --++ (-135:3) --++ (-6,0);
+    \draw[dashed] (0,0) --++ (3.879,-2.121) --++ (0,6) --++ (-3.879,2.121);
+    \draw (0,0) -- (3.879,3.879)node[above right]{\(\Omega\)};
+    \draw (-135:3) --++ (135:0.2)node[above left]{\(\sin\theta\cos\phi\)};
+    \draw (6,0) --++ (0,0.2)node[above]{\(\sin\theta\sin\phi\)};
+    \draw (0,6) --++ (-0.2,0)node[left]{\(\cos\theta\)};
+    \draw (-135:0.5) arc (-135:-28.7:0.5);
+    \draw (0,0.5) arc (90:45:0.5);
+    \node at (0,-0.8){\(\phi\)};
+    \node at (0.3,0.8){\(\theta\)};
+  \end{tikzpicture}
+  \caption{笛卡尔坐标系}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[>=latex]%正等测画法喵，好难画
+    %优先着色%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \coordinate (a) at (0.518,1.712);
+    \coordinate (b) at (2.449,0.219);
+    \coordinate (c) at (0.893,-0.299);%(0.856,-0.299);
+    \coordinate (d) at (1.414,2.012);
+    \filldraw[gray!50] (a) -- (d) -- (b) -- (c) -- cycle;
+    \fill[rotate=120,gray!50] (d) arc (-75:-105:4 and 2.309) -- (b) -- cycle;
+    \fill[gray!50] (c) arc (-75:-45:3.464 and 2) -- (b) -- cycle;
+    \filldraw[white] (a) arc (-75:-45:2 and 1.155) -- (d) -- cycle;
+    \filldraw[rotate=98.792,white] (a) arc (-66:-96.2:4 and 0.845) -- (c) -- cycle;
+    \draw[rotate=98.792,gray!50] (a) arc (-66:-96.2:4 and 0.845);%精度不够了，补了一条线，遮挡裂缝
+    \draw[dashed] (a) -- (0,0) -- (c);
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %几个标注
+    \draw[<->] (-150:0.7) arc (-150:-65:0.7);
+    \draw[<->] (-65:0.7) arc (-65:-30:0.7);
+    \draw[<->] (-18:0.7) arc (-18:73:0.7);
+    %\draw[<->] (70:0.7) arc (70:90:0.7);
+    \draw[->] (53:0.9) arc (53:73:0.9);
+    \draw[<-] (90:0.9) arc (90:110:0.9);
+    \node at (0.15,0.9){\(\theta\)};
+    \node at (0.9,0.4){\(\dd{\theta}\)};
+    \node at (-0.3,-0.9){\(\phi\)};
+    \node at (0.7,-0.7){\(\dd{\phi}\)};
+    %坐标
+    \draw[->] (210:3.266) -- (210:5)node[below left]{\(x\)};
+    \draw[->] (330:3.266) -- (330:5)node[below left]{\(y\)};
+    \draw[->] (90:3.266) -- (90:5)node[above]{\(z\)};
+    \draw[dotted] (30:4) -- (210:3.266);
+    \draw[dotted] (150:4) -- (330:3.266);
+    \draw[dashed] (0:0) -- (90:3.266);
+    \draw (30:5) -- (30:4);
+    \draw (150:5) -- (150:4);
+    \draw[dashed] (4,0) arc (0:180:4 and 2.309);
+    \draw (4,0) arc (0:-180:4 and 2.309);
+    \draw (4,0) arc (0:180:4);
+    %yz截面
+    \draw[rotate=120] (4,0) arc (0:-135:4 and 2.309);
+    \draw[rotate=120,dashed] (4,0) arc (0:45:4 and 2.309);
+    \draw[dotted] (-1.035,2.231) -- (1.035,-2.231);%phi=60度线条
+    %偏离角于z轴截面
+    \draw[rotate=98.792] (4,0) arc (0:-126.3:4 and 0.845);
+    \draw[rotate=98.792,dashed] (4,0) arc (0:53.7:4 and 0.845);
+    %纬线
+    \draw (0,2.828) ellipse[x radius=2,y radius=1.155];
+    %切点
+    \draw (0,-0.368) arc (-90:24:3.464 and 2);
+    \draw[dashed] (0,3.632) arc (90:24:3.464 and 2);
+    \draw (0,-0.368) arc (270:156:3.464 and 2);
+    \draw[dashed] (0,3.632) arc (90:156:3.464 and 2);
+  \end{tikzpicture}
+  \caption{球坐标系}\label{pic:ball}
+\end{figure}
+
+\paragraph{引入}
+大量方向组成的一个小区域，即立体角（Solid Angle）。
+
+\paragraph{球坐标系}
+其中天顶角 $\theta$、方位角 $\phi$。因此，若在笛卡尔坐标系中方向 $\hat{\Omega}$ 表示为 $(\Omega_x, \Omega_y, \Omega_z)$，而在球坐标系中可以表示为 $(\theta, \phi)$。
+
+\paragraph{立体角}
+物体相对某视点的立体角定义为该物体在以此视点为球心的单位球上的投影面积（图\ref{pic:ball}中淡灰色阴影面积）
+\[
+\dd{\Omega} = \frac{\dd{\sigma_{\text{表面积}}}}{r_{\text{球半径}}^2} = \sin\theta \dd{\theta_{\text{天顶角}}} \dd{\phi_{\text{方位角}}}.
+\]
+单位：球面度（Sr）。
+
+\begin{example}
+考虑一块云，当从地面某个位置对它进行观测时，它所占的天空区域为 $\frac{\pi}{4} < \theta < \frac{\pi}{2}$ 和 $0 < \phi < \frac{\pi}{8}$。
+\begin{enumerate}
+  \item 云所包含的立体角是多少？
+  \item 天空被云覆盖的百分比是多少？
+\end{enumerate}
+
+\begin{enumerate}
+  \item 云包含的立体角等于立体角微元的二重积分
+        \[
+        \Delta\omega = \int_{0}^{\frac{\pi}{8}} \int_{\frac{\pi}{4}}^{\frac{\pi}{2}} \sin\theta \dd{\theta} \dd{\phi} = 0.28\,\mathrm{Sr}.
+        \]
+  \item 考虑到所有方向组成的立体角是 $4\pi$，而天空方向半球具有 $2\pi$ 球面度的立体角，则
+        \[
+        \frac{\Delta\omega}{2\pi} = 4.4\%.
+        \]
+\end{enumerate}
+\end{example}
+
+\subsection{辐射强度}
+
+\paragraph{引入}
+天空各个方向辐射不同，辐射通量密度没有刻画辐射流向的信息，只能提供流过面源的通量。我们需要分辨各个方向上的辐射，我们借助立体角度量方向。
+
+\paragraph{定义}
+辐射强度（radiant intensity，又称为辐亮度、辐射率）$I(\hat{\Omega})$ 是指在特定方向 $\hat{\Omega}$ 上单位立体角内传输的辐射通量（由垂直于光束的面元进行度量）。朝 $\hat{\Omega}$ 方向看，识别出一个非常小的单元场景，其立体角为 $\delta\omega$。垂直于光束观测仅由那个小单元传来的辐射通量 $\delta F$，进而 $\hat{\Omega}$ 方向的辐射强度表示为
+\[
+I(\hat{\Omega}) = \frac{\delta F}{\delta\omega}.
+\]
+
+\paragraph{高级定义}
+\[
+I = \frac{\dd{E}}{\dd{A_\bot} \dd{\omega} \dd{t} \dd{\lambda}}, \quad I \sim (\vec{r}, \vec{\Omega}, t, \lambda)
+\]
+则有 $3 + 2 + 1 + 1 = 7$ 个自由度，与通量密度一致（限定面源方向）。
+\[
+I = \frac{\dd{E}}{\dd{A} \cdot \cos\theta \dd{\omega} \dd{t} \dd{\lambda}}, \quad \cos\theta = \vec{n} \cdot \vec{\Omega}.
+\]
+如果不限定垂直于光束的面元度量，需要投影到垂直的平面。
+
+\paragraph{单位}
+$\mathrm{W \cdot m^{-2} \cdot Sr^{-1} \cdot \mu m^{-1}}$。
+
+\paragraph{强度守恒}
+在真空中或者在其他透明的介质中，沿任意光学路径的辐射强度都是守恒的，辐射强度是基本物理量。而辐射通量密度是改变的（面积改变）。太阳辐射发出量不变，通量密度随距离增大而反比减小，然而辐射强度保持不变，因为距离增大，立体角相应减小，因此 $\delta\omega \propto 1/R^2$。
+
+证明：
+\[
+\Delta\omega = \iint \sin\theta \dd{\theta} \dd{\phi} = \int_0^\theta \int_0^{2\pi} \sin\theta \dd{\theta} \dd{\phi} = 2\pi (1 - \cos\theta).
+\]
+做泰勒展开：$\cos\theta = 1 - \frac{1}{2!}\theta^2 + \cdots$，则
+\[
+\Delta\omega \approx 2\pi \left( \frac{\theta^2}{2} \right) = \pi \theta^2 \approx \pi \sin^2\theta = \pi \left( \frac{R_s}{R} \right)^2,
+\]
+与距离的平方成反比。遥感卫星上单个像素上检测的就是辐射强度。
+
+\begin{example}
+对于在演讲中使用的典型激光笔，它的功率为 $5\,\mathrm{mW}$，它发射的准平行光束（圆柱）直径为 $5\,\mathrm{mm}$。
+\begin{enumerate}
+  \item 那么垂直于光束的辐射通量密度是多少？相比于典型晴空的太阳辐射通量 $1000\,\mathrm{W \cdot m^{-2}}$，谁大谁小？
+  \item 如果光束局限在角直径 $1$ 毫弧的圆锥体内，那么光束辐射强度是多少？单位 $\mathrm{W \cdot m^{-2} \cdot Sr^{-1}}$。相比于由上述太阳辐射通量和角直径为 $0.5^\circ$ 的太阳圆盘计算而来的太阳光辐射强度，谁大谁小？
+\end{enumerate}
+
+\begin{enumerate}
+  \item 垂直于光束的辐射通量密度等于功率与光束横截面积的比值：
+        \[
+        F_{\text{激光}} = \frac{\Phi}{A} = \frac{\Phi}{\pi (D/2)^2} = \frac{5\,\mathrm{mW}}{\pi (2.5\,\mathrm{mm})^2} = 254.6\,\mathrm{W \cdot m^{-2}}.
+        \]
+        激光笔的辐射通量密度大约只有太阳辐射的四分之一左右。
+  \item 为计算辐射强度，我们将通量密度除以光束投影的立体角。考虑到激光和太阳光束所占的立体角非常小，所以采用小角近似来计算立体角：
+        \[
+        \delta\omega_{\text{激光}} = \pi \left( \frac{\theta_{\text{激光}}}{2} \right)^2 = \pi \left( \frac{1\,\mathrm{mrad}}{2} \right)^2 = 7.8540 \times 10^{-7}\,\mathrm{Sr},
+        \]
+        明显激光立体角远小于太阳。
+        \[
+        \delta\omega_{\text{太阳}} = \pi \left( \frac{\theta_{\text{太阳}}}{2} \right)^2 = \pi \left( \frac{0.5^\circ}{2} \right)^2 = 5.9811 \times 10^{-5}\,\mathrm{Sr}.
+        \]
+        根据辐射强度定义可知
+        \[
+        I_{\text{激光}} = \frac{F_{\text{激光}}}{\delta\omega_{\text{激光}}} = \frac{254.6\,\mathrm{W \cdot m^{-2}}}{7.8540 \times 10^{-7}\,\mathrm{Sr}} = 3.2417 \times 10^8\,\mathrm{W \cdot m^{-2} \cdot Sr^{-1}},
+        \]
+        \[
+        I_{\text{太阳}} = \frac{F_{\text{太阳}}}{\delta\omega_{\text{太阳}}} = \frac{1000\,\mathrm{W \cdot m^{-2}}}{5.9811 \times 10^{-5}\,\mathrm{Sr}} = 1.6719 \times 10^7\,\mathrm{W \cdot m^{-2} \cdot Sr^{-1}}.
+        \]
+        所以
+        \[
+        \frac{I_{\text{激光}}}{I_{\text{太阳}}} \approx 19,
+        \]
+        激光笔的辐射强度大约是太阳的19倍。
+\end{enumerate}
+\end{example}
+
+\section{两者之间的联系}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=1.5]
+    \filldraw[fill=gray!50] (0.2,-0.2) --++ (0.6,0.6) --++ (-1,0) --++ (-0.6,-0.6) -- cycle;
+    \draw[->] (0,0) -- (0,3)node[above]{\(\vec{n}\)};
+    \draw[->] (45:2) -- (45:3)node[above right]{\(\vec{\Omega}\)};
+    \draw[rotate around={-45:(45:2)}] (45:2) ellipse[x radius=0.6, y radius=0.3];
+    \draw (0,0) -- (45:1.7);
+    \draw[dotted] (45:1.7) -- (45:2);
+    \draw (0.968,1.812) -- (0,0) -- (1.812,0.968);
+    \draw[<->] (0,0.5) arc (90:45:0.5);
+    \node at (0.25,0.75){\(\theta\)};
+    \node at (1.5,1.25){\(\dd{\omega}\)};
+    \node at (-0.4,0){\(\dd{A}\)};
+  \end{tikzpicture}
+\end{figure}
+
+\paragraph{向上的通量密度}
+对辐射强度在半球立体角上积分：
+\[
+F^\uparrow = \int_{2\pi} I^\uparrow(\hat{\Omega}) \hat{n} \cdot \hat{\Omega} \dd{\omega},
+\]
+通用表达
+\[
+F^\uparrow = \int_0^{2\pi} \int_0^{\pi/2} I^\uparrow(\theta, \phi) \cos\theta \sin\theta \dd{\theta} \dd{\phi},
+\]
+其中 $\cos\theta = \hat{n} \cdot \hat{\Omega}$。
+
+\paragraph{向下的通量密度}
+\[
+F^\downarrow = - \int_0^{2\pi} \int_{\pi/2}^\pi I^\downarrow(\theta, \phi) \cos\theta \sin\theta \dd{\theta} \dd{\phi},
+\]
+保证通量密度为正。
+
+\paragraph{净辐射通量密度}
+\[
+F^{\text{net}} \equiv F^\uparrow - F^\downarrow = \int_{4\pi} I^\uparrow(\hat{\Omega}) \hat{n} \cdot \hat{\Omega} \dd{\omega},
+\]
+处理能量平衡，常用于气候研究。
+
+\paragraph{特殊情况}
+上式积分主要由不同位置辐射强度不同所致，对于各向同性辐射强度情况，$F = \pi I$。
+
+\begin{example}
+如果入射到表面的辐射强度在所有方向上都是均匀的，且由常数 $I$ 表示，证明 $F = \pi I$。
+
+设球坐标 $z$ 轴方向与该表面法向方向重合，根据辐射强度与通量密度之间的联系可得：
+\[
+F = \int_0^{2\pi} \int_0^{\pi/2} I \cos\theta \sin\theta \dd{\theta} \dd{\phi} = 2\pi I \int_0^{\pi/2} \cos\theta \sin\theta \dd{\theta} = 2\pi I \cdot \frac{1}{2} = \pi I.
+\]
+
+注意，这可以近似描述阴霾天空下水平表面的照明情况、漫反射的物体（黑板、白墙），也可以描述离开表面的辐射通量和强度之间的关系，如果地表在所有方向上发射强度均匀的辐射。
+\end{example}
+
+\section{章节例题}
+
+\begin{example}
+月球离地球的平均距离 $D_m = 3.84 \times 10^5\,\mathrm{km}$，太阳离地球的平均距离 $D_s = 1.496 \times 10^8\,\mathrm{km}$。月球半径为 $R_m = 1.74 \times 10^3\,\mathrm{km}$，太阳半径为 $R_s = 6.96 \times 10^5\,\mathrm{km}$。
+\begin{enumerate}
+  \item 分别计算太阳和月球构成的角直径（单位为度）。
+  \item 计算太阳和月球构成的立体角。
+  \item 从地球观测角度来看，哪个表现更大，两者的立体角差多少个百分比？
+  \item 如果上述数值保持不变，那么是否有可能解释全日食的出现？
+\end{enumerate}
+
+\begin{enumerate}
+  \item 对于远处物体，角直径可以表示为 $\theta = 2 \arctan \frac{R}{D}$，当 $R \ll D$ 时，可以近似为 $\theta \approx \frac{2R}{D}$。对于太阳而言：
+        \[
+        \theta_\odot = \frac{2 \times 6.96 \times 10^5}{1.496 \times 10^8} = 0.00930\,\mathrm{rad} \times \frac{57.3^\circ}{\mathrm{rad}} = \boxed{0.53^\circ}.
+        \]
+        对于月球而言：
+        \[
+        \theta_m = \frac{2 \times 1.74 \times 10^3}{3.84 \times 10^5} = 0.00906\,\mathrm{rad} \times \frac{57.3^\circ}{\mathrm{rad}} = \boxed{0.52^\circ}.
+        \]
+  \item 有立体角计算公式：$\Omega = \frac{\sigma}{r^2}$，故有：
+        \[
+        \Omega_\odot = \frac{\pi (6.96 \times 10^5 \times 10^3)^2}{(1.496 \times 10^8 \times 10^3)^2} = \boxed{6.799 \times 10^{-5}\,\mathrm{Sr}},
+        \]
+        \[
+        \Omega_m = \frac{\pi (1.74 \times 10^3 \times 10^3)^2}{(3.84 \times 10^5 \times 10^3)^2} = \boxed{6.450 \times 10^{-5}\,\mathrm{Sr}}.
+        \]
+  \item 从立体角角度看，由于 $\Omega_\odot > \Omega_m$，太阳表现得更大。两者立体角相差：
+        \[
+        \frac{\Omega_\odot}{\Omega_m} - 1 = \frac{6.799}{6.450} - 1 = \boxed{5.6\%}.
+        \]
+  \item 由于太阳和月球的角直径非常接近，且太阳略大，因此可以发生日全食。
+\end{enumerate}
+\end{example}
+
+\begin{example}
+如果你在一个空心球体内部，它的立体角是多少？如果你在球体表面上，它的立体角是多少？如果你在距离无限大平面 $1$ 米处，它的立体角是多少？如果你在距离无限大平面 $10^{11}$ 米处，立体角又是多少？如果你在一个空心立方体内部，它的立体角是多少？如果你在立方体外且位于其中一个面的中心，立体角多少？如果你在立方体外且位于其中一条边的中心，立体角是多少？如果你在立方体外且位于其中一个角落，立体角又是多少？
+
+\begin{enumerate}
+  \item 对于空心球体内部，立体角为定值 $4\pi\,\mathrm{Sr}$。
+  \item 在球体表面上，球体覆盖整个真地平下方，为 $2\pi\,\mathrm{Sr}$。
+  \item 距离无限大平面 $1\,\mathrm{m}$，其仍然覆盖真地平，为 $2\pi\,\mathrm{Sr}$。
+  \item 同理，无限大平面完整覆盖真地平，为 $2\pi\,\mathrm{Sr}$。
+  \item 内部，覆盖全天球，为 $4\pi\,\mathrm{Sr}$。
+  \item 位于立方体外面的中心，不妨想象四面八方有指向观察者的射线。射线一旦低于观察者的真地平，必然存在被立方体挡住的部分，则立体角至少为 $2\pi$；射线高于真地平，则没有遮挡，能够抵达，则立体角为 $2\pi\,\mathrm{Sr}$。
+  \item 则此时观察者正对着两个相邻面，两个面在观察点处形成直角，覆盖四分之一球面，形成立体角为 $\pi\,\mathrm{Sr}$。
+  \item 观察者正对三个相互垂直面的焦点，覆盖八分之一球面，共同形成立体角为 $\pi/2\,\mathrm{Sr}$。
+\end{enumerate}
+\end{example}
+
+\begin{example}
+假定半径 $R_s$ 的太阳具有均匀的辐射强度 $I_s$，并从半径 $D$ 的轨道星球上看头顶上方的圆形太阳，计算这种情况下的辐射通量。$D$ 相对 $R_s$ 的尺寸大小不做任何假设。设星球半径本身可以忽略。请你采用两种不同的方法对此进行计算：
+\begin{enumerate}
+  \item 对太阳占据的整个立体角进行辐射强度积分，记得考虑相对局地天顶的余弦权重。你需要推导任意 $D > R_s$ 情况下太阳圆盘构成的立体角的准确表达式。
+  \item 计算由太阳表面出射的通量密度，并将其转换成太阳发射的总功率，然后将该功率分配到半径 $D$ 球体的表面。看看你得到的两个解是不是一致的？
+\end{enumerate}
+
+\begin{enumerate}
+  \item 当观察者距离太阳 $D > R_s$ 时，太阳角半径满足 $\sin\theta_{\max} = \frac{R_s}{D}$。辐射通量密度为强度在立体角内的积分：
+        \[
+        F = I_s \int_\Omega \cos\theta \dd{\Omega} = I_s \int_0^{2\pi} \int_0^{\theta_{\max}} \cos\theta \sin\theta \dd{\phi} \dd{\theta}.
+        \]
+        可以积分得到：
+        \[
+        F = I_s \cdot 2\pi \cdot \frac{1}{2} \sin^2\theta_{\max} = \boxed{\pi I_s \left( \frac{R_s}{D} \right)^2}.
+        \]
+  \item 太阳作为各向同性朗伯体，总辐射功率为：
+        \[
+        P = (\pi I_s) \cdot 4\pi R_s^2 = 4\pi^2 I_s R_s^2.
+        \]
+        通量密度在半径 $D$ 的球面上均匀分布：
+        \[
+        F' = \frac{P}{4\pi D^2} = \frac{4\pi^2 I_s R_s^2}{4\pi D^2} = \boxed{\pi I_s \left( \frac{R_s}{D} \right)^2}.
+        \]
+        两种方法均得到相同的结论，结果一致。
+\end{enumerate}
+\end{example}
+
+\chapter{黑体辐射定律}
+
+\section{黑体辐射}
+
+\subsection{黑体性质}
+
+\paragraph{黑体}
+黑体是一个理想的物体，它能够吸收入射的所有的电磁辐射。
+
+\paragraph{黑体辐射}
+处于热平衡状态的黑体发射的辐射称之为黑体辐射，并具有如下特性：
+\begin{enumerate}
+  \item 辐射具有特定的谱分布和强度，且这些特性只随物体的温度变化（斯特藩–玻尔兹曼定律）。
+  \item 黑体是理想的发射体，即在任何频率，在相同温度下，它发射的辐射能都能达到（或超过）任何其他物体（灰体）发射的辐射能。
+  \item 黑体发射辐射是各向同性的，与方向无关。
+\end{enumerate}
+
+\paragraph{白体}
+对入射辐射不吸收。
+
+\paragraph{灰体}
+以定常吸收率吸收不同波长的入射辐射，也是理想物体。
+
+\paragraph{实体}
+对入射辐射部分吸收，且吸收率随波长变化，实际物体。
+
+\subsection{四大定律}
+
+\subsubsection{普朗克定律}
+$F_B(\lambda, T)$：一个温度 $T$ 的物体会在所有可能波长上发射辐射，而在任意给定的波长上，发射辐射存在一个严格的上限（即黑体辐射），该上限由普朗克函数描述。
+\begin{enumerate}
+  \item 要求处于局地热平衡条件，例如激光笔辐射可以轻易超过黑体辐射。
+  \item 要求物体尺度要远大于波长，该定律对微观粒子也不成立，需通过量子力学修正。
+\end{enumerate}
+
+\subsubsection{斯蒂芬–玻尔兹曼定律}
+$F_B(T)$：在所有可能的波长上对普朗克函数进行积分，可以得到斯蒂芬–玻尔兹曼定律。该定律表明黑体发射的最大总辐射能量与绝对温度四次方成正比。
+
+\subsubsection{维恩位移定律}
+$\lambda_m(T)$：对于任意给定温度，出现普朗克函数最大值的波长与该温度成反比。
+
+\subsubsection{基尔霍夫定律}
+$\varepsilon(\lambda, T)$：在给定谱带中，好的吸收体也是好的发射体。该事实由基尔霍夫定律描述。
+
+\section{普朗克函数}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[%这一块让ai画的，因为原版tikz不支持过大的运算
+        width=\textwidth,
+        height=8cm,
+        xlabel={波长 $\lambda$ ($\mu\mathrm{m}$)}, % 微米单位
+        ylabel={光谱辐射出射度 (\(\mathrm{W \cdot m^{-2} \cdot \mu m^{-1} \cdot Sr^{-1}}\))},
+        xmin=0.2, xmax=2.0, % 设定合理的波长范围
+        ymin=0,
+        legend pos=north east,
+        grid=major, % 添加网格
+        tick label style={font=\small}, % 调整刻度字体
+        label style={font=\small},
+        % --- 关键样式设置：禁止循环列表添加标记 ---
+        cycle list name=color list, % 只循环颜色，不循环标记
+      ]
+
+      % 定义物理学常数
+      \def\h{6.62607015e-34} % 普朗克常数, J*s
+      \def\c{2.99792458e8}   % 光速, m/s
+      \def\k{1.380649e-23}   % 玻尔兹曼常数, J/K
+
+      % 绘制 T=5000K 的曲线
+      \addplot[black, very thick, smooth, domain=0.2:2, samples=200] gnuplot {
+        (2*\h*\c^2 / (x*1e-6)^5) / (exp(\h*\c/( (x*1e-6)*\k*5000 )) - 1) / 1e6
+      };
+      \addlegendentry{$T = 5000$K}
+
+      % 绘制 T=6000K 的曲线
+      \addplot[black!70, thick, smooth, domain=0.2:2, samples=200] gnuplot {
+        (2*\h*\c^2 / (x*1e-6)^5) / (exp(\h*\c/( (x*1e-6)*\k*6000 )) - 1) / 1e6
+      };
+      \addlegendentry{$T = 6000$K}
+
+      % 绘制 T=7000K 的曲线
+      \addplot[black!40, smooth, domain=0.2:2, samples=200] gnuplot {
+        (2*\h*\c^2 / (x*1e-6)^5) / (exp(\h*\c/( (x*1e-6)*\k*7000 )) - 1) / 1e6
+      };
+      \addlegendentry{$T = 7000$K}
+
+    \end{axis}
+  \end{tikzpicture}
+  \caption{普朗克函数}
+\end{figure}
+
+\paragraph{公式}
+一个温度为 $T$，且处于热力平衡状态下的黑体发射辐射的各向同性单色辐射强度：
+\[
+B_\lambda(T) = \frac{\mathrm{2hc^2}}{\lambda^5 \left( \mathrm{e}^{\mathrm{hc}/(\mathrm{k_b} \lambda T)} - 1 \right)},
+\]
+其中普朗克常数 $\mathrm{h} = 6.626 \times 10^{-34}\,\mathrm{J \cdot s}$，玻尔兹曼常数 $\mathrm{k_b} = 1.38 \times 10^{-23}\,\mathrm{J \cdot K^{-1}}$。
+
+\paragraph{物理解释}
+$B_\lambda(T) \dd{\lambda} =$ 由 $[\lambda, \lambda + \dd{\lambda}]$ 波长区间贡献的总发射辐射强度。
+
+\paragraph{量纲}
+物理量纲是每单位波长的辐射强度 $\mathrm{W \cdot m^{-2} \cdot \mu m^{-1} \cdot Sr^{-1}}$。
+
+\begin{example}
+有些时候普朗克函数 $B(T)$ 不但可以表示成波长 $\lambda$ 的函数，而且还可以表示成频率 $\nu$ 或波数 $\tilde{\nu}$ 的函数。考虑到在 $\dd{\nu}$ 和 $\dd{\lambda}$ 对应相同窄的光谱区间时，$B_\lambda(T) \dd{\lambda}$ 必须等于 $B_\nu(T) \dd{\nu}$，由此推导出只随 $\nu$ 函数变化的 $B_\nu$ 正确表达式。
+
+直接将 $\lambda = \frac{\mathrm{c}}{\nu}$ 代入是错误的。由相同波谱区间能量守恒的要求可得
+\[
+B_\nu(T) = B_\lambda(T) \frac{\dd{\lambda}}{\dd{\nu}}.
+\]
+根据波长和频率关系可知
+\[
+\lambda = \frac{\mathrm{c}}{\nu} \Rightarrow \dd{\lambda} = \left| \frac{-c}{\nu^2} \dd{\nu} \right|.
+\]
+注意采用绝对值是因为普朗克函数必须是正值。将其代入上式可得：
+\[
+B_\lambda \dd{\lambda} = \frac{\mathrm{2hc^2}}{\lambda^5 \left( \mathrm{e}^{\mathrm{hc}/(\mathrm{k_b} \lambda T)} - 1 \right)} \frac{\mathrm{c}}{\nu^2} \dd{\nu} = \frac{2\mathrm{h}\nu^3}{c^2 \left( \mathrm{e}^{\mathrm{h}\nu/(\mathrm{k_b} T)} - 1 \right)} \dd{\nu}.
+\]
+因此
+\[
+B_\nu \dd{\nu} = \frac{2\mathrm{h}\nu^3}{\mathrm{c^2} \left( \mathrm{e}^{\mathrm{h}\nu/(\mathrm{k_b} T)} - 1 \right)} \dd{\nu}.
+\]
+\end{example}
+
+\paragraph{基本特征}
+\begin{enumerate}
+  \item 对于任意给定的波长，黑体发射随温度升高而单调增大。
+  \item 发射辐射不以它的最大值为中心呈现出对称分布。
+  \item 在光谱末端的短波区域，发射快速锐减。
+  \item 在接近长波末端时，发射则像尾巴一样非常缓慢减小。
+\end{enumerate}
+地球长波辐射各方向都有，太阳短波辐射仅有单一方向，所以可以忽略，然而太阳辐射的长波辐射仍然大于地球长波辐射，因此考虑镜面反射等辐射时，必须考虑太阳长波辐射。
+
+\section{维恩位移定律}
+
+\paragraph{定律}
+黑体辐射最大通量密度的波长与温度成反比
+\[
+\lambda_m(T) = \frac{a}{T} = \frac{2897.8\,\mu\mathrm{m} \cdot \mathrm{K}}{T}.
+\]
+黑体温度 $T = 6000\,\mathrm{K}$，$\lambda_m = 0.42\,\mu\mathrm{m}$，为可见光。黑体温度 $T = 290\,\mathrm{K}$，$\lambda_m = 10\,\mu\mathrm{m}$，为红外线。由维恩位移定律确定的温度称为色温。
+
+\paragraph{推导}
+根据普朗克定律对波长求导可得。
+
+\section{史蒂芬–玻尔兹曼定律}
+
+\subsection{史蒂芬–玻尔兹曼定律}
+
+\paragraph{定律}
+普朗克函数描述黑体发射单色辐射强度，而史蒂芬–玻尔兹曼定律描述黑体发射的宽带辐射通量密度
+\[
+F_{\mathrm{BB}}(T) = \pi \int_0^\infty B_\lambda(T) \dd{\lambda} = \sigma T^4,
+\]
+其中
+\[
+\sigma = \frac{2\pi^5 \mathrm{k_b}^4}{\mathrm{15 c^2 h^3}} \approx 5.67 \times 10^{-8}\,\mathrm{W \cdot m^{-2} \cdot K^{-4}}.
+\]
+乘以 $\pi$ 是对半球立体角积分。
+
+推导提示：利用替换关系 $x = \frac{hc}{\mathrm{k_b} \lambda T}$ 同时注意已知积分
+\[
+\int_0^\infty \frac{x^3}{\mathrm{e}^x - 1} \dd{x} = \frac{\pi^4}{15}.
+\]
+
+由玻尔兹曼定律确定的温度叫做相当黑体温度。
+
+\begin{example}
+给定以下信息，利用史蒂芬–玻尔兹曼关系计算太阳的有效发射温度：已知地球大气顶的太阳常数 $S_0 = 1370\,\mathrm{W \cdot m^{-2}}$；地球轨道的平均半径 $1.496 \times 10^8\,\mathrm{km}$；太阳的色球半径 $6.96 \times 10^5\,\mathrm{km}$。
+
+由能量守恒可知太阳表面发射的辐射通量密度为：
+\[
+F_{\mathrm{sfc}} = S_0 \left( \frac{D_E}{R_S} \right)^2 = 1370\,\mathrm{W \cdot m^{-2}} \left( \frac{1.496 \times 10^8\,\mathrm{km}}{6.96 \times 10^5\,\mathrm{km}} \right)^2 = 6.3 \times 10^7\,\mathrm{W/m^2}.
+\]
+根据史蒂芬–玻尔兹曼定律可知太阳有效发射温度为
+\[
+T_{\mathrm{eff}} = \sqrt[4]{\frac{F_{\mathrm{sfc}}}{\sigma}} = \left( \frac{6.3 \times 10^7\,\mathrm{W/m^2}}{5.67 \times 10^{-8}\,\mathrm{W \cdot m^{-2} \cdot K^{-4}}} \right)^{1/4} = 5780.2\,\mathrm{K}.
+\]
+该数值与颜色温度有所区别的原因是太阳不是一个完美的黑体。
+\end{example}
+
+\subsection{大气顶的全球辐射平衡}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[>=latex,scale=0.7]
+    \draw (0,0) circle[radius=2];
+    \foreach \h in {-6,-5,...,6}{
+      \draw[->] (-7,\h/3) --+ (2,0);
+    }
+    \foreach \t in {0,30,...,330}{
+      \draw[->,rotate=\t, domain=0.7*pi:1.3*pi, samples=100] plot (\x, {sin(10*\x r)/5});
+    }
+    \fill[gray] (0,2) arc (90:-90:2) -- cycle;
+    \node at (-6,3) {入射短波辐射};
+    \node at (4,3) {出射长波辐射};
+  \end{tikzpicture}
+  \caption{零维气候模型}
+\end{figure}
+
+\paragraph{入射短波辐射}
+\[
+\Phi_{\mathrm{SW}} = (1 - A_p) S_0 \pi R_\mathrm{e}^2,
+\]
+其中 $A_p = 0.3$ 为行星反照率。
+
+\paragraph{出射长波辐射}
+\[
+\Phi_{\mathrm{LW}} = \varepsilon \sigma T^4 4\pi R_\mathrm{e}^2,
+\]
+其中假设发射率 $\varepsilon = 1$。
+
+\paragraph{有效发射温度}
+\[
+T_{\mathrm{eff}} = \sqrt[4]{\frac{S_0 (1 - A_p)}{4\sigma}} = \sqrt[4]{\frac{1367 (1 - 0.3)}{4 \times 5.67 \times 10^{-8}}} = 255\,\mathrm{K}.
+\]
+可见比观测的全球平均地表温度 $288\,\mathrm{K}$ 低了 $33\,\mathrm{K}$，这是因为没有考虑大气的平均温度 $242\,\mathrm{K}$，这个温度是大气层顶的。
+
+\section{基尔霍夫定律}
+
+\subsection{瑞利–金斯近似}
+
+\paragraph{引入}
+对于大气微波遥感，人们感兴趣的波长都非常地长，比 $\lambda = 1\,\mathrm{mm}$ 甚至更长。
+
+\paragraph{公式}
+在这种极限长的波长情况下
+\[
+B_\lambda(T) \approx \frac{\mathrm{2ck_b}}{\lambda^4} T,
+\]
+即所谓的瑞利–金斯近似。
+
+\paragraph{分析}
+由此可知，在这种情况下黑体发射辐射与绝对温度成正比。该定律显著地简化一些类型的微波谱带辐射传输计算和探测器标定工作，可以用温度代替辐射强度。
+
+\subsection{发射率}
+
+\paragraph{发射率}
+给定物体表面发射辐射与同温黑体表面发射辐射的比值。
+
+\paragraph{单色发射率}
+给定物体表面在给定波长 $\lambda$ 和温度 $T$ 条件下发射的实际辐射强度 $I_\lambda$ 与普朗克函数 $B_\lambda(T)$ 的比值，
+\[
+\varepsilon_\lambda = \frac{I_\lambda(T)}{B_\lambda(T)}.
+\]
+通常，$0 \leq \varepsilon_\lambda \leq 1$。当 $\varepsilon_\lambda = 1$，物体在此波段上为有效黑体。
+
+\paragraph{灰体发射率}
+给定物体表面发射的宽带辐射通量密度与史蒂芬–玻尔兹曼关系预测的辐射通量密度比值，
+\[
+\varepsilon = \frac{F}{\sigma T^4}.
+\]
+有些时候，引入有限波长范围 $[\lambda_1, \lambda_2]$ 的灰体发射率概念会更加地有用。例如：
+\[
+\varepsilon = \frac{\int_{0.1}^{4} F_\lambda(T) \dd{\lambda}}{\int_{0.1}^{4} \pi B_\lambda(T) \dd{\lambda}}
+\]
+为太阳短波波段的灰体发射率。
+
+\paragraph{典型发射率}
+\begin{itemize}
+  \item 水体：92–96
+  \item 新的干雪：82–99.5
+  \item 冰：96
+  \item 干的沙子：84–90
+  \item 湿的土壤：95–98
+  \item 沙漠：90–91
+  \item 森林和灌木：90
+  \item 人的皮肤：95
+  \item 水泥地：71–88
+  \item 抛光铝：1–5
+\end{itemize}
+人几乎为黑体；航空飞机常使用铝，吸收率极小，反射率极高，故很难隐身。
+
+\subsection{基尔霍夫定律}
+
+\paragraph{定律}
+基尔霍夫定律以简洁的方式定量阐述了吸收率 $a$ 和发射率 $\varepsilon$ 之间的关系：
+\[
+\varepsilon_\lambda(\theta, \phi) = a_\lambda(\theta, \phi).
+\]
+可以使用反证法：如果不相等，假设 $\varepsilon > a$，则物体不断降温，外界不断升温，违背热力学第二定律。
+
+\paragraph{注意}
+\begin{enumerate}
+  \item 注意该等式只有在针对给定波长 $\lambda$ 和固定观测方向 $\theta$ 和 $\phi$ 的单色辐射时才严格有效。除非 $a$（因此和 $\varepsilon$）在一定范围内与这些参数无关。实际中各向同性的辐射较少，上述定律很少满足。
+  \item 在此需要指出基尔霍夫定律仅仅适用于局地热平衡（LTE）系统。即只有物质分子之间的能量交换相比分子与辐射场或其他能量源之间的能量交换更加地快速，该条件才能成立。激光笔、LED灯、南北两极的极光等光源都不是局地热平衡的。
+\end{enumerate}
+
+\section{简化大气辐射模式}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[>=latex]
+    \foreach \y in {1,3,4}{
+      \draw (0,\y) --+ (8,0);
+    }
+    \fill[gray] (0,0) rectangle (8,1);
+    \foreach \t in {0,30,...,150}{
+      \draw[rotate around={\t:(1,7)}] (1,7.8)--(1,6.2);
+    }
+    \filldraw[fill=white] (1,7) circle[radius=0.5];
+    \foreach \h in {6.4,6.8,7.2,7.6}{
+      \draw[->,rotate=90,xshift=6 cm, yshift=-\h cm, domain=0:0.6*pi, samples=100] plot (\x, {sin(10*\x r)/5});
+    }
+    \draw[->] (1,5.5)node[above]{1} --+ (0,-1);
+    \draw[->] (1,2.5)node[above]{2} --+ (0,-1);
+    \draw[<-] (3,5.5)node[above]{3} --+ (0,-1);
+    \draw[<-] (3,2.5)node[above]{4} --+ (0,-1);
+    \draw[<-] (5,5.5)node[above]{5} --+ (0,-1);
+    \draw[->] (5,2.5)node[above]{6} --+ (0,-1);
+    \draw[<-] (7,5.5)node[above]{7} --+ (0,-1);
+    \draw[<-] (7,2.5)node[above]{8} --+ (0,-1);
+    \node at (3,7) {短波};
+    \node at (5,7) {长波};
+    \node at (2,3.5) {\(a_\mathrm{sw}\)};
+    \node at (4,3.5) {大气};
+    \node at (6,3.5) {\(a_\mathrm{lw}\)};
+    \node at (8.5,3.5) {\(T_a\)};
+    \node at (2,0.5) {\(A\)};
+    \node at (4,0.5) {地表};
+    \node at (6,0.5) {\(\varepsilon\)};
+    \node at (8.5,0.5) {\(T_s\)};
+  \end{tikzpicture}
+\end{figure}
+
+\paragraph{假设条件}
+大气温度均匀的半透明薄片，地表不透明。地表温度 $T_s$，大气温度 $T_a$。地表长波发射率 $\varepsilon = 1$ 和短波反照率 $A$。大气长波吸收率 $a_{\mathrm{lw}}$ 和短波吸收率 $a_{\mathrm{sw}}$。大气只吸收，不散射或反射短波/长波辐射（不合理因素）。全球平均入射的太阳短波辐射通量 $S = S_0 / 4$。
+
+\paragraph{辐射内容}
+\begin{itemize}
+  \item $F_1$：来自太阳的入射短波通量，$F_1 = S$。
+  \item $F_2$：$F_1$ 的透射部分，$F_2 = (1 - a_{\mathrm{sw}}) F_1 = (1 - a_{\mathrm{sw}}) S$。
+  \item $F_3$：$F_4$ 的透射部分，$F_3 = (1 - a_{\mathrm{sw}}) F_4 = A (1 - a_{\mathrm{sw}})^2 S$。
+  \item $F_4$：地表反射的短波通量，$F_4 = A F_2 = A (1 - a_{\mathrm{sw}}) S$。
+  \item $F_5$：大气向上的长波发射，$F_5 = a_{\mathrm{lw}} \sigma T_a^4$。
+  \item $F_6$：大气向下的长波发射，$F_6 = F_5 = a_{\mathrm{lw}} \sigma T_a^4$（大气温度一致，上下一致）。
+  \item $F_7$：$F_8$ 的透射部分，$F_7 = (1 - a_{\mathrm{lw}}) F_8 = (1 - a_{\mathrm{lw}}) \sigma T_s^4$。
+  \item $F_8$：地表的长波发射，$F_8 = (1 - \varepsilon) F_6 + \varepsilon \sigma T_s^4 = \sigma T_s^4$。
+\end{itemize}
+
+\paragraph{辐射平衡}
+大气顶及地表与大气之间的净辐射通量（短波和长波的总和）都为零。
+\[
+F_{\mathrm{net,top}} = F_3 + F_5 + F_7 - F_1 = 0 \quad \text{（真空只有辐射）},
+\]
+\[
+F_{\mathrm{net,sfc}} = F_4 + F_8 - F_2 - F_6 = 0 \quad \text{（未考虑潜热、感热）}.
+\]
+
+\paragraph{温度求解}
+代入之前给出的各个辐射通量项可得：
+\[
+A(1 - a_{\mathrm{sw}})^2 S + a_{\mathrm{lw}} \sigma T_a^4 + (1 - a_{\mathrm{lw}}) \sigma T_s^4 - S = 0,
+\]
+\[
+A(1 - a_{\mathrm{sw}}) S + \sigma T_s^4 - (1 - a_{\mathrm{sw}}) S - a_{\mathrm{lw}} \sigma T_a^4 = 0.
+\]
+对其进行整理可得：
+\[
+(1 - a_{\mathrm{lw}}) \sigma T_s^4 + a_{\mathrm{lw}} \sigma T_a^4 = S \left[ 1 - A (1 - a_{\mathrm{sw}})^2 \right],
+\]
+\[
+\sigma T_s^4 - a_{\mathrm{lw}} \sigma T_a^4 = (1 - A) (1 - a_{\mathrm{sw}}) S.
+\]
+求解耦合的线性方程组可得：
+\[
+T_s = \left\{ \frac{S}{\sigma} \left[ 1 - (1 - a_{\mathrm{sw}}) A \right] \left( \frac{2 - a_{\mathrm{sw}}}{2 - a_{\mathrm{lw}}} \right) \right\}^{1/4},
+\]
+\[
+T_a = \left\{ \frac{S}{\sigma} \left[ \frac{(1 - A)(1 - a_{\mathrm{sw}}) a_{\mathrm{lw}} + \left[ 1 + (1 - a_{\mathrm{sw}}) A \right] a_{\mathrm{sw}}}{(2 - a_{\mathrm{lw}}) a_{\mathrm{lw}}} \right] \right\}.
+\]
+
+\paragraph{分类讨论}
+\begin{enumerate}
+  \item 当 $a_{\mathrm{lw}}, a_{\mathrm{sw}} = 0$ 时，相当于大气根本不存在，此时 $T_s = \sqrt[4]{\frac{S_0 (1 - A)}{4\sigma}}$，与零级气候模型几乎一致。
+  \item 当 $A = 0$ 时，即地表完全黑的情况，但是 $a_{\mathrm{lw}}$ 和 $a_{\mathrm{sw}}$ 可以各自不为零，此时
+        \[
+        T_s = \left[ \frac{S_0}{4\sigma} \left( \frac{2 - a_{\mathrm{sw}}}{2 - a_{\mathrm{lw}}} \right) \right]^{1/4}.
+        \]
+        短波吸收率越小，长波吸收率越大，地表温度越高。
+\end{enumerate}
+
+\paragraph{温室效应}
+考虑到假设条件的不合理，令 $a_{\mathrm{sw}} = 0.1$（即大气对太阳的短波辐射相对透明）和 $a_{\mathrm{lw}} = 0.8$（即大气对热红外波长则相对吸收），同时将用 $S(1 - A_p)$ 替换 $S$ 来补偿因云层等反射而造成的辐射损失，其中 $A_p = 0.30$ 是观测到的行星反照率，由此可以得到了一个新的地表平衡温度 $286\,\mathrm{K}$。由于大气的存在而导致的这种变暖效应通常称为温室效应（Greenhouse effect）。
+
+\section{夜间辐射冷却}
+
+\paragraph{问题引入}
+晴空晚上比多云晚上更容易发生露珠或者霜冻现象，即降温速度更快。
+
+\paragraph{问题推导}
+假设长波地表发射率 $\varepsilon \approx 1$，地表净辐射通量：
+\[
+F^{\mathrm{net}} = F^\uparrow - F^\downarrow = \sigma T_s^4 - a_{\mathrm{lw}} \sigma T_a^4.
+\]
+\begin{enumerate}
+  \item 中纬度晴空晚上情况，地表温度 $T_s = 275\,\mathrm{K}$，长波大气吸收率 $a_{\mathrm{lw}} = 0.8$ 和有效大气温度 $T_a = 260\,\mathrm{K}$，因此正的向上净通量 $F^{\mathrm{net}} = 117\,\mathrm{W \cdot m^{-2}}$。
+  \item 中纬度有云晚上情况，地表温度 $T_s = 275\,\mathrm{K}$，长波大气吸收率 $a_{\mathrm{lw}} = 1.0$ 和有效大气温度 $T_a = 270\,\mathrm{K}$，因此正的向上净通量 $F^{\mathrm{net}} = 22\,\mathrm{W \cdot m^{-2}}$。云在长波可以视作黑体。
+  \item 假设冷却的土壤平均有效厚度为 $\Delta Z = 5\,\mathrm{cm}$，采用典型的土壤热容量（每立方体积）$C \approx 2 \times 10^6\,\mathrm{J \cdot m^{-3} \cdot K^{-1}}$，因此地面冷却速率可以表示为
+        \[
+        \frac{\dd{T}}{\dd{t}} \approx \frac{-F^{\mathrm{net}}}{C \Delta Z}.
+        \]
+\end{enumerate}
+
+\paragraph{辐射冷却}
+因此晴空晚上情况，地面冷却速率约为 $-4.2\,\mathrm{K/h}$，而有云晚上情况，地面冷却速率约为 $-0.8\,\mathrm{K/h}$。
+
+\paragraph{层的冷却}
+对于 $\Delta z$ 的一个空气层，有层加热率：
+\[
+\frac{\dd{T}}{\dd{t}} = \lim_{\Delta z \to 0} \frac{-\Delta F^{\mathrm{net}}}{c_p \rho \Delta z} = - \frac{1}{c_p \rho} \frac{\dd{F^{\mathrm{net}}}(z)}{\dd{z}}.
+\]
+可以解释云层的辐射冷却现象。云顶的辐射冷却：云层的冷却主要来自于云顶的净辐射冷却。
+
+\section{亮度温度}
+
+\paragraph{亮度温度}
+普朗克函数描述了给定波长条件下黑体发射辐射强度与黑体温度之间的一对一映射关系。因此，无论什么辐射源，总能将任意的单色辐射强度转换为等价的黑体温度，即亮度温度。
+\[
+T_B = B_\lambda^{-1}(I_\lambda),
+\]
+其中 $B_\lambda^{-1}$ 是以观测辐射强度为自变量的逆普朗克函数。
+
+\paragraph{温度关系}
+\[
+T_B \leq T_{\text{实际温度}}.
+\]
+等价于证明：$B_\lambda(T_B) \leq B_\lambda(T) \Rightarrow I_\lambda(T) \leq B_\lambda(T) \Rightarrow \varepsilon_\lambda B_\lambda(T) \leq B_\lambda(T)$，得证。
+
+\paragraph{注意}
+\begin{enumerate}
+  \item 对于热红外波长，大多数的陆地和水体以及厚云层的表面发射率 $\varepsilon \approx 1$。因此，穿过透明大气观测到的地表亮度温度非常地接近于实际物理温度。
+  \item 对于微波波长，水体和冰川的表面发射率显著低于一，亮度温度可能明显低于物理温度。
+\end{enumerate}
+
+\begin{example}
+某卫星在无云条件下观测某位置地表的波长 $12\,\mu\mathrm{m}$ 辐亮度为 $6.2\,\mathrm{W \cdot m^{-2} \cdot \mu m^{-1} \cdot Sr^{-1}}$。
+\begin{enumerate}
+  \item 计算亮度温度 $T_B$。
+  \item 假设大气完全透明，且已知问题的地表发射率在该波长上为 $0.9$，计算地表的实际温度。
+  \item 亮度温度相对实际温度的比值等于发射率吗？\label{que:1}
+\end{enumerate}
+求逆普朗克函数即可得到随观测波长变化的亮度温度
+\[
+T_B(I, \lambda) = \frac{\mathrm{hc}}{\mathrm{k_b} \lambda \ln \left( \frac{\mathrm{2hc^2}}{I \lambda^5} + 1 \right)}.
+\]
+\begin{enumerate}
+  \item 代入上式，$T_B(I, \lambda) = T_B(6.2\,\mathrm{W \cdot m^{-2} \cdot \mu m^{-1} \cdot Sr^{-1}}, 12\,\mu\mathrm{m}) = 275\,\mathrm{K}$。
+  \item 利用 $I_\lambda(T) = \varepsilon_\lambda B_\lambda(T) \Rightarrow T(I, \lambda) = T_B \left( \frac{I}{\varepsilon}, \lambda \right) = 281.7\,\mathrm{K}$。
+  \item 亮度温度与实际温度的比值 $\frac{T_B(I, \lambda)}{T(I, \lambda)} = 0.976$，可见不完全等于发射率，但是采用亮度温度估计真实的物理温度只有 $2\%$ 误差，即使非黑体的发射率只有 $0.9$。然而，实际情况大气并不完全透明，云在该波段基本不透明。
+\end{enumerate}
+\end{example}
+
+\begin{example}
+重复上述问题，除了波长 $1\,\mathrm{cm}$ 和辐射强度 $2.103 \times 10^{-10}\,\mathrm{W \cdot m^{-2} \cdot \mu m^{-2} \cdot Sr^{-1}}$。请问如何修改小题\ref{que:1}？
+
+经过计算得到：亮温为 $254.7\,\mathrm{K}$，实际温度为 $282.9\,\mathrm{K}$，可见 $\frac{T_B(I, \lambda)}{T(I, \lambda)} = 0.9$。因此，遥感选择 $12\,\mu\mathrm{m}$。然而，云在该波段基本透明，遥感有时也用该波段。此外，可见波长较长时，温度与普朗克函数成正比关系：$\frac{T_B}{T} = \varepsilon_\lambda \Rightarrow \frac{B_\lambda(T_B)}{B_\lambda(T)} = \varepsilon_\lambda \Rightarrow \frac{I_\lambda(T)}{B_\lambda(T)} = \varepsilon_\lambda$，该处比值为发射率是必然现象。
+\end{example}
+
+\section{章节例题}
+
+\begin{example}
+假设太阳比其自身更热（因此更蓝），致使其最大发射波长变为 $0.400\,\mu\mathrm{m}$，而不是最初的 $0.475\,\mu\mathrm{m}$。假设反照率不变，请计算对应的地球平衡发射温度变化。为简单起见，这里假设太阳发射遵循普朗克函数。提示：首先结合 (6.3) 和 (6.5) 求出新的太阳常数与当前 $S_0$ 数值的比值。然后利用该结果推导随当前平衡温度和两个波长变化的新平衡温度的简化函数表达式。
+
+由维恩位移定律 $\lambda_m(T) = \frac{a}{T} = \frac{2897.8\,\mu\mathrm{m} \cdot \mathrm{K}}{T}$，得温度比：
+\[
+\frac{T_{\mathrm{new}}}{T_{\mathrm{original}}} = \frac{\lambda_{\mathrm{original}}}{\lambda_{\mathrm{new}}} = \frac{0.475\,\mu\mathrm{m}}{0.400\,\mu\mathrm{m}} = 1.1875.
+\]
+太阳常数与太阳光度 $L \propto T^4$ 成正比，故有：
+\[
+\frac{S_0'}{S_0} = \left( \frac{T_{\mathrm{new}}}{T_{\mathrm{original}}} \right)^4 = (1.1875)^4 \approx 1.9885.
+\]
+则新平衡温度为：
+\[
+T_{\text{eff}}' = T_{\text{eff}} \cdot \sqrt[4]{\frac{S_0'}{S_0}} = 255\,\mathrm{K} \cdot 1.1875 \approx 302.8\,\mathrm{K}.
+\]
+故变化为：
+\[
+\Delta T = 302.8 - 255 = \boxed{47.8\,\mathrm{K}}.
+\]
+\end{example}
+
+\begin{example}
+某天陆地的表面物理温度为 $300\,\mathrm{K}$。某同时搭载 $11\,\mu\mathrm{m}$ 通道的红外辐射仪和 $19\,\mathrm{GHz}$ 通道的微波辐射仪的卫星对地表进行观测。在这两种情况中，地表发射率 $t$ 都为 $0.95$。
+\begin{enumerate}
+  \item 红外和微波辐射仪记录的亮度温度分别是多少？
+  \item 考虑到通常真实陆地表面发射率至少存在几个百分点的不确定度，请问采用这两个谱带中哪个谱带的亮度温度可以更为合适地粗略估算地表的真实物理温度？
+\end{enumerate}
+\begin{enumerate}
+  \item 红外通道地标实际辐射为：$I = \varepsilon B(300\,\mathrm{K}),\ \varepsilon = 0.95$。则卫星将该辐射视作为黑体辐射：
+        \[
+        B(T_b) = 0.95 B(300\,\mathrm{K}) = 0.95 \times \frac{\mathrm{2hc^2}}{\lambda^5 (\mathrm{e}^{\mathrm{hc}/(\mathrm{k_b} \lambda T)} - 1)} = 9.075 \times 10^6\,\mathrm{W \cdot m^{-2} \cdot \mu m^{-1} \cdot Sr^{-1}}.
+        \]
+        则将该值反解，可以得到亮温温度：
+        \[
+        T_b = \frac{\mathrm{hc}}{\mathrm{k_b} \lambda \ln \left( \frac{\mathrm{2hc^2}}{I \lambda^5} + 1 \right)} = \boxed{296.55\,\mathrm{K}}.
+        \]
+        对于微波辐射仪，其波长较长，可以使用瑞利–金斯近似，即辐射正比于温度：
+        \[
+        T_b = \varepsilon T \approx 0.95 \times 300 = \boxed{285\,\mathrm{K}}.
+        \]
+  \item 考虑真实地表发射率的不确定性（几个百分点），在微波（19 GHz）下，由于辐射与温度呈线性关系，亮度温度直接按比例下降，发射率误差会直接导致相同百分比的温度误差；而在红外（11 $\mu$m）下，普朗克函数的非线性使得同样百分比的发射率误差引起的亮度温度变化较小，因此，红外通道的亮度温度对发射率不确定性较不敏感，更适合用来粗略估计地表的真实物理温度。
+\end{enumerate}
+\end{example}
+
+\chapter{地表的辐射特性}
+
+\section{均匀介质的反射和折射}
+
+\subsection{均匀介质}
+
+\paragraph{均匀介质}
+在与辐射波长相当的尺度上是光滑和均匀的介质，或者说在介质内单个分子的尺寸和间距以及其他不规则度都远小于辐射的波长。从麦克斯韦方程组角度，介质中有唯一参数：折射率。
+
+\paragraph{示例}
+\begin{enumerate}
+  \item 在可见光、红外和微波波段，水、玻璃、空气、红酒、枫糖浆、液态水银和固态黄金（分子或原子量级 $10^{-10}\,\mathrm{m}$）是有效均匀介质，但是对于 X射线和伽马射线谱带，这些物质则是不均匀的。
+  \item 由直径 $10\,\mu\mathrm{m}$ 的水滴组成的云相对于可见光（$0.4–0.76\,\mu\mathrm{m}$）和红外辐射非常不均匀，但是相对于微波辐射（$1\,\mathrm{cm}$）的波长则表现得像均匀介质，差了三个量级，所以非常均匀。
+  \item 厘米和米尺度的湍流涡动和湿度波动甚至会使大气相对于无线电和微波辐射显得不均匀。
+\end{enumerate}
+
+\subsection{折射率}
+
+\paragraph{折射率}
+$N = n_r + \ii n_i$。
+\begin{itemize}
+  \item 实部 $n_r$ 在很大程度上影响介质反射和折射特性。
+  \item 虚部 $n_i$ 确定介质内吸收。
+\end{itemize}
+
+\paragraph{水的折射率}
+在可见光范围内未见大的变化：$1.33$。
+
+\paragraph{相位速度}
+介质的相位速度 $c' = c / n_r$。
+
+\paragraph{辐射强度}
+沿 $x$ 方向传输的辐射强度 $I(x) = I_0 \mathrm{e}^{-\beta_a x}$，其中 $\lambda$ 是真空中的波长，吸收系数为 $\beta_a = \frac{4\pi n_i}{\lambda}$。
+
+\subsection{均匀介质的反射和折射}
+
+\paragraph{反射}
+$\theta_r = \theta_i$，入射角等于反射角。
+
+\paragraph{斯涅尔定律}
+\[
+\frac{\sin \theta_t}{N_1} = \frac{\sin \theta_i}{N_2}.
+\]
+
+\paragraph{全反射}
+\[
+\theta_0 \equiv \arcsin \left( \frac{N_1}{N_2} \right),
+\]
+从折射率大的往小发射。在水中，$\theta_0 \approx 49^\circ$。
+
+\paragraph{菲涅耳定律}
+电场矢量平行于入射平面的反射率：
+\[
+R_p = \left| \frac{\cos \theta_t - m \cos \theta_i}{\cos \theta_t + m \cos \theta_i} \right|^2.
+\]
+电场矢量垂直于入射平面的反射率：
+\[
+R_s = \left| \frac{\cos \theta_i - m \cos \theta_t}{\cos \theta_i + m \cos \theta_t} \right|^2.
+\]
+平行的情况反射率可能出现零，称为布儒斯特角。相对折射率 $m = N_2 / N_1$。
+
+\paragraph{布儒斯特角}
+\[
+\theta_B = \arcsin \sqrt{\frac{m^2}{m^2 + 1}}.
+\]
+对于可见光，水的 $\theta_B = 53^\circ$。在该角度，非偏振光经过反射变为偏振光，适用于遥感。
+
+\paragraph{注意：}平行于入射平面的偏振通常称为垂直偏振，而垂直于入射平面的偏振称为水平偏振。相应的反射率则写为 $R_v$ 和 $R_h$。水平偏振垂直于入射平面，与水平表面是平行的。
+
+\paragraph{讨论}
+入射角很小时，水体反射率非常小；而入射角大时，对应清晨或傍晚，太阳辐射又很小。因此，海洋的总体反射率很低，大部分被吸收。进一步的，如果南北两极冰川融化，则热库增大。
+
+\subsection{彩虹}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[>=latex,scale=1]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (120:2);
+    \coordinate (B) at (20:2);
+    \coordinate (C) at (-80:2);
+    \coordinate (D) at (-180:2);
+    \draw (O) circle[radius=2];
+    \draw[very thick] (A) --+ (-3,0)node[above]{入射方向};
+    \draw[->, very thick] (A) -- (B) -- (C) --+ (-140:3)node[below]{一次内部反射};
+    \draw[->, thick] (A) --+ (60:2)node[above]{外部反射};
+    \draw[->, thick] (B) --+ (-40:2)node[right]{直接透射};
+    \draw[->, thick, dashed] (C) -- (D) --+ (120:1)node[left]{两次内部反射};
+    \draw[dotted] (A) --+ (6.5,0);
+    \draw[dotted] (C) --+ (40:6.5);
+    \draw (O) --node[below left]{\(a\)} (A) --++ (A);
+    \draw (O) -- (B) --++ (B) --++ (B);
+    \draw (O) -- (C) --++ (C);
+    \draw[dotted] (O) -- (D) --++ (D);
+    \draw[dotted] (-1,0) --node[left]{\(r\)} (A);
+    \draw (-0.8,0) |- (-1,0.2);
+    \foreach \x/\y in{-0.3/0.2,-1.4/2,-1/2.2,2.4/0.6,0.2/-2.4}{
+      \node at (\x,\y) {\(\theta_i\)};
+    }
+    \foreach \x/\y in{-0.6/1.4,1.2/0.7,1.3/0.2,0.45/-1.3,0.1/-1.4,-1.3/-0.3}{
+      \node at (\x,\y) {\(\theta_t\)};
+    }
+    \draw[<->] (5.259,1.732) arc (0:-140:0.5);
+    \node at (5,1) {\(\theta\)};
+  \end{tikzpicture}
+  \caption{彩虹中的光}
+\end{figure}
+
+\paragraph{基本模型}
+雨滴量级为毫米量级，可见光为微米量级，可以视作平面。
+
+\paragraph{光线追踪}
+阳光以入射角 $\theta_1$ 射入球形水滴，发生折射（斯涅尔定律）。折射后的光线在水滴内壁发生一次内部反射，反射后的光线再次折射出水滴，当偏向角最小时（约 $138^\circ$），光线集中形成主虹。由于不同颜色光线的最小散射角不同，导致边缘出现光的色散。观察者以 $42^\circ$ 角（$180^\circ - 138^\circ$）背对太阳看到主虹，红光在外（折射率低，偏折小），紫光在内。
+
+\section{自然地表的辐射特性}
+
+\subsection{理想化为平面边界的自然表面}
+
+\paragraph{辐射情况}
+上述分析仅存在于平静的湖面或海面，下面我们来讨论陆面或波动的水面的复杂的辐射情况，有专门学科研究：植被大气辐射传输。如右图，我们将不规则的地表处理成等价的假想平面地表。当辐射入射地球表面时，部分被反射，剩余被吸收。前者的比例为吸收率 $a$，后者的比例为反射率 $r$。不考虑发射。通常 $a$ 和 $r$ 与波长 $\lambda$、入射辐射的方向 $\hat{\Omega} = (\theta, \phi)$ 有关。
+
+\paragraph{性质}
+\begin{enumerate}
+  \item 对于任意给定入射方向和波长，反射率和吸收率之和等于一：
+        \[
+        a_\lambda(\theta, \phi) + r_\lambda(\theta, \phi) = 1.
+        \]
+  \item 对于辐射有辐射强度和辐射通量密度可以描述。我们使用通量密度来描述反射率。因为反射率代表反射的概率，关注的是总的能量，不关注特定的方向，反射方向为四面八方。对于方向依赖很弱的自然地表，反射和入射的单色辐射通量 $F_{\lambda, r}$ 和 $F_{\lambda, 0}$ 之间有：
+        \[
+        F_{\lambda, r} = r_\lambda F_{\lambda, 0}.
+        \]
+        吸收率有：地表吸收的辐射通量为
+        \[
+        F_{\lambda, 0} - F_{\lambda, r} = a_\lambda F_{\lambda, 0}.
+        \]
+\end{enumerate}
+
+\subsection{反射光谱实例}
+
+\paragraph{实例性质}
+\begin{enumerate}
+  \item 经典地表包括积雪、植被、湖泊、土壤四种。
+  \item 积雪：可见光反射率最高（微粒结构强散射），湿雪反射率稍低（水融化透明）。
+  \item 植被：反射率很低（绿色护眼，$0.55\,\mu\mathrm{m}$ 高峰绿光）。
+  \item 轻质土壤：含水量较低，反射率较高。
+  \item 湖泊：反射率非常非常低，除了镜面反射的角度，水的颜色很深。
+  \item 到近红外波段，积雪的反射率快速下降。这与云的性质不同，故可以区分云和雪。植被的反射率瞬间上升（叶绿素专门吸收可见光），后方波动表征水的吸收带。土壤的反射率随波长变长而缓慢上升。水体的反射率不断下降。（因此海色遥感非常困难）
+\end{enumerate}
+
+\paragraph{气候效应}
+\begin{enumerate}
+  \item 积雪融化变为水，则反射辐射→吸收辐射。
+  \item 植被退化，反射率上升，产生气候效应。
+\end{enumerate}
+
+\subsection{灰体近似}
+
+\paragraph{灰体近似}
+指定一个单一的平均吸收率来代表整个谱带的吸收率，这称之为灰体近似。
+
+\paragraph{吸收率常数}
+给整个短波或者太阳谱带分配一个吸收率常数 $a_{\mathrm{sw}}$，给长波或者热红外谱带分配另一个吸收率常数 $a_{\mathrm{lw}}$。
+
+\paragraph{特征}
+\begin{enumerate}
+  \item 对大多数陆面来说，$a_{\mathrm{lw}}$ 接近 $1$（黑体近似），而 $a_{\mathrm{sw}}$ 可以高度变化（反射光谱实例，各种地物不同），从深雪数值接近零到森林和水体数值接近一。
+  \item 短波吸收率 $a_{\mathrm{sw}}$ 的补充就是短波反射率 $r_{\mathrm{sw}} = 1 - a_{\mathrm{sw}}$，普遍称之为短波反照率。
+\end{enumerate}
+
+\subsection{反射辐射的角分布}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{4.2cm}
+    \centering
+    \begin{tikzpicture}[>=latex]
+      \draw[very thick] (-2,0) -- (2,0);
+      \fill[gray] (-2,-0.5) rectangle (2,0);
+      \draw[dashed] (0,0) -- (0,2);
+      \draw[->] (-2,2) -- (-1,1);
+      \draw(0,0) -- (-1,1);
+      %
+      \draw[->](0,0) -- (1,1);
+      \draw(1,1) -- (2,2);
+    \end{tikzpicture}
+    \caption{镜面反射}
+  \end{minipage}
+  \begin{minipage}{4.2cm}
+    \centering
+    \begin{tikzpicture}[>=latex]
+      \draw[very thick] (-2,0) -- (2,0);
+      \fill[gray] (-2,-0.5) rectangle (2,0);
+      \draw[dashed] (0,0) -- (0,2);
+      \draw[->] (-2,2) -- (-1,1);
+      \draw(0,0) -- (-1,1);
+      %
+      \draw[dotted](0,0) -- (2,2);
+      \draw (0,0) .. controls (1.6,1.8) and (1.8,1.6) .. (0,0);
+    \end{tikzpicture}
+    \caption{准镜面}
+  \end{minipage}
+  \begin{minipage}{4.2cm}
+    \centering
+    \begin{tikzpicture}[>=latex]
+      \draw[very thick] (-2,0) -- (2,0);
+      \fill[gray] (-2,-0.5) rectangle (2,0);
+      \draw[dashed] (0,0) -- (0,2);
+      \draw[->] (-2,2) -- (-1,1);
+      \draw(0,0) -- (-1,1);
+      %
+      \draw[dotted](0,0) -- (2,2);
+      \draw (1.5,0) arc (0:180:1.5);
+    \end{tikzpicture}
+    \caption{郎伯体}
+  \end{minipage}\vspace{4 ex}
+  \begin{minipage}{4.2cm}
+    \centering
+    \begin{tikzpicture}[>=latex]
+      \draw[very thick] (-2,0) -- (2,0);
+      \fill[gray] (-2,-0.5) rectangle (2,0);
+      \draw[dashed] (0,0) -- (0,2);
+      \draw[->] (-2,2) -- (-1,1);
+      \draw(0,0) -- (-1,1);
+      %
+      \draw[dotted](0,0) -- (2,2);
+      \draw (1.5,0) .. controls (1.2,1) and (1.5,1.3) .. (1.4,1.4) .. controls (1.3,1.5) and (1,1.2) .. (0.4,1.4) .. controls (-0.2,1.6) and (-1.1,1.1) .. (-1.5,0);
+    \end{tikzpicture}
+    \caption{准郎伯体}
+  \end{minipage}
+  \begin{minipage}{4.2cm}
+    \centering
+    \begin{tikzpicture}[>=latex]
+      \draw[very thick] (-2,0) -- (2,0);
+      \fill[gray] (-2,-0.5) rectangle (2,0);
+      \draw[dashed] (0,0) -- (0,2);
+      \draw[->] (-2,2) -- (-1,1);
+      \draw(0,0) -- (-1,1);
+      %
+      \draw[dotted](0,0) -- (2,2);
+      \draw[rounded corners] (1,0) -- (1.2,0.3) -- (1.25,0.6) -- (1.4,0.9) -- (1.3,1.2) -- (1.5,1.5) --(1.2,1.35) -- (0.9,1.4) -- (0.6,1.25) -- (0.3,1.3) -- (0,1) -- (-0.4,0.7) -- (-1,1) -- (-0.7,0.4)-- (-1,0);
+    \end{tikzpicture}
+    \caption{复杂情况}
+  \end{minipage}
+  \caption{反射情况}
+\end{figure}
+
+\paragraph{引入}
+研究反射辐射仅有反射率仍然不足，但反射辐射在空间各个方向上的分布信息仍未揭示。
+
+\paragraph{角分布}
+采用极坐标形式呈现的各种地表反射类型的实例，其中曲线距离地表反射位置的距离代表该方向上反射辐射的相对强度。
+
+\paragraph{朗伯体}
+反射辐射在各个方向上辐射强度相同。例如墙面、地面等。
+
+\paragraph{准镜面}
+对于 Cox–Munk 海表模型，如果有风浪（粗糙度），那么反射辐射在靠近镜面辐射方向的一定范围内分布。
+
+\subsection{镜面和朗伯反射实例}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{3cm}
+    \centering
+    \begin{tikzpicture}
+      \filldraw[blue!50] (0,0) circle[radius=1];
+    \end{tikzpicture}
+    \caption{平光}
+  \end{minipage}
+  \begin{minipage}{3cm}
+    \centering
+    \begin{tikzpicture}
+      \fill[blue!25] (0,0) circle[radius=0.1];%处理中心点异常
+      \foreach \x in {27,29,...,75}{%让出25的白色圆
+        \draw[blue!\x,very thick] (0,0) circle[radius=\x/50-0.5];
+      }
+    \end{tikzpicture}
+    \caption{半光泽}
+  \end{minipage}
+  \begin{minipage}{3cm}
+    \centering
+    \begin{tikzpicture}
+      \foreach \x in {0,4,...,100}{
+        \draw[blue!\x,very thick] (0,0) circle[radius=\x/100];
+      }
+    \end{tikzpicture}
+    \caption{光泽}
+  \end{minipage}
+  \caption{反射实例}\label{pic:mirrow}
+\end{figure}
+
+\subsubsection{镜面和朗伯反射}
+
+\paragraph{问题}
+如图\ref{pic:mirrow}，有若干品种的墙壁油漆出售，包括光泽（glossy）、半光泽（semigloss）和平光（flat）。可见平光更接近朗伯体（各方向相同），光泽则为镜面反射。
+
+\subsubsection{双向反射分布函数 BRDF}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=1.5]
+    \filldraw[fill=gray!50] (0.2,-0.2) --++ (0.6,0.6) --++ (-1,0) --++ (-0.6,-0.6) -- cycle;
+    \draw[->] (0,0) -- (0,3)node[above]{\(\vec{n}\)};
+    \draw[->] (45:2) -- (45:3)node[above right]{\(\vec{\Omega}_r\)};
+    \draw[rotate around={-45:(45:2)}] (45:2) ellipse[x radius=0.6, y radius=0.3];
+    \draw (0,0) -- (45:1.7);
+    \draw[dotted] (45:1.7) -- (45:2);
+    \draw (0.968,1.812) -- (0,0) -- (1.812,0.968);
+    \draw[<->] (0,0.5) arc (90:45:0.5);
+    \node at (0.25,0.75){\(\theta_r\)};
+    \node at (1.5,1.25){\(\dd{\omega_r}\)};
+    \node at (-0.4,0){\(\dd{A}\)};%左右翻转了一下，并处理了一些细节问题。之前绘制地比较随意，这里就不深究了
+    \draw (135:2) -- (135:2.5);
+    \draw[<-] (135:2.5) -- (135:3)node[above left]{\(\vec{\Omega}_i\)};
+    \draw[rotate around={45:(135:2)}] (135:2) ellipse[x radius=0.6, y radius=0.3];
+    \draw (0,0) -- (135:1.7);
+    \draw[dotted] (135:1.7) -- (135:2);
+    \draw (-0.968,1.812) -- (0,0) -- (-1.812,0.968);
+    \draw[<->] (0,0.5) arc (90:135:0.5);
+    \node at (-0.2,0.75){\(\theta_i\)};
+    \node at (-1.5,1.25){\(\dd{\omega_i}\)};
+  \end{tikzpicture}
+\end{figure}
+
+\paragraph{引入}
+BRDF：Bidirectional Reflectance Distribution Function，描述反射辐射的分布情况。
+
+\paragraph{BRDF}
+\[
+\rho \left( \hat{\Omega}_i; \hat{\Omega}_r \right) = \frac{\dd{I^\uparrow} \left( \hat{\Omega}_r \right)}{I^\downarrow \left( \hat{\Omega}_i \right) \left| \hat{n} \cdot \hat{\Omega}_i \right| \dd{\omega_i}} = \frac{\dd{p}}{\dd{x}},
+\]
+至少4维。
+
+\paragraph{入射}
+$\dd{\omega_i}$ 小立体角，权重 $\left| \hat{n} \cdot \hat{\Omega}_i \right|$ 单位水平面元接收能量。
+
+\paragraph{反射}
+$\dd{I^\uparrow \left( \hat{\Omega}_r \right) \left| \hat{n} \cdot \hat{\Omega}_r \right| \dd{\omega_r}}$ 反射到立体角的总辐射通量密度。
+
+\paragraph{综合}
+\[
+\rho \left( \hat{\Omega}_i; \hat{\Omega}_r \right) = \left( \frac{I^\uparrow \left( \hat{\Omega}_r \right) \left| \hat{n} \cdot \hat{\Omega}_r \right| \dd{\omega_r}}{I^\downarrow \left( \hat{\Omega}_i \right) \left| \hat{n} \cdot \hat{\Omega}_i \right| \dd{\omega_i}} \right)_{\text{代表 } dp} \times \left( \frac{1}{\left| \hat{n} \cdot \hat{\Omega}_r \right| \dd{\omega_r}} \right)_{\text{代表 } \frac{1}{dx}}.
+\]
+
+\paragraph{反射辐射强度}
+\[
+I^\uparrow(\hat{\Omega}_r) = \int_{2\pi} \rho \left( \hat{\Omega}_i; \hat{\Omega}_r \right) I^\downarrow(\hat{\Omega}_i) \left| \hat{n} \cdot \hat{\Omega}_i \right| \dd{\omega_i},
+\]
+积分表示所有方向对该方向的贡献。
+
+\paragraph{反照率}
+\[
+r = \frac{F_r}{F_i} = \frac{\int_{2\pi} I^\uparrow \left( \hat{\Omega}_r \right) \left| \hat{n} \cdot \hat{\Omega}_r \right| \dd{\omega_r}}{\int_{2\pi} I^\downarrow \left( \hat{\Omega}_i \right) \left| \hat{n} \cdot \hat{\Omega}_i \right| \dd{\omega_i}}.
+\]
+
+\paragraph{反射辐射通量}
+\[
+F_r = \int_{2\pi} \int_{2\pi} \rho \left( \hat{\Omega}_i; \hat{\Omega}_r \right) I^\downarrow \left( \hat{\Omega}_i \right) \left| \hat{n} \cdot \hat{\Omega}_i \right| \dd{\omega_i} \left| \hat{n} \cdot \hat{\Omega}_r \right| \dd{\omega_r}.
+\]
+
+\paragraph{两者关系}
+如果入射辐射为平行光，则
+\[
+r(\hat{\Omega}_i) = \int_{2\pi} \rho \left( \hat{\Omega}_i; \hat{\Omega}_r \right) \left| \hat{n} \cdot \hat{\Omega}_r \right| \dd{\omega_r},
+\]
+需要利用 Dirac 函数。
+
+\paragraph{朗伯体反射}
+其反射与入射、反射都没有关系。
+\[
+\rho \left( \hat{\Omega}_i; \hat{\Omega}_r \right) = \rho_L, \quad \text{满足简单关系：} r = \pi \rho_L.
+\]
+证明：
+\[
+r = \frac{F_r}{F_i} = \frac{\pi \cdot \rho_L \int_{2\pi} I^\downarrow \left( \hat{\Omega}_i \right) \left| \hat{n} \cdot \hat{\Omega}_i \right| \dd{\omega_i}}{F_i} = \frac{\pi \cdot \rho_L F_i}{F_i} = \pi \rho_L.
+\]
+
+\paragraph{镜面反射特性}
+\[
+\rho(\mu_i, \phi_i, \mu_r, \phi_r) = \rho(\mu_r) \delta(\mu_r + \mu_i) \delta(\phi_r - \phi_i).
+\]
+
+\section{章节例题}
+
+\begin{example}
+考虑一个如上所述的球形物体，半径 $r = 10\,\mathrm{cm}$，热容量 $C$ 为 $1 \times 10^4\,\mathrm{J/K}$。
+\begin{enumerate}
+  \item 当 $T \neq T_E$ 时，推导随 $T$ 变化的加热率 $\dd{T} / \dd{t}$ 的函数表达式。
+  \item 假设温度达到平衡后，入射的太阳辐射突然被切断。例如物体进入一颗行星的阴影区域。用你前一部分解求出随时间 $t$ 变化的物体温度 $T$。忽略有限热导率的影响。
+  \item 由 (b) 解，确定物体冷却至 $100\,\mathrm{K}$、$10\,\mathrm{K}$ 和 $1\,\mathrm{K}$ 所需的时间。
+\end{enumerate}
+
+\begin{enumerate}
+  \item 考虑半径 $r = 0.1\,\mathrm{m}$，热容量为 $1 \times 10^4\,\mathrm{J/K}$ 的理想黑体，其入射太阳辐射功率为：
+        \[
+        P_{\text{in}} = \pi r^2 S_0.
+        \]
+        其自身辐射功率为：
+        \[
+        P_{\text{out}} = 4\pi r^2 \sigma T^4.
+        \]
+        则球体的净能量变化率为：
+        \[
+        \frac{\dd{Q}}{\dd{t}} = P_{\text{in}} - P_{\text{out}} = \pi r^2 S_0 - 4\pi r^2 \sigma T^4.
+        \]
+        考虑到热容量：$C = \frac{\dd{Q}}{\dd{T}} \Rightarrow \frac{\dd{Q}}{\dd{t}} = C \frac{\dd{T}}{\dd{t}}$。将其带入能量变化率，可得温度的变化率为：
+        \[
+        \boxed{\frac{\dd{T}}{\dd{t}} = \frac{\pi r^2}{\mathrm{c}} \left( S_0 - 4\sigma T^4 \right) = 3.14 \times 10^{-6} \times (1367 - 2.27 \times 10^{-7} T)}.
+        \]
+  \item 则此时有：
+        \[
+        \frac{\dd{T}}{\dd{t}} = - \frac{4\pi r^2 \sigma}{\mathrm{c}} T^4 = - 7.13 \times 10^{-13} T^4.
+        \]
+        令 $k = 7.13 \times 10^{-13}$，有 $\frac{\dd{T}}{\dd{t}} = -k T^4$，求解微分方程可得：
+        \[
+        \int_{T_E}^{T(t)} T^{-4} \dd{T} = -k \int_0^t \dd{t},
+        \]
+        其中 $T_E = \left( \frac{S_0}{4\sigma} \right)^{1/4}$，则有：
+        \[
+        \left[ -\frac{1}{3} T^{-3} \right]_{T_E}^{T(t)} = -\frac{1}{3} \left[ T(t)^{-3} - T_\mathrm{e}^{-3} \right] = -k t.
+        \]
+        故温度随时间的演化为：
+        \[
+        T(t) = \left[ \left( \frac{S_0}{4\sigma} \right)^{-3/4} + 3k t \right]^{-1/3} = \boxed{\left[ 4.62 \times 10^{-8} + 2.14 \times 10^{-12} t \right]^{-1/3}}.
+        \]
+  \item 由上式，我们有：$T(t)^{-3} = T_\mathrm{e}^{-3} + 3k t$，解得：$t = \frac{T(t)^{-3} - T_\mathrm{e}^{-3}}{3k}$。则冷却至 $100\,\mathrm{K}$ 需要时间：
+        \[
+        t \approx \frac{9.53 \times 10^{-7}}{2.139 \times 10^{-12}} \approx 4.45 \times 10^5\,\mathrm{s} \approx \boxed{5.15\,\mathrm{day}}.
+        \]
+        则冷却至 $10\,\mathrm{K}$ 需要时间：
+        \[
+        t \approx \frac{1 \times 10^{-3}}{3k} = \frac{1 \times 10^{-3}}{2.139 \times 10^{-12}} \approx 4.67 \times 10^8\,\mathrm{s} \approx \boxed{14.8\,\mathrm{year}}.
+        \]
+        则冷却至 $1\,\mathrm{K}$ 需要时间：
+        \[
+        t \approx \frac{1}{3k} = \frac{1}{2.139 \times 10^{-12}} \approx 4.67 \times 10^{11}\,\mathrm{s} \approx \boxed{14800\,\mathrm{year}}.
+        \]
+\end{enumerate}
+\end{example}
+
+\chapter{大气的辐射特性}
+
+\section{消光、散射和吸收}
+
+\subsection{描述消光的物理量}
+
+\paragraph{引入实验}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{6cm}
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+      \fill[gray!80] (-6,-4) rectangle (6,6);
+      \foreach \x/\y/\c/\n in {-2/-1/black!90/墨汁,2/-1/gray!20/牛奶,0/2/gray/水}{
+        \filldraw[draw=black,fill=\c] (\x,\y) ellipse[x radius=1.732, y radius=1];
+        \fill[\c] (\x+1.732,\y) rectangle (\x-1.732,\y+0.5);
+        \filldraw[draw=black,fill=\c] (\x,\y+0.5) ellipse[x radius=1.732, y radius=1];
+        \draw (\x,\y+1) ellipse[x radius=1.732, y radius=1];
+        \draw (\x+1.732,\y) --+ (0,1);
+        \draw (\x-1.732,\y) --+ (0,1);
+        \node at (\x,\y-1.4){\n};
+      }
+    \end{tikzpicture}
+    \caption{反射（桌面背景）}\label{pic:a}
+  \end{minipage}
+  \begin{minipage}{6cm}
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+      \fill[gray!10] (-6,-4) rectangle (6,6);
+      \foreach \t/\c/\n in {90/gray!15/水,210/black!85/墨汁,330/black!85/牛奶}{
+        \filldraw[fill=\c] (\t :2.828) circle[radius=1.732];
+        \node at (\t :5.5){\n};
+      }
+    \end{tikzpicture}
+    \caption{投射（光源背景）}\label{pic:b}
+  \end{minipage}
+\end{figure}
+
+利用高射投影仪演示辐射透射消光过程：图\ref{pic:a}中有三个盛有水的器皿，正好处于投影仪光源照射的位置。透明液体是水，黑色液体是稀释的墨汁（吸收介质），白色液体是稀释的牛奶（散射介质）。图\ref{pic:b}中有三个器皿的投影照片：牛奶和墨汁的黑色阴影表明吸收和散射在衰减透射辐射是有效相等的。
+
+\paragraph{机制分析}
+散射和吸收机制：透射消光 Extinction = 吸收 + 散射。
+
+\paragraph{稀疏介质}
+粒子间距需要大于数倍的波长，由此消光截面可以直接相加。大气适用，某些医学领域不适用。
+
+\paragraph{特性物理量}
+对于消光过程，定义如下光学特性物理量：
+\begin{itemize}
+  \item 粒子消光截面 $\sigma_e$：单个粒子消光的横截面积，量纲：面积。
+  \item 粒子消光效率 $Q_e$：粒子消光截面与其几何横截面积的比值，量纲：无量纲。
+  \item 体积消光系数 $\beta_e$：单位体积里所有粒子的消光截面之和，量纲：面积/体积 = 1/长度。
+  \item 质量消光系数 $k_e$：单位质量里所有粒子的消光截面之和，量纲：面积/质量。
+\end{itemize}
+\[
+\sigma_e = k_e m = Q_e A, \quad \text{其中 } m \text{ 为单个粒子的质量，} A \text{ 为粒子的几何横截面积}.
+\]
+\[
+\beta_e = \rho k_e = N \sigma_e, \quad \text{其中 } \rho \text{ 为物质密度（介质密度），} N \text{ 为粒子数密度}.
+\]
+
+对于散射和吸收过程，定义类似的物理量：$\sigma_s, Q_s, \beta_s, k_s$ 和 $\sigma_a, Q_a, \beta_a, k_a$。
+\[
+\beta_s = \rho k_s = N \sigma_s, \quad \beta_a = \rho k_a = N \sigma_a,
+\]
+\[
+\sigma_s = k_s m = Q_s A, \quad \sigma_a = k_a m = Q_a A,
+\]
+\[
+\sigma_e = \sigma_s + \sigma_a, \quad Q_e = Q_s + Q_a, \quad \beta_e = \beta_s + \beta_a, \quad k_e = k_s + k_a.
+\]
+
+\paragraph{反照率}
+为描述介质散射和吸收的相对比重，定义单次散射反照率：
+\[
+\widetilde{\omega} = \frac{\beta_s}{\beta_e} = \frac{k_s}{k_e} = \frac{\sigma_s}{\sigma_e}.
+\]
+
+\paragraph{消光截面}
+$I_{\text{出射}} = \sigma_{\text{e,消光界面}} I_{\text{入射}}$，其与宏观几何截面 $A$ 的关系是：$\sigma_e = 2A$（消光悖论），$Q_e = 2$。其与微观粒子几何截面的关系是：两者无明显关系。
+
+\subsection{消光物理量示例}
+
+\begin{example}
+完成下面的表格，利用各列中的信息确定相同列中的缺失数值。
+
+\[
+\begin{array}{|c|c|c|c|c|}
+\hline
+ & (a) & (b) & (c) & (d) \\
+\hline
+k_e\ [\mathrm{m^2/kg}] & 3.89 \times 10^2 & ? & 0.45 & ? \\
+\hline
+N\ [\mathrm{m^{-3}}] & ? & ? & 80 & 10^9 \\
+\hline
+A\ [\mathrm{m^2}] & 2.8 \times 10^{-19} & 7.07 \times 10^{-14} & ? & 3.14 \times 10^{-10} \\
+\hline
+Q_e & ? & 0.2 & 0.6 & ? \\
+\hline
+\widetilde{\omega} & 0 & 0.1 & ? & 0.9 \\
+\hline
+m\ [\mathrm{kg}] & 7.3 \times 10^{-26} & 1.41 \times 10^{-17} & ? & 4.19 \times 10^{-12} \\
+\hline
+\rho\ [\mathrm{kg/m^3}] & 4.8 \times 10^{-4} & ? & 3.35 \times 10^{-4} & ? \\
+\hline
+\sigma_e\ [\mathrm{m^2}] & ? & ? & 1.89 \times 10^{-6} & ? \\
+\hline
+\beta_e\ [\mathrm{m^{-1}}] & ? & 1.41 \times 10^{-4} & ? & 0.628 \\
+\hline
+\beta_s\ [\mathrm{m^{-1}}] & ? & 1.41 \times 10^{-5} & 6.03 \times 10^{-5} & ? \\
+\hline
+\end{array}
+\]
+
+第一列：由于 $\widetilde{\omega} = 0 \Rightarrow \beta_s = 0$。由 $k_e, m \Rightarrow \sigma_e = k_e m = 2.83 \times 10^{-23}$。由 $\beta_e = \rho k_e = 0.187$。由 $N = \frac{\beta_e}{\sigma_e} = 6.6 \times 10^{21}$ 或 $N = \rho / m$。$Q_e = \frac{\sigma_e}{A} = 1 \times 10^{-4}$。
+\end{example}
+
+\section{比尔–布格–朗伯定律}
+
+\subsection{比尔–布格–朗伯定律}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[>=latex]
+    \fill[gray!30] (0,1) rectangle (6,3);
+    \draw(0,0)node[below]{\(s_1\)} --+ (0,4);
+    \draw[dashed](2,0)node[below]{\(s\)} --+ (0,4);
+    \draw[dashed](3,0)node[below]{\(s+\dd{s}\)} --+ (0,4);
+    \draw(6,0)node[below]{\(s_2\)} --+ (0,4);
+    \draw[->](-1,2)--node[above]{\(I_\lambda(s_1)\)}+(1,0);
+    \draw[->](1.5,2)node[left]{\(I_\lambda(s)\)}--+(0.5,0);
+    \draw[->](3,2)--+(0.5,0)node[right]{\(I_\lambda(s+\dd{s})\)};
+    \draw[->](6,2)--node[above]{\(I_\lambda(s_2)\)}+(1,0);
+  \end{tikzpicture}
+\end{figure}
+
+\paragraph{适用范围}
+透射消光假设：忽略多次散射导致的辐射增强的贡献。
+
+\paragraph{传输方程}
+沿任意路径上有限距离的辐射传输方程：在消光介质中，经过微元路径 $\dd{s}$ 的辐射衰减：
+\[
+\dd{I_\lambda(s)} = I_\lambda(s + \dd{s}) - I_\lambda(s) = - I_\lambda(s) \beta_e(s) \dd{s} \quad \text{单位面积}.
+\]
+对上式进行积分来描述 $s_1$ 和 $s_2$ 两点之间延伸路径的消光：
+\[
+I_\lambda(s_2) = I_\lambda(s_1) \exp \left[ - \int_{s_1}^{s_2} \beta_e(s) \dd{s} \right].
+\]
+
+\subsection{与比尔定律相关的定义和结论}
+
+\paragraph{光学厚度}
+$s_1$ 和 $s_2$ 之间的光学厚度（无量纲），又称为光学路径：
+\[
+\tau(s_1, s_2) = \int_{s_1}^{s_2} \beta_e(s) \dd{s}.
+\]
+\begin{enumerate}
+  \item 表示单位横截面（由此无量纲），从 $s_1$ 到 $s_2$ 这段路径中所有粒子的消光截面之和。
+  \item $\dd{\tau(s)} = \beta_e(s) \dd{s}$ 微分路径上的光学厚度，表示消光的比重（概率）。
+\end{enumerate}
+
+\paragraph{透过率}
+$s_1$ 和 $s_2$ 之间的透过率（无量纲，取值范围从零（$\tau \to \infty$）至 $1$（$\tau = 0$））：
+\[
+t(s_1, s_2) \equiv \frac{I_\lambda(s_2)}{I_\lambda(s_1)} \equiv \mathrm{e}^{-\tau(s_1, s_2)}.
+\]
+
+\paragraph{性质}
+\begin{enumerate}
+  \item 如果 $\beta_e$ 在 $s_1$ 和 $s_2$ 之间保持不变，那么 $\tau = \beta_e (s_2 - s_1)$。
+  \item 光学厚度的加法定律：$\tau(s_1, s_N) = \tau(s_1, s_2) + \tau(s_2, s_3) + \cdots + \tau(s_{N-1}, s_N)$，截面相加。
+  \item 透过率的乘法定律：$t(s_1, s_N) = t(s_1, s_2) \cdot t(s_2, s_3) \cdot \cdots \cdot t(s_{N-1}, s_N)$，指数项的性质。
+  \item 对于光学厚度 $\tau(s_1, s_2) \ll 1$ 的情况，透过率可近似：$t = \exp(-\tau) \approx 1 - \tau(s_1, s_2) = 1 - \beta_e (s_2 - s_1)$。光学厚度非常小时，可以理解为微分路径上消光的概率，则减去后为透过的概率。对于光学厚度不非常小时，可以从数学上论证：$\lim_{N \to \infty} \left( 1 - \frac{\tau}{N} \right)^N = \mathrm{e}^{-\tau}$，表示理论自洽。
+  \item 如果介质没有散射（$\widetilde{\omega} = 0$），路径吸收率为 $a = 1 - t$。
+\end{enumerate}
+
+\subsection{平面平行大气近似}
+
+\paragraph{平行假设}
+指定高度后，该层大气性质不随水平变化：$\beta_e(x, y, z) \approx \beta_e(z)$，$T(x, y, z) \approx T(z)$。分子大气（无云/气溶胶）十分合理，压强、温度主要变化于垂直方向（不考虑地球曲率情况）。太阳高度角小时，也不适用。有云大气，该假设不合理；对于层云，较为合理。
+
+\paragraph{光学厚度}
+$z_1$ 和 $z_2$ 之间的垂直光学厚度
+\[
+\tau(z_1, z_2) = \int_{z_1}^{z_2} \beta_e(z) \dd{z}.
+\]
+倾斜情况：有
+\[
+\tau(z_1, z_2, \cos\theta) = \int_{s_1}^{s_2} \beta_e(s) \dd{s} = \int_{s_1}^{s_2} \beta_e(s) \frac{\dd{z}}{\cos\theta} = \frac{\tau(z_1, z_2)}{\cos\theta}.
+\]
+
+\paragraph{高度 $z$ 的光学厚度}
+\[
+\tau(z) \equiv \tau(z, \infty) = \int_z^\infty \beta_e(z') \dd{z'}.
+\]
+
+\paragraph{透过率}
+$z_1$ 和 $z_2$ 之间沿 $\mu$ 传输的透过率
+\[
+t(z_1, z_2) = \exp \left[ - \frac{1}{\mu} \tau(z_1, z_2) \right].
+\]
+高度 $z$ 至大气顶沿 $\mu$ 传输的透过率
+\[
+t(z) \equiv \exp \left[ - \frac{1}{\mu} \tau(z) \right].
+\]
+
+\begin{example}
+某平面平行云的液态水云层密度 $\rho_w = 0.1\,\mathrm{g \cdot m^{-3}}$ 和厚度 $\Delta z = 100\,\mathrm{m}$。在某特定波长上，云粒子的质量消光系数 $k_{e,w} = 150\,\mathrm{m^2/kg}$，单次散射反照率 $\widetilde{\omega}_w = 1.0$。但是悬浮粒子的空气本身在此波长上存在吸收，体消光系数 $\beta_{a,v} = 10\,\mathrm{km^{-1}}$ 和单次散射反照率 $\widetilde{\omega}_v = 0$。
+\begin{enumerate}
+  \item 计算混合大气成分的联合 $\beta_e$、$\beta_a$ 和 $\beta_s$。
+  \item 计算云层总的光学厚度 $\tau$。
+  \item 如果辐射强度 $I_{\lambda,\mathrm{top}}$ 以天顶角 $\theta = 60^\circ$ 从云层顶部入射，请计算直接透射的辐射强度 $I_{\lambda,\mathrm{bot}}$。
+\end{enumerate}
+\begin{enumerate}
+  \item 混合大气成分的联合光学特性
+        \[
+        \beta_e = k_{e,w} \rho_w + \beta_{a,v} = 25\,\mathrm{km^{-1}},
+        \]
+        \[
+        \beta_s = k_{e,w} \rho_w \widetilde{\omega}_w + \beta_{a,v} \widetilde{\omega}_v = 15\,\mathrm{km^{-1}},
+        \]
+        \[
+        \beta_a = k_{e,w} \rho_w (1 - \widetilde{\omega}_w) + \beta_{a,v} (1 - \widetilde{\omega}_v) = 10\,\mathrm{km^{-1}}.
+        \]
+  \item 云层总的光学厚度 $\tau = \beta_e \Delta z = 2.5$。
+  \item 直接透射的辐射强度
+        \[
+        I_{\lambda,\mathrm{bot}} = I_{\lambda,\mathrm{top}} \exp \left[ - \frac{\tau}{\cos\theta} \right] = 0.7\% I_{\lambda,\mathrm{top}},
+        \]
+        非常小的值，需进一步考虑散射。
+\end{enumerate}
+\end{example}
+
+\section{地基观测太阳辐射强度}
+
+\paragraph{概述}
+卫星出现之前直接利用太阳光谱仪器观测太阳辐射强度是不可能的。地基观测总是一定程度上受大气吸收和散射造成的阳光衰减的影响。然而卫星观测之前，人们就可以合理估算太阳光谱。
+
+\paragraph{具体方法}
+假设大气平面平行，大气特性在一整天里基本保持不变。对于白天任意特定时间，比尔定律表明海平面观测的太阳辐射强度为
+\[
+I_{\lambda \text{地面接收}} = S_{\lambda \text{太阳入射}} \mathrm{e}^{-\frac{\tau_\lambda}{\mu}}.
+\]
+对两边求对数得到
+\[
+\log(I_\lambda) = - \frac{\tau_\lambda}{\mu} + \log(S_\lambda).
+\]
+定义 $Z = 1/\mu = \sec\theta$，上述公式则改写为线性方程：
+\[
+Y = mZ + B,
+\]
+其中 $Y \equiv \log(I_\lambda)$，斜率 $m \equiv -\tau_\lambda$，截距 $B \equiv \log(S_\lambda)$。
+
+\paragraph{图表解释}
+对于光学厚度 $\tau_\lambda$ 的大气，波长 $\lambda$ 太阳辐射强度对数和太阳天顶角正割之间的示意性关系。其中加号代表一天中不同时间的各个观测值，由此我们可以确定最佳拟合直线的斜率和截距。
+
+\begin{example}
+单个氧气分子的吸收截面在波长 $0.24\,\mu\mathrm{m}$ 上近似为 $7 \times 10^{-29}\,\mathrm{m^2}$（对于更短的波长，它会显著增大）。给定标准海平面压强 $p_0$ 等于 $1.01 \times 10^5\,\mathrm{Pa}$，氧气的摩尔分数 $21\%$，空气的平均分子质量 $\overline{m}$ 等于 $29\,\mathrm{kg/kmole}$，重力加速度 $g = 9.81\,\mathrm{m/s^2}$，阿伏伽德罗常数 $N_A = 6.02 \times 10^{26}\,\mathrm{kmol\mathrm{e}^{-1}}$，计算
+\begin{enumerate}
+  \item 在流体静力平衡条件假设下单位面积的大气柱质量。
+  \item 单位面积的氧气分子大气柱数目。
+  \item 在波长 $0.24\,\mu\mathrm{m}$ 上分子氧气所产生的光学厚度和垂直透过率。
+\end{enumerate}
+\begin{enumerate}
+  \item 单位面积的大气柱质量
+        \[
+        L = p_0 / g = (1.01 \times 10^5\,\mathrm{Pa}) / (9.81\,\mathrm{m/s^2}) \approx 1 \times 10^4\,\mathrm{kg \cdot m^{-2}}.
+        \]
+  \item 单位面积的氧气分子的大气柱数目
+        \[
+        N = L / \overline{m} \times N_A \times 21\% = 1 \times 10^4 / (29) \times (6.02 \times 10^{26}) \times 21\% \approx 4.49 \times 10^{28}\,\mathrm{m^{-2}}.
+        \]
+  \item 分子氧气所产生的光学厚度和垂直透过率
+        \[
+        \tau = N \times \sigma_a = (4.49 \times 10^{28}\,\mathrm{m^{-2}}) \times (7 \times 10^{-29}\,\mathrm{m^2}) \approx 3.14,
+        \]
+        \[
+        t = \exp(-\tau) = \exp(-3.14) \approx 0.043.
+        \]
+\end{enumerate}
+\end{example}
+
+\section{大气透射光谱}
+
+\subsection{关键空气成分的吸收带}
+
+\begin{table}[ht]
+  \centering
+  \caption{关键空气成分的吸收带}
+  \begin{tabular}{ccm{8cm}}
+    \toprule
+    成分 & 体积比 & \multicolumn{1}{c}{吸收带及注意事项} \\
+    \midrule
+    氮气 & $78.1\%$ & 无重要的吸收带 \\
+    氧气 & $20.9\%$ & UV-C、60 和 118 GHz 附近微波、可见光和红外中的弱谱带 \\
+    $\mathrm{H_2O}$ & $(0\sim2\%)$ & 贯穿红外的无数强谱带，在时空上高度变化，重要吸收带：6.3、2.7 $\mu\mathrm{m}$ \\
+    $\mathrm{Ar}$ & 惰性 $0.936\%$ & 单原子无吸收 \\
+    $\mathrm{CO_2}$ & $370\,\mathrm{ppm}$ & 2.8、4.3 和 15 $\mu\mathrm{m}$ 附近，浓度增加 \\
+    $\mathrm{CH_4}$ & $1.7\,\mathrm{ppm}$ & 3.3 和 7.8 $\mu\mathrm{m}$ 附近，人类活动引起的增加 \\
+    $\mathrm{N_2O}$ & $0.335\,\mathrm{ppm}$ & 4.5、7.8 和 17 $\mu\mathrm{m}$ \\
+    $\mathrm{CO}$ & $0.07\,\mathrm{ppm}$ & 4.7 $\mu\mathrm{m}$（弱） \\
+    臭氧 & $\sim 10^{-8}$ & UV-B、9.6 $\mu\mathrm{m}$（热红外），浓度高度变化，在平流层和污染空气中浓度高 \\
+    $\mathrm{CFCl_3}$ & $\sim 10^{-10}$ & 氟氯烃，吸收红外，来源于工业排放 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{大气透射光谱}
+
+\paragraph{描述}
+\begin{enumerate}
+  \item 对于典型的中纬度夏季（水汽较多）大气条件（上页右图），不考虑云和气溶胶的大气的天顶透过率。
+  \item 上面的各个子图描述了一个单一大气成分产生的吸收贡献。
+  \item 最下面的子图描绘了所有成分的联合效应（透过率的乘法定律）。
+  \item 当波长大概短于 $0.5\,\mu\mathrm{m}$ 时分子散射逐渐变得重要，但是在这些图并没有做考虑。
+  \item 可见水汽对总的透过率贡献最大，两者高度相似。
+\end{enumerate}
+
+\section{云层的光学厚度和透过率}
+
+\subsection{云层的辐射过程}
+
+\subsubsection{云层的基本物理性质}
+
+\paragraph{云层性质}
+\begin{enumerate}
+  \item 云由悬浮在空气中的大量非常小的水滴和/或冰晶组成。
+  \item 液态水云的典型液滴半径落于 $5\,\mu\mathrm{m}$ 至 $15\,\mu\mathrm{m}$ 之间。
+  \item 典型的云滴浓度范围为 $10^2$ 到 $10^3$ 个每立方厘米。
+  \item 典型的液态水云密度落于 $0.1 - 1\,\mathrm{g/m^3}$ 之间。
+\end{enumerate}
+
+\subsubsection{太阳辐射在云层中的可能经历的过程}
+
+\paragraph{直射透过率}
+可能直接穿透云层，没有经历一次散射或者吸收，使用比尔定律描述。以这种方式直接穿透云层的入射辐射比重称之为直射透过率 $t_{\mathrm{dir}}$。
+
+\paragraph{漫射透过率}
+可能被散射一次或者多次，然后从云层底部出射。这对应的入射辐射比重称之为漫射透过率 $t_{\mathrm{diff}}$。
+
+\paragraph{反射率}
+可能被散射一次或者多次，然后从云层顶部出射。这对应的入射通量比重称之为反射率或反照率 $r$。
+
+\paragraph{吸收率}
+既没有透射云层，也没有被云层反射回去，而是被云层给吸收。这部分比重称之为云内吸收率 $a$。
+
+\paragraph{关系式}
+\[
+t + r + a = 1,
+\]
+总的透射率等于漫射和直射透过率之和，即 $t = t_{\mathrm{dir}} + t_{\mathrm{diff}}$。
+
+\subsection{单分散云层的光学厚度和透过率}
+
+\paragraph{单分散}
+所有粒子的大小都一致的云层。相对应的，多分散指粒子大小不一致的云层。
+
+\paragraph{云水密度}
+对于单分散云，云水密度 $\rho_w$ 恰好是液滴数密度 $N$ 乘以单个液滴的质量
+\[
+\rho_w = N \frac{4}{3} \pi r^3 \rho_l,
+\]
+其中 $\rho_l \approx 1000\,\mathrm{kg/m^3}$ 是纯水密度，$r$ 为粒子半径。
+
+\paragraph{液态水路径}
+液态水路径 $L$（每单位水平面积的垂直积分云水质量）定义为
+\[
+L \equiv \int_{z_{\mathrm{bot}}}^{z_{\mathrm{top}}} \rho_w(z) \dd{z},
+\]
+单位：$\mathrm{kg \cdot m^{-2}}$。
+
+\paragraph{消光系数}
+由体积消光系数与消光效率和质量消光系数的数学关系可知
+\[
+\beta_e = N Q_e \pi r^2 = k_e \rho_w = k_e N \frac{4}{3} \pi r^3 \rho_l \Longrightarrow k_e = \frac{3 Q_e}{4 \rho_l r}.
+\]
+
+\paragraph{光学厚度}
+云底 $z_{\mathrm{bot}}$ 和云顶 $z_{\mathrm{top}}$ 之间的光学厚度
+\[
+\tau^* = \int_{z_{\mathrm{bot}}}^{z_{\mathrm{top}}} \beta_e(z) \dd{z} = \int_{z_{\mathrm{bot}}}^{z_{\mathrm{top}}} k_e \rho_w(z) \dd{z}.
+\]
+假设 $k_e$ 为常数，则 $\tau^* = k_e L$。大粒子 $Q_e \approx 2$，总光学厚度正比于液态水路径 $L$，反比于云滴半径：
+\[
+\tau^* \approx \frac{3L}{2 \rho_l r}.
+\]
+小粒子的光学厚度反而更大，反射率也更大，降温。卫星云图白色，积雨云呈现黑色。
+
+\paragraph{案例}
+设典型的较厚层积云，$L = 0.5\,\mathrm{kg \cdot m^{-2}}$，$r = 10\,\mu\mathrm{m}$，则 $\tau^* = 75$，$t_{\mathrm{dir}}^* = 0$。除了特别薄的云层外，几乎所有的云对直射太阳辐射都是不透明的。
+
+\chapter{基于发射的辐射传输方程}
+
+\section{施瓦兹希尔德方程}
+
+\subsection{施瓦兹希尔德方程}
+
+\subsubsection{施瓦兹方程基本形式}
+
+\paragraph{方程概述}
+施瓦兹方程同时考虑了辐射传输的吸收和发射。由于热红外波长远大于大气分子半径，散射不考虑。同时，云接近于黑体，其散射同样可以忽略（然而，有文献表明，薄云的多次散射仍然较强）。
+
+\paragraph{推导}
+对于 $\widetilde{\omega} = 0$（不散射）的情况，沿任意路径的无限微元的辐射净改变：
+\begin{enumerate}
+  \item 在纯吸收介质中，经过微元路径 $\dd{s}$ 吸收引起的辐射衰减
+        \[
+        \dd{I_{\mathrm{abs}}} = - \beta_a I \dd{s}.
+        \]
+  \item 在局地热平衡条件下，经过微元路径 $\dd{s}$ 发射引起的辐射增强
+        \[
+        \dd{I_{\mathrm{emit}}} = \beta_a B \dd{s}.
+        \]
+        吸收率 = 发射率，且吸收率为 $\frac{\dd{I_{\mathrm{abs}}}}{I} = \beta_a \dd{s}$，上式中 $B$ 为黑体发射辐射 $B_\lambda(T)$。
+\end{enumerate}
+
+\paragraph{方程}
+\[
+\frac{\dd{I}}{\dd{s}} = \beta_a (B - I) \quad \text{（施瓦兹希尔德方程，无散射介质辐射传输方程）}.
+\]
+完整形式：
+\[
+\dd{I(s)} = - I(s) \beta_a(s) \dd{s} + B_\lambda(T) \beta_a(s) \dd{s}.
+\]
+
+\subsubsection{施瓦兹方程的求解}
+
+\paragraph{基本定义}
+定义任意点 $s$ 和探测器 $S$ 之间的光学厚度 $\tau(s) = \int_s^S \beta_a(s') \dd{s'}$，因此光学厚度微分 $\dd{\tau} = - \beta_a \dd{s}$。
+
+\paragraph{方程求解}
+将上式代入施瓦兹希尔德方程可得
+\[
+\frac{\dd{I}}{\dd{\tau}} = I - B \Rightarrow \frac{\dd{I}}{\dd{\tau}} - I = - B,
+\]
+将该式两边同时乘以积分因子 $\mathrm{e}^{-\tau}$：
+\[
+\frac{\dd{}}{\dd{\tau}} \left[ I \mathrm{e}^{-\tau} \right] = - B \mathrm{e}^{-\tau}.
+\]
+在探测器位置 $\tau = 0$（下限）和某些任意点 $\tau'$（上限）的 $\tau$ 区间上对上式进行积分。
+
+\paragraph{方程形式}
+大气红外辐射传输方程：
+\[
+I(0) = I(\tau') \mathrm{e}^{-\tau'} + \int_0^{\tau'} B \mathrm{e}^{-\tau} \dd{\tau}.
+\]
+几乎所有有关大气发射和吸收的常规辐射传输问题都可以通过该大气红外辐射传输方程来理解。
+
+\paragraph{物理含义}
+\begin{enumerate}
+  \item 左边 $I(0)$ 表示位于 $\tau = 0$ 探测器观测到的辐射强度。
+  \item 右边第一项表示路径远端 $\tau'$ 的任意辐射源的直射辐射强度贡献。
+  \item 右边第二项表示由来自视线方向，探测器与 $\tau'$ 之间各位置 $\tau$ 的热发射 $B \dd{\tau}$ 的直射辐射强度贡献。
+\end{enumerate}
+
+\subsection{不同形式的红外大气辐射传输方程}
+
+\paragraph{基于光学厚度 $\tau$ 的大气红外辐射传输方程}
+\[
+I(0) = I(\tau') \mathrm{e}^{-\tau'} + \int_0^{\tau'} B \mathrm{e}^{-\tau} \dd{\tau}.
+\]
+
+\paragraph{基于透过率 $t$ 的大气红外辐射传输方程}
+\[
+I(0) = I(\tau') t(\tau') + \int_{t(\tau')}^1 B(\tau) \dd{t}.
+\]
+
+\paragraph{基于路径距离 $s$ 的大气红外辐射传输方程}
+\[
+I(S) = I(s_0) t(s_0) + \int_{s_0}^S B(s) W(s) \dd{s},
+\]
+其中发射权重函数
+\[
+W(s) = \frac{\dd{t(s)}}{\dd{s}} = \mathrm{e}^{-\tau} \frac{\dd{\tau}}{\dd{s}} = \beta_a(s) \mathrm{e}^{-\tau} = \beta_a(s) t(s).
+\]
+表示该段路径 $\dd{s}$ 发射的辐射在 $S$ 接收到的辐射中占的比重。由此，探测器测得的 $I$，反求的温度则代表该权重大处的温度。
+
+\subsection{狄拉克 $\delta$ 函数}
+
+\paragraph{狄拉克函数}
+$\delta(x)$ 是一个除了 $x = 0$ 外所有位置均为零的概率密度函数，而在 $x = 0$ 处它是一个无限高和无限窄的峰值
+\[
+\delta(x) = \begin{cases}
+\infty, & x = 0, \\
+0, & x \neq 0.
+\end{cases}
+\]
+
+\paragraph{特性}
+\begin{enumerate}
+  \item 曲线包络的面积有限，且等于一
+        \[
+        \int_{x_1}^{x_2} \delta(x - x') \dd{x'} = \begin{cases}
+        1, & x_1 < x < x_2, \\
+        0, & \text{其他}.
+        \end{cases}
+        \]
+  \item $\delta(x - x')$ 与 $f(x')$ 乘积的积分具有如下特性
+        \[
+        \int_{x_1}^{x_2} \delta(x - x') f(x') \dd{x'} = \begin{cases}
+        f(x), & x_1 < x < x_2, \\
+        0, & \text{其他}.
+        \end{cases}
+        \]
+\end{enumerate}
+
+\subsection{发射权重函数}
+
+\paragraph{模型假设}
+考虑位于 $s'$ 的介质，它的表面不透明且完全吸收，以至于外部点与任意 $s$ 之间透过率为一个跳跃函数：即透过率
+\[
+t(s) = \begin{cases}
+1, & s > s', \\
+0, & s < s'.
+\end{cases}
+\]
+在任意 $s \neq s'$ 时，$\frac{\dd{t(s)}}{\dd{s}} \equiv W(s) = 0$；在 $s = s'$ 时，数值为无限大；即 $W(s) = \delta(s - s')$，即
+\[
+W(s) = \begin{cases}
+\infty, & s = s', \\
+0, & s \neq s'.
+\end{cases}
+\]
+
+\paragraph{方程}
+大气红外辐射传输方程可以写成
+\[
+I(S) = I(s_0) t(s_0) + \int_{s_0}^S B(s) \delta(s - s') \dd{s}.
+\]
+设 $s_0$ 为 $s'$ 表面之下的任意一点，也就是说 $s_0 < s' < S$，透过率 $t(s_0) = 0$，所以可得 $I(S) = B(s')$。求解温度廓线，可以选择稳定的二氧化碳吸收带（水汽时空异质性 $W(s)$ 不可知）。
+
+\section{平面平行大气辐射传输}
+
+\subsection{基本内容}
+
+\paragraph{向下发射}
+设探测器位于地表（$z = 0$），观测大气向下发射的辐射：
+\[
+I^\downarrow(0) = I^\downarrow(\infty) t^* + \int_0^\infty B(z) W^\downarrow(z) \dd{z},
+\]
+其中权重函数
+\[
+W^\downarrow(z) = - \frac{\dd{t(0}, z)}{\dd{z}} = \frac{\beta_a(z)}{\mu} t(0, z),
+\]
+远端：大气层顶 $\infty$，透过率 $t^* = t(0, \infty, \mu)$。
+
+\paragraph{向下观测}
+考虑探测器位于大气顶之上，观测地表向上发射的辐射：
+\[
+I^\uparrow(\infty) = I^\uparrow(0) t^* + \int_0^\infty B(z) W^\uparrow(z) \dd{z},
+\]
+其中权重函数
+\[
+W^\uparrow(z) = \frac{\dd{t(z}, \infty)}{\dd{z}} = \frac{\beta_a(z)}{\mu} t(z, \infty).
+\]
+
+\paragraph{物理意义}
+两者都表明从大气底或顶出射的辐射强度等于两部分贡献之和：由另外一端进入大气的透射辐射；大气各层 $z$ 发射辐射贡献的权重之和。
+
+\subsection{大气发射率}
+
+\paragraph{辐射强度}
+对于同温大气层，$B[T(z)] = B(T_a) =$ 常数，总的辐射强度恰好等于 (a) 远端任意辐射源的透射辐射强度与 (b) 普朗克函数乘以整个大气的发射率 $1 - t^*$ 之和：
+\[
+I^\downarrow(0) = I^\downarrow(\infty) t^* + B(T_a) \left[ 1 - t^* \right],
+\]
+\[
+I^\uparrow(\infty) = I^\uparrow(0) t^* + B(T_a) \left[ 1 - t^* \right].
+\]
+
+\paragraph{真实大气}
+对于真实大气，观测辐射强度的大气贡献依然可以进行类似地描述：
+\[
+I^\downarrow(0) = I^\downarrow(\infty) t^* + \overline{B}^\downarrow \left[ 1 - t^* \right],
+\]
+\[
+I^\uparrow(\infty) = I^\uparrow(0) t^* + \overline{B}^\uparrow \left[ 1 - t^* \right],
+\]
+其中
+\[
+\overline{B}^\downarrow = \frac{1}{1 - t^*} \int_0^\infty B(z) W^\downarrow(z) \dd{z}, \quad \overline{B}^\uparrow = \frac{1}{1 - t^*} \int_0^\infty B(z) W^\uparrow(z) \dd{z},
+\]
+表示整层大气的加权平均普朗克函数值。
+
+\subsection{地表对向上辐射强度的贡献}
+
+\paragraph{镜面下垫面}
+假设镜面下垫面的发射率 $\varepsilon$，反射率 $r = 1 - \varepsilon$，则发射辐射
+\[
+I^\uparrow(0) = \varepsilon B(T_s)_{\text{发射}} + (1 - \varepsilon) I^\downarrow(0)_{\text{反射}}.
+\]
+假设在感兴趣方向上大气顶没有向下的外部辐射源（3K 背景辐射）
+\[
+I^\downarrow(0) = \int_0^\infty B(z) W^\downarrow(z) \dd{z}.
+\]
+卫星向下观测的辐射强度表达式
+\[
+I^\uparrow(\infty) = \left[ \varepsilon B(T_s) + (1 - \varepsilon) \int_0^\infty B(z) W^\downarrow(z) \dd{z} \right] t^* + \int_0^\infty B(z) W^\uparrow(z) \dd{z}.
+\]
+假设大气温度等于常数（平均），发射辐亮度等于 $\overline{B}$，那么上式可以写为
+\[
+I^\uparrow(\infty) = \left[ \varepsilon B(T_s) + (1 - \varepsilon) \overline{B}^\downarrow \left[ 1 - t^* \right] \right] t^* + \overline{B}^\uparrow \left[ 1 - t^* \right].
+\]
+
+\paragraph{完全透明}
+大气完全透明的情况（$t^* = 1$）：地表发射辐射 $I^\uparrow(\infty) = \varepsilon B(T_s)$。
+
+\paragraph{完全不透明}
+大气完全不透明的情况（特定波长吸收带）（$t^* = 0$）：大气发射辐射 $I^\uparrow(\infty) = \overline{B}^\uparrow = \int_0^\infty B(z) W^\uparrow(z) \dd{z}$。
+
+\paragraph{地表无反射}
+地表没有反射的情况（$\varepsilon = 1$）：地表和大气发射辐射的权重之和 $I^\uparrow(\infty) = B(T_s) t^* + \overline{B}^\uparrow \left[ 1 - t^* \right]$。
+
+当大气变得越来越浑浊，$\overline{B}^\uparrow$ 代表更靠近探测器的大气层的发射辐射所贡献。
+
+\section{大气发射光谱}
+
+\begin{example}
+基于图描绘的观测光谱，回答下述问题：（图片无法绘制）
+\begin{enumerate}
+  \item 地面冰盖的近似温度是多少？
+  \item 近地面空气的近似温度是多少？
+  \item 在飞机飞行高度 \(20\mathrm{km}\) 上空气的近似温度是多少？
+  \item 识别出在这两个光谱中 \(9\) 至 \(10\mu\mathrm{m}\) 之间能看到的特征。
+  \item 在图8.1 中，我们看到了近地表大气温度廓线存在强逆温现象的证据。相似的证据能在图9.2 看到吗？请解释。
+\end{enumerate}
+\begin{enumerate}
+  \item $268\,\mathrm{K}$，$10–13\mu\mathrm{m}$ 向下观测可以得到地表贴近的普朗克函数曲线代表的温度。
+  \item $267\,\mathrm{K}$，$15\mu\mathrm{m}$ 向上观测。
+  \item $225\,\mathrm{K}$，$15\mu\mathrm{m}$ 向下观测，靠近的位置。
+  \item 中心位于 $9.6\mu\mathrm{m}$ 的臭氧吸收。
+  \item 看不到。向上观测，观察到低于地面普朗克曲线的情况（$15\,\mu\mathrm{m}$）。
+\end{enumerate}
+\end{example}
+
+\section{章节例题}
+
+\begin{example}
+对于具有消光系数 $\beta_e$ 垂直廓线的云层，在云底 $Z_{\mathrm{base}}$ 和云顶 $Z_{\mathrm{top}}$ 之间消光系数满足二次函数关系，其最大值 $\beta_{e,m}$ 出现在云层中心位置。在云层顶部和底部，$\beta_e = 0$。
+\begin{enumerate}
+  \item 找到描述云层消光系数 $\beta_e(z)$ 垂直廓线的二次方程。
+  \item 找到垂直透射云层的总光学路径 $\tau$ 的表达式。
+  \item 对于入射薄云层的太阳辐射，上述参数的典型数值可以设为 $Z_{\mathrm{base}} = 1.0\,\mathrm{km}$、$Z_{\mathrm{top}} = 1.2\,\mathrm{km}$ 和 $\beta_{e,m} = 0.015\,\mathrm{m^{-1}}$。计算这种情况下的总光学路径。
+  \item 基于 (c) 的答案，计算通过云层的垂直透过率 $t$。
+\end{enumerate}
+\begin{enumerate}
+  \item 由于满足有二次函数关系，不妨假设为 $\beta_e = a z^2 + b z + c$ 的形式，且已知 $\beta_e(z_{\mathrm{base}}) = \beta_e(z_{\mathrm{top}}) = 0$，$\beta_e(z_{\mathrm{mid}}) = \beta_e(z)_{\max} = \beta_{e,m}$，进一步假设其形式为 $\beta_e = k (z - Z_{\mathrm{base}}) (Z_{\mathrm{top}} - z)$，将中心值代入：
+        \[
+        \beta_{e,m} = k (z_{\mathrm{mid}} - Z_{\mathrm{base}}) (Z_{\mathrm{top}} - z_{\mathrm{mid}}).
+        \]
+        考虑到 $z_{\mathrm{mid}} = \frac{Z_{\mathrm{top}} + Z_{\mathrm{base}}}{2}$，带入其中可以解得：
+        \[
+        k = \frac{4 \beta_{e,m}}{(Z_{\mathrm{top}} - Z_{\mathrm{base}})^2}.
+        \]
+        故有：
+        \[
+        \boxed{\beta_e(z) = \frac{4 \beta_{e,m}}{(Z_{\mathrm{top}} - Z_{\mathrm{base}})^2} (z - Z_{\mathrm{base}}) (Z_{\mathrm{top}} - z)}.
+        \]
+  \item 总光学路径即光学厚度，其定义为：$\tau(s_1, s_2) = \int_{s_1}^{s_2} \beta_e(s) \dd{s}$，则有光学路径为：
+        \[
+        \tau = \int_{Z_{\mathrm{base}}}^{Z_{\mathrm{top}}} \frac{4 \beta_{e,m}}{(Z_{\mathrm{top}} - Z_{\mathrm{base}})^2} (z - Z_{\mathrm{base}}) (Z_{\mathrm{top}} - z) \dd{z} = \boxed{\frac{2}{3} \beta_{e,m} (Z_{\mathrm{top}} - Z_{\mathrm{base}})}.
+        \]
+  \item 将上述数据代入表达式即可得到：
+        \[
+        \tau = \frac{2}{3} \times 0.015 \times (1200 - 1000) = \boxed{2}.
+        \]
+  \item 基于以上的数据，此时云层的透过率为：
+        \[
+        t = \mathrm{e}^{-\tau} = \mathrm{e}^{-2} = \boxed{0.1353}.
+        \]
+\end{enumerate}
+\end{example}
+
+\chapter{分子吸收和发射}
+
+\section{基础知识}
+
+\subsection{分子吸收和发射的基础知识}
+
+\paragraph{系统内能}
+当系统吸收和发射光子时，改变系统内能的方式：
+\begin{enumerate}
+  \item 分子的平动动能改变（即温度）。
+  \item 多原子分子的转动动能改变。
+  \item 多原子分子的振动能量改变。
+  \item 分子内部电荷静电势能的改变（即电子轨道）。
+\end{enumerate}
+原子核内部的核能能量过高，超出大气科学研究的范围，其释放射线多为 X 射线、伽马射线等。
+
+\paragraph{局地热平衡}
+\begin{enumerate}
+  \item 分子碰撞倾向于将总内能均衡分布在各种存储模式上，即局地热平衡。
+  \item 介质物理温度足够准确描述包含所有可能模态的总内部能量的分布情况。
+  \item 邻近分子之间碰撞也可以将这些内能的改变进行重新分配，且可预测。
+\end{enumerate}
+
+\paragraph{量子化}
+在分子及更小水平上的大多数能量存储模态都是量子化：
+\begin{enumerate}
+  \item 分子振动和转动、电子激发都是量子化的。
+  \item 注意分子平动动能是非量子化的，因此其不可能产生吸收线。
+\end{enumerate}
+
+\subsection{吸收和发射谱线}
+
+\paragraph{光谱谱线}
+光子频率为：
+\[
+\nu_{ij} = \frac{\Delta E_{ij}}{\mathrm{h}}.
+\]
+从高能级跃迁到低能级时会发射电磁辐射，产生离散化的发射光谱。
+
+\paragraph{能级分布}
+大气科学感兴趣光子携带的能量覆盖了五个数量级：从微波谱带 $\sim 10^{-23}\,\mathrm{J}$ 到远紫外谱带 $\sim 10^{-18}\,\mathrm{J}$。
+
+\paragraph{三种跃迁}
+因为原子/分子能量状态的量子化对不同能量存储模态非常不同，所以不同波长谱带关联不同的跃迁：
+\begin{enumerate}
+  \item 转动跃迁：远红外、微波波段（$> 20\,\mu\mathrm{m}$），$\Delta E$ 很小，能级间距较密。
+  \item 振动跃迁：近红外、热红外波段（$1\,\mu\mathrm{m} \sim 20\,\mu\mathrm{m}$）。
+  \item 电子跃迁：可见光、紫外线波段（$< 1\,\mu\mathrm{m}$），能量很大，能级间距较大，跃迁难度大。
+\end{enumerate}
+注意：三种跃迁不是单独存在的，像转动相关的低能跃迁通常与振动和/或电子的高能跃迁同步发生，其总的能量变化等于逐个能量变化之和。这种综合效应会增加纯振动跃迁或电子跃迁本身所产生的吸收光谱的精细结构，产生非常复杂的吸收谱线。
+
+\subsection{分子惯性矩}
+
+\paragraph{转动方程}
+质量 $m$ 是物体抵抗线性加速度能力的度量，而惯性矩 $I$（转动惯量）是物体抵抗转动加速度能力的度量。
+\[
+T = I \frac{\dd{\omega}}{\dd{t}}, \quad \text{转动动能 } E_{kr} = \frac{1}{2} I \omega^2, \quad \text{角动量 } L = I \omega.
+\]
+惯性矩 $I$ 的定义：$I = \sum_i r_i^2 \delta m_i$。对于相同质量的两个物体，物体越密实，具有的惯性矩越小。非常复杂。
+
+\paragraph{物理图像}
+平动运动是非量子化，分子水平的转动运动则是量子化；任意物体都只可能有一个质量 $m$，但是却有三个主惯性矩 $I_1, I_2, I_3$，对应有三套能级分布。单原子质量集中于原子核，半径极小。
+\[
+\begin{array}{|c|c|c|}
+\hline
+\text{描述} & \text{惯性矩} & \text{实例} \\
+\hline
+\text{单原子} & I_1 = I_2 = I_3 = 0 & \mathrm{Ar} \\
+\hline
+\text{线性} & I_1 = 0, I_2 = I_3 > 0 & \mathrm{N_2}, \mathrm{O_2}, \mathrm{CO_2}, \mathrm{N_2O} \\
+\hline
+\text{球形陀螺} & I_1 = I_2 = I_3 > 0 & \mathrm{CH_4} \\
+\hline
+\text{对称陀螺} & I_1 \neq 0; I_2 = I_3 > 0 & \mathrm{NH_3}, \mathrm{CH_3Cl}, \mathrm{CF_3Cl} \\
+\hline
+\text{非对称陀螺} & I_1 \neq I_2 \neq I_3 & \mathrm{H_2O}, \mathrm{O_3} \\
+\hline
+\end{array}
+\]
+
+\paragraph{注意}
+\begin{enumerate}
+  \item 对于 $I = 0$ 的主轴，不可能有转动能量，因此也单原子没有辐射的吸收或发射。
+  \item 惯性矩相等的转动轴在能量上是无法区分的，因此产生相同的吸收谱。
+  \item 线性和球形陀螺分子可区分转动模态最少，产生最简单的转动光谱。
+  \item 非对称陀螺分子具有最丰富的可能跃迁集合，产生最复杂的转动光谱。
+\end{enumerate}
+
+\subsection{大气分子结构}
+
+\begin{table}[ht]
+  \centering
+  \caption{大气分子结构}
+  \begin{tabular}{ccc}
+    \toprule
+    分子 & 结构类型 & 永久偶极矩 \\
+    \midrule
+    氧气 & 线性 & 无永久电磁偶极矩，有磁偶极矩 \\
+    氮气 & 线性 & 无永久电磁偶极矩 \\
+    一氧化碳 & 线性 & 有永久电磁偶极矩 \\
+    二氧化碳 & 线性 & 无永久电磁偶极矩 \\
+    一氧化二氮 & 线性 & 有永久电磁偶极矩（注意分布情况） \\
+    水分子 & 非对称陀螺 & 有永久电磁偶极矩 \\
+    臭氧 & 非对称陀螺 & 有永久电磁偶极矩 \\
+    甲烷 & 球形陀螺 & 无永久电磁偶极矩 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{转动跃迁}
+
+\subsection{转动跃迁光谱}
+
+\paragraph{引入}
+能级系统的数学物理图像。
+
+\paragraph{量子化}
+分子角动量的量子化（薛定谔方程）
+\[
+\text{角动量 } L = I \omega = \frac{h}{2\pi} \sqrt{J(J+1)}, \quad \text{转动能级 } E_J = \frac{1}{2} I \omega^2 = \frac{J(J+1) h^2}{8\pi^2 I},
+\]
+其中 $J = 0, 1, \ldots$ 为转动量子数。转动惯量在分母，若转动惯量越小，则能级差越大，跃迁越困难。
+
+\paragraph{跃迁能量}
+考虑相邻转动状态 $J$ 和 $J+1$ 之间的跃迁能量改变
+\[
+\Delta E = E_{J+1} - E_J = \frac{h^2}{4\pi^2 I} (J+1).
+\]
+
+\paragraph{量子选择}
+量子选择定律：能级跃迁只能从 $J \to J+1$，即一次只能跃迁一级。
+
+\paragraph{光谱频率}
+转动吸收或发射的光谱频率
+\[
+\nu = \frac{\Delta E}{\mathrm{h}} = \frac{\mathrm{h}}{4\pi^2 I} (J+1) = 2B (J+1),
+\]
+其中转动常数定义为 $B = \frac{\mathrm{h}}{8\pi^2 I}$。转动光谱频率间隔为 $2B$，均匀分布。如果有三个不同的转动惯量，就有三套不同的能级。
+
+\subsection{偶极矩}
+
+\paragraph{引入}
+要实现转动跃迁，还需要满足条件：分子能够吸收能量。为了让分子通过转动跃迁与电磁波发生相互作用，分子必须具有磁或电偶极矩。也就是说，外部磁场或电场必须对分子具有施加力矩的能力。
+
+\paragraph{电偶极矩}
+电偶极矩衡量正电荷分布与负电荷分布的分离状况，即电荷系统的整体极性。
+
+\subsection{大气分子转动光谱特征}
+
+\paragraph{单原子成分}
+如氩气 Ar 和其他惰性气体，具有有效的零值惯性矩 $I$，因此没有转动跃迁。
+
+\paragraph{分子氮气}
+N$_2$：含量最高的大气成分，既没有电偶极矩也没有磁偶极矩，因此没有转动吸收光谱。
+
+\paragraph{氧气}
+O$_2$：没有电偶极矩，但是具有永久性的磁偶极矩。因此具有 60 和 118 GHz 的微波转动吸收谱带。
+
+\paragraph{二氧化碳}
+CO$_2$ 和甲烷 CH$_4$ 没有永久性的电和磁偶极矩，因此对于纯转动跃迁没有辐射活性。
+
+\paragraph{其他分子}
+在大气中出现的所有其他主要分子都具有永久性电偶极矩，因此也具有主要的转动吸收光谱。
+
+\section{振动跃迁}
+
+\subsection{双原子分子振动跃迁}
+
+\paragraph{作用力}
+在双原子分子中两个原子之间的作用力 $F = -k (r' - r)$，其中 $k$ 类似于弹簧常数。
+
+\paragraph{频率}
+在经典极限中，分子表现为一个简单谐振子，其频率为：
+\[
+\nu' = \frac{1}{2\pi} \sqrt{\frac{k}{m'}},
+\]
+其中 $m'$ 为约化质量。在量子力学极限中，谐振子的实际振动频率 $\nu = \left( v + \frac{1}{2} \right) \nu'$，其中 $v$ 是振动量子数（类似于转动量子数 $J$，只能取非负整数），$\nu'$ 为经典谐振子频率。
+
+\paragraph{能级分布}
+每个频率 $\nu$ 相关的能量与相同频率的光子能量一样
+\[
+E_v = \mathrm{h}\nu = \left( v + \frac{1}{2} \right) \mathrm{h}\nu'.
+\]
+跃迁相关的光子频率恰好是经典谐振子谐振频率的整数倍，$\nu = n \nu'$。
+
+\paragraph{选择定律}
+完美谐振子能级跃迁只能从 $v \to v+1$，即一次只能跃迁一级。但现实中可以从 $v \to v+n$。
+
+\paragraph{基态跃迁}
+$v \to v+1,\ v=0$，这种情况是现实中大气科学热红外波段最为关注的。
+
+\subsection{多原子分子振动模态}
+
+\paragraph{双原子}
+只有一种震动情况。
+
+\paragraph{线性三原子}
+有三种震动情况：对称性拉伸 $v_1$；弯曲 $v_2$；非对称性拉伸 $v_3$。
+
+\paragraph{非线三原子}
+有三种震动情况：对称性拉伸 $v_1$；弯曲 $v_2$；非对称性拉伸 $v_3$。
+
+\paragraph{水汽}
+6.3 $\mu\mathrm{m}$ $v_2$ 基模态；2.7 $\mu\mathrm{m}$ $v_1$ 和 $v_3$ 基模态。
+
+\paragraph{二氧化碳}
+15 $\mu\mathrm{m}$ $v_2$ 基模态；4.3 $\mu\mathrm{m}$ $v_3$ 基模态。二氧化碳不存在 $v_1$，因为没有偶极矩。
+
+\paragraph{臭氧}
+9.066 $\mu\mathrm{m}$ $v_1$ 基模态；14.27 $\mu\mathrm{m}$ $v_2$ 基模态；9.597 $\mu\mathrm{m}$ $v_3$ 基模态。
+
+\paragraph{甲烷}
+3.3 $\mu\mathrm{m}$ $v_3$ 基模态；7.6 $\mu\mathrm{m}$ $v_4$ 基模态。甲烷一共有 9 个振动模态，但其中很多不能跃迁。
+
+\section{谱线展宽}
+
+\subsection{谱线的一般性描述}
+
+\paragraph{自然展宽}
+海森堡不确定原理（$\Delta E \cdot \Delta t \geq \frac{\hbar}{2}$，粒子能量的不确定量与其寿命的不确定量互相制约）保证了吸收线必须具有有限（尽管非常小）宽度。在大部分大气中，自然展宽相比其他两种展宽机制是完全可以忽略的。
+
+\paragraph{多普勒展宽}
+由于在任意气体中单个分子的随机平动运动，所以发生吸收和发射的波长相对自然的线位置会产生多普勒偏移。在中间层及之上的大气中是主要的展宽机制。
+
+\paragraph{压力展宽}
+分子之间的碰撞会随机地破坏能量状态之间的自然跃迁（寿命大大减小，能量不确定度增大），因此发射和吸收出现的波长偏离自然的吸收线位置。这在对流层和较低平流层中是主要的展宽机制。
+
+\paragraph{吸收截面}
+在频率 $\nu$ 上，单个分子的吸收截面
+\[
+\sigma_\nu = S f(\nu - \nu_0),
+\]
+$\nu_0$ 是吸收线的中心频率，$S$ 是线强（可查表得到），$f(\nu - \nu_0)$ 是线型函数。
+
+\paragraph{线型函数}
+\[
+\int_0^\infty f(\nu - \nu_0) \dd{\nu} = 1, \quad \int_0^\infty \sigma_\nu \dd{\nu} = \int_0^\infty S f(\nu - \nu_0) \dd{\nu} = S.
+\]
+半峰半宽 $\alpha_{1/2}$ 参数表示吸收截面落于谱线中心最大值一半的 $|\nu - \nu_0|$ 数值，即 $f(\alpha_{1/2}) = f(0)/2$。
+
+\subsection{线型函数的数学形式}
+
+\paragraph{多普勒线型}
+\[
+f_D(\nu - \nu_0) = \frac{1}{\alpha_D \sqrt{\pi}} \exp \left[ - \frac{(\nu - \nu_0)^2}{\alpha_D^2} \right], \quad \text{其中 } \alpha_D = \nu_0 \sqrt{\frac{2 \mathrm{k_b} T}{m \mathrm{c^2}}}.
+\]
+谱线的半峰半宽 $\alpha_{1/2} = \alpha_D \sqrt{\ln 2}$。其中 $\mathrm{k_b}$ 为玻尔兹曼常数，由此展宽强度与 $T, m, \nu_0$ 有关，且 $\nu_0$ 占主要作用。
+
+\paragraph{洛伦兹线型}
+\[
+f(\nu - \nu_0) = \frac{\alpha_L / \pi}{(\nu - \nu_0)^2 + \alpha_L^2}, \quad \text{其中 } \alpha_L = \alpha_0 \left( \frac{p}{p_0} \right) \left( \frac{T_0}{T} \right)^n.
+\]
+洛伦兹展宽也称为压力展宽，展宽强度与 $p, T$ 有关，且 $p$ 占主要作用。
+
+\section{连续吸收}
+
+\subsection{连续吸收的情况}
+
+\paragraph{光电离}
+光子将电子从原子中完全剥离出来，产生一个带正电的离子和一个自由的电子。超出的能量则以离子和/或自由电子的动能形式表现出来。注意平动动能是非量子化的；因此对光子的准确能级没有限制。
+
+\paragraph{光解离}
+任意光子的能量超过分子中两成分之间的化学结合能，可以将分子振动而分裂成两部分，该光子就能引起光解离，多余的能量则以非量子化的动能（热能）形式出现。
+
+\paragraph{水汽吸收}
+除了上述被理解了很好且主要活跃于紫外波长上的连续吸收模型，还存在一种在红外和微波谱带中介于主要吸收谱带之间的显著水汽连续吸收。水汽连续吸收背后的物理机制仍然存在一些争议，主要的理论解释：谱线远翼和 $\mathrm{H_2O}$ 团簇。
+
+\subsection{真实大气测量情况}
+（以一氧化碳为例）
+\begin{enumerate}
+  \item 最靠左边的是纯转动跃迁。
+  \item 震动跃迁可以看到有一定的宽度，因为叠加了转动跃迁谱线。
+  \item 左边第一个表示基态跃迁，其后依次表示增加 $n$ 级。
+  \item 可以看到波峰近似均匀间隔。
+  \item 水汽吸收最为复杂，是非线性，非对称的陀螺结构。
+  \item 二氧化碳和水汽、臭氧的不同在于最左边纯转动跃迁为零。
+\end{enumerate}
+
+\chapter{基于散射的辐射传输方程}
+
+\section{辐射传输方程}
+
+\subsection{基于散射的辐射传输方程}
+
+\subsubsection{完整微分形式的辐射传输方程}
+
+\paragraph{模型构建}
+对于包含散射的情况，经过微元路径 $\dd{s}$ 的辐射净改变：
+\begin{enumerate}
+  \item 由吸收和散射共同引起的直射辐射衰减
+        \[
+        \dd{I_{\mathrm{ext}}} = - (\beta_a + \beta_s) I \dd{s} = - \beta_e I \dd{s}.
+        \]
+  \item 在局地热平衡条件下，由发射引起的辐射增强 $\dd{I_{\mathrm{emit}}} = \beta_a B \dd{s}$（太阳短波可不考虑发射）。
+  \item 由多次散射引起的辐射增强：一个微小立体角 $\dd{\omega'}$ 中的辐射能量：$I(\Omega') \dd{\omega'}$，其经过散射之后总的散射辐射为 $\beta_s \dd{s_{\text{总散射截面}}} \cdot I(\Omega') \dd{\omega'}$，该辐射方向为四面八方，再乘上往 $\Omega$ 方向的概率密度可得：
+        \[
+        \dd{I_{\mathrm{scat}}} = \frac{\beta_s}{4\pi} \int_{4\pi} p(\hat{\Omega}', \hat{\Omega}) I(\hat{\Omega}') \dd{\omega'} \dd{s},
+        \]
+        其中散射相函数 $p(\hat{\Omega}', \hat{\Omega})$ 有归一化条件：
+        \[
+        \frac{1}{4\pi} \int_{4\pi} p(\hat{\Omega}', \hat{\Omega}) \dd{\omega'} = 1.
+        \]
+        散射概率密度函数为：$\frac{p(\hat{\Omega}', \hat{\Omega})}{4\pi}$。
+\end{enumerate}
+
+\paragraph{微分表达式}
+经过微元路径 $\dd{s}$ 的净辐射微分表达式
+\[
+\dd{I} = \dd{I_{\mathrm{ext}}} + \dd{I_{\mathrm{emit}}} + \dd{I_{\mathrm{scat}}}.
+\]
+
+\paragraph{完整方程}
+\[
+\dd{I} = - \beta_e I \dd{s} + \beta_a B \dd{s} + \frac{\beta_s}{4\pi} \int_{4\pi} p(\hat{\Omega}', \hat{\Omega}) I(\hat{\Omega}') \dd{\omega'} \dd{s}.
+\]
+
+\subsubsection{完整通用形式的辐射传输方程}
+
+\paragraph{光学厚度}
+定义光学厚度：$\dd{\tau} = - \beta_e \dd{s}$，前面的负号表明 $s$ 数值越大，光学厚度越小。
+
+\paragraph{通用形式}
+两边同时除上 $\dd{\tau}$，得到总的辐射源是热发射和来自其他方向散射的加权之和，单次散射反照率控制着各自权重。如果 $\widetilde{\omega} = 0$，散射项消失；如果 $\widetilde{\omega} = 1$，则热发射成分消失。
+\[
+\frac{\dd{I(\hat{\Omega}})}{\dd{\tau}} = I(\hat{\Omega}) - (1 - \widetilde{\omega}) B - \frac{\widetilde{\omega}}{4\pi} \int_{4\pi} p(\hat{\Omega}', \hat{\Omega}) I(\hat{\Omega}') \dd{\omega'}.
+\]
+
+\paragraph{有趣性质}
+散射占比增大，则吸收占比减小，也就意味着发射减小，两者是此消彼长的关系。
+
+\subsubsection{相应简写形式的辐射传输方程}
+
+\paragraph{简化形式}
+\[
+\frac{\dd{I(\hat{\Omega}})}{\dd{\tau}} = I(\hat{\Omega}) - J(\hat{\Omega}),
+\]
+其中源函数为
+\[
+J(\hat{\Omega}) = (1 - \widetilde{\omega}) B + \frac{\widetilde{\omega}}{4\pi} \int_{4\pi} p(\hat{\Omega}', \hat{\Omega}) I(\hat{\Omega}') \dd{\omega'}.
+\]
+
+\paragraph{性质}
+$\dd{I} = I \dd{\tau} - J \dd{s} = - \beta_e I \dd{s} + \beta_e J \dd{s}$，发现消光截面越大，源贡献的辐射增强也越大。
+
+\subsection{平面平行大气辐射传输方程}
+
+\paragraph{平行假设}
+为什么大多数辐射传输解析和近似解都基于平面平行大气假设？
+\begin{enumerate}
+  \item 平面平行几何确实是唯一适合直接分析和/或数值求解的半真实情况（例如气候和天气预报模式）。
+  \item 确实存在一些问题（例如无云晴空大气、大范围水平均匀的层状云盖）平面平行假设作为一种真实的近似显得非常合理。
+  \item 甚至在一些不合理的情况中，科学家们对最优的三维非均质处理方式都存在明显迟疑，特别是当计算效率非常重要时。
+\end{enumerate}
+
+\paragraph{传输方程}
+\[
+\mu \frac{\dd{I(\tau}, \mu, \phi)}{\dd{\tau}} = I(\tau, \mu, \phi) - J(\tau, \mu, \phi),
+\]
+其中：
+\begin{enumerate}
+  \item 使用天顶角 $\theta$ + 方位角 $\phi$ 表示 $\hat{\Omega}$，$\mu = \cos\theta$，$\dd{\omega} = \sin\theta \dd{\theta} \dd{\phi} = \dd{\cos\theta} \dd{\phi}$。
+  \item 源函数为
+        \[
+        J(\tau, \mu, \phi) = (1 - \widetilde{\omega}) B + \frac{\widetilde{\omega}}{4\pi} \int_0^{2\pi} \int_{-1}^1 p(\mu, \phi, \mu', \phi') I(\mu', \phi') \dd{\mu'} \dd{\phi'}.
+        \]
+  \item 使用 $\tau$ 代替位置 $\vec{r}$：因为平面平行大气与 $x, y$ 分量无关，同时 $z \to \tau(z)$ 逐个对应，$\tau = \int_z^\infty \beta_e(z) \dd{z}$。
+  \item 光学厚度的转化：上文定义的光学厚度为 $\dd{\tau(s)} = - \beta_e \dd{s}$，此处为 $\dd{\tau(z)} = - \beta_e \dd{z}$，又有 $\dd{s} = \frac{\dd{z}}{\cos\theta}$，则有 $\dd{\tau(s)} = \frac{\dd{\tau(z)}}{\cos\theta} = \frac{\dd{\tau(z)}}{\mu}$，将其全部代回原式，则左边变为 $\mu \frac{\dd{I}}{\dd{\tau}}$。
+\end{enumerate}
+
+\paragraph{输入条件}
+光学厚度（散射系数、吸收系数、$\widetilde{\omega}$）、相函数（$\mu, \phi$）、发射 $B$（温度、波长）、太阳辐射强度、观测位置。
+
+\section{散射相函数}
+
+\subsection{散射相函数}
+
+\subsubsection{基本概念与方程}
+
+\paragraph{概率密度}
+散射相函数可以理解为概率密度：设光子从方向 $\hat{\Omega}'$ 出发并发生散射，那么光子方向位于中心方向 $\hat{\Omega}$ 的立体角微元 $\dd{\omega}$ 内的概率为 $\frac{1}{4\pi} p(\hat{\Omega}', \hat{\Omega}) \dd{\omega}$。散射相函数对 $\hat{\Omega}', \hat{\Omega}$ 的依赖关系可以非常复杂（四维函数：总格点至少 $(180 \times 360)^2$），这与负责散射的粒子尺度和形状有关。
+
+\paragraph{球形情况}
+如果悬浮在大气中的粒子是球形或者随机取向，那么散射相函数只与初始方向 $\hat{\Omega}$ 和散射方向 $\hat{\Omega}'$ 的夹角（散射角）$\theta$ 有关（一维函数）。因此完整描述 $p$ 的方向独立变量 $\hat{\Omega}', \hat{\Omega}$ 减至唯一的 $\cos\theta = \hat{\Omega}' \cdot \hat{\Omega}$。
+
+\paragraph{归一化条件}
+引入坐标系，其 $z$ 轴指向入射方向，有 $\dd{\omega'} = \sin\theta \dd{\theta} \dd{\phi}$。散射相函数的归一化条件简化为
+\[
+\frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi p(\cos\theta) \sin\theta \dd{\theta} \dd{\phi} = 1 \Rightarrow \boxed{\frac{1}{2} \int_{-1}^1 p(\cos\theta) \dd{\cos\theta} = 1}.
+\]
+
+\subsubsection{各向同性散射}
+
+\paragraph{各向同性}
+一个光子经过散射后在所有方向 $\hat{\Omega}$ 上出现的概率都相同，即散射相函数等于常数的情况：$p(\cos\theta) = 1$（满足归一化条件）。因此，光子新的传输方向无法从散射之前的传输方向进行预测，换句话来说，光子“忘记”了它过去的一切。
+
+\subsection{非对称因子}
+
+\subsubsection{基本情况}
+
+\paragraph{非对称因子}
+大量散射光子的 $\cos\theta$ 平均值，即
+\[
+g \equiv \frac{1}{4\pi} \int_{4\pi} p(\cos\theta) \cos\theta \dd{\omega}.
+\]
+$\frac{p(\cos\theta)}{4\pi} \dd{\omega_{\text{概率}}} \times \cos\theta_{\text{该方向}}$。由此可知，$-1 \leq g \leq 1$。
+
+\paragraph{情况讨论}
+\begin{enumerate}
+  \item $g > 0$：光子倾向于散射至前半球，即前向散射占主导【除瑞利散射外大部分粒子】。
+  \item $g < 0$：光子倾向于散射至后半球，即后向散射占主导。
+  \item $g = 1$：光子散射至与其初始传输方向完全相同的方向（$\theta = 0^\circ$）。
+  \item $g = -1$：光子散射至与其初始传输方向完全相反的方向（$\theta = 180^\circ$）。
+  \item $g = 0$：光子散射至前后半球的概率相等，如各向同性散射【瑞利散射】。
+\end{enumerate}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \fill (0,0) circle[radius=2pt];
+    \draw[dashed] (0,0) circle[radius=1cm];
+    \foreach \x in {0.1,0.3,0.5}{
+      \draw[dashed] (2*\x,0) ellipse[x radius={1+\x},y radius={1-\x}];
+    }
+  \end{tikzpicture}
+\end{figure}
+
+\subsubsection{Henyey–Greenstein 相函数}
+
+\paragraph{数学形式}
+\[
+p_{\mathrm{HG}}(\cos\theta) = \frac{1 - g^2}{(1 + g^2 - 2g \cos\theta)^{3/2}}.
+\]
+
+\paragraph{物理图像}
+其并非针对特定粒子的相函数，其是一个经验性的拟合相函数。右图为对数标度的概率图。
+
+\section{单次散射的求解}
+
+\subsection{基于单次散射的辐射传输方程}
+
+\subsubsection{单次散射辐射传输方程的基本形式}
+
+\paragraph{单次散射}
+只考虑大气对太阳辐射的单次散射，需要满足条件：
+\begin{enumerate}
+  \item 多次散射可以忽略（$\widetilde{\omega} \ll 1$ 和/或 $\tau^* \ll 1$）。
+  \item $\widetilde{\omega}$ 和 $p(\cos\theta)$ 都是常数。
+  \item 唯一外部照明是平行光束辐射源，例如太阳。
+\end{enumerate}
+
+\paragraph{基本方程}
+不考虑热发射，散射辐射传输方程表达式：
+\[
+\mu \frac{\dd{I(\tau}, \mu, \phi)}{\dd{\tau}} = I(\tau, \mu, \phi)_{\text{衰减项}} - \frac{\widetilde{\omega}(\tau)}{4\pi} \int_0^{2\pi} \int_{-1}^1 p(\mu, \phi, \mu', \phi') I(\mu', \phi') \dd{\mu'} \dd{\phi'_{\text{多次散射增强项}}}.
+\]
+
+\paragraph{模型假设}
+假设只有太阳辐射源的直接透射辐射强度对散射辐射强度 $I(\mu', \phi')$ 有贡献：
+\[
+I(\mu', \phi') = F_0 \delta(\mu' - \mu_0) \delta(\phi' - \phi_0) \mathrm{e}^{\frac{\tau}{\mu_0}},
+\]
+其中有狄拉克 $\delta$ 函数。然而，单方向 $\mu', \phi'$ 可以用太阳的方向 $\mu_0, \phi_0$ 代替，所以可以把 $p(\mu, \phi, \mu', \phi')$ 提出来，只剩下辐射强度对立体角积分：
+\[
+\int_0^{2\pi} \int_{-1}^1 I(\mu', \phi') \dd{\mu'} \dd{\phi'} = F_0 \exp\left( - \frac{\tau}{\cos\theta_0} \right),
+\]
+则无需知道辐射强度的分布。
+
+\paragraph{方程简化}
+那么基于单次散射的辐射传输方程表示为
+\[
+\mu \frac{\dd{I}}{\dd{\tau}} = I - \frac{F_0 \widetilde{\omega}}{4\pi} p(\cos\theta) \mathrm{e}^{\tau / \mu_0}.
+\]
+上式可以进一步简写成以下形式
+\[
+\mu \frac{\dd{I}}{\dd{\tau}} = I - J, \quad J = \frac{F_0 \widetilde{\omega}}{4\pi} p(\cos\theta) \mathrm{e}^{\frac{\tau}{\mu_0}}.
+\]
+
+\subsubsection{向上与向下的散射辐射}
+
+\paragraph{向下观测}
+探测器位于大气顶，向下观测的上行散射辐射
+\[
+I(0) = I(\tau^*) \mathrm{e}^{-\frac{\tau^*}{\mu}} + \int_0^{\tau^*} \frac{F_0 \widetilde{\omega}}{4\pi} p(\cos\theta) \mathrm{e}^{\frac{\tau}{\mu_0}} \mathrm{e}^{-\frac{\tau}{\mu}} \dd{\left( \frac{\tau}{\mu} \right)}.
+\]
+如果假设 $\widetilde{\omega}$ 和 $p(\cos\theta)$ 都是常数，则可以积分出最终的表达式。
+
+\paragraph{向上观测}
+探测器位于地表，向上观测的下行散射辐射
+\begin{align*}
+I(\tau^*) &= I(0) \mathrm{e}^{\frac{\tau^*}{\mu}} + \int_0^{\tau^*} \frac{F_0 \widetilde{\omega}}{4\pi} p(\cos\theta) \mathrm{e}^{\frac{\tau}{\mu_0}} \mathrm{e}^{\frac{\tau^* - \tau}{\mu}} \dd{\left( - \frac{\tau}{\mu} \right)} \\
+&= I(0) \mathrm{e}^{\frac{\tau^*}{\mu}} - \frac{F_0 \widetilde{\omega}}{4\pi \mu \left( \frac{1}{\mu_0} - \frac{1}{\mu} \right)} p(\cos\theta) \left[ \mathrm{e}^{\frac{\tau^*}{\mu_0}} - \mathrm{e}^{\frac{\tau^*}{\mu}} \right].
+\end{align*}
+
+\subsubsection{大气顶部和底部的散射辐亮度}
+
+\paragraph{进步简化}
+\[
+\begin{cases}
+\text{对于 } \mu > 0, I(0) \\
+\text{对于 } \mu < 0, I(\tau^*)
+\end{cases}
+= \frac{F_0 \widetilde{\omega} \tau^*}{4\pi |\mu|} p(\cos\theta).
+\]
+该解只有在以下条件满足时成立：
+\begin{enumerate}
+  \item 仅考虑散射大气辐射贡献，忽略直射透射辐射项。
+  \item 假设忽略多次散射的原因是 $\tau^* \ll 1$。
+  \item 假设 $\mu_0$ 和 $\mu$ 不是特别小于一，不能过于倾斜，否则光学厚度增大，泰勒展开近似不成立。
+\end{enumerate}
+
+\paragraph{推导}
+\[
+\frac{F_0 \widetilde{\omega}}{4\pi \mu \left( \frac{1}{\mu_0} - \frac{1}{\mu} \right)} p(\cos\theta) \left[ \mathrm{e}^{\tau^* \left( \frac{1}{\mu_0} - \frac{1}{\mu} \right)} - 1 \right]
+\]
+利用泰勒展开
+\[
+{\Rightarrow} \frac{F_0 \widetilde{\omega}}{4\pi \mu \left( \frac{1}{\mu_0} - \frac{1}{\mu} \right)} p(\cos\theta) \left[ 1 + \tau^* \left( \frac{1}{\mu_0} - \frac{1}{\mu} \right) - 1 \right] = \frac{F_0 \widetilde{\omega} \tau^*}{4\pi \mu} p(\cos\theta).
+\]
+泰勒展开：对于小的 $x$，$\mathrm{e}^x \approx 1 + x$。
+
+\paragraph{物理模型}
+\[
+\boxed{\frac{F_{0\text{忽略消光的太阳辐射}} \widetilde{\omega}_{\text{有多少散射的辐射}} \tau^*_{\text{有多少辐射被消光}}}{|\mu|_{\text{倾斜的入射辐射情况}}} \frac{p(\cos\theta)}{4\pi}_{\text{往探测器方向的辐射}}}.
+\]
+
+\section{章节例题}
+
+\begin{example}
+由 $p(\theta) = \frac{3}{4} (1 + \cos^2 \theta)$ 证明瑞利散射非对称因子 $g = 0$。
+
+考虑到非对称因子为：
+\[
+g \equiv \frac{1}{4\pi} \int_{4\pi} p(\cos\theta) \cos\theta \dd{\omega}.
+\]
+考虑到：$\dd{\omega} = \sin\theta \dd{\theta} \dd{\phi}$，且相函数中不含有 $\phi$，不妨计算非对称因子：
+\[
+\begin{aligned}
+g &= \frac{1}{4\pi} \int_0^{2\pi} \int_0^\pi \frac{3}{4} (1 + \cos^2 \theta) \cos\theta \cdot \sin\theta \dd{\theta} \dd{\phi} \\
+&= \frac{1}{4\pi} \cdot 2\pi \cdot \frac{3}{4} \int_0^\pi (1 + \cos^2 \theta) \cos\theta \cdot \sin\theta \dd{\theta} \\
+&= \frac{3}{8} \int_0^\pi (\cos\theta \sin\theta + \cos^3 \theta \sin\theta) \dd{\theta}.
+\end{aligned}
+\]
+不妨令 $x = \cos\theta$，则 $\dd{x} = -\sin\theta \dd{\theta}$，代入则有：
+\[
+g = \frac{3}{8} \int_1^{-1} (x + x^3) (-\dd{x)}.
+\]
+发现是奇函数，且积分区间对称，因子积分为零，则 $\boxed{g = 0}$。
+\end{example}
+
+\begin{example}
+假设波长 $\lambda = 0.5\,\mu\mathrm{m}$，接近于可见光谱带的中心，确定图中三个相函数对应的水滴粒子半径。
+
+考虑到尺度因子：$x \equiv 2\pi r / \lambda$，将其代入则可以直接得到：
+\[
+r = \frac{\lambda x}{2\pi}.
+\]
+\[
+r_1 = \frac{0.5 \cdot 30}{2\pi} = 2.387\,\mu\mathrm{m}, \quad r_2 = \frac{0.5 \cdot 100}{2\pi} = 7.958\,\mu\mathrm{m}, \quad r_3 = \frac{0.5 \cdot 10000}{2\pi} = 795.77\,\mu\mathrm{m}.
+\]
+\end{example}
+
+\chapter{粒子单次散射和吸收}
+
+\section{大气粒子}
+
+\subsection{大气粒子基本情况}
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \draw (0,0) rectangle (6,9);
+    \foreach \x/\b/\a in {0/0.1\(\mu\)m/紫外,1/1\(\mu\)m/,2/10\(\mu\)m/红外,3/100\(\mu\)m/,4/1mm/,5/1cm/微波,6/10cm/}{
+      \draw (\x,0)node[below]{\b} --+ (0,0.2);
+      \draw (\x,9)node[above]{\a} --+ (0,-0.2);
+    }
+    \foreach \y/\l/\r in {1/1nm/空气分子,2/10nm/爱根核,3/0.1\(\mu\)m/雾滴,4/1\(\mu\)m/沙尘,5/10\(\mu\)m/云粒子,6/100\(\mu\)m/细雨滴,7/1mm/雨滴,8/1cm/冰雹}{
+      \draw (0,\y)node[left]{\l} --+ (0.2,0);
+      \draw (6,\y)node[right]{\r} --+ (-0.2,0);
+    }
+    \draw[dashed] (0.5,0) --node[fill=white]{\(x=2000\)} (6,5.5);
+    \draw[dashed] (0,1.5) --node[fill=white]{\(x=0.2\)} (6,7.5);
+    \draw[dashed] (0,5.5) --node[fill=white]{\(x=0.002\)} (3.5,9);
+    \node at (1,8.5){几何光学};
+    \node at (2,6){米氏散射};
+    \node at (3,3.5){瑞利散射};
+    \node at (4,1){忽略散射};
+    \node at (-1,9){粒子半径};
+    \node at (7,-0.5){波长};
+  \end{tikzpicture}
+  \caption{粒子尺度参数}\label{pic:size}
+\end{figure}
+
+\subsubsection{大气粒子的尺度与数浓度}
+
+\paragraph{基本情况}
+\begin{enumerate}
+  \item 辐射传输方程由消光系数 $\beta_e$、单次散射反照率 $\widetilde{\omega}$、散射相函数 $p$ 描述。
+  \item 这些粒子单次散射特性（以上参数）与辐射波长和粒子的尺度、成分、形状和数目有关。
+  \item 为此需要确定粒子物理、几何特性与粒子吸收和散射特性之间的联系。
+\end{enumerate}
+
+\begin{table}[ht]
+  \centering
+  \caption{大气粒子的尺度与数浓度}
+  \begin{tabular}{ccc}
+    \toprule
+    类型 & 尺寸 & 数浓度 \\
+    \midrule
+    气体分子 & $\sim 10^{-4}\,\mu\mathrm{m}$ & $< 3 \times 10^{19}\,\mathrm{cm^{-3}}$ \\
+    爱根核气溶胶 & $< 0.1\,\mu\mathrm{m}$ & $\sim 10^{4}\,\mathrm{cm^{-3}}$ \\
+    大核气溶胶 & $0.1 \sim 1\,\mu\mathrm{m}$ & $\sim 10^{2}\,\mathrm{cm^{-3}}$ \\
+    巨核气溶胶 & $> 1\,\mu\mathrm{m}$ & $\sim 10 \sim 1\,\mathrm{cm^{-3}}$ \\
+    云粒子 & $5 \sim 50\,\mu\mathrm{m}$ & $10^{2} \sim 10^{3}\,\mathrm{cm^{-3}}$ \\
+    细雨滴 & $100\,\mu\mathrm{m}$ & $\sim 10^{3}\,\mathrm{m^{-3}}$ \\
+    冰晶 & $10 \sim 10^{2}\,\mu\mathrm{m}$ & $\sim 10^{3} \sim 10^{5}\,\mathrm{m^{-3}}$ \\
+    雨滴 & $0.1 \sim 3\,\mathrm{mm}$ & $10 \sim 10^{3}\,\mathrm{m^{-3}}$ \\
+    霰 & $0.1 \sim 3\,\mathrm{mm}$ & $1 \sim 10^{2}\,\mathrm{m^{-3}}$ \\
+    冰雹 & $\sim 1\,\mathrm{cm}$ & $10^{-2} \sim 1\,\mathrm{m^{-3}}$ \\
+    昆虫 & $\sim 1\,\mathrm{cm}$ & $< 1\,\mathrm{m^{-3}}$ \\
+    鸟 & $\sim 10\,\mathrm{cm}$ & $< 10^{-4}\,\mathrm{m^{-3}}$ \\
+    飞机 & $\sim 10\,\mathrm{m}$ & $< 1\,\mathrm{km^{-3}}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection{粒子尺度参数}
+
+\paragraph{尺度参数}
+\[
+\boxed{x \equiv 2\pi r / \lambda},
+\]
+其中 $r$ 表示球形粒子半径。对于非球形粒子，$r$ 根据情况可表示为一个与其具有相同体积或表面积的球体半径。
+\begin{enumerate}
+  \item 瑞利散射与几何光学的粒子可以是任意形状，米散射只能是球形粒子。
+  \item 图\ref{pic:size}划分并不严格，注意量级即可。瑞利散射与米散射的分界是：$x = 0.2$。
+\end{enumerate}
+
+\subsection{电偶极子辐射}
+
+\subsubsection{瑞利散射的推导}
+
+\paragraph{瑞利条件}
+$|m| x \ll 1$，即当粒子相对波长足够小。
+
+\paragraph{电偶极子}
+电偶极矩 $= ql$，外界电磁辐射作用于电偶极子，其自身产生时变电磁场，称为电偶极子辐射。
+\begin{enumerate}
+  \item 一个小球形粒子的偶极矩（电荷乘以距离）正比于外部电场的强度：
+        \[
+        \vec{p} = \alpha \vec{E}_0 \exp(\ii\omega t),
+        \]
+        其中 $\alpha$ 称为粒子的极化率，依赖于粒子的成分和尺度以及入射波的频率（通常不好算）。
+  \item 散射电场正比于偶极子电荷加速度在与散射方向相垂直的平面上的投影：
+        \[
+        \left| \vec{E}_{\mathrm{scat}} \right| \propto \frac{\partial^2 \vec{p}}{\partial t^2} \sin\gamma \propto \omega^2 \sin\gamma,
+        \]
+        其中 $\gamma$ 是 $\vec{E}_0$ 和散射方向 $\hat{\Omega}'$ 所形成的夹角。
+  \item 远场观测的散射辐射强度 $I$ 正比于电场振幅的平方：
+        \[
+        I \propto \left| \vec{E}_{\mathrm{scat}} \right|^2 \propto \omega^4 \sin^2\gamma.
+        \]
+\end{enumerate}
+
+\subsubsection{散射辐射强度的角度分布推导}
+
+\paragraph{模型假设}
+设入射方向 $\hat{\Omega}$ 与 $z$ 轴重合，入射电场矢量 $\vec{E}_0$ 与 $x$ 轴对齐，$\theta$ 是 $\hat{\Omega}$ 和 $\hat{\Omega}'$ 之间的夹角（散射角），$\Phi$ 是以 $x$ 轴为起点绕 $\hat{\Omega}$ 方向旋转的方位角。
+
+\paragraph{模型计算}
+\[
+\hat{\Omega}' = (\sin\theta \cos\Phi, \sin\theta \sin\Phi, \cos\theta), \quad \cos\gamma = \hat{x} \cdot \hat{\Omega}' = (1,0,0) \cdot \hat{\Omega}' = \sin\theta \cos\Phi,
+\]
+\[
+\sin^2\gamma = 1 - \cos^2\gamma = 1 - \sin^2\theta \cos^2\Phi, \quad I \propto \omega^4 (1 - \sin^2\theta \cos^2\Phi).
+\]
+
+\subsubsection{散射辐射强度的角度分布特征}
+
+\paragraph{分布特征}
+\begin{enumerate}
+  \item 散射辐射强度正比于入射辐射频率的四次方，即与波长的四次方成反比。
+  \item 当 $\Phi$ 等于 $90^\circ$ 或者 $270^\circ$，即当任意散射光线处于垂直 $\vec{E}_0$ 的平面内时，散射辐射强度是常数，且为最大值，与 $\theta$ 无关。
+  \item 当 $\Phi$ 等于 $0^\circ$ 或者 $180^\circ$，即当两个方向都沿着偶极子轴时，散射辐射强度等于零。
+\end{enumerate}
+
+\section{瑞利散射}
+
+\subsection{瑞利散射相函数}
+
+\paragraph{相函数}
+对于非偏振入射辐射，可以通过在 $\Phi$ 上对散射辐射强度进行平均，并进行归一化处理来得到相函数：
+\[
+p(\theta) = \frac{3}{4} (1 + \cos^2\theta).
+\]
+上式就是通常用来描述非常小的粒子的散射相函数。
+
+\subsection{瑞利散射和吸收特性}
+
+\paragraph{消光效率}
+\[
+Q_e = 4x \Im\left\{ \frac{m^2 - 1}{m^2 + 2} \left[ 1 + \frac{x^2}{15} \left( \frac{m^2 - 1}{m^2 + 2} \right) \frac{m^4 + 27 m^2 + 38}{2m^2 + 3} \right] \right\} + \frac{8}{3} x^4 \Re\left\{ \left( \frac{m^2 - 1}{m^2 + 2} \right)^2 \right\},
+\]
+只是 $x, m_{\text{复折射率}}$ 的函数。
+
+\paragraph{散射效率}
+\[
+Q_s = \frac{8}{3} x^4 \left| \frac{m^2 - 1}{m^2 + 2} \right|^2.
+\]
+
+\paragraph{吸收效率}
+\[
+Q_a = 4x \Im\left\{ \frac{m^2 - 1}{m^2 + 2} \right\}.
+\]
+
+\begin{enumerate}
+  \item 吸收效率 $Q_a$ 正比于 $x$，但是散射效率 $Q_s$ 正比于 $x^4$。
+  \item 吸收明显强于散射，如果有虚部的话（$x < 0.2, x^4 < x$）。
+\end{enumerate}
+
+\paragraph{散射截面}
+考虑到粒子散射效率在瑞利极限时正比于 $x^4$，而散射截面 $\sigma_s$ 等于 $Q_s$ 与粒子截面 $\pi r^2$ 之积，因此：
+\[
+\boxed{\sigma_s \propto \left( \frac{2\pi r}{\lambda} \right)^4 \cdot \pi r^2 \propto \frac{r^6}{\lambda^4}}.
+\]
+大粒子散射能力远大于小粒子，在雷达应用上非常广泛。案例：两个 $10\,\mu\mathrm{m}, 1\,\mu\mathrm{m}$ 的粒子，大粒子散射能力为小粒子的一百万倍。
+
+\paragraph{单次散射反照率}
+对于足够小的 $x$，同时假设 $m$ 具有非零虚部，单次散射反照率正比于 $x^3$，即
+\[
+\widetilde{\omega} \equiv \frac{Q_s}{Q_e} \propto x^3.
+\]
+因此对于足够小的 $x$，$Q_s \ll Q_a \approx Q_e$，即完全可以忽略粒子散射。应用：大气热红外辐射的分子吸收；云滴微波辐射吸收。
+
+\paragraph{质量吸收系数}
+对于半径 $r$ 和密度 $\rho$ 的球形粒子，质量吸收系数写成
+\[
+k_a = \frac{Q_a \pi r^2}{\rho (4/3) \pi r^3} = \frac{3 Q_a}{4 \rho r}.
+\]
+将粒子吸收效率和尺度参数代入上式可得
+\[
+k_a = \frac{6\pi}{\rho \lambda} \Im\left\{ \frac{m^2 - 1}{m^2 + 2} \right\}.
+\]
+因此，质量吸收系数与粒子半径完全无关。体积吸收系数等于质量吸收系数与介质密度的乘积，即 $\beta_a = k_a \rho_m$。
+
+\subsection{瑞利散射总结}
+
+\paragraph{总结情况}
+\begin{enumerate}
+  \item 对于一个固定尺寸的粒子，并将它暴露在两不同波长 $\lambda_1 < \lambda_2$ 的辐射之下，那么较短波长 $\lambda_1$ 的散射辐射要比较长波长 $\lambda_2$ 强 $\left( \frac{\lambda_2}{\lambda_1} \right)^4$ 倍。
+  \item 对于固定波长 $\lambda$ 的辐射，并用其来照明两个半径 $r_1 < r_2$ 的粒子，那么较大粒子的散射辐射要比较小粒子强 $\left( \frac{r_2}{r_1} \right)^6$ 倍。
+  \item 对于足够小的粒子，散射是可以忽略的，吸收只正比于质量路径，与粒子尺度无关。在此极限中，一块云的辐射表现就像吸收气体一样，而不是像一群离散的散射体一样。
+\end{enumerate}
+
+\section{米氏散射}
+
+\paragraph{米氏散射}
+用于求解任意尺度参数 $x$ 和相对折射率 $m$ 的均匀球体的散射和吸收特性，详细推导过程可以参考教材。
+
+\paragraph{求解思路}
+利用麦克斯韦方程推导三维空间中电磁辐射的波动方程，将其用球极坐标 $(r, \phi, \theta)$ 进行描述，并结合球体表面的合适边界条件。得到一个可变量分离的偏微分方程，其解可以表述为多个正交基函数之积的无穷级数，包括正弦和余弦函数（对 $\phi$ 的依赖项）、球贝塞尔函数（对 $r$ 的依赖项）和连带勒让德多项式（对 $\cos\theta$ 的依赖项）。
+
+\paragraph{求解结果}
+球体的消光和散射效率可以表示为：
+\[
+Q_e = \frac{2}{x^2} \sum_{n=1}^\infty (2n+1) \Re(a_n + b_n), \quad Q_s = \frac{2}{x^2} \sum_{n=1}^\infty (2n+1) \left( |a_n|^2 + |b_n|^2 \right),
+\]
+其中米散射系数 $a_n$ 和 $b_n$ 都是 $x$ 和 $m$ 的函数。从实际应用出发，总需要对级数进行截断，仅保留足够多的项来得到一个足够准确的近似。通常所需项数必须接近 $x + 4 x^{1/2} + 2$ 的整数。
+
+\section{散射案例与一般情况}
+
+\subsection{非吸收球体的消光效率}
+
+\paragraph{非吸收球体}
+非吸收意味着折射率的虚部为零 $\Im(m) = 0$，吸收效率也为零 $Q_{\mathrm{abs}} = 0$，$Q_{\mathrm{sca}} = Q_{\mathrm{ext}}$。
+
+\paragraph{消光情况}
+\begin{enumerate}
+  \item 瑞利散射极限条件下 $Q_{\mathrm{ext}} \propto x^4$。下方左图最下方图。
+  \item 当粒子尺度与波长大小接近时，$Q_{\mathrm{ext}}$ 达到最大值。$x = \frac{2\pi r}{\lambda} \approx 6$ 时，出现最大值。
+  \item 几何光学极限条件下 $Q_{\mathrm{ext}} \to 2$。因为衍射光接近于原有传输方向，散射角非常小。
+  \item 球体的衍射光和透射光相干涉引起消光的振荡，表现为一系列的主极大和极小。
+  \item 由擦过和通过球体的边缘光线引起消光的小脉动，表现为一系列的毛刺现象。
+\end{enumerate}
+
+\subsection{光学现象的解释}
+
+\subsubsection{消光系数趋近于2的现象}
+
+\paragraph{几何极限}
+几何极限情况下消光系数趋近于 2，可以解释白云：云滴粒子 $10\,\mu\mathrm{m}$，$x = \frac{2\pi r}{\lambda_{\text{可见光}}} \sim 100$，则 $Q \to 2$，由此各个波段散射的光基本一致，所以总和形成白云。
+
+\subsubsection{红移和蓝移现象}
+
+\paragraph{红移现象}
+当雾天粒子半径介于 $0.1 - 0.3\,\mu\mathrm{m}$ 时，波长越短，辐射消光越强，出现红化现象。朝霞晚霞的解释：阳光倾斜传输，更多的蓝光被散射，传输到人眼的光变为红光。
+
+\paragraph{蓝移现象}
+当气溶胶粒子半径约为 $1\,\mu\mathrm{m}$ 时，波长越长，辐射消光越强，出现蓝化现象。当大气粒子不再是分子大气，则天空变为绿色或其他颜色。当有云大气粒子半径 $10\,\mu\mathrm{m}$ 时，消光效率几乎不依赖于波长大小，形成白云/乌云。
+
+\subsection{吸收球体的消光和散射}
+
+\paragraph{吸收球体}
+折射率虚部不等于零 $\Im(m) \neq 0$，因此散射和吸收效率都需要考虑。
+
+\paragraph{主要特点}
+\begin{enumerate}
+  \item 增加介质粒子吸收（通过增加 $m$ 虚部）具有抑制 $Q_e$ 曲线振荡的效果。
+  \item 对于 $x \to 0$，瑞利散射单次散射反照率 $\widetilde{\omega} \to 0$。由于瑞利散射吸收与 $x$ 成正比，远大于散射的 $x^4$。但是如果折射率虚部 $\Im(m) = 0$，无论 $x$ 是多少，$\widetilde{\omega} = 1$（只有散射没有吸收）。
+  \item 对于 $x > 10$，$\Im(m)$ 与 $Q_a$ 或 $\widetilde{\omega}$ 之间没有完全可预测的联系。虚部增大，吸收效率不一定增大。
+  \item 对于 $\Im(m) = 0$，$Q_e$ 和 $g$ 曲线中存在大量精细的涟漪结构。
+  \item 对于 $x = 0$，非对称因子 $g$ 也是零，正如瑞利散射预期的一样。
+  \item 随着 $x$ 增加，$g$ 也以非常快的速度增大，直至达到约 0.8（水云）和 0.95（冰云）。
+\end{enumerate}
+
+\paragraph{注意}
+对于可见光区域，水云和冰晶粒子，吸收是非常弱的，可以近似为非吸收球体的情况。但对于红外、紫外等区域，都需要考虑吸收情况。
+
+\subsection{云的散射和吸收特性}
+
+\paragraph{主要特点}
+\begin{enumerate}
+  \item 在 VIS 可见光区域（$0.4\,\mu\mathrm{m} < \lambda < 0.7\,\mu\mathrm{m}$），水云和冰晶粒子，云滴吸收可以认为是零，可以近似为非吸收球体的情况。在 UV 或者近红外，$\widetilde{\omega}$ 快速降到 1 以下；在大多数红外谱带，$\widetilde{\omega}$ 处于 0.5–0.8。
+  \item 球形冰晶粒子与同样尺度的水滴粒子的单次散射反照率存在明显的不同（可用于云相态识别）。
+  \item 对于大多数波长，液态水云单次散射反照率对其液滴半径存在明显的依赖性；在同样的波长上，大液滴相比小液滴具有更强的吸收性（可用于云粒子有效半径遥感）。
+\end{enumerate}
+
+\subsection{真实的散射相函数}
+
+\paragraph{瑞利散射}
+对于 $x = 0.1$，经典瑞利散射相函数，前向和后向呈对称性分布。
+
+\paragraph{米散射}
+\begin{enumerate}
+  \item 对于 $x = 3$，在 $\theta$ 约为 $0^\circ$ 至 $40^\circ$ 内有一个散射增强的宽瓣。
+  \item 随着 $x$ 增加，前向散射瓣变得更窄和更强。
+\end{enumerate}
+
+\paragraph{几何光学}
+对于非常大的 $x$，该所谓的前向衍射峰开始类似于 $\delta$ 函数。随着 $x$ 增大，相函数的其余部分变得更加复杂，呈现出更多的涟漪毛刺。集中在彩虹区域。对于 $x \geq 100$，在 $\theta \approx 140^\circ$ 时出现主虹，在 $\theta \approx 130^\circ$ 时出现附虹，在 $\theta \approx 180^\circ$ 时出现宝光。
+
+\subsection{光学现象}
+
+\paragraph{曙暮辉光}
+光穿过云层后基本往前走（注意：光能被看到是因为发生了散射被人眼看到，但大部分往前）。
+
+\paragraph{日华}
+用植物遮住太阳，被遮住的地方，即太阳附近的震荡（日晕等）。花粉也能产生这种现象。
+
+\paragraph{宝光}
+位于太阳后方，即散射角 $180^\circ$，其正中心为观测者自己的影子，也称为佛光。
+
+\section{粒子谱分布}
+
+\paragraph{尺度谱分布}
+现实中存在大量不同的粒子，要考虑多种粒子的散射情况。粒子尺度谱分布：
+\[
+n(r) \dd{r} = \{ (\text{单位空气体积里) 半径落于 } [r, r + \dd{r}] \text{ 范围内粒子数目} \},
+\]
+单位：单位体积单位 $r$ 区间 $[\mathrm{m^{-3} \mu m^{-1}}]$。
+
+\paragraph{体消光系数}
+\[
+\beta_e = \int_0^\infty n(r) Q_e(r) \pi r^2 \dd{r}.
+\]
+
+\paragraph{体散射系数}
+\[
+\beta_s = \int_0^\infty n(r) Q_s(r) \pi r^2 \dd{r}.
+\]
+
+\paragraph{散射相函数}
+各个方向的散射截面比上总的截面：
+\[
+p(\cos\theta) = \frac{1}{\beta_s} \int_0^\infty n(r) Q_s(r) \pi r^2 p(\cos\theta; r) \dd{r}.
+\]
+
+\paragraph{非对称因子}
+\[
+g = \frac{1}{\beta_s} \int_0^\infty n(r) Q_s(r) \pi r^2 g(r) \dd{r}.
+\]
+
+\chapter{基于多次散射的辐射传输方程}
+
+\section{基于多次散射的辐射传输}
+
+\subsection{基于多次散射的辐射传输方程}
+
+\paragraph{方程形式}
+\[
+\mu \frac{\dd{I(\mu}, \phi)}{\dd{\tau}} = I(\mu, \phi) - \frac{\widetilde{\omega}}{4\pi} \int_0^{2\pi} \int_{-1}^1 p(\mu, \phi; \mu', \phi') I(\mu', \phi') \dd{\mu'} \dd{\phi'}.
+\]
+
+\paragraph{方程内涵}
+如果需要特定方向 $\tau$ 的 $I(\mu, \phi)$，就必须确定所有 $\mu'$ 和 $\phi'$ 方向和 $\tau$ 的 $I(\mu', \phi')$。所以辐射传输方程不能准确进行解析求解，除非做非常苛刻的假设。
+
+\paragraph{数值方法}
+辐射学者为获得合理精度的真实问题的解开发了各种数值计算方法：
+\begin{enumerate}
+  \item 离散纵标方法（二流近似）：思想：只在两个方向上有辐射流动，可以转化积分为求和。
+  \item 逐阶散射方法（单次散射近似基础上改造）。
+  \item 累加方法（倍加方法）：知道两个单一薄层的特性，合并后即可得到多次散射。
+  \item 球谐函数方法：数学十分复杂。
+  \item 蒙特卡罗方法：我们追踪每一个光子的路径，可能被吸收、反射、投射。我们假设好单次散射反照率、非对称因子、光学厚度后就可以大量模拟。
+\end{enumerate}
+
+\subsection{方位平均辐射传输方程}
+
+\paragraph{辐射强度}
+对辐射传输方程两边对方位角做积分平均，得到方位平均辐射强度：
+\[
+I(\mu) \equiv \frac{1}{2\pi} \int_0^{2\pi} I(\mu, \phi) \dd{\phi}.
+\]
+
+\paragraph{散射相函数}
+方位平均散射相函数：
+\[
+p(\mu, \mu') \equiv \frac{1}{2\pi} \int_0^{2\pi} p(\mu, \mu', \Delta\phi) \dd{(\Delta\phi)}.
+\]
+
+\paragraph{传输方程}
+方位平均辐射传输方程：
+\[
+\mu \frac{\dd{I(\mu)}}{\dd{\tau}} = I(\mu) - \frac{\widetilde{\omega}}{2} \int_{-1}^1 p(\mu, \mu') I(\mu') \dd{\mu'}.
+\]
+主要用于气候研究，便于求解辐射通量密度：
+\[
+F' = \int_0^1 \int_0^{2\pi} I(\mu, \phi) \dd{\mu} \dd{\phi} = \int_0^1 2\pi I(\mu) \mu \dd{\mu}.
+\]
+
+\section{二流近似解的推导}
+
+\subsection{二流近似与二流方程}
+
+\subsubsection{二流近似}
+
+\paragraph{近似情况}
+假设辐射强度在各自半球内近似常数
+\[
+I(\mu) = \begin{cases}
+I^\uparrow, & \mu > 0, \\
+I^\downarrow, & \mu < 0,
+\end{cases}
+\]
+其中 $I^\uparrow$ 和 $I^\downarrow$ 都为常数。
+
+\paragraph{合理性}
+高空观测时，向上各方向（除太阳方向），向下各方向辐射基本差不多，假设可以接受。
+
+\subsubsection{二流方程}
+
+\paragraph{方程改写}
+首先考虑向上的辐射流，并将 $I(\mu)$ 替换成常量 $I^\uparrow$ 和 $I^\downarrow$：$0\sim1$ 为上半球，$-1\sim0$ 为下半球。
+\[
+\mu \frac{\dd{I^\uparrow}}{\dd{\tau}} = I^\uparrow - \frac{\widetilde{\omega}}{2} \int_0^1 p(\mu, \mu') I^\uparrow \dd{\mu'} - \frac{\widetilde{\omega}}{2} \int_{-1}^0 p(\mu, \mu') I^\downarrow \dd{\mu'}.
+\]
+由于为常量，可以把 $I^\uparrow$ 和 $I^\downarrow$ 提取出来：
+\[
+\mu \frac{\dd{I^\uparrow}}{\dd{\tau}} = I^\uparrow - \frac{\widetilde{\omega}}{2} \left[ \int_0^1 p(\mu, \mu') \dd{\mu'} \right]_{\text{前向散射比重}} I^\uparrow - \frac{\widetilde{\omega}}{2} \left[ \int_{-1}^0 p(\mu, \mu') \dd{\mu'} \right]_{\text{后向散射比重}} I^\downarrow.
+\]
+
+定义后向散射比重 $b$ 来表示被散射至相反半球内 $\mu$ 方向上的辐射比重：
+\[
+b(\mu) = \begin{cases}
+\frac{1}{2} \int_{-1}^0 p(\mu, \mu') \dd{\mu'} = 1 - \frac{1}{2} \int_0^1 p(\mu, \mu') \dd{\mu'}, & \mu > 0, \\
+\frac{1}{2} \int_0^1 p(\mu, \mu') \dd{\mu'} = 1 - \frac{1}{2} \int_{-1}^0 p(\mu, \mu') \dd{\mu'}, & \mu < 0.
+\end{cases}
+\]
+前向散射 $= 1 -$ 后向散射。
+
+描述向上辐射流的辐射传输方程可进一步改写为：
+\[
+\mu \frac{\dd{I^\uparrow}}{\dd{\tau}} = I^\uparrow - \widetilde{\omega} \left[ 1 - b(\mu) \right] I^\uparrow - \widetilde{\omega} b(\mu) I^\downarrow.
+\]
+
+在整个半球上对天顶角做积分做平均来消除 $\mu$：
+\[
+\int_0^1 \left[ \mu \frac{\dd{I^\uparrow}}{\dd{\tau}} = I^\uparrow - \widetilde{\omega} \left[ 1 - b(\mu) \right] I^\uparrow - \widetilde{\omega} b(\mu) I^\downarrow \right] \dd{\mu}.
+\]
+
+\paragraph{传输方程}
+基于向上辐射流的辐射传输方程：
+\[
+\frac{1}{2} \frac{\dd{I^\uparrow}}{\dd{\tau}} = I^\uparrow - \widetilde{\omega} (1 - \overline{b}) I^\uparrow - \widetilde{\omega} \overline{b} I^\downarrow \Rightarrow \boxed{\frac{1}{2} \frac{\dd{I^\uparrow}}{\dd{\tau}} = (1 - \widetilde{\omega}) I^\uparrow + \widetilde{\omega} \overline{b} (I^\uparrow - I^\downarrow)},
+\]
+其中 $\overline{b} \equiv \int_0^1 b(\mu) \dd{\mu}$。
+
+基于向下辐射流的辐射传输方程：
+\[
+- \frac{1}{2} \frac{\dd{I^\downarrow}}{\dd{\tau}} = I^\downarrow - \widetilde{\omega} (1 - \overline{b}) I^\downarrow - \widetilde{\omega} \overline{b} I^\uparrow \Rightarrow \boxed{- \frac{1}{2} \frac{\dd{I^\downarrow}}{\dd{\tau}} = (1 - \widetilde{\omega}) I^\downarrow - \widetilde{\omega} \overline{b} (I^\uparrow - I^\downarrow)}.
+\]
+
+\paragraph{二流解释}
+方程中 $\frac{1}{2}$ 的位置原来是 $\mu$，可以发现 $\cos\theta = \frac{1}{2} \Rightarrow \theta = 60^\circ$，则光只在两个方向上有流动：向上 $\theta = 60^\circ$ 和向下的 $\theta = 120^\circ$。
+
+\subsection{后向散射比重和 $g$}
+
+\paragraph{观察现象}
+已知的 $g$ 与 $\overline{b}$ 之间的映射关系：$g = -1 \rightarrow \overline{b} = 1$，$g = 0 \rightarrow \overline{b} = \frac{1}{2}$，$g = 1 \rightarrow \overline{b} = 0$。
+
+\paragraph{假设情况}
+假设 $g$ 与 $\overline{b}$ 之间满足线性关系：$\overline{b} = \frac{1 - g}{2}$。
+
+\paragraph{传输方程}
+将 $g$ 代入原式的 $\overline{b}$，方程变为：
+\[
+\frac{1}{2} \frac{\dd{I^\uparrow}}{\dd{\tau}} = (1 - \widetilde{\omega}) I^\uparrow + \frac{\widetilde{\omega} (1 - g)}{2} (I^\uparrow - I^\downarrow),
+\]
+\[
+- \frac{1}{2} \frac{\dd{I^\downarrow}}{\dd{\tau}} = (1 - \widetilde{\omega}) I^\downarrow - \frac{\widetilde{\omega} (1 - g)}{2} (I^\uparrow - I^\downarrow).
+\]
+则
+\[
+\frac{1}{2} \frac{\dd{}}{\dd{\tau}} (I^\uparrow - I^\downarrow) = (1 - \widetilde{\omega}) (I^\uparrow + I^\downarrow),
+\]
+\[
+\frac{1}{2} \frac{\dd{}}{\dd{\tau}} (I^\uparrow + I^\downarrow) = (1 - \widetilde{\omega} g) (I^\uparrow - I^\downarrow).
+\]
+
+\subsection{二流解}
+
+\paragraph{二流解}
+将基于向上和向下辐射流的辐射传输方程进行相加和相减后，然后对二者进行求导，再将二者右侧导数项用二流方程表达式进行替换：
+\[
+\frac{\dd{^2}}{\dd{\tau^2}} (I^\uparrow + I^\downarrow) = 4 (1 - \widetilde{\omega} g) (1 - \widetilde{\omega}) (I^\uparrow + I^\downarrow),
+\]
+\[
+\frac{\dd{^2}}{\dd{\tau^2}} (I^\uparrow - I^\downarrow) = 4 (1 - \widetilde{\omega} g) (1 - \widetilde{\omega}) (I^\uparrow - I^\downarrow).
+\]
+根据二阶常微分方程解可知 $\left( \frac{\dd{^2} y}{\dd{x^2}} = \Gamma^2 y \Rightarrow \mathrm{e}^{\Gamma x} \text{ 或 } \mathrm{e}^{-\Gamma x} \right)$，二流通解可以表示为其线性组合：
+\[
+I^\uparrow(\tau) = A \mathrm{e}^{\Gamma \tau} + r_\infty D \mathrm{e}^{-\Gamma \tau}, \quad I^\downarrow(\tau) = r_\infty A \mathrm{e}^{\Gamma \tau} + D \mathrm{e}^{-\Gamma \tau},
+\]
+其中：
+\[
+\Gamma \equiv 2 \sqrt{1 - \widetilde{\omega}} \sqrt{1 - \widetilde{\omega} g}, \quad r_\infty \equiv \frac{\sqrt{1 - \widetilde{\omega} g} - \sqrt{1 - \widetilde{\omega}}}{\sqrt{1 - \widetilde{\omega} g} + \sqrt{1 - \widetilde{\omega}}}.
+\]
+
+\paragraph{边界条件}
+为确定通解系数，假设下边界为黑体（不反射），大气顶有已知半球平均辐射强度 $I_0$ 的辐射入射：
+\[
+I^\uparrow(\tau^*) = A \mathrm{e}^{\Gamma \tau^*} + r_\infty D \mathrm{e}^{-\Gamma \tau^*} = 0, \quad I^\downarrow(0) = r_\infty A + D = I_0.
+\]
+
+\paragraph{最终解}
+\[
+\boxed{I^\uparrow(\tau) = \frac{r_\infty I_0}{\mathrm{e}^{\Gamma \tau^*} - r_\infty^2 \mathrm{e}^{-\Gamma \tau^*}} \left[ \mathrm{e}^{\Gamma (\tau^* - \tau)} - \mathrm{e}^{-\Gamma (\tau^* - \tau)} \right]},
+\]
+\[
+\boxed{I^\downarrow(\tau) = \frac{I_0}{\mathrm{e}^{\Gamma \tau^*} - r_\infty^2 \mathrm{e}^{-\Gamma \tau^*}} \left[ \mathrm{e}^{\Gamma (\tau^* - \tau)} - r_\infty^2 \mathrm{e}^{-\Gamma (\tau^* - \tau)} \right]}.
+\]
+
+\paragraph{合理性}
+地表不反射并不合理，但后续可以通过其他技术手段补充；大气顶也只有太阳的一个方向的辐射，不应该假设为平均辐射强度入射。这是这个版本的二流近似的硬伤，该公式也不在气候中使用。但是在求解比较厚的云层时，该假设也具有一定的合理性。
+
+\section{二流近似解的实例}
+
+\subsection{半无限大云}
+
+\paragraph{半无限大云}
+在大气层顶：光学厚度 $\tau = 0$，在地面 $\tau = \tau^* \to \infty$，上面固定，下面相当于深不见底的情况。事实情况不要求地面光学厚度趋于无限大，$\tau \to 100$ 即可近似。因此，透过率 $t = 0$，$r + a = 1$。
+
+\paragraph{辐射传输解}
+半无限大云的二流辐射传输解：
+\[
+I^\uparrow(\tau) = I_0 r_\infty \mathrm{e}^{-\Gamma \tau}, \quad I^\downarrow(\tau) = I_0 \mathrm{e}^{-\Gamma \tau} \quad (\text{代入 } \tau^* \to \infty \text{ 即可}).
+\]
+
+\paragraph{反照率}
+半无限大云顶的反照率（因为各向同性，辐射强度乘以 $\pi$ 则得到辐射通量密度的比值）：
+\[
+\text{反照率} = \frac{\pi I^\uparrow(0)_{\text{大气层顶向上}}}{\pi I^\downarrow(0)_{\text{大气层顶向下}}} = \frac{I_0 r_\infty \mathrm{e}^{-\Gamma \tau}}{I_0 \mathrm{e}^{-\Gamma \tau}} = \boxed{r_\infty = \frac{\sqrt{1 - \widetilde{\omega} g} - \sqrt{1 - \widetilde{\omega}}}{\sqrt{1 - \widetilde{\omega} g} + \sqrt{1 - \widetilde{\omega}}}}.
+\]
+只和单次散射反照率和非对称因子有关。
+
+\paragraph{性质}
+\begin{enumerate}
+  \item 非对称因子越大，反照率越小。
+  \item 单次散射反照率只要稍微变小一点，总体吸收效果被放大。
+\end{enumerate}
+
+\begin{example}
+假设 $r_\infty = \widetilde{\omega}^{\overline{n}}$，其中 $\overline{n}$ 是从半无限大云层顶部入射的光子在从云顶离开之前在云体内部经历的有效散射平均数目。
+\begin{enumerate}
+  \item 对于 $\widetilde{\omega} = 0.9999$ 和 $g = 0.85$ 的情况，计算 $r_\infty$ 和 $\overline{n}$。
+  \item 重复前面的计算，除了 $\widetilde{\omega} = 0.9$ 所有其他条件与 (a) 相同。
+  \item 解释上述两种情况的 $\overline{n}$ 为什么明显不同。
+\end{enumerate}
+\begin{enumerate}
+  \item $r_\infty(0.9999, 0.85) = 0.950,\ \overline{n} = \frac{\ln 0.950}{\ln 0.9999} = 513$，放大效应强。
+  \item $r_\infty(0.9, 0.85) = 0.210,\ \overline{n} = \frac{\ln 0.210}{\ln 0.9} = 15$，相对放大效应弱。
+  \item 对于第二种情况，只有那些进入云体且很快通过后向散射逃离出云体的光子才能有很大的机会不被吸收而存活下来。
+\end{enumerate}
+\end{example}
+
+\subsection{无吸收云}
+
+\paragraph{无吸收云 守恒散射}
+$\widetilde{\omega} = 1 \Rightarrow \Gamma = 0$，无吸收云的二流辐射传输解出现 $0/0$ 不定解。吸收率 $a = 0$，$r + t = 1$。
+
+\paragraph{求解方程}
+为了得到这种情况下的二流近似解，可以将 $\widetilde{\omega} = 1$ 代入如下最初的二流辐射传输方程：
+\[
+\frac{1}{2} \frac{\dd{}}{\dd{\tau}} (I^\uparrow - I^\downarrow) = (1 - \widetilde{\omega}) (I^\uparrow + I^\downarrow) = 0,
+\]
+\[
+\frac{1}{2} \frac{\dd{}}{\dd{\tau}} (I^\uparrow + I^\downarrow) = (1 - \widetilde{\omega} g) (I^\uparrow - I^\downarrow).
+\]
+由此可得：
+\begin{enumerate}
+  \item $\frac{\dd{}}{\dd{\tau}} (I^\uparrow - I^\downarrow) = 0$；
+  \item $\pi (I^\uparrow - I^\downarrow) = F_{\text{净辐射}}^{\mathrm{net}} = \text{常数}$，云层不会加热或冷却，即不吸收；
+  \item $\frac{\dd{}}{\dd{\tau}} (I^\uparrow + I^\downarrow) = 2 (1 - g) (I^\uparrow - I^\downarrow)$，积分可得 $\pi (I^\uparrow + I^\downarrow) = 2 F^{\mathrm{net}} \tau (1 - g) + \pi K$。
+\end{enumerate}
+将边界条件 $I^\uparrow(\tau^*) = 0$ 和 $I^\downarrow(0) = I_0$ 代入即可得到二流近似解。
+
+\paragraph{辐射传输解}
+无吸收云的二流辐射传输解：
+\[
+I^\uparrow(\tau) = \frac{I_0 (1 - g) (\tau^* - \tau)}{1 + (1 - g) \tau^*}, \quad I^\downarrow(\tau) = \frac{I_0 \left[ 1 + (1 - g) (\tau^* - \tau) \right]}{1 + (1 - g) \tau^*}.
+\]
+
+\paragraph{透过率}
+无吸收云顶的反照率
+\[
+r = \frac{\pi I^\uparrow(0)}{\pi I^\downarrow(0)} = \boxed{\frac{(1 - g) \tau^*}{1 + (1 - g) \tau^*}}, \quad \widetilde{\omega} = 1.
+\]
+云底的透过率：
+\[
+t = \frac{\pi I^\downarrow(\tau^*)}{\pi I^\downarrow(0)} = \boxed{\frac{1}{1 + (1 - g) \tau^*}}, \quad \widetilde{\omega} = 1.
+\]
+
+\paragraph{性质}
+对于透过率，非对称因子越大，透过率越大；光学厚度越大，透过率越小。
+
+\begin{example}
+某典型的厚层积云在可见光谱带具有光学厚度 $\tau^* = 50,\ \widetilde{\omega} = 1$ 和 $g = 0.85$。
+\begin{enumerate}
+  \item 计算云层反照率和总的透过率。
+  \item 如果云层是完全吸收而非散射的介质，那么多大的光学厚度可以产生与 (a) 相同的透过率？假设 $\overline{\mu} = 0.5$。
+\end{enumerate}
+\begin{enumerate}
+  \item $r(0.85, 50) = 0.88$，$t(0.85, 50) = 0.12$。对于 $\tau^* = 50$，透过率偏大了，因为多次散射的缘故。
+  \item 对于完全吸收而不散射的介质，透过率由比尔定律确定 $t = \mathrm{e}^{-\frac{\tau}{\mu}}$，因此所需的光学厚度 $\tau = - \mu \ln(t) = -0.5 \ln(0.12) = 1.1$。这部分增强的光称为漫射光。
+\end{enumerate}
+\end{example}
+
+\subsection{一般情况}
+
+\paragraph{反照率}
+\[
+r = \frac{r_\infty \left[ \mathrm{e}^{\Gamma \tau^*} - \mathrm{e}^{-\Gamma \tau^*} \right]}{\mathrm{e}^{\Gamma \tau^*} - r_\infty^2 \mathrm{e}^{-\Gamma \tau^*}}, \quad \widetilde{\omega} < 1.
+\]
+
+\paragraph{总透过率}
+\[
+t = \frac{1 - r_\infty^2}{\mathrm{e}^{\Gamma \tau^*} - r_\infty^2 \mathrm{e}^{-\Gamma \tau^*}}, \quad \widetilde{\omega} < 1.
+\]
+
+\paragraph{吸收率}
+$a = 1 - r - t$。
+
+\paragraph{性质}
+\begin{enumerate}
+  \item 非对称因子 $\widetilde{\omega}$ 越大，透过越多；光学厚度 $\tau$ 越大，透射越小，反射越大，吸收越多。符合物理直觉。
+  \item 单次散射反照率越小，吸收越强，散射越小，反射率越小，透过率也越小。
+\end{enumerate}
+
+\subsection{直射和漫射透过率}
+
+\paragraph{直射透射率}
+\[
+t_{\mathrm{dir}} = \mathrm{e}^{-\tau^* / \overline{\mu}}.
+\]
+
+\paragraph{漫射透射率}
+\[
+t_{\mathrm{diff}} = \begin{cases}
+0, & \widetilde{\omega} = 0, \\
+\frac{1 - r_\infty^2}{\mathrm{e}^{\Gamma \tau^*} - r_\infty^2 \mathrm{e}^{-\Gamma \tau^*}} - \mathrm{e}^{-\tau^* / \overline{\mu}}, & 0 < \widetilde{\omega} < 1, \\
+\frac{1}{1 + (1 - g) \tau^*} - \mathrm{e}^{-\tau^* / \overline{\mu}}, & \widetilde{\omega} = 1.
+\end{cases}
+\]
+
+\paragraph{总透过率}
+总透过率 $t$ 等于直射透过率 $t_{\mathrm{dir}}$ 和漫射透过率 $t_{\mathrm{diff}}$ 之和。
+
+\paragraph{性质}
+\begin{enumerate}
+  \item 直射透过率随着光学厚度增大迅速衰减为 0。
+  \item 漫射（多次散射）随着光学厚度增大先增大，后缓慢减小，到后期几乎其提供全部总透过率。
+\end{enumerate}
+
+\paragraph{案例}
+暖锋前逐渐变厚的云层。如果没有漫射光，则世界一片漆黑。
+
+\section{累加方法}
+
+\paragraph{基本思想}
+知道各个单一层的情况，累加即可得到总的情况。如果每层相同，则称为倍加法。
+
+\subsection{非黑体地表之上的云}
+
+\paragraph{辐射通量}
+总的向上辐射通量等于云层反射成分与逐阶被地表反射 $\mathrm{sfc}$ 的透射贡献之和：
+\[
+F^\uparrow(0) = F_0 \left( r + r_{\mathrm{sfc}} t^2 + r_{\mathrm{sfc}}^2 r t^2 + r_{\mathrm{sfc}}^3 r^2 t^2 + r_{\mathrm{sfc}}^4 r^3 t^2 + \cdots \right) \quad \text{多了一次地表反射和云层反射}.
+\]
+
+\paragraph{联合反照率}
+非黑体地表与云层的联合反照率表达式可以表示为
+\[
+\widetilde{r} \equiv \frac{F^\uparrow(0)}{F_0} = r + r_{\mathrm{sfc}} t^2 \left[ 1 + r_{\mathrm{sfc}} r + (r_{\mathrm{sfc}} r)^2 + (r_{\mathrm{sfc}} r)^3 + \cdots \right] = \boxed{r + \frac{r_{\mathrm{sfc}} t^2}{1 - r_{\mathrm{sfc}} r}}.
+\]
+
+\paragraph{联合透过率}
+\[
+\widetilde{t} \equiv \frac{F^\downarrow(\tau^*)}{F_0} = \boxed{\frac{t}{1 - r_{\mathrm{sfc}} r}}.
+\]
+这里 $1 + x + x^2 + x^3 + \cdots = \frac{1}{1 - x}$。
+
+\paragraph{注意}
+$\widetilde{r} + \widetilde{t} + \widetilde{a} \neq 1$，因为 $t$ 重复了很多回（能量重复使用），三者之和为一仅适用于最开始的情况。
+
+\paragraph{性质}
+\begin{enumerate}
+  \item 如果地表不存在 $r_{\mathrm{sfc}} = 0$，则联合反照率就等于原有云层的反照率，具有相容性。
+  \item 假设没有云层，则 $r = 0$，$\widetilde{r} = r_{\mathrm{sfc}}$，同样相容合理。
+  \item 相较于只有云层的情况，如果加上了地表反射，则联合反照率必然增加，联合透过率也在增加。
+\end{enumerate}
+
+\subsection{多个云层}
+
+\paragraph{总反射率}
+两个云层联合的总反射率：
+\[
+\widetilde{r} = r_1 + \frac{r_2 t_1^2}{1 - r_2 r_1}.
+\]
+
+\paragraph{总透过率}
+两个云层联合的总透过率：
+\[
+\widetilde{t} = \frac{t_1 t_2}{1 - r_2 r_1}.
+\]
+指透过第二个云层的透过率，而 11.4.1 不考虑透过地表的情况。
+
+\begin{example}
+三个非吸收云层具有透过率 $t_1 = 0.2$、$t_2 = 0.3$ 和 $t_3 = 0.4$。
+\begin{enumerate}
+  \item 计算它们的联合反射率和透过率。
+  \item 将计算得到的透过率与比尔定律预测多个非散射层合并的透过率比较，解释两者存在差别的原因。
+  \item 在什么条件下多个云层的总透过率与比尔定律结果吻合？为什么？
+\end{enumerate}
+\begin{enumerate}
+  \item 已知 $t_1 = 0.2,t_2 = 0.3,t_3 = 0.4,r_1 = 0.8,r_2 = 0.7,r_3 = 0.6$。因为不吸收，云层1和2的联合反照率和透过率：
+        \[
+        r_{12} = r_1 + \frac{t_1^2 r_2}{1 - r_1 r_2} = 0.864, \quad t_{12} = \frac{t_1 t_2}{1 - r_1 r_2} = 0.136.
+        \]
+        递归可得云层12和3的联合反照率和透过率：
+        \[
+        r_{123} = r_{12} + \frac{t_{12}^2 r_3}{1 - r_{12} r_3} = 0.887, \quad t_{123} = \frac{t_{12} t_3}{1 - r_{12} r_3} = 0.113.
+        \]
+        最终的反射率比任何一个单独云层的反照率大，因为云层厚度增大，反射必然增大；最终的透过率则小于任何一个单独云层，但和比尔定律相比大很多。
+  \item $t_{\text{比尔}} = t_1 t_2 t_3 = 0.024$，因此计算得到的透过率与比尔透过率的比值 $t_{123} / t_{\text{比尔}} = 4.7$。有在云层之间来回反射的漫射光，促进往下的透射率增大。因此漫射光相当重要。
+  \item 当云层反照率为零时，公式 $\widetilde{t} = \frac{t_1 t_2}{1 - r_2 r_1}$ 与比尔定律一致。因为云层之间没有反射，所以辐射没有第二次机会能够穿过第二个云层。
+\end{enumerate}
+\end{example}
+
+\begin{example}
+假设大气可以分成 $n$ 层，每一层对短波辐射都是透明的，但是在长波波带上不透明 $(t=1)$。证明在该系统下辐射平衡地表温度为 $T_0 = T_n (n+1)^{1/4}$，其中 $T_n$ 是最顶层的温度。
+
+假设地表发射的红外辐射功率为：$F_0 = \sigma T_0^4$。由于大气每一层（完全不透明于长波辐射）均向上和向下各发射一半辐射，总共 $n$ 层大气向下传递能量，其最终加到地表上。这样，地表除了自身辐射外，还“接收到”上面 $n$ 层贡献的能量，使得地表实际需要发射的总能量为：
+\[
+F_0 = (n+1) \sigma T_n^4.
+\]
+故有：
+\[
+\sigma T_0^4 = (n+1) \sigma T_n^4 \Longrightarrow T_0^4 = (n+1) T_n^4.
+\]
+则：
+\[
+\boxed{T_0 = T_n (n+1)^{1/4}}.
+\]
+得证。
+\end{example}
+
+\end{document}
